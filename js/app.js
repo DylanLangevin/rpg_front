@@ -2,11 +2,20 @@
 let canvas = document.querySelector('canvas');
 const ctx = canvas.getContext('2d');
 
-// Orientation du personnage
+// Sélection du body
+let body = document.querySelector('body');
+
+// Orientation du personnage, la ligne qui correspond à l'image de base
 let directionUp = 0;
 let directionLeft = 1;
 let directionDown = 2;
 let directionRight = 3;
+
+// Mouvement du personnage
+let moveUp = false;
+let moveDown = false;
+let moveRight = false;
+let moveLeft = false;
 
 // Position où le dessin sera dessiné sur le canvas
 let dx = 0;
@@ -35,18 +44,82 @@ let currentFrame = 0
 let character = new Image();
 character.src = 'img/lea.png';
 
+// Mouvement du personnage selon la touche du clavier choisie
+function characterMove() {
+    body.onkeydown = event => {
+        switch(event.key) {
+            case "ArrowUp":
+                return characterMoveUp();
+            case "ArrowDown":
+                return characterMoveDown();
+            case "ArrowLeft":
+                characterMoveLeft();
+                break;
+            case "ArrowRight":
+                characterMoveRight();
+                break;
+        }
+    }
+}
+
+function characterMoveUp() {
+    moveUp = true;
+    moveDown = false;
+    moveRight = false;
+    moveLeft = false;
+}
+function characterMoveDown() {
+    moveUp = false;
+    moveDown = true;
+    moveRight = false;
+    moveLeft = false;
+}
+function characterMoveLeft() {
+    moveUp = false;
+    moveDown = false;
+    moveRight = false;
+    moveLeft = true;
+}
+
+function characterMoveRight() {
+    moveUp = false;
+    moveDown = false;
+    moveRight = true;
+    moveLeft = false;
+}
+
+
 // Choisir la bonne frame
 function updateFrame() {
     // Effacer le canvas avant de mettre la nouvelle frame, évite un biug d'affichage
     ctx.clearRect(0, 0, canvas.width, canvas.height)
     // modulo permet d'obtenir la bonne frame (1, 2, 3, 4...), ça permet d'update l'index de la frame
     currentFrame = ++currentFrame % frameCols; 
-    console.log("Current Frame :" + currentFrame);
+    // console.log("Current Frame :" + currentFrame);
 
     // Choisir le point de départ de la frame
     sx = currentFrame * frameWidth;
-    // Va permettre de définir la direction du mouvement
-    sy = directionDown * frameHeight;
+
+    // Mouvement du personnage selon le choix effectué par l'user
+    characterMove()
+    if (moveUp) {
+        dy -= 5
+        // Va permettre de définir la direction du mouvement
+        sy = directionUp * frameHeight;
+        console.log(moveUp)
+    }
+    if (moveDown) {
+        dy += 5
+        sy = directionDown * frameHeight;
+    }
+    if (moveLeft) {
+        dx -= 5
+        sy = directionLeft * frameHeight;
+    }
+    if (moveRight) {
+        dx +=5
+        sy = directionRight * frameHeight;
+    } 
 }
 
 // Dessiner le caractère
