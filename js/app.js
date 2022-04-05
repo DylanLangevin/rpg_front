@@ -130,7 +130,7 @@ function drawCharacter() {
     ctx.drawImage(character, sx, sy, frameWidth, frameHeight, dx, dy, frameWidth, frameHeight)
 }
 
-// La fonction draxImage sera appelée toutes les 100ms
+// La fonction drawCharacter sera appelée toutes les 100ms
 setInterval(function() {
     drawCharacter();
 }, 100)
