@@ -1,6 +1,7 @@
 // Initialisation du canvas
 let canvas = document.querySelector('canvas');
-const ctx = canvas.getContext('2d');
+let ctx = canvas.getContext('2d');
+
 
 // Sélection du body
 let body = document.querySelector('body');
@@ -43,6 +44,7 @@ let currentFrame = 0
 // Récupérer l'image
 let character = new Image();
 character.src = 'img/lea.png';
+
 
 // Mouvement du personnage selon la touche du clavier choisie
 function characterMove() {
@@ -91,35 +93,6 @@ function characterMove() {
     }
 }
 
-function characterMoveUp() {
-    moveUp = true;
-    moveDown = false;
-    moveRight = false;
-    moveLeft = false;
-
-}
-
-function characterMoveDown() {
-    moveUp = false;
-    moveDown = true;
-    moveRight = false;
-    moveLeft = false;
-}
-function characterMoveLeft() {
-    moveUp = false;
-    moveDown = false;
-    moveRight = false;
-    moveLeft = true;
-}
-
-function characterMoveRight() {
-    moveUp = false;
-    moveDown = false;
-    moveRight = true;
-    moveLeft = false;
-}
-
-
 // Choisir la bonne frame
 function updateFrame() {
     // Effacer le canvas avant de mettre la nouvelle frame, évite un biug d'affichage
@@ -158,12 +131,14 @@ function drawCharacter() {
     updateFrame();
     // On dessine le caractère
     ctx.drawImage(character, sx, sy, frameWidth, frameHeight, dx, dy, frameWidth, frameHeight)
+    console.log(dx, dy);
 }
 
 // La fonction drawCharacter sera appelée toutes les 100ms
 setInterval(function() {
     drawCharacter();
 }, 100)
+
 
 // drawImage(image, sx, sy, sWidth, sHeight, dx, dy, dWidth, dHeight)
 // Cette fonction prend la zone de l'image source spécifiée par le rectangle dont le coin en haut à gauche est (sx, sy) et dont la largeur et la hauteur sont sWidth et sHeight puis dessine cette portion de l'image dans le canevas en le plaçant sur le canevas (aux coordonnées dx, dy) et le redimensionne à la taille spécifiée par dWidth et dHeight.
