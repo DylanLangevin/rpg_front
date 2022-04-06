@@ -17,7 +17,7 @@ let villageois = new Pnj("Villageois", [12,126]);//position a définir
 let villageoise = new Pnj("Villageoise", [12, 126]);//position a définir
 
 //initialisation de l'ojet cops
-let cops = new Cops("Policier", [12, 126]);//position a définir
+let police = new Police("Policier", [12, 126]);//position a définir
 
 
 

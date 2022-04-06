@@ -1,4 +1,4 @@
-class Cops {
+class Police {
     constructor(name, position) {
         this.name = name;
         this.position = position;
