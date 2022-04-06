@@ -49,13 +49,44 @@ function characterMove() {
     body.onkeydown = event => {
         switch(event.key) {
             case "ArrowUp":
-                return characterMoveUp();
+                moveUp = true;
+                onkeyup = event => {
+                    moveUp = false
+                }
+                moveDown = false;
+                moveRight = false;
+                moveLeft = false;
+                break;
+                
             case "ArrowDown":
-                return characterMoveDown();
+                moveDown = true;
+                onkeyup = event => {
+                    moveDown = false
+                }
+                moveRight = false;
+                moveLeft = false;
+                moveUp = false;
+                break;
+
             case "ArrowLeft":
-                return characterMoveLeft();
+                moveLeft = true;
+                onkeyup = event => {
+                    moveLeft = false
+                }
+                moveUp = false;
+                moveDown = false;
+                moveRight = false;
+                break;
+
             case "ArrowRight":
-                return characterMoveRight();
+                moveRight = true;
+                onkeyup = event => {
+                    moveRight = false
+                }
+                moveUp = false;
+                moveDown = false;
+                moveLeft = false;
+                break;
         }
     }
 }
@@ -65,7 +96,9 @@ function characterMoveUp() {
     moveDown = false;
     moveRight = false;
     moveLeft = false;
+
 }
+
 function characterMoveDown() {
     moveUp = false;
     moveDown = true;
