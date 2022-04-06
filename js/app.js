@@ -53,11 +53,9 @@ function characterMove() {
             case "ArrowDown":
                 return characterMoveDown();
             case "ArrowLeft":
-                characterMoveLeft();
-                break;
+                return characterMoveLeft();
             case "ArrowRight":
-                characterMoveRight();
-                break;
+                return characterMoveRight();
         }
     }
 }
@@ -95,7 +93,6 @@ function updateFrame() {
     ctx.clearRect(0, 0, canvas.width, canvas.height)
     // modulo permet d'obtenir la bonne frame (1, 2, 3, 4...), ça permet d'update l'index de la frame
     currentFrame = ++currentFrame % frameCols; 
-    // console.log("Current Frame :" + currentFrame);
 
     // Choisir le point de départ de la frame
     sx = currentFrame * frameWidth;
@@ -134,7 +131,6 @@ function drawCharacter() {
 setInterval(function() {
     drawCharacter();
 }, 100)
-
 
 // drawImage(image, sx, sy, sWidth, sHeight, dx, dy, dWidth, dHeight)
 // Cette fonction prend la zone de l'image source spécifiée par le rectangle dont le coin en haut à gauche est (sx, sy) et dont la largeur et la hauteur sont sWidth et sHeight puis dessine cette portion de l'image dans le canevas en le plaçant sur le canevas (aux coordonnées dx, dy) et le redimensionne à la taille spécifiée par dWidth et dHeight.
