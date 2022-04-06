@@ -1,3 +1,4 @@
+
 //initialisation de l'ojet player
 let player = new Player("Adrien", [12, 126], ["carte des suspects", "bout de papier"]);//position et inventaire à définir, ajouter des fonctions ect
 
@@ -30,9 +31,9 @@ function createTextSpan(text) {
     sectionDialogue.appendChild(br);
     input.innerHTML = text
 }
-createTextSpan(ingenieurFou.letsTalk("ça marche?"));
-createTextSpan(secretaire.letsTalk("oui ça marche"));
-createTextSpan(player.letsTalk("Vous êtes pas censé parler entre vous les pnj"));
+ingenieurFou.letsTalk("ça marche?", [0, 0]);
+secretaire.letsTalk("oui ça marche", [50,0]);
+player.letsTalk("Vous êtes pas censé parler entre vous les pnj", [100, 0]);
 
 
 player.newItem("peigne rose");

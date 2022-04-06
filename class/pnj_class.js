@@ -4,8 +4,10 @@ class Pnj {
         this.position = position;
     }
 
-    letsTalk(text) {
+    letsTalk(text, textPosition) {
         // this.talk = text
+        ctx
         return this.name + ": " + text;
     }
 }
+
