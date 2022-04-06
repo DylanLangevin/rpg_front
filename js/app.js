@@ -5,6 +5,8 @@ let ctx = canvas.getContext('2d');
 
 // Sélection du body
 let body = document.querySelector('body');
+const runBtn = document.getElementById('runBtn')
+
 
 // Orientation du personnage, la ligne qui correspond à l'image de base
 let directionUp = 0;
@@ -41,9 +43,20 @@ let frameHeight = spriteHeight/frameRows;
 // Index de la frame
 let currentFrame = 0
 
+
+
+
 // Récupérer l'image
 let character = new Image();
 character.src = 'img/lea.png';
+
+// Coordonnées du carré marron symbolise la porte de sortie
+let exitX = Math.floor( Math.random() * 900 )
+let exitY = Math.floor( Math.random() * 600 )
+
+
+
+
 
 
 // Mouvement du personnage selon la touche du clavier choisie
@@ -54,6 +67,7 @@ function characterMove() {
                 moveUp = true;
                 onkeyup = event => {
                     moveUp = false
+                    
                 }
                 moveDown = false;
                 moveRight = false;
@@ -109,35 +123,69 @@ function updateFrame() {
         dy -= 5
         // Va permettre de définir la direction du mouvement
         sy = directionUp * frameHeight;
+
         console.log(moveUp)
     }
     if (moveDown) {
         dy += 5
         sy = directionDown * frameHeight;
+
     }
     if (moveLeft) {
         dx -= 5
         sy = directionLeft * frameHeight;
+
     }
     if (moveRight) {
         dx +=5
         sy = directionRight * frameHeight;
-    } 
+    }
+
+    
 }
 
 // Dessiner le caractère
 function drawCharacter() {
     // On update d'abord la frame
     updateFrame();
-    // On dessine le caractère
+    // dessin du carré marron
+    ctx.fillStyle = "brown";
+    ctx.fillRect(exitX, exitY, 50, 50);
+        // On dessine le caractère
     ctx.drawImage(character, sx, sy, frameWidth, frameHeight, dx, dy, frameWidth, frameHeight)
+
     console.log(dx, dy);
+
 }
 
-// La fonction drawCharacter sera appelée toutes les 100ms
-setInterval(function() {
-    drawCharacter();
-}, 100)
+// Le personnage se dirigera vers le carré marron
+
+    setInterval(function() {
+
+        if (dy <exitY) {
+            moveDown = true
+            moveUp = false
+            moveRight = false
+            moveLeft = false
+        } else if (dx < exitX) {
+            moveRight = true
+            moveLeft = false
+            moveDown = false
+            moveUp = false
+        
+        }else {
+            moveDown = false
+            moveUp = false
+            moveRight = false
+            moveLeft = false
+        }    
+        drawCharacter();
+    }, 15)
+
+
+// Au click du bouton le personnage sort de l'écran
+
+
 
 
 // drawImage(image, sx, sy, sWidth, sHeight, dx, dy, dWidth, dHeight)
