@@ -17,6 +17,5 @@ class Player {
 
     newItem(item) {
         this.inventory.push(item);
-        console.log(this.inventory);
     }
 }
