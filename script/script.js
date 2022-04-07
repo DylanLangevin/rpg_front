@@ -48,14 +48,14 @@ let player = new Player("Adrien", 'character_profil/plant_janitor.png', [dx, dy]
 
 // Initialisation des objets pnj
 let secretary = new Pnj("Secrétaire", 'character_profil/secretary.png', [12, 126]);//position a définir
-let BarRegular = new Pnj("Habitué du bar", 'character_profil/bar_regular.png', [12, 126]);//position a définir
-let ingenieurFou = new Pnj("Ingénieur fou", 'character_profil/ingenieur_fou.png', [100, 100]);//position a définir
+let barRegular = new Pnj("Habitué du bar", 'character_profil/bar_regular.png', [12, 126]);//position a définir
+let engineer = new Pnj("Ingénieur fou", 'character_profil/engineer.png', [100, 100]);//position a définir
 let childhoodFriend = new Pnj("Ami d'enfance", 'character_profil/childhood_friend.png', [12, 126]);//position a définir
 let plantJanitor = new Pnj("Gardien d'usine", 'character_profil/plant_janitor.png', [12, 126]);//position a définir
-let ancienDuVillage = new Pnj("Ancien du village", 'character_profil/ancien.png', [12, 126]);//position a définir
+let elder = new Pnj("Ancien du village", 'character_profil/elder.png', [12, 126]);//position a définir
 let mayorWife = new Pnj("Femme du maire", 'character_profil/mayor_wife.png', [12, 126]);//position a définir
 let foreigner = new Pnj("L'étrangère", 'character_profil/foreigner.png', [12, 126]);//position a définir
-let lectrice = new Pnj("Lectrice de polar", 'character_profil/lectrice_polar.png', [12, 126]);//position a définir
+let reader = new Pnj("Lectrice de polar", 'character_profil/reader.png', [12, 126]);//position a définir
 let librarian = new Pnj("Bibliothécaire", 'character_profil/librarian.png', [12, 126]);//position a définir
 let policeFriend = new Pnj("Policier ami", 'character_profil/police_friend.png', [12, 126]);//position a définir
 let maleCitizen = new Pnj("Villageois", 'character_profil/male_citizen.png', [12,126]);//position a définir
