@@ -21,8 +21,8 @@ let moveRight = false;
 let moveLeft = false;
 
 // Position où le dessin sera dessiné sur le canvas
-let dx = 0;
-let dy = 0;
+let dx = 500;
+let dy = 250;
 
 // Position de la zone de l'image source (le coin supérieur gauche de la frame)
 let sx;
@@ -50,9 +50,15 @@ let currentFrame = 0
 let character = new Image();
 character.src = 'img/lea.png';
 
+
+
+
+
 // Coordonnées du carré marron symbolise la porte de sortie
-let exitX = Math.floor( Math.random() * 900 )
-let exitY = Math.floor( Math.random() * 600 )
+let exitX = 600
+// let exitX = Math.floor( Math.random() * 900 )
+let exitY = 555
+// let exitY = Math.floor( Math.random() * 600 )
 
 
 
@@ -154,7 +160,7 @@ function drawCharacter() {
         // On dessine le caractère
     ctx.drawImage(character, sx, sy, frameWidth, frameHeight, dx, dy, frameWidth, frameHeight)
 
-    console.log(dx, dy);
+    // console.log(dx, dy);
 
 }
 
@@ -162,25 +168,45 @@ function drawCharacter() {
 
     setInterval(function() {
 
-        if (dy <exitY) {
+        
+        if (Math.floor(dy) < Math.floor(exitY)) {
+
             moveDown = true
             moveUp = false
             moveRight = false
             moveLeft = false
-        } else if (dx < exitX) {
+
+        } else if (Math.floor(dx) < Math.floor(exitX)) {
+
             moveRight = true
             moveLeft = false
             moveDown = false
             moveUp = false
         
-        }else {
+        } else if (Math.floor(dx) > Math.floor(exitX)) {
+
+            moveRight = false
+            moveLeft = true
+            moveDown = false
+            moveUp = false
+        
+        } else if (Math.floor(dy) > Math.floor(exitY)){
+
+            moveDown = false
+            moveUp = true
+            moveRight = false
+            moveLeft = false
+
+        } else {
             moveDown = false
             moveUp = false
             moveRight = false
             moveLeft = false
         }    
+
         drawCharacter();
-    }, 15)
+        console.log(dx, dy, exitX, exitY);
+    }, 50)
 
 
 // Au click du bouton le personnage sort de l'écran
