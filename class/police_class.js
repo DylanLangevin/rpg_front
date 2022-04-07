@@ -18,6 +18,7 @@ class Police {
     characterProfil() {
         let character = new Image();
         character.src = this.image;
+        return character;
     }
 
     hitBox() {

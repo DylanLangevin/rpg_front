@@ -13,10 +13,7 @@ let directionDown = 2;
 let directionRight = 3;
 
 // Mouvement du personnage
-let moveUp = false;
-let moveDown = false;
-let moveRight = false;
-let moveLeft = false;
+let moveCharacter;
 
 // Position où le dessin sera dessiné sur le canvas
 let dx = 0;
@@ -47,22 +44,22 @@ let currentFrame = 0
 
 
 // Initialisation de l'ojet player
-let player = new Player("Adrien", 'character_profil/female_player.png', [dx, dy], ["carte des suspects", "bout de papier"]);//position et inventaire à définir, ajouter des fonctions ect
+let player = new Player("Adrien", 'character_profil/plant_janitor.png', [dx, dy], ["carte des suspects", "bout de papier"]);//position et inventaire à définir, ajouter des fonctions ect
 
 // Initialisation des objets pnj
-let secretaire = new Pnj("Secrétaire", 'character_profil/secretaire.png', [12, 126]);//position a définir
-let habitueDuBar = new Pnj("Habitué du bar", 'character_profil/habitué_bar_et_ouvriers.png', [12, 126]);//position a définir
+let secretary = new Pnj("Secrétaire", 'character_profil/secretary.png', [12, 126]);//position a définir
+let BarRegular = new Pnj("Habitué du bar", 'character_profil/bar_regular.png', [12, 126]);//position a définir
 let ingenieurFou = new Pnj("Ingénieur fou", 'character_profil/ingenieur_fou.png', [100, 100]);//position a définir
-let amiEnfance = new Pnj("Ami d'enfance", 'character_profil/ami_enfance.png', [12, 126]);//position a définir
-let gardienUsine = new Pnj("Gardien d'usine", 'character_profil/gardien_usine.png', [12, 126]);//position a définir
+let childhoodFriend = new Pnj("Ami d'enfance", 'character_profil/childhood_friend.png', [12, 126]);//position a définir
+let plantJanitor = new Pnj("Gardien d'usine", 'character_profil/plant_janitor.png', [12, 126]);//position a définir
 let ancienDuVillage = new Pnj("Ancien du village", 'character_profil/ancien.png', [12, 126]);//position a définir
-let femmeDuMaire = new Pnj("Femme du maire", 'character_profil/femme_du_maire.png', [12, 126]);//position a définir
-let etrangere = new Pnj("L'étrangère", 'character_profil/étrangère.png', [12, 126]);//position a définir
+let mayorWife = new Pnj("Femme du maire", 'character_profil/mayor_wife.png', [12, 126]);//position a définir
+let foreigner = new Pnj("L'étrangère", 'character_profil/foreigner.png', [12, 126]);//position a définir
 let lectrice = new Pnj("Lectrice de polar", 'character_profil/lectrice_polar.png', [12, 126]);//position a définir
-let bibliothécaire = new Pnj("Bibliothécaire", 'character_profil/bibliothecaire.png', [12, 126]);//position a définir
-let policierAmi = new Pnj("Policier ami", 'character_profil/policier_ami.png', [12, 126]);//position a définir
-let villageois = new Pnj("Villageois", 'character_profil/villageois.png', [12,126]);//position a définir
-let villageoise = new Pnj("Villageoise", 'character_profil/villageoise.png', [12, 126]);//position a définir
+let librarian = new Pnj("Bibliothécaire", 'character_profil/librarian.png', [12, 126]);//position a définir
+let policeFriend = new Pnj("Policier ami", 'character_profil/police_friend.png', [12, 126]);//position a définir
+let maleCitizen = new Pnj("Villageois", 'character_profil/male_citizen.png', [12,126]);//position a définir
+let femaleCitizen = new Pnj("Villageoise", 'character_profil/female_citizen.png', [12, 126]);//position a définir
 
 // Initialisation de l'ojet cops
 let police = new Police("Policier", 'character_profil/police.png', [12, 126]);//position a définir
@@ -79,57 +76,11 @@ player.newItem("peigne rose");
 // Fin du test
 
 
-let character = player.characterProfil();
+let character = mayorWife.characterProfil();
 
 
 
 //Test déplacement (les fonctions)
-// Mouvement du personnage selon la touche du clavier choisie
-function characterMove() {
-    // body.onkeydown = event => {
-    //     switch(event.key) {
-    //         case "ArrowUp":
-    //             moveUp = true;
-    //             onkeyup = event => {
-    //                 moveUp = false
-    //             }
-    //             moveDown = false;
-    //             moveRight = false;
-    //             moveLeft = false;
-    //             break;
-                
-    //         case "ArrowDown":
-    //             moveDown = true;
-    //             body.onkeyup = event => {
-    //                 moveDown = false
-    //             }
-    //             moveRight = false;
-    //             moveLeft = false;
-    //             moveUp = false;
-    //             break;
-
-    //         case "ArrowLeft":
-    //             moveLeft = true;
-    //             onkeyup = event => {
-    //                 moveLeft = false
-    //             }
-    //             moveUp = false;
-    //             moveDown = false;
-    //             moveRight = false;
-    //             break;
-
-    //         case "ArrowRight":
-    //             moveRight = true;
-    //             onkeyup = event => {
-    //                 moveRight = false
-    //             }
-    //             moveUp = false;
-    //             moveDown = false;
-    //             moveLeft = false;
-    //             break;
-    //     }
-    // }
-}
 
 // Choisir la bonne frame
 function updateFrame() {
@@ -142,21 +93,20 @@ function updateFrame() {
     sx = currentFrame * frameWidth;
 
     // Mouvement du personnage selon le choix effectué par l'user
-    // characterMove()
-    if (moveUp) {
+    if (moveCharacter === "up") {
         dy -= 5
         // Va permettre de définir la direction du mouvement
         sy = directionUp * frameHeight;
     } 
-    else if (moveDown) {
+    else if (moveCharacter === "down") {
         dy += 5
         sy = directionDown * frameHeight;
     }
-    else if (moveLeft) {
+    else if (moveCharacter === "left") {
         dx -= 5
         sy = directionLeft * frameHeight;
     }
-    else if (moveRight) {
+    else if (moveCharacter === "right") {
         dx +=5
         sy = directionRight * frameHeight;
     }
@@ -167,6 +117,8 @@ function drawCharacter() {
     // On update d'abord la frame
     updateFrame();
     // On dessine le caractère
+    ctx.fillStyle = "red";
+    ctx.fillRect(dx -2, dy -2, frameWidth -2, frameHeight -2);
     ctx.drawImage(character, sx, sy, frameWidth, frameHeight, dx, dy, frameWidth, frameHeight)
 
 }
@@ -174,50 +126,32 @@ function drawCharacter() {
 body.onkeydown = event => {
     switch(event.key) {
         case "ArrowUp":
-            moveUp = true;
-            moveDown = false;
-            moveRight = false;
-            moveLeft = false;
+            moveCharacter = "up";
             drawCharacter();
             break;
             
         case "ArrowDown":
-            moveDown = true;
-            moveRight = false;
-            moveLeft = false;
-            moveUp = false;
+            moveCharacter = "down";
             drawCharacter();
             break;
 
         case "ArrowLeft":
-            moveLeft = true;
-            moveUp = false;
-            moveDown = false;
-            moveRight = false;
+            moveCharacter = "left";
             drawCharacter();
             break;
 
         case "ArrowRight":
-            moveRight = true;
-            moveUp = false;
-            moveDown = false;
-            moveLeft = false;
+            moveCharacter = "right";
             drawCharacter();
             break;
     }
 }
-body.onkeyup = event => {
-    moveRight = false;
-    moveUp = false;
-    moveDown = false;
-    moveLeft = false;
-}
-
-
-// La fonction drawCharacter sera appelée toutes les 100ms
-// setInterval(function() {
-//     drawCharacter();
-// }, 100)
+// body.onkeyup = event => {
+//     moveRight = false;
+//     moveUp = false;
+//     moveDown = false;
+//     moveLeft = false;
+// }
 // fin du test déplacement (les fonctions)
 
 
