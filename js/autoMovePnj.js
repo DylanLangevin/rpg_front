@@ -60,11 +60,6 @@ let exitX = 600
 let exitY = 555
 // let exitY = Math.floor( Math.random() * 600 )
 
-
-
-
-
-
 // Mouvement du personnage selon la touche du clavier choisie
 function characterMove() {
     body.onkeydown = event => {
