@@ -44,7 +44,7 @@ let currentFrame = 0
 
 
 // Initialisation de l'ojet player
-let player = new Player("Adrien", 'character_profil/plant_janitor.png', [dx, dy], ["carte des suspects", "bout de papier"]);//position et inventaire à définir, ajouter des fonctions ect
+let player = new Player("Adrien", 'character_profil/male_player.png', [dx, dy], ["carte des suspects", "bout de papier"]);//position et inventaire à définir, ajouter des fonctions ect
 
 // Initialisation des objets pnj
 let secretary = new Pnj("Secrétaire", 'character_profil/secretary.png', [12, 126]);//position a définir
@@ -66,21 +66,10 @@ let police = new Police("Policier", 'character_profil/police.png', [12, 126]);//
 
 
 
-// Test text Adrien
-// ctx.fillText(ingenieurFou.letsTalk("ça marche?"), ingenieurFou.position[0], ingenieurFou.textPosition());
-// ctx.fillText(secretaire.letsTalk("oui ça marche"), 10, 20);
-ctx.fillText(player.letsTalk("Vous êtes pas censé parler entre vous les pnj"), 10, 30);
+let character = player.characterProfil();
 
 
-player.newItem("peigne rose");
-// Fin du test
-
-
-let character = mayorWife.characterProfil();
-
-
-
-//Test déplacement (les fonctions)
+// Test déplacement (les fonctions)
 
 // Choisir la bonne frame
 function updateFrame() {
@@ -110,15 +99,31 @@ function updateFrame() {
         dx +=5
         sy = directionRight * frameHeight;
     }
+    else if (moveCharacter === "moonWalk") {
+        dx += 5
+        sy = directionLeft * frameHeight;
+    }
 }
 
 // Dessiner le caractère
 function drawCharacter() {
     // On update d'abord la frame
     updateFrame();
+
+    // Test dialogue sous condition
+    let iTalk;
+    if(dx <= 50) {
+        iTalk = "j'me casse"
+    } else if(dx <= 200 && dx > 50) {
+        iTalk = "c'est nul ici"
+    } else if(dx > 200) {
+        iTalk = "elle sont où les meufs?"
+    }
+
+    player.textZone(iTalk, dx, dy);
+    // Fin du test dialogue sous condition
+        
     // On dessine le caractère
-    ctx.fillStyle = "red";
-    ctx.fillRect(dx -2, dy -2, frameWidth -2, frameHeight -2);
     ctx.drawImage(character, sx, sy, frameWidth, frameHeight, dx, dy, frameWidth, frameHeight)
 
 }
@@ -144,14 +149,12 @@ body.onkeydown = event => {
             moveCharacter = "right";
             drawCharacter();
             break;
+        case "m":
+            moveCharacter = "moonWalk";
+            drawCharacter();
+            break;
     }
 }
-// body.onkeyup = event => {
-//     moveRight = false;
-//     moveUp = false;
-//     moveDown = false;
-//     moveLeft = false;
-// }
 // fin du test déplacement (les fonctions)
 
 

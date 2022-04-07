@@ -7,7 +7,6 @@ class Player {
     }
 
     letsTalk(text) {
-        // this.talk = text
         return this.name + ": " + text;
     }
 
@@ -21,6 +20,15 @@ class Player {
         return character;
     }
 
+    textZone(iTalk, dx, dy) {
+        let widthTextZone = ctx.measureText(iTalk).width + ctx.measureText(this.name).width + ctx.measureText(": ").width + 10;
+        ctx.fillStyle = "#E8DCCA";
+        ctx.fillRect(dx +59, dy +1, widthTextZone, 20)
+        ctx.strokeRect(dx +59, dy +1, widthTextZone, 20)
+        ctx.fillStyle = "#000";
+        ctx.fillText(player.letsTalk(iTalk), dx +64, dy +15);
+        return
+    }
 
 
     //surement obsolète
