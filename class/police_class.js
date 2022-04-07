@@ -1,7 +1,8 @@
 class Police {
-    constructor(name, position) {
+    constructor(name,image, position) {
         this.name = name;
         this.position = position;
+        this.image = image;
     }
 
     letsTalk(text) {
@@ -12,6 +13,11 @@ class Police {
     move(position) {
         //code déplacement ici
         return //la nouvelle position
+    }
+
+    characterProfil() {
+        let character = new Image();
+        character.src = this.image;
     }
 
     hitBox() {

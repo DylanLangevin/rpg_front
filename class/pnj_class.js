@@ -1,7 +1,8 @@
 class Pnj {
-    constructor(name, position) {
+    constructor(name, image, position) {
         this.name = name;
         this.position = position;
+        this.image = image;
     }
 
     letsTalk(text) {
@@ -10,8 +11,12 @@ class Pnj {
         return this.name + ": " + text;
     }
 
+    characterProfil() {
+        let character = new Image();
+        character.src = this.image;
+    }
+
     textPosition() {
-        console.log(this.position)
         let newTextPosition = this.position[1] - 5;
         return newTextPosition;
     }
