@@ -46,10 +46,10 @@ let currentFrame = 0
 
 
 
-//initialisation de l'ojet player
+// Initialisation de l'ojet player
 let player = new Player("Adrien", 'character_profil/female_player.png', [dx, dy], ["carte des suspects", "bout de papier"]);//position et inventaire à définir, ajouter des fonctions ect
 
-//initialisation des objets pnj
+// Initialisation des objets pnj
 let secretaire = new Pnj("Secrétaire", 'character_profil/secretaire.png', [12, 126]);//position a définir
 let habitueDuBar = new Pnj("Habitué du bar", 'character_profil/habitué_bar_et_ouvriers.png', [12, 126]);//position a définir
 let ingenieurFou = new Pnj("Ingénieur fou", 'character_profil/ingenieur_fou.png', [100, 100]);//position a définir
@@ -64,12 +64,12 @@ let policierAmi = new Pnj("Policier ami", 'character_profil/policier_ami.png', [
 let villageois = new Pnj("Villageois", 'character_profil/villageois.png', [12,126]);//position a définir
 let villageoise = new Pnj("Villageoise", 'character_profil/villageoise.png', [12, 126]);//position a définir
 
-//initialisation de l'ojet cops
+// Initialisation de l'ojet cops
 let police = new Police("Policier", 'character_profil/police.png', [12, 126]);//position a définir
 
 
 
-// Test
+// Test text Adrien
 // ctx.fillText(ingenieurFou.letsTalk("ça marche?"), ingenieurFou.position[0], ingenieurFou.textPosition());
 // ctx.fillText(secretaire.letsTalk("oui ça marche"), 10, 20);
 ctx.fillText(player.letsTalk("Vous êtes pas censé parler entre vous les pnj"), 10, 30);
@@ -86,49 +86,49 @@ let character = player.characterProfil();
 //Test déplacement (les fonctions)
 // Mouvement du personnage selon la touche du clavier choisie
 function characterMove() {
-    body.onkeydown = event => {
-        switch(event.key) {
-            case "ArrowUp":
-                moveUp = true;
-                onkeyup = event => {
-                    moveUp = false
-                }
-                moveDown = false;
-                moveRight = false;
-                moveLeft = false;
-                break;
+    // body.onkeydown = event => {
+    //     switch(event.key) {
+    //         case "ArrowUp":
+    //             moveUp = true;
+    //             onkeyup = event => {
+    //                 moveUp = false
+    //             }
+    //             moveDown = false;
+    //             moveRight = false;
+    //             moveLeft = false;
+    //             break;
                 
-            case "ArrowDown":
-                moveDown = true;
-                onkeyup = event => {
-                    moveDown = false
-                }
-                moveRight = false;
-                moveLeft = false;
-                moveUp = false;
-                break;
+    //         case "ArrowDown":
+    //             moveDown = true;
+    //             body.onkeyup = event => {
+    //                 moveDown = false
+    //             }
+    //             moveRight = false;
+    //             moveLeft = false;
+    //             moveUp = false;
+    //             break;
 
-            case "ArrowLeft":
-                moveLeft = true;
-                onkeyup = event => {
-                    moveLeft = false
-                }
-                moveUp = false;
-                moveDown = false;
-                moveRight = false;
-                break;
+    //         case "ArrowLeft":
+    //             moveLeft = true;
+    //             onkeyup = event => {
+    //                 moveLeft = false
+    //             }
+    //             moveUp = false;
+    //             moveDown = false;
+    //             moveRight = false;
+    //             break;
 
-            case "ArrowRight":
-                moveRight = true;
-                onkeyup = event => {
-                    moveRight = false
-                }
-                moveUp = false;
-                moveDown = false;
-                moveLeft = false;
-                break;
-        }
-    }
+    //         case "ArrowRight":
+    //             moveRight = true;
+    //             onkeyup = event => {
+    //                 moveRight = false
+    //             }
+    //             moveUp = false;
+    //             moveDown = false;
+    //             moveLeft = false;
+    //             break;
+    //     }
+    // }
 }
 
 // Choisir la bonne frame
@@ -142,28 +142,28 @@ function updateFrame() {
     sx = currentFrame * frameWidth;
 
     // Mouvement du personnage selon le choix effectué par l'user
-    characterMove()
+    // characterMove()
     if (moveUp) {
         dy -= 5
         // Va permettre de définir la direction du mouvement
         sy = directionUp * frameHeight;
-    }
-    if (moveDown) {
+    } 
+    else if (moveDown) {
         dy += 5
         sy = directionDown * frameHeight;
     }
-    if (moveLeft) {
+    else if (moveLeft) {
         dx -= 5
         sy = directionLeft * frameHeight;
     }
-    if (moveRight) {
+    else if (moveRight) {
         dx +=5
         sy = directionRight * frameHeight;
     }
 }
 
 // Dessiner le caractère
-function drawCharacter(character) {
+function drawCharacter() {
     // On update d'abord la frame
     updateFrame();
     // On dessine le caractère
@@ -171,11 +171,53 @@ function drawCharacter(character) {
 
 }
 
+body.onkeydown = event => {
+    switch(event.key) {
+        case "ArrowUp":
+            moveUp = true;
+            moveDown = false;
+            moveRight = false;
+            moveLeft = false;
+            drawCharacter();
+            break;
+            
+        case "ArrowDown":
+            moveDown = true;
+            moveRight = false;
+            moveLeft = false;
+            moveUp = false;
+            drawCharacter();
+            break;
+
+        case "ArrowLeft":
+            moveLeft = true;
+            moveUp = false;
+            moveDown = false;
+            moveRight = false;
+            drawCharacter();
+            break;
+
+        case "ArrowRight":
+            moveRight = true;
+            moveUp = false;
+            moveDown = false;
+            moveLeft = false;
+            drawCharacter();
+            break;
+    }
+}
+body.onkeyup = event => {
+    moveRight = false;
+    moveUp = false;
+    moveDown = false;
+    moveLeft = false;
+}
+
 
 // La fonction drawCharacter sera appelée toutes les 100ms
-setInterval(function() {
-    drawCharacter(character);
-}, 100)
+// setInterval(function() {
+//     drawCharacter();
+// }, 100)
 // fin du test déplacement (les fonctions)
 
 
