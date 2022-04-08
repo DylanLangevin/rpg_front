@@ -67,6 +67,11 @@ let police = new Police("Policier", 'character_profil/police.png', [12, 126]);//
 
 
 let character = player.characterProfil();
+pnj = maleCitizen.characterProfil();
+body.onload = function() {
+    ctx.drawImage(pnj, 0, 128,frameWidth, frameHeight, 500, 126, frameWidth, frameHeight)
+}
+
 
 
 // Test déplacement (les fonctions)
