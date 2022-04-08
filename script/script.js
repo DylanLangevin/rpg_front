@@ -1,9 +1,6 @@
 let canvas = document.querySelector('canvas');
 const ctx = canvas.getContext('2d');
 
-
-
-//Test déplacement (variables)
 let body = document.querySelector('body');
 
 // Orientation du personnage, la ligne qui correspond à l'image de base
@@ -13,10 +10,7 @@ let directionDown = 2;
 let directionRight = 3;
 
 // Mouvement du personnage
-let moveUp = false;
-let moveDown = false;
-let moveRight = false;
-let moveLeft = false;
+let moveCharacter;
 
 // Position où le dessin sera dessiné sur le canvas
 let dx = 0;
@@ -40,184 +34,150 @@ let frameHeight = spriteHeight/frameRows;
 
 // Index de la frame
 let currentFrame = 0
-//fin du test déplacement (variables)
-
-
-
-
 
 // Initialisation de l'ojet player
-let player = new Player("Adrien", 'character_profil/female_player.png', [dx, dy], ["carte des suspects", "bout de papier"]);//position et inventaire à définir, ajouter des fonctions ect
+let player = new Player("Adrien", 'character_profile/male_player.png', [dx, dy], ["carte des suspects", "bout de papier"]);//position et inventaire à définir, ajouter des fonctions ect
 
 // Initialisation des objets pnj
-let secretaire = new Pnj("Secrétaire", 'character_profil/secretaire.png', [12, 126]);//position a définir
-let habitueDuBar = new Pnj("Habitué du bar", 'character_profil/habitué_bar_et_ouvriers.png', [12, 126]);//position a définir
-let ingenieurFou = new Pnj("Ingénieur fou", 'character_profil/ingenieur_fou.png', [100, 100]);//position a définir
-let amiEnfance = new Pnj("Ami d'enfance", 'character_profil/ami_enfance.png', [12, 126]);//position a définir
-let gardienUsine = new Pnj("Gardien d'usine", 'character_profil/gardien_usine.png', [12, 126]);//position a définir
-let ancienDuVillage = new Pnj("Ancien du village", 'character_profil/ancien.png', [12, 126]);//position a définir
-let femmeDuMaire = new Pnj("Femme du maire", 'character_profil/femme_du_maire.png', [12, 126]);//position a définir
-let etrangere = new Pnj("L'étrangère", 'character_profil/étrangère.png', [12, 126]);//position a définir
-let lectrice = new Pnj("Lectrice de polar", 'character_profil/lectrice_polar.png', [12, 126]);//position a définir
-let bibliothécaire = new Pnj("Bibliothécaire", 'character_profil/bibliothecaire.png', [12, 126]);//position a définir
-let policierAmi = new Pnj("Policier ami", 'character_profil/policier_ami.png', [12, 126]);//position a définir
-let villageois = new Pnj("Villageois", 'character_profil/villageois.png', [12,126]);//position a définir
-let villageoise = new Pnj("Villageoise", 'character_profil/villageoise.png', [12, 126]);//position a définir
+let secretary = new Pnj("Secrétaire", 'character_profile/secretary.png', [12, 126]);//position a définir
+let barRegular = new Pnj("Habitué du bar", 'character_profile/bar_regular.png', [12, 126]);//position a définir
+let engineer = new Pnj("Ingénieur fou", 'character_profile/engineer.png', [100, 100]);//position a définir
+let childhoodFriend = new Pnj("Ami d'enfance", 'character_profile/childhood_friend.png', [12, 126]);//position a définir
+let plantJanitor = new Pnj("Gardien d'usine", 'character_profile/plant_janitor.png', [12, 126]);//position a définir
+let elder = new Pnj("Ancien du village", 'character_profile/elder.png', [12, 126]);//position a définir
+let mayorWife = new Pnj("Femme du maire", 'character_profile/mayor_wife.png', [12, 126]);//position a définir
+let foreigner = new Pnj("L'étrangère", 'character_profile/foreigner.png', [12, 126]);//position a définir
+let reader = new Pnj("Lectrice de polar", 'character_profile/reader.png', [12, 126]);//position a définir
+let librarian = new Pnj("Bibliothécaire", 'character_profile/librarian.png', [12, 126]);//position a définir
+let policeFriend = new Pnj("Policier ami", 'character_profile/police_friend.png', [12, 126]);//position a définir
+let maleCitizen = new Pnj("Villageois", 'character_profile/male_citizen.png', [12,126]);//position a définir
+let femaleCitizen = new Pnj("Villageoise", 'character_profile/female_citizen.png', [12, 126]);//position a définir
 
 // Initialisation de l'ojet cops
-let police = new Police("Policier", 'character_profil/police.png', [12, 126]);//position a définir
+let police = new Police("Policier", 'character_profile/police.png', [12, 126]);//position a définir
 
-
-
-// Test text Adrien
-// ctx.fillText(ingenieurFou.letsTalk("ça marche?"), ingenieurFou.position[0], ingenieurFou.textPosition());
-// ctx.fillText(secretaire.letsTalk("oui ça marche"), 10, 20);
-ctx.fillText(player.letsTalk("Vous êtes pas censé parler entre vous les pnj"), 10, 30);
-
-
-player.newItem("peigne rose");
-// Fin du test
-
-
+// Joueur actuel avec lequel on joue
 let character = player.characterProfil();
 
-
-
-//Test déplacement (les fonctions)
-// Mouvement du personnage selon la touche du clavier choisie
-function characterMove() {
-    // body.onkeydown = event => {
-    //     switch(event.key) {
-    //         case "ArrowUp":
-    //             moveUp = true;
-    //             onkeyup = event => {
-    //                 moveUp = false
-    //             }
-    //             moveDown = false;
-    //             moveRight = false;
-    //             moveLeft = false;
-    //             break;
-                
-    //         case "ArrowDown":
-    //             moveDown = true;
-    //             body.onkeyup = event => {
-    //                 moveDown = false
-    //             }
-    //             moveRight = false;
-    //             moveLeft = false;
-    //             moveUp = false;
-    //             break;
-
-    //         case "ArrowLeft":
-    //             moveLeft = true;
-    //             onkeyup = event => {
-    //                 moveLeft = false
-    //             }
-    //             moveUp = false;
-    //             moveDown = false;
-    //             moveRight = false;
-    //             break;
-
-    //         case "ArrowRight":
-    //             moveRight = true;
-    //             onkeyup = event => {
-    //                 moveRight = false
-    //             }
-    //             moveUp = false;
-    //             moveDown = false;
-    //             moveLeft = false;
-    //             break;
-    //     }
-    // }
+// Test initialisation d'un PNJ
+pnj = maleCitizen.characterProfil();
+body.onload = function() {
+    ctx.drawImage(pnj, 0, 128,frameWidth, frameHeight, 500, 126, frameWidth, frameHeight)
 }
+// Fin du test (pnj)
+
+
+// Test déplacement (les fonctions)
 
 // Choisir la bonne frame
 function updateFrame() {
     // Effacer le canvas avant de mettre la nouvelle frame, évite un biug d'affichage
     ctx.clearRect(0, 0, canvas.width, canvas.height)
     // modulo permet d'obtenir la bonne frame (1, 2, 3, 4...), ça permet d'update l'index de la frame
-    currentFrame = ++currentFrame % frameCols; 
+    currentFrame = ++currentFrame % frameCols;
+    console.log("frame", currentFrame);
 
     // Choisir le point de départ de la frame
     sx = currentFrame * frameWidth;
 
     // Mouvement du personnage selon le choix effectué par l'user
-    // characterMove()
-    if (moveUp) {
+    if (moveCharacter === "up") {
         dy -= 5
         // Va permettre de définir la direction du mouvement
         sy = directionUp * frameHeight;
+        body.onkeyup = event => {
+            stopMovingCharacter(directionUp);
+        }
     } 
-    else if (moveDown) {
+    else if (moveCharacter === "down") {
         dy += 5
         sy = directionDown * frameHeight;
+        body.onkeyup = event => {
+            stopMovingCharacter(directionDown);
+        } 
     }
-    else if (moveLeft) {
+
+    else if (moveCharacter === "left") {
         dx -= 5
         sy = directionLeft * frameHeight;
+        body.onkeyup = event => {
+            stopMovingCharacter(directionLeft);
+        }
     }
-    else if (moveRight) {
+    else if (moveCharacter === "right") {
         dx +=5
         sy = directionRight * frameHeight;
+        body.onkeyup = event => {
+            stopMovingCharacter(directionRight);
+        }
     }
+    else if (moveCharacter === "moonWalk") {
+        dx += 5
+        sy = directionLeft * frameHeight;
+        body.onkeyup = event => {
+            stopMovingCharacter(directionLeft);
+        }
+    }    
+}
+
+// Dessiner le caractère à l'arrêt lorsqu'on arrête d'avancer
+function stopMovingCharacter(whichDirection) {
+    ctx.clearRect(0, 0, canvas.width, canvas.height)
+    sx = 0;
+    sy = whichDirection * frameHeight;
+    ctx.drawImage(character, sx, sy, frameWidth, frameHeight, dx, dy, frameWidth, frameHeight)
 }
 
 // Dessiner le caractère
 function drawCharacter() {
     // On update d'abord la frame
     updateFrame();
+
+    // Test dialogue sous condition
+    let iTalk;
+    if(dx <= 50) {
+        iTalk = "j'me casse"
+    } else if(dx <= 200 && dx > 50) {
+        iTalk = "c'est nul ici"
+    } else if(dx > 200) {
+        iTalk = "elle sont où les meufs?"
+    }
+
+    player.textZone(iTalk, dx, dy);
+    // Fin du test dialogue sous condition
+        
     // On dessine le caractère
     ctx.drawImage(character, sx, sy, frameWidth, frameHeight, dx, dy, frameWidth, frameHeight)
-
 }
 
 body.onkeydown = event => {
     switch(event.key) {
         case "ArrowUp":
-            moveUp = true;
-            moveDown = false;
-            moveRight = false;
-            moveLeft = false;
+            moveCharacter = "up";
             drawCharacter();
             break;
             
         case "ArrowDown":
-            moveDown = true;
-            moveRight = false;
-            moveLeft = false;
-            moveUp = false;
+            moveCharacter = "down";
             drawCharacter();
+            
             break;
 
         case "ArrowLeft":
-            moveLeft = true;
-            moveUp = false;
-            moveDown = false;
-            moveRight = false;
+            moveCharacter = "left";
             drawCharacter();
             break;
 
         case "ArrowRight":
-            moveRight = true;
-            moveUp = false;
-            moveDown = false;
-            moveLeft = false;
+            moveCharacter = "right";
+            drawCharacter();
+            break;
+        case "m":
+            moveCharacter = "moonWalk";
             drawCharacter();
             break;
     }
 }
-body.onkeyup = event => {
-    moveRight = false;
-    moveUp = false;
-    moveDown = false;
-    moveLeft = false;
-}
-
-
-// La fonction drawCharacter sera appelée toutes les 100ms
-// setInterval(function() {
-//     drawCharacter();
-// }, 100)
 // fin du test déplacement (les fonctions)
 
 
