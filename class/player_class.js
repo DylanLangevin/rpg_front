@@ -4,6 +4,9 @@ class Player {
         this.position = position;
         this.inventory = inventory;
         this.image = image;
+        let character = new Image();
+        character.src = this.image;
+        this.character = character;
     }
 
     letsTalk(text) {
@@ -12,12 +15,6 @@ class Player {
 
     newItem(item) {
         this.inventory.push(item);
-    }
-
-    characterProfil() {
-        let character = new Image();
-        character.src = this.image;
-        return character;
     }
 
     textZone(iTalk, dx, dy) {

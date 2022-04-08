@@ -38,31 +38,15 @@ let currentFrame = 0
 // Initialisation de l'ojet player
 let player = new Player("Adrien", 'character_profile/male_player.png', [dx, dy], ["carte des suspects", "bout de papier"]);//position et inventaire à définir, ajouter des fonctions ect
 
-// Initialisation des objets pnj
-let secretary = new Pnj("Secrétaire", 'character_profile/secretary.png', [12, 126]);//position a définir
-let barRegular = new Pnj("Habitué du bar", 'character_profile/bar_regular.png', [12, 126]);//position a définir
-let engineer = new Pnj("Ingénieur fou", 'character_profile/engineer.png', [100, 100]);//position a définir
-let childhoodFriend = new Pnj("Ami d'enfance", 'character_profile/childhood_friend.png', [12, 126]);//position a définir
-let plantJanitor = new Pnj("Gardien d'usine", 'character_profile/plant_janitor.png', [12, 126]);//position a définir
-let elder = new Pnj("Ancien du village", 'character_profile/elder.png', [12, 126]);//position a définir
-let mayorWife = new Pnj("Femme du maire", 'character_profile/mayor_wife.png', [12, 126]);//position a définir
-let foreigner = new Pnj("L'étrangère", 'character_profile/foreigner.png', [12, 126]);//position a définir
-let reader = new Pnj("Lectrice de polar", 'character_profile/reader.png', [12, 126]);//position a définir
-let librarian = new Pnj("Bibliothécaire", 'character_profile/librarian.png', [12, 126]);//position a définir
-let policeFriend = new Pnj("Policier ami", 'character_profile/police_friend.png', [12, 126]);//position a définir
-let maleCitizen = new Pnj("Villageois", 'character_profile/male_citizen.png', [12,126]);//position a définir
-let femaleCitizen = new Pnj("Villageoise", 'character_profile/female_citizen.png', [12, 126]);//position a définir
 
-// Initialisation de l'ojet cops
-let police = new Police("Policier", 'character_profile/police.png', [12, 126]);//position a définir
-
-// Joueur actuel avec lequel on joue
-let character = player.characterProfil();
 
 // Test initialisation d'un PNJ
-pnj = maleCitizen.characterProfil();
 body.onload = function() {
-    ctx.drawImage(pnj, 0, 128,frameWidth, frameHeight, 500, 126, frameWidth, frameHeight)
+    ctx.drawImage(femaleCitizen.character, 0, 128,frameWidth, frameHeight, femaleCitizen.position[0], femaleCitizen.position[1], frameWidth, frameHeight)
+    femaleCitizen.textZone("Bonjour Damien");
+
+    ctx.drawImage(maleCitizen.character, 0, 128,frameWidth, frameHeight, maleCitizen.position[0], maleCitizen.position[1], frameWidth, frameHeight)
+    maleCitizen.textZone("Bonjour villageoise");
 }
 // Fin du test (pnj)
 
@@ -120,12 +104,22 @@ function updateFrame() {
     }    
 }
 
+let iTalk;
+
 // Dessiner le caractère à l'arrêt lorsqu'on arrête d'avancer
 function stopMovingCharacter(whichDirection) {
     ctx.clearRect(0, 0, canvas.width, canvas.height)
     sx = 0;
     sy = whichDirection * frameHeight;
-    ctx.drawImage(character, sx, sy, frameWidth, frameHeight, dx, dy, frameWidth, frameHeight)
+    
+    ctx.drawImage(femaleCitizen.character, 0, 128,frameWidth, frameHeight, femaleCitizen.position[0], femaleCitizen.position[1], frameWidth, frameHeight)
+    femaleCitizen.textZone("Bonjour Damien");
+
+    ctx.drawImage(maleCitizen.character, 0, 128,frameWidth, frameHeight, maleCitizen.position[0], maleCitizen.position[1], frameWidth, frameHeight)
+    maleCitizen.textZone("Bonjour villageoise");
+
+    ctx.drawImage(player.character, sx, sy, frameWidth, frameHeight, dx, dy, frameWidth, frameHeight)
+    player.textZone(iTalk, dx, dy);
 }
 
 // Dessiner le caractère
@@ -134,7 +128,6 @@ function drawCharacter() {
     updateFrame();
 
     // Test dialogue sous condition
-    let iTalk;
     if(dx <= 50) {
         iTalk = "j'me casse"
     } else if(dx <= 200 && dx > 50) {
@@ -144,10 +137,16 @@ function drawCharacter() {
     }
 
     player.textZone(iTalk, dx, dy);
+
+    ctx.drawImage(femaleCitizen.character, 0, 128,frameWidth, frameHeight, femaleCitizen.position[0], femaleCitizen.position[1], frameWidth, frameHeight)
+    femaleCitizen.textZone("Bonjour Damien");
+
+    ctx.drawImage(maleCitizen.character, 0, 128,frameWidth, frameHeight, maleCitizen.position[0], maleCitizen.position[1], frameWidth, frameHeight)
+    maleCitizen.textZone("Bonjour villageoise");
     // Fin du test dialogue sous condition
         
     // On dessine le caractère
-    ctx.drawImage(character, sx, sy, frameWidth, frameHeight, dx, dy, frameWidth, frameHeight)
+    ctx.drawImage(player.character, sx, sy, frameWidth, frameHeight, dx, dy, frameWidth, frameHeight)
 }
 
 body.onkeydown = event => {
