@@ -39,12 +39,8 @@ let frameHeight = spriteHeight/frameRows;
 let currentFrame = 0
 //fin du test déplacement (variables)
 
-
-
-
-
 // Initialisation de l'ojet player
-let player = new Player("Adrien", 'character_profil/plant_janitor.png', [dx, dy], ["carte des suspects", "bout de papier"]);//position et inventaire à définir, ajouter des fonctions ect
+let player = new Player("Adrien", 'character_profil/male_player.png', [dx, dy], ["carte des suspects", "bout de papier"]);//position et inventaire à définir, ajouter des fonctions ect
 
 // Initialisation des objets pnj
 let secretary = new Pnj("Secrétaire", 'character_profil/secretary.png', [12, 126]);//position a définir
@@ -64,8 +60,6 @@ let femaleCitizen = new Pnj("Villageoise", 'character_profil/female_citizen.png'
 // Initialisation de l'ojet cops
 let police = new Police("Policier", 'character_profil/police.png', [12, 126]);//position a définir
 
-
-
 // Test text Adrien
 // ctx.fillText(ingenieurFou.letsTalk("ça marche?"), ingenieurFou.position[0], ingenieurFou.textPosition());
 // ctx.fillText(secretaire.letsTalk("oui ça marche"), 10, 20);
@@ -76,7 +70,7 @@ player.newItem("peigne rose");
 // Fin du test
 
 
-let character = mayorWife.characterProfil();
+let character = player.characterProfil();
 
 
 
@@ -87,7 +81,8 @@ function updateFrame() {
     // Effacer le canvas avant de mettre la nouvelle frame, évite un biug d'affichage
     ctx.clearRect(0, 0, canvas.width, canvas.height)
     // modulo permet d'obtenir la bonne frame (1, 2, 3, 4...), ça permet d'update l'index de la frame
-    currentFrame = ++currentFrame % frameCols; 
+    currentFrame = ++currentFrame % frameCols;
+    console.log("frame", currentFrame);
 
     // Choisir le point de départ de la frame
     sx = currentFrame * frameWidth;
@@ -97,19 +92,40 @@ function updateFrame() {
         dy -= 5
         // Va permettre de définir la direction du mouvement
         sy = directionUp * frameHeight;
+        body.onkeyup = event => {
+            stopMovingCharacter(directionUp);
+        }
     } 
     else if (moveCharacter === "down") {
         dy += 5
         sy = directionDown * frameHeight;
+        body.onkeyup = event => {
+            stopMovingCharacter(directionDown);
+        } 
     }
+
     else if (moveCharacter === "left") {
         dx -= 5
         sy = directionLeft * frameHeight;
+        body.onkeyup = event => {
+            stopMovingCharacter(directionLeft);
+        }
     }
     else if (moveCharacter === "right") {
         dx +=5
         sy = directionRight * frameHeight;
-    }
+        body.onkeyup = event => {
+            stopMovingCharacter(directionRight);
+        }
+    }    
+}
+
+// Dessiner le caractère à l'arrêt lorsqu'on arrête d'avancer
+function stopMovingCharacter(whichDirection) {
+    ctx.clearRect(0, 0, canvas.width, canvas.height)
+    sx = 0;
+    sy = whichDirection * frameHeight;
+    ctx.drawImage(character, sx, sy, frameWidth, frameHeight, dx, dy, frameWidth, frameHeight)
 }
 
 // Dessiner le caractère
@@ -120,8 +136,11 @@ function drawCharacter() {
     ctx.fillStyle = "red";
     ctx.fillRect(dx -2, dy -2, frameWidth -2, frameHeight -2);
     ctx.drawImage(character, sx, sy, frameWidth, frameHeight, dx, dy, frameWidth, frameHeight)
-
 }
+
+ctx.fillStyle = "blue";
+ctx.fillRect(300, 300, frameWidth -2, frameHeight -2);
+
 
 body.onkeydown = event => {
     switch(event.key) {
@@ -133,6 +152,7 @@ body.onkeydown = event => {
         case "ArrowDown":
             moveCharacter = "down";
             drawCharacter();
+            
             break;
 
         case "ArrowLeft":
@@ -146,13 +166,6 @@ body.onkeydown = event => {
             break;
     }
 }
-// body.onkeyup = event => {
-//     moveRight = false;
-//     moveUp = false;
-//     moveDown = false;
-//     moveLeft = false;
-// }
-// fin du test déplacement (les fonctions)
 
 
 
