@@ -73,6 +73,11 @@ body.onload = function() {
 function updateFrame() {
     // Effacer le canvas avant de mettre la nouvelle frame, évite un biug d'affichage
     ctx.clearRect(0, 0, canvas.width, canvas.height)
+
+
+    // Redessine le pnj
+    ctx.drawImage(pnj, 0, 128,frameWidth, frameHeight, 500, 126, frameWidth, frameHeight)
+
     // modulo permet d'obtenir la bonne frame (1, 2, 3, 4...), ça permet d'update l'index de la frame
     currentFrame = ++currentFrame % frameCols;
     console.log("frame", currentFrame);
@@ -120,12 +125,19 @@ function updateFrame() {
     }    
 }
 
-// Dessiner le caractère à l'arrêt lorsqu'on arrête d'avancer
-function stopMovingCharacter(whichDirection) {
-    ctx.clearRect(0, 0, canvas.width, canvas.height)
-    sx = 0;
-    sy = whichDirection * frameHeight;
-    ctx.drawImage(character, sx, sy, frameWidth, frameHeight, dx, dy, frameWidth, frameHeight)
+let colorRect = "blue"
+let iTalk;
+
+// Fonction de collision
+function collision(){
+    // Collision with rect1
+    if(dx + frameWidth > 200 && dx < 200 + 100 && dy + frameHeight > 200 && dy < 200 + 100)
+    {
+        colorRect = "green";
+
+    } else {
+        colorRect = "blue"
+    }
 }
 
 // Dessiner le caractère
@@ -133,8 +145,12 @@ function drawCharacter() {
     // On update d'abord la frame
     updateFrame();
 
+    // Dessin d'une forme pour test la hitbox
+    ctx.fillStyle = colorRect
+    ctx.fillRect(200,200,100,100)
+
     // Test dialogue sous condition
-    let iTalk;
+
     if(dx <= 50) {
         iTalk = "j'me casse"
     } else if(dx <= 200 && dx > 50) {
@@ -146,38 +162,79 @@ function drawCharacter() {
     player.textZone(iTalk, dx, dy);
     // Fin du test dialogue sous condition
         
+    // On dessine la hitbox du perso
+    ctx.fillStyle = "red"
+    ctx.fillRect(dx, dy, frameWidth, frameHeight)
+
     // On dessine le caractère
     ctx.drawImage(character, sx, sy, frameWidth, frameHeight, dx, dy, frameWidth, frameHeight)
 }
+
+// Dessiner le caractère à l'arrêt lorsqu'on arrête d'avancer
+function stopMovingCharacter(whichDirection) {
+    ctx.clearRect(0, 0, canvas.width, canvas.height)
+
+    collision();
+
+    // Dessin d'une forme pour test la hitbox
+    ctx.fillStyle = colorRect
+    ctx.fillRect(200,200,100,100)
+
+    // Redessine le pnj
+    ctx.drawImage(pnj, 0, 128,frameWidth, frameHeight, 500, 126, frameWidth, frameHeight)
+
+    sx = 0;
+    sy = whichDirection * frameHeight;
+    // On dessine la hitbox du perso
+
+    ctx.fillStyle = "red"
+    ctx.fillRect(dx, dy, frameWidth, frameHeight)
+
+    // On dessine le caractère
+    ctx.drawImage(character, sx, sy, frameWidth, frameHeight, dx, dy, frameWidth, frameHeight)
+    player.textZone(iTalk, dx, dy);
+
+    
+}
+
+
 
 body.onkeydown = event => {
     switch(event.key) {
         case "ArrowUp":
             moveCharacter = "up";
+            collision();
             drawCharacter();
             break;
             
         case "ArrowDown":
             moveCharacter = "down";
+            collision();
             drawCharacter();
             
             break;
 
         case "ArrowLeft":
             moveCharacter = "left";
+            collision();
             drawCharacter();
             break;
 
         case "ArrowRight":
             moveCharacter = "right";
+            collision();
             drawCharacter();
             break;
         case "m":
             moveCharacter = "moonWalk";
+            collision();
             drawCharacter();
             break;
     }
 }
+
+
+
 // fin du test déplacement (les fonctions)
 
 
