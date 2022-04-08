@@ -1,5 +1,14 @@
-let canvas = document.querySelector('canvas');
+let canvasBackground = document.getElementById('canvas-background');
+const ctxBackground = canvasBackground.getContext('2d');
+
+let canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
+
+// Récupération des images en background (test)
+let img = document.getElementById('img')
+let img2 = document.getElementById('img2')
+let img3 = document.getElementById('img3')
+
 
 let body = document.querySelector('body');
 
@@ -13,8 +22,11 @@ let directionRight = 3;
 let moveCharacter;
 
 // Position où le dessin sera dessiné sur le canvas
-let dx = 0;
-let dy = 0;
+let dx = 500;
+let dy = 300;
+
+// Vitesse
+let speed = 5
 
 // Position de la zone de l'image source (le coin supérieur gauche de la frame)
 let sx;
@@ -63,6 +75,7 @@ let character = player.characterProfil();
 pnj = maleCitizen.characterProfil();
 body.onload = function() {
     ctx.drawImage(pnj, 0, 128,frameWidth, frameHeight, 500, 126, frameWidth, frameHeight)
+   
 }
 // Fin du test (pnj)
 
@@ -76,7 +89,7 @@ function updateFrame() {
 
 
     // Redessine le pnj
-    ctx.drawImage(pnj, 0, 128,frameWidth, frameHeight, 500, 126, frameWidth, frameHeight)
+    ctx.drawImage(pnj, 0, 128,frameWidth, frameHeight, 650, 126, frameWidth, frameHeight)
 
     // modulo permet d'obtenir la bonne frame (1, 2, 3, 4...), ça permet d'update l'index de la frame
     currentFrame = ++currentFrame % frameCols;
@@ -87,7 +100,8 @@ function updateFrame() {
 
     // Mouvement du personnage selon le choix effectué par l'user
     if (moveCharacter === "up") {
-        dy -= 5
+        dy -= speed
+
         // Va permettre de définir la direction du mouvement
         sy = directionUp * frameHeight;
         body.onkeyup = event => {
@@ -95,7 +109,7 @@ function updateFrame() {
         }
     } 
     else if (moveCharacter === "down") {
-        dy += 5
+        dy += speed
         sy = directionDown * frameHeight;
         body.onkeyup = event => {
             stopMovingCharacter(directionDown);
@@ -103,21 +117,21 @@ function updateFrame() {
     }
 
     else if (moveCharacter === "left") {
-        dx -= 5
+        dx -= speed
         sy = directionLeft * frameHeight;
         body.onkeyup = event => {
             stopMovingCharacter(directionLeft);
         }
     }
     else if (moveCharacter === "right") {
-        dx +=5
+        dx +=speed
         sy = directionRight * frameHeight;
         body.onkeyup = event => {
             stopMovingCharacter(directionRight);
         }
     }
     else if (moveCharacter === "moonWalk") {
-        dx += 5
+        dx += speed
         sy = directionLeft * frameHeight;
         body.onkeyup = event => {
             stopMovingCharacter(directionLeft);
@@ -128,16 +142,156 @@ function updateFrame() {
 let colorRect = "blue"
 let iTalk;
 
+// Coordonnées du carré bleu porte entre deux zones
+let squareColliderX  = 630
+let squareColliderY  = 0
+let squareColliderWidth  = 100
+let squareColliderHeight  = 15
+
+// Coordonnées du carré bleu entrée du café
+let doorCafeColliderX  = 339
+let doorCafeColliderY  = 420
+let doorCafeColliderWidth  = 43
+let doorCafeColliderHeight  = 20
+
+
+
+let currentMap = 1
+
+// Coordonnées de la hitbox maison 
+let houseHitboxX = 431
+let houseHitboxY = 50
+let houseHitboxWidth = 148
+let houseHitboxHeight = 190
+
+// dessin de la hitbox de la maison
+ctx.fillStyle = "rgba(250, 0, 0, 0.3)";
+ctx.fillRect(houseHitboxX,houseHitboxY,houseHitboxWidth,houseHitboxHeight)
+
+
+
 // Fonction de collision
 function collision(){
-    // Collision with rect1
-    if(dx + frameWidth > 200 && dx < 200 + 100 && dy + frameHeight > 200 && dy < 200 + 100)
+    // Collision du rect bleu
+    if(dx+15 + frameWidth-30 > squareColliderX && dx+15 < squareColliderX + squareColliderWidth && dy+5 + frameHeight-10 > squareColliderY && dy+5 < squareColliderY + squareColliderHeight)
     {
         colorRect = "green";
 
+        // Affichage de l'img du background selon le background actuel
+        if(currentMap == 1) {
+
+            ctxBackground.clearRect(0,0,1040,640)
+            ctxBackground.drawImage(img2, 0, 0,1040,640);
+
+            // On replace le personnage et le carré bleu sur la route de la deuxieme image
+            dx = 280
+            dy = 560
+
+            squareColliderX  = 250
+            squareColliderY  = 630
+
+            currentMap = 2
+
+        } else if(currentMap == 2) {
+
+            ctxBackground.clearRect(0,0,1040,640)
+            
+            ctxBackground.drawImage(img, 0, 0,1440,1440);
+
+            // On replace le personnage et le carré bleu sur la route de la deuxieme image
+            dx = 630
+            dy = 15
+
+            squareColliderX  = 630
+            squareColliderY  = 0
+            currentMap = 1
+        }
+        
+
+
     } else {
-        colorRect = "blue"
+        colorRect = "rgba(0, 0, 250, 0.3)"
     }
+
+    // Collision de la porte du café
+    if(dx+15 + frameWidth-30 > doorCafeColliderX && dx+15 < doorCafeColliderX +doorCafeColliderWidth && dy+5 + frameHeight-10 > doorCafeColliderY && dy+5 < doorCafeColliderY + doorCafeColliderHeight)
+    {
+        console.log("cafe");
+
+        // Affichage de l'img du background selon le background actuel
+        if(currentMap == 1) {
+
+            ctxBackground.clearRect(0,0,1040,640)
+            ctxBackground.drawImage(img3, 0, 0,1040,640);
+
+            // On replace le personnage et le carré bleu sur la route de la deuxieme image
+            dx = 480
+            dy = 500
+
+            doorCafeColliderX  = 480
+            doorCafeColliderY  = 600
+
+            currentMap = 3
+
+        } else if(currentMap == 3) {
+
+            ctxBackground.clearRect(0,0,1040,640)
+            ctxBackground.drawImage(img, 0, 0,1440,1440);
+
+            // On replace le personnage et le carré bleu sur la route de la deuxieme image
+            dx = 339
+            dy = 450
+
+            doorCafeColliderX  = 339
+            doorCafeColliderY  = 420
+            currentMap = 1
+        }
+        
+
+
+    } else {
+        colorRect = "rgba(0, 0, 250, 0.3)"
+    }
+
+
+    // Calcul de la collision avec la maison
+    if(dx+15 + frameWidth-30 > houseHitboxX && dx+15 < houseHitboxX + houseHitboxWidth && dy+5 + frameHeight-10 > houseHitboxY && dy+5 < houseHitboxY + houseHitboxHeight){
+        console.log("Collision maison");
+
+        // en cas de collision on inverse la vitesse pour qu'il puisse est bloqué sur place
+        if (moveCharacter === "up") {
+            dy += speed
+    
+            // Va permettre de définir la direction du mouvement
+            sy = directionUp * frameHeight;
+            body.onkeyup = event => {
+                stopMovingCharacter(directionUp);
+            }
+        } 
+        else if (moveCharacter === "down") {
+            dy -= speed
+            sy = directionDown * frameHeight;
+            body.onkeyup = event => {
+                stopMovingCharacter(directionDown);
+            } 
+        }
+    
+        else if (moveCharacter === "left") {
+            dx += speed
+            sy = directionLeft * frameHeight;
+            body.onkeyup = event => {
+                stopMovingCharacter(directionLeft);
+            }
+        }
+        else if (moveCharacter === "right") {
+            dx -=speed
+            sy = directionRight * frameHeight;
+            body.onkeyup = event => {
+                stopMovingCharacter(directionRight);
+            }
+        }
+    }
+
 }
 
 // Dessiner le caractère
@@ -145,9 +299,13 @@ function drawCharacter() {
     // On update d'abord la frame
     updateFrame();
 
-    // Dessin d'une forme pour test la hitbox
+    // Dessin d'une forme pour test la hitbox de la changement de zone
     ctx.fillStyle = colorRect
-    ctx.fillRect(200,200,100,100)
+    ctx.fillRect(squareColliderX,squareColliderY,squareColliderWidth,squareColliderHeight)
+
+    // Dessin d'une forme pour test la hitbox de la porte de café
+    ctx.fillStyle = "rgba(0, 0, 250, 0.3)";
+    ctx.fillRect(doorCafeColliderX,doorCafeColliderY,doorCafeColliderWidth,doorCafeColliderHeight)
 
     // Test dialogue sous condition
 
@@ -159,12 +317,13 @@ function drawCharacter() {
         iTalk = "elle sont où les meufs?"
     }
 
+
     player.textZone(iTalk, dx, dy);
     // Fin du test dialogue sous condition
         
     // On dessine la hitbox du perso
-    ctx.fillStyle = "red"
-    ctx.fillRect(dx, dy, frameWidth, frameHeight)
+    ctx.fillStyle = "rgba(250, 0, 0, 0.3)";
+    ctx.fillRect(dx+15, dy+5, frameWidth-30, frameHeight-10)
 
     // On dessine le caractère
     ctx.drawImage(character, sx, sy, frameWidth, frameHeight, dx, dy, frameWidth, frameHeight)
@@ -178,17 +337,21 @@ function stopMovingCharacter(whichDirection) {
 
     // Dessin d'une forme pour test la hitbox
     ctx.fillStyle = colorRect
-    ctx.fillRect(200,200,100,100)
+    ctx.fillRect(squareColliderX,squareColliderY,squareColliderWidth,squareColliderHeight)
+
+    // Dessin d'une forme pour test la hitbox de la porte de café
+    ctx.fillStyle = "rgba(0, 0, 250, 0.3)";
+    ctx.fillRect(doorCafeColliderX,doorCafeColliderY,doorCafeColliderWidth,doorCafeColliderHeight)
 
     // Redessine le pnj
-    ctx.drawImage(pnj, 0, 128,frameWidth, frameHeight, 500, 126, frameWidth, frameHeight)
+    ctx.drawImage(pnj, 0, 128,frameWidth, frameHeight, 650, 126, frameWidth, frameHeight)
 
     sx = 0;
     sy = whichDirection * frameHeight;
     // On dessine la hitbox du perso
 
-    ctx.fillStyle = "red"
-    ctx.fillRect(dx, dy, frameWidth, frameHeight)
+    ctx.fillStyle = "rgba(250, 0, 0, 0.3)";
+    ctx.fillRect(dx+15, dy+5, frameWidth-30, frameHeight-10)
 
     // On dessine le caractère
     ctx.drawImage(character, sx, sy, frameWidth, frameHeight, dx, dy, frameWidth, frameHeight)
@@ -232,6 +395,29 @@ body.onkeydown = event => {
             break;
     }
 }
+
+
+
+// Dessin du background 
+ctxBackground.fillStyle = "orange"
+ctxBackground.fillRect(10,30,50,50)
+ctxBackground.fillStyle = "orange"
+ctxBackground.fillRect(500,100,100,100)
+
+// Dessin de l'image de background
+ctxBackground.drawImage(img, 0, 0,1440,1440);
+
+// ctxBackground.drawImage(img3, 0, 0,1440,1440);
+
+
+// // Dessin du background 2 
+// ctxBackground2.fillStyle = "purple"
+// ctxBackground2.fillRect(100,300,100,100)
+
+// ctxBackground2.fillStyle = "purple"
+// ctxBackground2.fillRect(700,400,100,100)
+
+
 
 
 
