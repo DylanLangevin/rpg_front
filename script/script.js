@@ -75,6 +75,9 @@ let character = player.characterProfil();
 pnj = maleCitizen.characterProfil();
 body.onload = function() {
     ctx.drawImage(pnj, 0, 128,frameWidth, frameHeight, 500, 126, frameWidth, frameHeight)
+    // Dessin d'une forme pour test la hitbox de l'item
+    ctx.fillStyle = "rgba(250, 250, 0, 0.6)";
+    ctx.fillRect(itemFoundX,itemFoundY,itemFoundWidth,itemFoundHeight)
    
 }
 // Fin du test (pnj)
@@ -154,6 +157,13 @@ let doorCafeColliderY  = 420
 let doorCafeColliderWidth  = 43
 let doorCafeColliderHeight  = 20
 
+// Coordonnées de l'objet à récupérer
+let itemFoundX = 650
+let itemFoundY = 330
+let itemFoundWidth = 32
+let itemFoundHeight = 32
+
+let itemPicked = false
 
 
 let currentMap = 1
@@ -292,6 +302,22 @@ function collision(){
         }
     }
 
+    // let itemFoundX = 650
+    // let itemFoundY = 330
+    // let itemFoundWidth = 32
+    // let itemFoundHeight = 32
+
+    // Collision de l'item jaune
+    if(dx+15 + frameWidth-30 > itemFoundX && dx+15 < itemFoundX + itemFoundWidth && dy+5 + frameHeight-10 > itemFoundY && dy+5 < itemFoundY + itemFoundHeight && !itemPicked)
+    {
+
+        console.log("Objet trouvé");
+        itemPicked = true
+    
+    } else {
+        colorRect = "rgba(0, 0, 250, 0.3)"
+    }
+
 }
 
 // Dessiner le caractère
@@ -306,6 +332,15 @@ function drawCharacter() {
     // Dessin d'une forme pour test la hitbox de la porte de café
     ctx.fillStyle = "rgba(0, 0, 250, 0.3)";
     ctx.fillRect(doorCafeColliderX,doorCafeColliderY,doorCafeColliderWidth,doorCafeColliderHeight)
+
+    if(!itemPicked){
+        // Dessin d'une forme pour test la hitbox de l'item
+        ctx.fillStyle = "rgba(250, 250, 0, 0.6)";
+        ctx.fillRect(itemFoundX,itemFoundY,itemFoundWidth,itemFoundHeight)
+    }
+
+
+
 
     // Test dialogue sous condition
 
@@ -342,6 +377,12 @@ function stopMovingCharacter(whichDirection) {
     // Dessin d'une forme pour test la hitbox de la porte de café
     ctx.fillStyle = "rgba(0, 0, 250, 0.3)";
     ctx.fillRect(doorCafeColliderX,doorCafeColliderY,doorCafeColliderWidth,doorCafeColliderHeight)
+
+    if(!itemPicked){
+        // Dessin d'une forme pour test la hitbox de l'item
+        ctx.fillStyle = "rgba(250, 250, 0, 0.6)";
+        ctx.fillRect(itemFoundX,itemFoundY,itemFoundWidth,itemFoundHeight)
+    }
 
     // Redessine le pnj
     ctx.drawImage(pnj, 0, 128,frameWidth, frameHeight, 650, 126, frameWidth, frameHeight)
