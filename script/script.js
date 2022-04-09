@@ -198,6 +198,8 @@ let pnjWidth = frameWidth - 20
 let pnjHeight = frameHeight - 10
 
 
+
+
 // Fonction de collision
 function collision(){
     // Collision du rect bleu
@@ -345,6 +347,11 @@ function collision(){
     // Collision du pnj
     if(dx+15 + frameWidth-30 > pnjX && dx+15 < pnjX + pnjWidth && dy+5 + frameHeight-10 > pnjY && dy+5 < pnjY + pnjHeight){
         console.log("Collision pnj");
+
+        // Afficher le dialogue du pnj à la collision
+        pnjTalk = "Quelles meufs ?"
+        // pourquoi je remets maleCitizen et avec pnj ça marche pas ?
+        maleCitizen.textZone(pnjTalk, 600, 100)
 
         // en cas de collision on inverse la vitesse pour qu'il puisse est bloqué sur place
         if (moveCharacter === "up") {
