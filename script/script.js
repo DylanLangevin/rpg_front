@@ -74,7 +74,13 @@ let character = player.characterProfil();
 // Test initialisation d'un PNJ
 pnj = maleCitizen.characterProfil();
 body.onload = function() {
-    ctx.drawImage(pnj, 0, 128,frameWidth, frameHeight, 500, 126, frameWidth, frameHeight)
+    // On dessine la hitbox du pnj
+    ctx.fillStyle = "rgba(250, 0, 0, 0.3)";
+    ctx.fillRect(660, 132, frameWidth-20, frameHeight-10)
+
+    // Dessin du pnj
+    ctx.drawImage(pnj, 0, 128,frameWidth, frameHeight, 650, 126, frameWidth, frameHeight)
+
     // Dessin d'une forme pour test la hitbox de l'item
     ctx.fillStyle = "rgba(250, 250, 0, 0.6)";
     ctx.fillRect(itemFoundX,itemFoundY,itemFoundWidth,itemFoundHeight)
@@ -91,6 +97,9 @@ function updateFrame() {
     ctx.clearRect(0, 0, canvas.width, canvas.height)
 
 
+    // Redessine la hitbox du pnj
+    ctx.fillStyle = "rgba(250, 0, 0, 0.3)";
+    ctx.fillRect(660, 132, frameWidth-20, frameHeight-10)
     // Redessine le pnj
     ctx.drawImage(pnj, 0, 128,frameWidth, frameHeight, 650, 126, frameWidth, frameHeight)
 
@@ -163,6 +172,7 @@ let itemFoundY = 330
 let itemFoundWidth = 32
 let itemFoundHeight = 32
 
+// Définir si l'objet a été récupéré ou non
 let itemPicked = false
 
 
@@ -174,10 +184,18 @@ let houseHitboxY = 50
 let houseHitboxWidth = 148
 let houseHitboxHeight = 190
 
+
+
 // dessin de la hitbox de la maison
 ctx.fillStyle = "rgba(250, 0, 0, 0.3)";
 ctx.fillRect(houseHitboxX,houseHitboxY,houseHitboxWidth,houseHitboxHeight)
 
+
+// Coordonnées de la hitbox du pnj
+let pnjX = 660
+let pnjY = 132
+let pnjWidth = frameWidth - 20
+let pnjHeight = frameHeight - 10
 
 
 // Fonction de collision
@@ -318,6 +336,49 @@ function collision(){
         colorRect = "rgba(0, 0, 250, 0.3)"
     }
 
+    // Coordonnées de la hitbox du pnj
+    // let pnjX = 650
+    // let pnjY = 126
+    // let pnjWidth = frameWidth
+    // let pnjHeight = frameHeight
+
+    // Collision du pnj
+    if(dx+15 + frameWidth-30 > pnjX && dx+15 < pnjX + pnjWidth && dy+5 + frameHeight-10 > pnjY && dy+5 < pnjY + pnjHeight){
+        console.log("Collision pnj");
+
+        // en cas de collision on inverse la vitesse pour qu'il puisse est bloqué sur place
+        if (moveCharacter === "up") {
+            dy += speed
+    
+            // Va permettre de définir la direction du mouvement
+            sy = directionUp * frameHeight;
+            body.onkeyup = event => {
+                stopMovingCharacter(directionUp);
+            }
+        } 
+        else if (moveCharacter === "down") {
+            dy -= speed
+            sy = directionDown * frameHeight;
+            body.onkeyup = event => {
+                stopMovingCharacter(directionDown);
+            } 
+        }
+    
+        else if (moveCharacter === "left") {
+            dx += speed
+            sy = directionLeft * frameHeight;
+            body.onkeyup = event => {
+                stopMovingCharacter(directionLeft);
+            }
+        }
+        else if (moveCharacter === "right") {
+            dx -=speed
+            sy = directionRight * frameHeight;
+            body.onkeyup = event => {
+                stopMovingCharacter(directionRight);
+            }
+        }
+    }
 }
 
 // Dessiner le caractère
@@ -383,6 +444,10 @@ function stopMovingCharacter(whichDirection) {
         ctx.fillStyle = "rgba(250, 250, 0, 0.6)";
         ctx.fillRect(itemFoundX,itemFoundY,itemFoundWidth,itemFoundHeight)
     }
+
+    // Redessine la hitbox du pnj
+    ctx.fillStyle = "rgba(250, 0, 0, 0.3)";
+    ctx.fillRect(660, 132, frameWidth-20, frameHeight-10)
 
     // Redessine le pnj
     ctx.drawImage(pnj, 0, 128,frameWidth, frameHeight, 650, 126, frameWidth, frameHeight)
