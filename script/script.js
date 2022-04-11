@@ -47,8 +47,21 @@ let frameHeight = spriteHeight/frameRows;
 // Index de la frame
 let currentFrame = 0
 
+// fonction choix des personnages
+function witchCharacter(genderChoice) {
+    if(genderChoice === "male") {
+        characterProfile = 'character_profile/male_player.png';
+    }
+    else {
+        characterProfile = 'character_profile/female_player.png';
+    }
+    return characterProfile;
+}
+
+characterProfile = witchCharacter("");
+
 // Initialisation de l'ojet player
-let player = new Player("Adrien", 'character_profile/male_player.png', [dx, dy], ["carte des suspects", "bout de papier"]);//position et inventaire à définir, ajouter des fonctions ect
+let player = new Player("Adrien",characterProfile, [dx, dy], ["carte des suspects", "bout de papier"]);//position et inventaire à définir, ajouter des fonctions ect
 
 
 // Test initialisation d'un PNJ
@@ -65,7 +78,7 @@ body.onload = function() {
     ctx.fillRect(itemFoundX,itemFoundY,itemFoundWidth,itemFoundHeight)
    
 }
-// Fin du test (pnj)
+// Fin du test initialisation d'un PNJ
 
 
 // Test déplacement (les fonctions)
