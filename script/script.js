@@ -50,36 +50,15 @@ let currentFrame = 0
 // Initialisation de l'ojet player
 let player = new Player("Adrien", 'character_profile/male_player.png', [dx, dy], ["carte des suspects", "bout de papier"]);//position et inventaire à définir, ajouter des fonctions ect
 
-// Initialisation des objets pnj
-let secretary = new Pnj("Secrétaire", 'character_profile/secretary.png', [12, 126]);//position a définir
-let barRegular = new Pnj("Habitué du bar", 'character_profile/bar_regular.png', [12, 126]);//position a définir
-let engineer = new Pnj("Ingénieur fou", 'character_profile/engineer.png', [100, 100]);//position a définir
-let childhoodFriend = new Pnj("Ami d'enfance", 'character_profile/childhood_friend.png', [12, 126]);//position a définir
-let plantJanitor = new Pnj("Gardien d'usine", 'character_profile/plant_janitor.png', [12, 126]);//position a définir
-let elder = new Pnj("Ancien du village", 'character_profile/elder.png', [12, 126]);//position a définir
-let mayorWife = new Pnj("Femme du maire", 'character_profile/mayor_wife.png', [12, 126]);//position a définir
-let foreigner = new Pnj("L'étrangère", 'character_profile/foreigner.png', [12, 126]);//position a définir
-let reader = new Pnj("Lectrice de polar", 'character_profile/reader.png', [12, 126]);//position a définir
-let librarian = new Pnj("Bibliothécaire", 'character_profile/librarian.png', [12, 126]);//position a définir
-let policeFriend = new Pnj("Policier ami", 'character_profile/police_friend.png', [12, 126]);//position a définir
-let maleCitizen = new Pnj("Villageois", 'character_profile/male_citizen.png', [12,126]);//position a définir
-let femaleCitizen = new Pnj("Villageoise", 'character_profile/female_citizen.png', [12, 126]);//position a définir
-
-// Initialisation de l'ojet cops
-let police = new Police("Policier", 'character_profile/police.png', [12, 126]);//position a définir
-
-// Joueur actuel avec lequel on joue
-let character = player.characterProfil();
 
 // Test initialisation d'un PNJ
-pnj = maleCitizen.characterProfil();
 body.onload = function() {
     // On dessine la hitbox du pnj
     ctx.fillStyle = "rgba(250, 0, 0, 0.3)";
     ctx.fillRect(660, 132, frameWidth-20, frameHeight-10)
 
     // Dessin du pnj
-    ctx.drawImage(pnj, 0, 128,frameWidth, frameHeight, 650, 126, frameWidth, frameHeight)
+    ctx.drawImage(maleCitizen.character, 0, 128,frameWidth, frameHeight, 650, 126, frameWidth, frameHeight)
 
     // Dessin d'une forme pour test la hitbox de l'item
     ctx.fillStyle = "rgba(250, 250, 0, 0.6)";
@@ -101,7 +80,7 @@ function updateFrame() {
     ctx.fillStyle = "rgba(250, 0, 0, 0.3)";
     ctx.fillRect(660, 132, frameWidth-20, frameHeight-10)
     // Redessine le pnj
-    ctx.drawImage(pnj, 0, 128,frameWidth, frameHeight, 650, 126, frameWidth, frameHeight)
+    ctx.drawImage(maleCitizen.character, 0, 128,frameWidth, frameHeight, 650, 126, frameWidth, frameHeight)
 
     // modulo permet d'obtenir la bonne frame (1, 2, 3, 4...), ça permet d'update l'index de la frame
     currentFrame = ++currentFrame % frameCols;
@@ -429,7 +408,7 @@ function drawCharacter() {
     ctx.fillRect(dx+15, dy+5, frameWidth-30, frameHeight-10)
 
     // On dessine le caractère
-    ctx.drawImage(character, sx, sy, frameWidth, frameHeight, dx, dy, frameWidth, frameHeight)
+    ctx.drawImage(player.character, sx, sy, frameWidth, frameHeight, dx, dy, frameWidth, frameHeight)
 }
 
 // Dessiner le caractère à l'arrêt lorsqu'on arrête d'avancer
@@ -457,7 +436,7 @@ function stopMovingCharacter(whichDirection) {
     ctx.fillRect(660, 132, frameWidth-20, frameHeight-10)
 
     // Redessine le pnj
-    ctx.drawImage(pnj, 0, 128,frameWidth, frameHeight, 650, 126, frameWidth, frameHeight)
+    ctx.drawImage(maleCitizen.character, 0, 128,frameWidth, frameHeight, 650, 126, frameWidth, frameHeight)
 
     sx = 0;
     sy = whichDirection * frameHeight;
@@ -467,7 +446,7 @@ function stopMovingCharacter(whichDirection) {
     ctx.fillRect(dx+15, dy+5, frameWidth-30, frameHeight-10)
 
     // On dessine le caractère
-    ctx.drawImage(character, sx, sy, frameWidth, frameHeight, dx, dy, frameWidth, frameHeight)
+    ctx.drawImage(player.character, sx, sy, frameWidth, frameHeight, dx, dy, frameWidth, frameHeight)
     player.textZone(iTalk, dx, dy);
 
     
