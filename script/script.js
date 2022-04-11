@@ -48,7 +48,7 @@ let frameHeight = spriteHeight/frameRows;
 let currentFrame = 0
 
 // Initialisation de l'ojet player
-let player = new Player("Adrien", 'character_profile/male_player.png', [dx, dy], ["carte des suspects", "bout de papier"]);//position et inventaire à définir, ajouter des fonctions ect
+let player = new Player("Adrien", 'character_profile/male_player.png', [dx, dy], []);//position et inventaire à définir, ajouter des fonctions ect
 
 
 // Test initialisation d'un PNJ
@@ -304,8 +304,9 @@ function collision(){
     // Collision de l'item jaune
     if(dx+15 + frameWidth-30 > itemFoundX && dx+15 < itemFoundX + itemFoundWidth && dy+5 + frameHeight-10 > itemFoundY && dy+5 < itemFoundY + itemFoundHeight && !itemPicked)
     {
-
+        player.newItem("carré")
         console.log("Objet trouvé");
+        console.log(player.inventory);
         itemPicked = true
     
     } else {
@@ -323,44 +324,34 @@ function collision(){
         console.log("Collision pnj");
 
         // Afficher le dialogue du pnj à la collision
-        pnjTalk = "Quelles meufs ?"
-        // pourquoi je remets maleCitizen et avec pnj ça marche pas ?
+        pnjTalk = "Voulez-vous discuter avec " + maleCitizen.name + " ? (o) ou (x)"
         maleCitizen.textZone(pnjTalk, 600, 100)
 
-        // en cas de collision on inverse la vitesse pour qu'il puisse est bloqué sur place
-        if (moveCharacter === "up") {
-            dy += speed
-    
-            // Va permettre de définir la direction du mouvement
-            sy = directionUp * frameHeight;
-            body.onkeyup = event => {
-                stopMovingCharacter(directionUp);
-            }
-        } 
-        else if (moveCharacter === "down") {
-            dy -= speed
-            sy = directionDown * frameHeight;
-            body.onkeyup = event => {
-                stopMovingCharacter(directionDown);
-            } 
-        }
-    
-        else if (moveCharacter === "left") {
-            dx += speed
-            sy = directionLeft * frameHeight;
-            body.onkeyup = event => {
-                stopMovingCharacter(directionLeft);
+        // Quand on clique sur entrée, le dialogue se créé
+        window.onkeydown = event => {
+            switch(event.key) {
+                case "Enter":
+                    whichKey = true
+                    console.log("ok");
+                    return
+                default:
+                    console.log("Non");
             }
         }
-        else if (moveCharacter === "right") {
-            dx -=speed
-            sy = directionRight * frameHeight;
-            body.onkeyup = event => {
-                stopMovingCharacter(directionRight);
-            }
+
+        // Affiche le dialogue mais bug
+        if (whichKey == true) {
+            clearRect()
+            console.log("oui");
+            pnjTalk = "Holaaaaaa"
+            maleCitizen.textZone(pnjTalk, 600, 100)
         }
+            
     }
 }
+
+// Quelle touche au dialogue
+let whichKey;
 
 // Dessiner le caractère
 function drawCharacter() {
@@ -461,7 +452,6 @@ body.onkeydown = event => {
             moveCharacter = "down";
             collision();
             drawCharacter();
-            
             break;
 
         case "ArrowLeft":
