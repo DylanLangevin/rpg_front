@@ -23,7 +23,7 @@ class Player {
         ctx.fillRect(dx +59, dy +1, widthTextZone, 20)
         ctx.strokeRect(dx +59, dy +1, widthTextZone, 20)
         ctx.fillStyle = "#000";
-        ctx.fillText(player.letsTalk(iTalk), dx +64, dy +15);
+        ctx.fillText(this.letsTalk(iTalk), dx +64, dy +15);
         return
     }
 
