@@ -301,11 +301,6 @@ function collision(){
         }
     }
 
-    // let itemFoundX = 650
-    // let itemFoundY = 330
-    // let itemFoundWidth = 32
-    // let itemFoundHeight = 32
-
     // Collision de l'item jaune
     if(dx+15 + frameWidth-30 > itemFoundX && dx+15 < itemFoundX + itemFoundWidth && dy+5 + frameHeight-10 > itemFoundY && dy+5 < itemFoundY + itemFoundHeight && !itemPicked)
     {
