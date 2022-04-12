@@ -163,8 +163,6 @@ let houseHitboxY = 50
 let houseHitboxWidth = 148
 let houseHitboxHeight = 190
 
-
-
 // dessin de la hitbox de la maison
 ctx.fillStyle = "rgba(250, 0, 0, 0.3)";
 ctx.fillRect(houseHitboxX,houseHitboxY,houseHitboxWidth,houseHitboxHeight)
@@ -175,6 +173,17 @@ let pnjX = 660
 let pnjY = 132
 let pnjWidth = frameWidth - 20
 let pnjHeight = frameHeight - 10
+
+
+// Coordonnées de la hitbox pnj dialogue
+let pnjDialogueBoxX = 640
+let pnjDialogueBoxY = 126
+let pnjDialogueBoxWidth = frameWidth + 20
+let pnjDialogueBoxHeight = frameHeight + 10
+
+// Hitbox du pnj pour le dialogue
+ctx.fillStyle = "rgba(250, 0, 250, 0.3)";
+ctx.fillRect(pnjDialogueBoxX, pnjDialogueBoxY, pnjDialogueBoxWidth, pnjDialogueBoxHeight)
 
 
 
@@ -313,45 +322,78 @@ function collision(){
         colorRect = "rgba(0, 0, 250, 0.3)"
     }
 
-    // Coordonnées de la hitbox du pnj
-    // let pnjX = 650
-    // let pnjY = 126
-    // let pnjWidth = frameWidth
-    // let pnjHeight = frameHeight
-
     // Collision du pnj
-    if(dx+15 + frameWidth-30 > pnjX && dx+15 < pnjX + pnjWidth && dy+5 + frameHeight-10 > pnjY && dy+5 < pnjY + pnjHeight){
-        console.log("Collision pnj");
+    if(dx+15 + frameWidth-30 > pnjDialogueBoxX && dx+15 < pnjDialogueBoxX + pnjDialogueBoxWidth && dy+5 + frameHeight-10 > pnjDialogueBoxY && dy+5 < pnjDialogueBoxY + pnjDialogueBoxHeight) {
+         // Afficher le dialogue du pnj à la collision
+         pnjTalk = "Voulez-vous discuter avec " + maleCitizen.name + " ? (enter)"
+         maleCitizen.textZone(pnjTalk, 600, 100)
 
-        // Afficher le dialogue du pnj à la collision
-        pnjTalk = "Voulez-vous discuter avec " + maleCitizen.name + " ? (o) ou (x)"
-        maleCitizen.textZone(pnjTalk, 600, 100)
+         // Quand on clique sur entrée, le dialogue se créé
+         window.onkeydown = event => {
+             switch(event.key) {
+                 case "Enter":
+                     whichText = true
+                     console.log("ok");
+                     return
+                 default:
+                     console.log("Non");
+             }
+         }
+         
+         // Affiche le dialogue mais bug
+         if (whichText == true) {
+             console.log("oui");
+             pnjTalk = "Holaaaaaa"
+             maleCitizen.textZone(pnjTalk, 600, 100)
+         }
 
-        // Quand on clique sur entrée, le dialogue se créé
-        window.onkeydown = event => {
-            switch(event.key) {
-                case "Enter":
-                    whichKey = true
-                    console.log("ok");
-                    return
-                default:
-                    console.log("Non");
+         // Pour effacer le texte 
+         whichText = false
+
+
+        if(dx+15 + frameWidth-30 > pnjX && dx+15 < pnjX + pnjWidth && dy+5 + frameHeight-10 > pnjY && dy+5 < pnjY + pnjHeight) {
+
+            console.log("Collision pnj");
+
+            // en cas de collision on inverse la vitesse pour qu'il puisse est bloqué sur place
+            if (moveCharacter === "up") {
+                dy += speed
+        
+                // Va permettre de définir la direction du mouvement
+                sy = directionUp * frameHeight;
+                body.onkeyup = event => {
+                    stopMovingCharacter(directionUp);
+                }
+            } 
+            else if (moveCharacter === "down") {
+                dy -= speed
+                sy = directionDown * frameHeight;
+                body.onkeyup = event => {
+                    stopMovingCharacter(directionDown);
+                } 
             }
-        }
-
-        // Affiche le dialogue mais bug
-        if (whichKey == true) {
-            clearRect()
-            console.log("oui");
-            pnjTalk = "Holaaaaaa"
-            maleCitizen.textZone(pnjTalk, 600, 100)
+        
+            else if (moveCharacter === "left") {
+                dx += speed
+                sy = directionLeft * frameHeight;
+                body.onkeyup = event => {
+                    stopMovingCharacter(directionLeft);
+                }
+            }
+            else if (moveCharacter === "right") {
+                dx -=speed
+                sy = directionRight * frameHeight;
+                body.onkeyup = event => {
+                    stopMovingCharacter(directionRight);
+                }
+            }
         }
             
     }
 }
 
 // Quelle touche au dialogue
-let whichKey;
+let whichText;
 
 // Dessiner le caractère
 function drawCharacter() {
@@ -372,7 +414,9 @@ function drawCharacter() {
         ctx.fillRect(itemFoundX,itemFoundY,itemFoundWidth,itemFoundHeight)
     }
 
-
+    // Hitbox du pnj pour le dialogue
+    ctx.fillStyle = "rgba(250, 0, 250, 0.3)";
+    ctx.fillRect(pnjDialogueBoxX, pnjDialogueBoxY, pnjDialogueBoxWidth, pnjDialogueBoxHeight)
 
 
     // Test dialogue sous condition
@@ -423,6 +467,11 @@ function stopMovingCharacter(whichDirection) {
 
     // Redessine le pnj
     ctx.drawImage(maleCitizen.character, 0, 128,frameWidth, frameHeight, 650, 126, frameWidth, frameHeight)
+
+    // Hitbox du pnj pour le dialogue
+    ctx.fillStyle = "rgba(250, 0, 250, 0.3)";
+    ctx.fillRect(pnjDialogueBoxX, pnjDialogueBoxY, pnjDialogueBoxWidth, pnjDialogueBoxHeight)
+
 
     sx = 0;
     sy = whichDirection * frameHeight;
