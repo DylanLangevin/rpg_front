@@ -58,7 +58,7 @@ body.onload = function() {
     ctx.fillRect(660, 132, frameWidth-20, frameHeight-10)
 
     // Dessin du pnj
-    ctx.drawImage(maleCitizen.character, 0, 128,frameWidth, frameHeight, 650, 126, frameWidth, frameHeight)
+    ctx.drawImage(maleCitizen.character, 0, 128,frameWidth, frameHeight, maleCitizen.position[0], maleCitizen.position[1], frameWidth, frameHeight)
 
     // Dessin d'une forme pour test la hitbox de l'item
     ctx.fillStyle = "rgba(250, 250, 0, 0.6)";
@@ -80,7 +80,7 @@ function updateFrame() {
     ctx.fillStyle = "rgba(250, 0, 0, 0.3)";
     ctx.fillRect(660, 132, frameWidth-20, frameHeight-10)
     // Redessine le pnj
-    ctx.drawImage(maleCitizen.character, 0, 128,frameWidth, frameHeight, 650, 126, frameWidth, frameHeight)
+    ctx.drawImage(maleCitizen.character, 0, 128,frameWidth, frameHeight, maleCitizen.position[0], maleCitizen.position[1], frameWidth, frameHeight)
 
     // modulo permet d'obtenir la bonne frame (1, 2, 3, 4...), ça permet d'update l'index de la frame
     currentFrame = ++currentFrame % frameCols;
@@ -326,7 +326,7 @@ function collision(){
     if(dx+15 + frameWidth-30 > pnjDialogueBoxX && dx+15 < pnjDialogueBoxX + pnjDialogueBoxWidth && dy+5 + frameHeight-10 > pnjDialogueBoxY && dy+5 < pnjDialogueBoxY + pnjDialogueBoxHeight) {
          // Afficher le dialogue du pnj à la collision
          pnjTalk = "Voulez-vous discuter avec " + maleCitizen.name + " ? (enter)"
-         maleCitizen.textZone(pnjTalk, 600, 100)
+         maleCitizen.textZone(pnjTalk)
 
          // Quand on clique sur entrée, le dialogue se créé
          window.onkeydown = event => {
@@ -339,12 +339,13 @@ function collision(){
                      console.log("Non");
              }
          }
-         
+        
          // Affiche le dialogue mais bug
          if (whichText == true) {
-             console.log("oui");
-             pnjTalk = "Holaaaaaa"
-             maleCitizen.textZone(pnjTalk, 600, 100)
+            ctx.clearRect(0, 0, canvas.width, canvas.height)
+            console.log("oui");
+            pnjTalk = "Holaaaaaa"
+            maleCitizen.textZone(pnjTalk)
          }
 
          // Pour effacer le texte 
@@ -466,7 +467,7 @@ function stopMovingCharacter(whichDirection) {
     ctx.fillRect(660, 132, frameWidth-20, frameHeight-10)
 
     // Redessine le pnj
-    ctx.drawImage(maleCitizen.character, 0, 128,frameWidth, frameHeight, 650, 126, frameWidth, frameHeight)
+    ctx.drawImage(maleCitizen.character, 0, 128,frameWidth, frameHeight, maleCitizen.position[0], maleCitizen.position[1], frameWidth, frameHeight)
 
     // Hitbox du pnj pour le dialogue
     ctx.fillStyle = "rgba(250, 0, 250, 0.3)";
