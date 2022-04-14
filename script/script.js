@@ -185,8 +185,15 @@ let pnjDialogueBoxHeight = frameHeight + 10
 ctx.fillStyle = "rgba(250, 0, 250, 0.3)";
 ctx.fillRect(pnjDialogueBoxX, pnjDialogueBoxY, pnjDialogueBoxWidth, pnjDialogueBoxHeight)
 
+// Pour les collisions
+let playerPositionY = dy + 5;
+let playerPositionX = dx + 15;
+let playerFrameWidth = frameWidth - 30;
+let playerFrameHeight = frameHeight - 10;
 
-
+// Quelle touche au dialogue
+let whichText;
+let pnjTalk;
 
 // Fonction de collision
 function collision(){
@@ -340,7 +347,7 @@ function collision(){
              }
          }
         
-         // Affiche le dialogue mais bug
+         // Affiche le dialogue
          if (whichText == true) {
             ctx.clearRect(0, 0, canvas.width, canvas.height)
             console.log("oui");
@@ -389,12 +396,9 @@ function collision(){
                 }
             }
         }
-            
     }
 }
 
-// Quelle touche au dialogue
-let whichText;
 
 // Dessiner le caractère
 function drawCharacter() {
