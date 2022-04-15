@@ -1,4 +1,6 @@
 
+playerName = localStorage.getItem("name");
+genderChoice = localStorage.getItem("gender")
 let canvasBackground = document.getElementById('canvas-background');
 const ctxBackground = canvasBackground.getContext('2d');
 
@@ -49,7 +51,8 @@ let frameHeight = spriteHeight/frameRows;
 let currentFrame = 0
 
 // Initialisation de l'ojet player
-let player = new Player("Adrien", 'character_profile/male_player.png', [dx, dy], ["carte des suspects", "bout de papier"]);//position et inventaire à définir, ajouter des fonctions ect
+
+let player = new Player(playerName, genderChoice, [dx, dy], ["carte des suspects", "bout de papier"]);//position et inventaire à définir, ajouter des fonctions ect
 
 
 // Test initialisation d'un PNJ

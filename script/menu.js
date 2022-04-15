@@ -52,13 +52,13 @@ let playerName = "";
 
 female.onclick = () => {
     male.style.display = "none";
-    genderChoice = "female"
+    genderChoice = "character_profile/female_player.png"
     console.log(genderChoice)
 }
 
 male.onclick = () => {
     female.style.display = "none"
-    genderChoice = "male"
+    genderChoice = "character_profile/male_player.png"
     console.log(genderChoice)
 }
 
@@ -69,9 +69,12 @@ confirm.onclick = () => {
     console.log(playerName)
     console.log(genderChoice)
     if (genderChoice != "none" && playerName != "") {
-        window.location = "game.html";
+        localStorage.setItem("name", playerName);
+        localStorage.setItem("gender", genderChoice);
 
+        window.location = "game.html";
     }
+    
 }
 
 cancel.onclick = () => {
@@ -80,6 +83,5 @@ cancel.onclick = () => {
     genderChoice = "none";
     playerName = "";
 }
-
 
 
