@@ -1,3 +1,6 @@
+
+playerName = localStorage.getItem("name");
+genderChoice = localStorage.getItem("gender")
 let canvasBackground = document.getElementById('canvas-background');
 const ctxBackground = canvasBackground.getContext('2d');
 
@@ -44,11 +47,14 @@ let frameRows = 4;
 let frameWidth = spriteWidth/frameCols;
 let frameHeight = spriteHeight/frameRows;
 
+const musicButton = document.querySelector("#music-btn");
+
 // Index de la frame
 let currentFrame = 0
 
 // Initialisation de l'ojet player
-let player = new Player("Adrien", 'character_profile/male_player.png', [dx, dy], ["carte des suspects", "bout de papier"]);//position et inventaire à définir, ajouter des fonctions ect
+
+let player = new Player(playerName, genderChoice, [dx, dy], ["carte des suspects", "bout de papier"]);//position et inventaire à définir, ajouter des fonctions ect
 
 
 // Test initialisation d'un PNJ
@@ -63,7 +69,7 @@ body.onload = function() {
     // Dessin d'une forme pour test la hitbox de l'item
     ctx.fillStyle = "rgba(250, 250, 0, 0.6)";
     ctx.fillRect(itemFoundX,itemFoundY,itemFoundWidth,itemFoundHeight)
-   
+
 }
 // Fin du test (pnj)
 
@@ -444,7 +450,6 @@ function stopMovingCharacter(whichDirection) {
     ctx.drawImage(player.character, sx, sy, frameWidth, frameHeight, dx, dy, frameWidth, frameHeight)
     player.textZone(iTalk, dx, dy);
 
-    
 }
 
 
@@ -494,6 +499,7 @@ ctxBackground.fillRect(500,100,100,100)
 // Dessin de l'image de background
 ctxBackground.drawImage(img, 0, 0,1440,1440);
 
+
 // ctxBackground.drawImage(img3, 0, 0,1440,1440);
 
 
@@ -512,3 +518,15 @@ ctxBackground.drawImage(img, 0, 0,1440,1440);
 
 
 
+// ---------- BOUTON MUSIC ----------
+let soundStatus = false;
+musicButton.onclick = () => {
+    if (soundStatus == false) {
+        soundStatus = true;
+        musicButton.style.background = "url('../images/sound-on.svg')"
+    } else {
+        soundStatus = false;
+        musicButton.style.background = "url('../images/sound-off.svg')"
+    }
+}
+// -----------------------------------

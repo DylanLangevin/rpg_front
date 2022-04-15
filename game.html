@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RPG</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/game.css">
+
+    <style>
+
+        /* body {
+            position: fixed;
+            background-color: #1f1f1f;
+        } */
+
+    </style>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/game.css">
+
+</head>
+<body>
+
+    <!-- test -->
+    <section id="dialogue"></section>
+    <!-- fin du test -->
+    <div id="canva-div">
+        <img id="img" src="/maps/map_principale.png" alt="">
+        <img id="img2" src="/image-map-test/image-map-2.png" alt="">
+        <img id="img3" src="/image-map-test/image-map-interieur.png" alt="">
+        <canvas id="canvas-background" width="1024" height="640"></canvas>
+
+        <canvas id="canvas" width="1024" height="640"></canvas>
+     
+        <div id="inventory">
+            <button id="music-btn"></button>
+        </div>  
+
+    </div>
+
+</body>
+
+<script src="class/player_class.js"></script>
+<script src="class/pnj_class.js"></script>
+<script src="class/police_class.js"></script>
+<script src="script/initialize_class.js"></script>
+<!-- <script src="script/script.js"></script> -->
+<script src="script/playerMove.js"></script>
+<script src="script/playerCollisions.js"></script>
+<script src="script/game_sound.js"></script>
+</html>
