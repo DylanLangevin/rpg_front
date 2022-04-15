@@ -15,9 +15,6 @@ body {
 
 /* Game */
 #canva-div {
-    /* visibility: hidden; */
-    /* z-index: -1; */
-    position: absolute;
     display: flex;
     gap: 10px;
 }

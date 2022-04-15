@@ -17,7 +17,7 @@ body {
 /* Start Menu */
 .start-menu {
     /* display: none; */
-    visibility: hidden;
+    /* visibility: hidden;  */
     height: 640px;
     width: 1040px;
     background: url("../images/steampunk.jpg");

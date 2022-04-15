@@ -69,19 +69,7 @@ confirm.onclick = () => {
     console.log(playerName)
     console.log(genderChoice)
     if (genderChoice != "none" && playerName != "") {
-        document.querySelector(".start-menu").style.visibility = "hidden";
-        document.querySelector("#canva-div").style.visibility = "visible";
-        document.querySelector("#canva-div").style.zIndex = 0;
-        // document.querySelector("#script-menu").src = "";
-        // const scriptGame = document.createElement("script");
-        // scriptGame.src = "script/script.js";
-        // const sectionScript = document.querySelector("#section-script");
-        // sectionScript.insertAdjacentElement("beforeend",scriptGame);
-
-        const sectionScript = document.querySelector("#section-script");
-        const scriptMenu = document.getElementById("script-menu");
-        scriptMenu.parentNode.removeChild(scriptMenu);
-
+        window.location = "game.html";
 
     }
 }
