@@ -1,3 +1,4 @@
+
 let canvasBackground = document.getElementById('canvas-background');
 const ctxBackground = canvasBackground.getContext('2d');
 
@@ -63,7 +64,7 @@ body.onload = function() {
     // Dessin d'une forme pour test la hitbox de l'item
     ctx.fillStyle = "rgba(250, 250, 0, 0.6)";
     ctx.fillRect(itemFoundX,itemFoundY,itemFoundWidth,itemFoundHeight)
-   
+
 }
 // Fin du test (pnj)
 
@@ -444,7 +445,6 @@ function stopMovingCharacter(whichDirection) {
     ctx.drawImage(player.character, sx, sy, frameWidth, frameHeight, dx, dy, frameWidth, frameHeight)
     player.textZone(iTalk, dx, dy);
 
-    
 }
 
 
@@ -493,6 +493,7 @@ ctxBackground.fillRect(500,100,100,100)
 
 // Dessin de l'image de background
 ctxBackground.drawImage(img, 0, 0,1440,1440);
+
 
 // ctxBackground.drawImage(img3, 0, 0,1440,1440);
 

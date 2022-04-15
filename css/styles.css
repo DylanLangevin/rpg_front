@@ -16,6 +16,8 @@ body {
 /* Menu */
 /* Start Menu */
 .start-menu {
+    /* display: none; */
+    visibility: hidden;
     height: 640px;
     width: 1040px;
     background: url("../images/steampunk.jpg");
@@ -179,16 +181,3 @@ body {
 #cancel:hover {
     background: #d90429;
 }
-
-/* Credits */
-#credits-block {
-    overflow: scroll;
-    overflow-x: hidden;
-}
-
-#canva-div {
-    visibility: hidden;
-    gap: 10px;
-}
-
-

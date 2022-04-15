@@ -9,12 +9,65 @@
     <title>RPG</title>
 
     <!-- CSS -->
-    <link rel="stylesheet" href="css/styles.css">
+    <!-- <link rel="stylesheet" href="css/styles.css"> -->
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            height: 100vh;
+            background: #1f1f1f;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+
+        /* Game */
+        #canva-div {
+            display: flex;
+            gap: 10px;
+        }
+
+        #img {
+            visibility: hidden;
+            position: absolute;
+        }
+
+        #img2{
+            visibility: hidden;
+            position: absolute;
+        }
+
+        #img3 {
+            visibility: hidden;
+            position: absolute;
+        }
+
+        #canvas-background {
+            position: absolute;
+            background-color: blue;
+        }
+
+        #canvas {
+            position: sticky;
+        }
+
+        #inventory {
+            height: 640px;
+            width: 100px;
+            background: grey;
+        }
+    </style>
 </head>
 
 <!-- BODY -->
 <body>
-    <div class="start-menu">
+    <!-- <div class="start-menu">
         <h1 id="game-title">Professeur<br>Détective</h1>
         <div class="menu-button">
             <button id="play-button">Jouer</button>
@@ -73,7 +126,7 @@
                     - Louis Rocca<br>
                     - Théo Duval </p>
         </div>
-    </div>
+    </div> -->
 
     <!-- <div class="game-container">
         
@@ -81,8 +134,30 @@
 
         <div class="game-bar"></div>
     </div> -->
+
+    <div id="canva-div">
+        <img id="img" src="/image-map-test/image-map.png" alt="">
+        <img id="img2" src="/image-map-test/image-map-2.png" alt="">
+        <img id="img3" src="/image-map-test/image-map-interieur.png" alt="">
+        <canvas id="canvas-background" width="1040" height="640"></canvas>
+
+        <canvas id="canvas" width="1040" height="640"></canvas>
+
+        <div id="inventory"></div>  
+    </div>
+
     
     <!-- JavaScript -->
-    <script src="script/menu.js"></script>
+    
 </body>
+
+<section id="section-script">
+    <script src="script/menu.js"></script>
+    <script src="class/player_class.js"></script>
+    <script src="class/pnj_class.js"></script>
+    <script src="class/police_class.js"></script>
+    <script src="script/initialize_class.js"></script>
+    <!-- <script src="script/script.js"></script> -->
+</section>
+
 </html>
