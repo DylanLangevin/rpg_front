@@ -1,0 +1,50 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    background: #1f1f1f;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/* Game */
+#canva-div {
+    display: flex;
+    gap: 10px;
+}
+
+#img {
+    visibility: hidden;
+    position: absolute;
+}
+
+#img2{
+    visibility: hidden;
+    position: absolute;
+}
+
+#img3 {
+    visibility: hidden;
+    position: absolute;
+}
+
+#canvas-background {
+    position: absolute;
+    background-color: blue;
+}
+
+#canvas {
+    position: sticky;
+}
+
+#inventory {
+    height: 640px;
+    width: 100px;
+    background: grey;
+}
