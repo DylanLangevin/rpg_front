@@ -47,4 +47,15 @@ body {
     height: 640px;
     width: 100px;
     background: grey;
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+}
+
+#music-btn {
+    margin: 30px;
+    border: none;
+    height: 28px;
+    width: 30px;
+    background: url('../images/sound-off.svg') no-repeat;
 }

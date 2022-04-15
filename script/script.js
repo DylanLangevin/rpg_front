@@ -47,6 +47,8 @@ let frameRows = 4;
 let frameWidth = spriteWidth/frameCols;
 let frameHeight = spriteHeight/frameRows;
 
+const musicButton = document.querySelector("#music-btn");
+
 // Index de la frame
 let currentFrame = 0
 
@@ -516,3 +518,15 @@ ctxBackground.drawImage(img, 0, 0,1440,1440);
 
 
 
+// ---------- BOUTON MUSIC ----------
+let soundStatus = false;
+musicButton.onclick = () => {
+    if (soundStatus == false) {
+        soundStatus = true;
+        musicButton.style.background = "url('../images/sound-on.svg')"
+    } else {
+        soundStatus = false;
+        musicButton.style.background = "url('../images/sound-off.svg')"
+    }
+}
+// -----------------------------------
