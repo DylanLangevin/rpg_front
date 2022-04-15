@@ -9,76 +9,10 @@ let img = document.getElementById('img')
 let img2 = document.getElementById('img2')
 let img3 = document.getElementById('img3')
 
-
-let body = document.querySelector('body');
-
-// Orientation du personnage, la ligne qui correspond à l'image de base
-let directionUp = 0;
-let directionLeft = 1;
-let directionDown = 2;
-let directionRight = 3;
-
-// Mouvement du personnage
-let moveCharacter;
-
-// Position où le dessin sera dessiné sur le canvas
-let dx = 500;
-let dy = 300;
-
-// Vitesse
-let speed = 5
-
-// Position de la zone de l'image source (le coin supérieur gauche de la frame)
-let sx;
-let sy;
-
-// Taille de l'image qui comporte les sprite, width 576/9 = 64 et height 268/4  = 67
-let spriteWidth = 576;
-let spriteHeight = 268;
-
-// Nombre de frame
-let frameCols = 9;
-let frameRows = 4;
-
-// Width de chaque frame 
-let frameWidth = spriteWidth/frameCols;
-let frameHeight = spriteHeight/frameRows;
-
-// Index de la frame
-let currentFrame = 0
-
-// Initialisation de l'ojet player
-let player = new Player("Adrien", 'character_profile/male_player.png', [dx, dy], []);//position et inventaire à définir, ajouter des fonctions ect
-
-
-// Test initialisation d'un PNJ
-body.onload = function() {
-
-    // On dessine la hitbox du pnj
-    ctx.fillStyle = "rgba(250, 0, 0, 0.3)";
-    ctx.fillRect(660, 132, playerFrameWidth, playerFrameHeight)
-
-    // Dessin du pnj
-    ctx.drawImage(maleCitizen.character, 0, 128,frameWidth, frameHeight, maleCitizen.position[0], maleCitizen.position[1], frameWidth, frameHeight)
-
-    // Dessin d'une forme pour test la hitbox de l'item
-    ctx.fillStyle = "rgba(250, 250, 0, 0.6)";
-    ctx.fillRect(itemFoundX,itemFoundY,itemFoundWidth,itemFoundHeight)
-   
-}
-// Fin du test (pnj)
-
-
 // Test déplacement (les fonctions)
 
 // Choisir la bonne frame
 function updateFrame() {
-
-    // Update Collision
-    playerPositionX = dx + 15;
-    playerPositionY = dy + 5;
-    playerFrameWidth = frameWidth - 30;
-    playerFrameHeight = frameHeight - 15;
 
     // Effacer le canvas avant de mettre la nouvelle frame, évite un biug d'affichage
     ctx.clearRect(0, 0, canvas.width, canvas.height)
@@ -89,56 +23,8 @@ function updateFrame() {
     ctx.fillRect(660, 132, playerFrameWidth, playerFrameHeight)
     // Redessine le pnj
     ctx.drawImage(maleCitizen.character, 0, 128,frameWidth, frameHeight, maleCitizen.position[0], maleCitizen.position[1], frameWidth, frameHeight)
-
-    // modulo permet d'obtenir la bonne frame (1, 2, 3, 4...), ça permet d'update l'index de la frame
-    currentFrame = ++currentFrame % frameCols;
-    console.log("frame", currentFrame);
-
-    // Choisir le point de départ de la frame
-    sx = currentFrame * frameWidth;
-
-    // Mouvement du personnage selon le choix effectué par l'user
-    if (moveCharacter === "up") {
-        dy -= speed
-
-        // Va permettre de définir la direction du mouvement
-        sy = directionUp * frameHeight;
-        body.onkeyup = event => {
-            stopMovingCharacter(directionUp);
-        }
-    } 
-    else if (moveCharacter === "down") {
-        dy += speed
-        sy = directionDown * frameHeight;
-        body.onkeyup = event => {
-            stopMovingCharacter(directionDown);
-        } 
-    }
-
-    else if (moveCharacter === "left") {
-        dx -= speed
-        sy = directionLeft * frameHeight;
-        body.onkeyup = event => {
-            stopMovingCharacter(directionLeft);
-        }
-    }
-    else if (moveCharacter === "right") {
-        dx +=speed
-        sy = directionRight * frameHeight;
-        body.onkeyup = event => {
-            stopMovingCharacter(directionRight);
-        }
-    }
-    else if (moveCharacter === "moonWalk") {
-        dx += speed
-        sy = directionLeft * frameHeight;
-        body.onkeyup = event => {
-            stopMovingCharacter(directionLeft);
-        }
-    }    
 }
 
-let colorRect = "blue"
 let iTalk;
 
 // Coordonnées du carré bleu porte entre deux zones
@@ -165,16 +51,6 @@ let itemPicked = false
 
 let currentMap = 1
 
-// Coordonnées de la hitbox maison 
-let houseHitboxX = 431
-let houseHitboxY = 50
-let houseHitboxWidth = 148
-let houseHitboxHeight = 190
-
-// dessin de la hitbox de la maison
-ctx.fillStyle = "rgba(250, 0, 0, 0.3)";
-ctx.fillRect(houseHitboxX,houseHitboxY,houseHitboxWidth,houseHitboxHeight)
-
 
 // Coordonnées de la hitbox du pnj
 let pnjX = 660
@@ -193,74 +69,10 @@ let pnjDialogueBoxHeight = frameHeight + 10
 ctx.fillStyle = "rgba(250, 0, 250, 0.3)";
 ctx.fillRect(pnjDialogueBoxX, pnjDialogueBoxY, pnjDialogueBoxWidth, pnjDialogueBoxHeight)
 
-// Pour les collisions
-let playerPositionX = dx + 15;
-let playerPositionY = dy + 5;
-let playerFrameWidth = frameWidth - 30;
-let playerFrameHeight = frameHeight - 10;
 
 // Quelle touche au dialogue
 let whichText;
 let pnjTalk;
-
-function solidCollision(){
-
-    console.log(playerPositionX);
-
-
-    if(playerPositionX + playerFrameWidth > houseHitboxX && playerPositionX < houseHitboxX + houseHitboxWidth && playerPositionY + playerFrameHeight > houseHitboxY && playerPositionY < houseHitboxY + houseHitboxHeight){
-        console.log("Collision maison");
-
-        // en cas de collision on inverse la vitesse pour qu'il puisse est bloqué sur place
-
-        switch (moveCharacter) {
-
-            case "up":
-            
-                dy += speed
-    
-                // Va permettre de définir la direction du mouvement
-                sy = directionUp * frameHeight ;
-                body.onkeyup = event => {
-                    stopMovingCharacter(directionUp);
-                }
-                break;
-
-            case "down":
-
-                dy -= speed
-
-                sy = directionDown * frameHeight;
-                body.onkeyup = event => {
-                    stopMovingCharacter(directionDown);
-                } 
-                break;
-
-            case "left":
-
-                dx += speed
-
-                sy = directionLeft * frameHeight;
-                body.onkeyup = event => {
-                    stopMovingCharacter(directionLeft);
-                }
-                break;
-
-            case "right":
-
-                dx -=speed
-
-                sy = directionRight * frameHeight;
-                body.onkeyup = event => {
-                    stopMovingCharacter(directionRight);
-                }
-                break;
-        
-            default:
-                break;
-        }
-
-}
 
 // Fonction de collision
 // function collision(){
@@ -335,49 +147,7 @@ function solidCollision(){
     //         doorCafeColliderY  = 420
     //         currentMap = 1
     //     }
-        
-
-
-    // }
-
-
-    // Calcul de la collision avec la maison
-    // if(dx+15 + frameWidth-30 > houseHitboxX && dx+15 < houseHitboxX + houseHitboxWidth && playerPositionY + playerFrameHeight > houseHitboxY && playerPositionY < houseHitboxY + houseHitboxHeight){
-    //     console.log("Collision maison");
-
-    //     // en cas de collision on inverse la vitesse pour qu'il puisse est bloqué sur place
-    //     if (moveCharacter === "up") {
-    //         dy += speed
     
-    //         // Va permettre de définir la direction du mouvement
-    //         sy = directionUp * frameHeight;
-    //         body.onkeyup = event => {
-    //             stopMovingCharacter(directionUp);
-    //         }
-    //     } 
-    //     else if (moveCharacter === "down") {
-    //         dy -= speed
-    //         sy = directionDown * frameHeight;
-    //         body.onkeyup = event => {
-    //             stopMovingCharacter(directionDown);
-    //         } 
-    //     }
-    
-    //     else if (moveCharacter === "left") {
-    //         dx += speed
-    //         sy = directionLeft * frameHeight;
-    //         body.onkeyup = event => {
-    //             stopMovingCharacter(directionLeft);
-    //         }
-    //     }
-    //     else if (moveCharacter === "right") {
-    //         dx -=speed
-    //         sy = directionRight * frameHeight;
-    //         body.onkeyup = event => {
-    //             stopMovingCharacter(directionRight);
-    //         }
-    //     }
-    // }
 
     // // Collision de l'item jaune
     // if(dx+15 + frameWidth-30 > itemFoundX && dx+15 < itemFoundX + itemFoundWidth && dy+5 + playerFrameHeight > itemFoundY && dy+5 < itemFoundY + itemFoundHeight && !itemPicked)
@@ -457,78 +227,41 @@ function solidCollision(){
     //         }
     //     }
     // }
+
+
+if(!itemPicked){
+    // Dessin d'une forme pour test la hitbox de l'item
+    ctx.fillStyle = "rgba(250, 250, 0, 0.6)";
+    ctx.fillRect(itemFoundX,itemFoundY,itemFoundWidth,itemFoundHeight)
+}
+
+// Hitbox du pnj pour le dialogue
+ctx.fillStyle = "rgba(250, 0, 250, 0.3)";
+ctx.fillRect(pnjDialogueBoxX, pnjDialogueBoxY, pnjDialogueBoxWidth, pnjDialogueBoxHeight)
+
+
+// Test dialogue sous condition
+
+if(dx <= 50) {
+    iTalk = "j'me casse"
+} else if(dx <= 200 && dx > 50) {
+    iTalk = "c'est nul ici"
+} else if(dx > 200) {
+    iTalk = "elle sont où les meufs?"
 }
 
 
-// Dessiner le caractère
-function drawCharacter() {
-    // On update d'abord la frame
-    updateFrame();
-
-    // Dessin d'une forme pour test la hitbox de la changement de zone
-    ctx.fillStyle = colorRect
-    ctx.fillRect(squareColliderX,squareColliderY,squareColliderWidth,squareColliderHeight)
-
-    // Dessin d'une forme pour test la hitbox de la porte de café
-    ctx.fillStyle = "rgba(0, 0, 250, 0.3)";
-    ctx.fillRect(doorCafeColliderX,doorCafeColliderY,doorCafeColliderWidth,doorCafeColliderHeight)
-
-    if(!itemPicked){
-        // Dessin d'une forme pour test la hitbox de l'item
-        ctx.fillStyle = "rgba(250, 250, 0, 0.6)";
-        ctx.fillRect(itemFoundX,itemFoundY,itemFoundWidth,itemFoundHeight)
-    }
-
-    // Hitbox du pnj pour le dialogue
-    ctx.fillStyle = "rgba(250, 0, 250, 0.3)";
-    ctx.fillRect(pnjDialogueBoxX, pnjDialogueBoxY, pnjDialogueBoxWidth, pnjDialogueBoxHeight)
-
-
-    // Test dialogue sous condition
-
-    if(dx <= 50) {
-        iTalk = "j'me casse"
-    } else if(dx <= 200 && dx > 50) {
-        iTalk = "c'est nul ici"
-    } else if(dx > 200) {
-        iTalk = "elle sont où les meufs?"
-    }
-
-
-    player.textZone(iTalk, dx, dy);
-    // Fin du test dialogue sous condition
-        
-    // On dessine la hitbox du perso
-    ctx.fillStyle = "rgba(250, 0, 0, 0.3)";
-    ctx.fillRect(playerPositionX, playerPositionY, playerFrameWidth, playerFrameHeight);
-
-    // On dessine le caractère
-    ctx.drawImage(player.character, sx, sy, frameWidth, frameHeight, dx, dy, frameWidth, frameHeight)
-}
+player.textZone(iTalk, dx, dy);
+// Fin du test dialogue sous condition
 
 // Dessiner le caractère à l'arrêt lorsqu'on arrête d'avancer
 function stopMovingCharacter(whichDirection) {
-    ctx.clearRect(0, 0, canvas.width, canvas.height)
-
-    solidCollision();
-
-    // Dessin d'une forme pour test la hitbox
-    ctx.fillStyle = colorRect
-    ctx.fillRect(squareColliderX,squareColliderY,squareColliderWidth,squareColliderHeight)
-
-    // Dessin d'une forme pour test la hitbox de la porte de café
-    ctx.fillStyle = "rgba(0, 0, 250, 0.3)";
-    ctx.fillRect(doorCafeColliderX,doorCafeColliderY,doorCafeColliderWidth,doorCafeColliderHeight)
 
     if(!itemPicked){
         // Dessin d'une forme pour test la hitbox de l'item
         ctx.fillStyle = "rgba(250, 250, 0, 0.6)";
         ctx.fillRect(itemFoundX,itemFoundY,itemFoundWidth,itemFoundHeight)
     }
-
-    // Redessine la hitbox du pnj
-    ctx.fillStyle = "rgba(250, 0, 0, 0.3)";
-    ctx.fillRect(660, 132, playerFrameWidth, playerFrameHeight)
 
     // Redessine le pnj
     ctx.drawImage(maleCitizen.character, 0, 128,frameWidth, frameHeight, maleCitizen.position[0], maleCitizen.position[1], frameWidth, frameHeight)
@@ -544,53 +277,8 @@ function stopMovingCharacter(whichDirection) {
 
     ctx.fillStyle = "rgba(250, 0, 0, 0.3)";
     ctx.fillRect(playerPositionX, playerPositionY, playerFrameWidth, playerFrameHeight);
-
-    // On dessine le caractère
-    ctx.drawImage(player.character, sx, sy, frameWidth, frameHeight, dx, dy, frameWidth, frameHeight)
-    player.textZone(iTalk, dx, dy);
-
     
 }
-
-
-
-body.onkeydown = event => {
-    switch(event.key) {
-        case "ArrowUp":
-            moveCharacter = "up";
-            solidCollision();
-            drawCharacter();
-            break;
-            
-        case "ArrowDown":
-            moveCharacter = "down";
-            solidCollision();
-            drawCharacter();
-            break;
-
-        case "ArrowLeft":
-            moveCharacter = "left";
-            solidCollision();
-            drawCharacter();
-            break;
-
-        case "ArrowRight":
-            moveCharacter = "right";
-            solidCollision();
-            drawCharacter();
-            break;
-        case "m":
-            moveCharacter = "moonWalk";
-            solidCollision();
-            drawCharacter();
-            break;
-    }
-}
-
-
-
-// Dessin de l'image de background
-ctxBackground.drawImage(img, 0, 0,1440,1440);
 
 // ctxBackground.drawImage(img3, 0, 0,1440,1440);
 
