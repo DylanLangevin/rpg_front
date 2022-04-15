@@ -60,8 +60,8 @@ body.onload = function() {
     // On dessine le caractère
     ctx.drawImage(player.character, spriteSheetPosX, spriteSheetPosY,frameWidth, frameHeight, player.position.x, player.position.y, frameWidth / scaleDivider, frameHeight / scaleDivider);
 
-    // drawPlayerHitbox();
-    // drawAllSolidCollisionsBox();
+    drawPlayerHitbox();
+    drawAllSolidCollisionsBox();
 
 }
 
@@ -80,8 +80,8 @@ function stopMovingCharacter(whichDirection) {
 
     // On dessine le caractère
     ctx.drawImage(player.character, spriteSheetPosX, spriteSheetPosY,frameWidth, frameHeight, player.position.x, player.position.y, frameWidth / scaleDivider, frameHeight / scaleDivider);
-    // drawPlayerHitbox();
-    // drawAllSolidCollisionsBox();
+    drawPlayerHitbox();
+    drawAllSolidCollisionsBox();
 
 }
 
@@ -166,8 +166,8 @@ function updateFrame() {
 
     ctx.drawImage(player.character, spriteSheetPosX, spriteSheetPosY,frameWidth, frameHeight, player.position.x, player.position.y, frameWidth / scaleDivider, frameHeight / scaleDivider);
 
-    // drawPlayerHitbox();
-    // drawAllSolidCollisionsBox();
+    drawPlayerHitbox();
+    drawAllSolidCollisionsBox();
 
     console.log(moveCharacter);
     console.log(previousMoveOrientation);
