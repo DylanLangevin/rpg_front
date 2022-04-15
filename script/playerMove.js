@@ -41,8 +41,14 @@ let frameHeight = spriteHeight/frameRows;
 // Index de la frame
 let currentFrame = 0;
 
+let offsetX = 18;
+let offsetY = 10;
+
+let hitboxWidth = 30;
+let hitboxHeight = 50;
+
 // Initialisation de l'ojet player
-let player = new Player("Player", 'character_profile/male_player.png', {x:600, y:400}, 5, []);//position et inventaire à définir, ajouter des fonctions ect
+let player = new Player("Player", 'character_profile/male_player.png', {x:600, y:400}, 15, []);//position et inventaire à définir, ajouter des fonctions ect
 
 console.log(player.position);
 
@@ -53,15 +59,11 @@ body.onload = function() {
     ctx.drawImage(player.character, spriteSheetPosX, spriteSheetPosY,frameWidth, frameHeight, player.position.x, player.position.y, frameWidth, frameHeight);
 
     drawPlayerHitbox();
+    drawAllSolidCollisionsBox();
 
 }
 
 function drawPlayerHitbox(){
-    let offsetX = 18;
-    let offsetY = 10;
-
-    let hitboxWidth = 30;
-    let hitboxHeight = 50;
 
     ctx.fillStyle = "rgba(255,0,0,0.3)";
     ctx.fillRect(player.position.x + offsetX, player.position.y + offsetY, hitboxWidth,hitboxHeight);
@@ -77,6 +79,7 @@ function stopMovingCharacter(whichDirection) {
     // On dessine le caractère
     ctx.drawImage(player.character, spriteSheetPosX, spriteSheetPosY,frameWidth, frameHeight, player.position.x, player.position.y, frameWidth, frameHeight);
     drawPlayerHitbox();
+    drawAllSolidCollisionsBox();
 
 }
 
@@ -162,6 +165,7 @@ function updateFrame() {
     ctx.drawImage(player.character, spriteSheetPosX, spriteSheetPosY,frameWidth, frameHeight, player.position.x, player.position.y, frameWidth, frameHeight);
 
     drawPlayerHitbox();
+    drawAllSolidCollisionsBox();
 
     console.log(moveCharacter);
     console.log(previousMoveOrientation);
@@ -176,25 +180,35 @@ body.onkeydown = event => {
         case "ArrowUp":
             moveCharacter = "up";
             updateFrame();
+            checkAllSolidCollisions();
+            checkCanvasEdgesCollisions();
             break;
             
         case "ArrowDown":
             moveCharacter = "down";
             updateFrame();
+            checkAllSolidCollisions();
+            checkCanvasEdgesCollisions();
             break;
 
         case "ArrowLeft":
             moveCharacter = "left";
             updateFrame();
+            checkAllSolidCollisions();
+            checkCanvasEdgesCollisions();
             break;
 
         case "ArrowRight":
             moveCharacter = "right";
             updateFrame();
+            checkAllSolidCollisions();
+            checkCanvasEdgesCollisions();
             break;
         case "m":
             moveCharacter = "moonWalk";
             updateFrame();
+            checkAllSolidCollisions();
+            checkCanvasEdgesCollisions();
             break;
     }
 }
