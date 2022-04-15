@@ -10,6 +10,7 @@ let playerPositionX = dx + 15;
 let playerFrameWidth = frameWidth - 30;
 let playerFrameHeight = frameHeight - 10;
 
+
 function pnjConversationCollision(playerPositionX, playerPositionY, playerFrameWidth, playerFrameHeight, pnjDialogueBoxX, pnjDialogueBoxY, pnjDialogueBoxWidth, pnjDialogueBoxHeight, whichText, pnjTalk, maleCitizen) {
     // Collision du pnj
     if(playerPositionX + playerFrameWidth > pnjDialogueBoxX && playerPositionX < pnjDialogueBoxX + pnjDialogueBoxWidth && playerPositionY + playerFrameHeight > pnjDialogueBoxY && playerPositionY < pnjDialogueBoxY + pnjDialogueBoxHeight) {

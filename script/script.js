@@ -53,9 +53,10 @@ let player = new Player("Adrien", 'character_profile/male_player.png', [dx, dy],
 
 // Test initialisation d'un PNJ
 body.onload = function() {
+
     // On dessine la hitbox du pnj
     ctx.fillStyle = "rgba(250, 0, 0, 0.3)";
-    ctx.fillRect(660, 132, frameWidth-20, frameHeight-10)
+    ctx.fillRect(660, 132, playerFrameWidth, playerFrameHeight)
 
     // Dessin du pnj
     ctx.drawImage(maleCitizen.character, 0, 128,frameWidth, frameHeight, maleCitizen.position[0], maleCitizen.position[1], frameWidth, frameHeight)
@@ -72,13 +73,20 @@ body.onload = function() {
 
 // Choisir la bonne frame
 function updateFrame() {
+
+    // Update Collision
+    playerPositionX = dx + 15;
+    playerPositionY = dy + 5;
+    playerFrameWidth = frameWidth - 30;
+    playerFrameHeight = frameHeight - 15;
+
     // Effacer le canvas avant de mettre la nouvelle frame, évite un biug d'affichage
     ctx.clearRect(0, 0, canvas.width, canvas.height)
 
 
     // Redessine la hitbox du pnj
     ctx.fillStyle = "rgba(250, 0, 0, 0.3)";
-    ctx.fillRect(660, 132, frameWidth-20, frameHeight-10)
+    ctx.fillRect(660, 132, playerFrameWidth, playerFrameHeight)
     // Redessine le pnj
     ctx.drawImage(maleCitizen.character, 0, 128,frameWidth, frameHeight, maleCitizen.position[0], maleCitizen.position[1], frameWidth, frameHeight)
 
@@ -186,8 +194,8 @@ ctx.fillStyle = "rgba(250, 0, 250, 0.3)";
 ctx.fillRect(pnjDialogueBoxX, pnjDialogueBoxY, pnjDialogueBoxWidth, pnjDialogueBoxHeight)
 
 // Pour les collisions
-let playerPositionY = dy + 5;
 let playerPositionX = dx + 15;
+let playerPositionY = dy + 5;
 let playerFrameWidth = frameWidth - 30;
 let playerFrameHeight = frameHeight - 10;
 
@@ -195,208 +203,260 @@ let playerFrameHeight = frameHeight - 10;
 let whichText;
 let pnjTalk;
 
-// Fonction de collision
-function collision(){
-    // Collision du rect bleu
-    if(dx+15 + frameWidth-30 > squareColliderX && dx+15 < squareColliderX + squareColliderWidth && dy+5 + frameHeight-10 > squareColliderY && dy+5 < squareColliderY + squareColliderHeight)
-    {
-        colorRect = "green";
+function solidCollision(){
 
-        // Affichage de l'img du background selon le background actuel
-        if(currentMap == 1) {
-
-            ctxBackground.clearRect(0,0,1040,640)
-            ctxBackground.drawImage(img2, 0, 0,1040,640);
-
-            // On replace le personnage et le carré bleu sur la route de la deuxieme image
-            dx = 280
-            dy = 560
-
-            squareColliderX  = 250
-            squareColliderY  = 630
-
-            currentMap = 2
-
-        } else if(currentMap == 2) {
-
-            ctxBackground.clearRect(0,0,1040,640)
-            
-            ctxBackground.drawImage(img, 0, 0,1440,1440);
-
-            // On replace le personnage et le carré bleu sur la route de la deuxieme image
-            dx = 630
-            dy = 15
-
-            squareColliderX  = 630
-            squareColliderY  = 0
-            currentMap = 1
-        }
-        
+    console.log(playerPositionX);
 
 
-    } else {
-        colorRect = "rgba(0, 0, 250, 0.3)"
-    }
-
-    // Collision de la porte du café
-    if(dx+15 + frameWidth-30 > doorCafeColliderX && dx+15 < doorCafeColliderX +doorCafeColliderWidth && dy+5 + frameHeight-10 > doorCafeColliderY && dy+5 < doorCafeColliderY + doorCafeColliderHeight)
-    {
-        console.log("cafe");
-
-        // Affichage de l'img du background selon le background actuel
-        if(currentMap == 1) {
-
-            ctxBackground.clearRect(0,0,1040,640)
-            ctxBackground.drawImage(img3, 0, 0,1040,640);
-
-            // On replace le personnage et le carré bleu sur la route de la deuxieme image
-            dx = 480
-            dy = 500
-
-            doorCafeColliderX  = 480
-            doorCafeColliderY  = 600
-
-            currentMap = 3
-
-        } else if(currentMap == 3) {
-
-            ctxBackground.clearRect(0,0,1040,640)
-            ctxBackground.drawImage(img, 0, 0,1440,1440);
-
-            // On replace le personnage et le carré bleu sur la route de la deuxieme image
-            dx = 339
-            dy = 450
-
-            doorCafeColliderX  = 339
-            doorCafeColliderY  = 420
-            currentMap = 1
-        }
-        
-
-
-    } else {
-        colorRect = "rgba(0, 0, 250, 0.3)"
-    }
-
-
-    // Calcul de la collision avec la maison
-    if(dx+15 + frameWidth-30 > houseHitboxX && dx+15 < houseHitboxX + houseHitboxWidth && dy+5 + frameHeight-10 > houseHitboxY && dy+5 < houseHitboxY + houseHitboxHeight){
+    if(playerPositionX + playerFrameWidth > houseHitboxX && playerPositionX < houseHitboxX + houseHitboxWidth && playerPositionY + playerFrameHeight > houseHitboxY && playerPositionY < houseHitboxY + houseHitboxHeight){
         console.log("Collision maison");
 
         // en cas de collision on inverse la vitesse pour qu'il puisse est bloqué sur place
-        if (moveCharacter === "up") {
-            dy += speed
-    
-            // Va permettre de définir la direction du mouvement
-            sy = directionUp * frameHeight;
-            body.onkeyup = event => {
-                stopMovingCharacter(directionUp);
-            }
-        } 
-        else if (moveCharacter === "down") {
-            dy -= speed
-            sy = directionDown * frameHeight;
-            body.onkeyup = event => {
-                stopMovingCharacter(directionDown);
-            } 
-        }
-    
-        else if (moveCharacter === "left") {
-            dx += speed
-            sy = directionLeft * frameHeight;
-            body.onkeyup = event => {
-                stopMovingCharacter(directionLeft);
-            }
-        }
-        else if (moveCharacter === "right") {
-            dx -=speed
-            sy = directionRight * frameHeight;
-            body.onkeyup = event => {
-                stopMovingCharacter(directionRight);
-            }
-        }
-    }
 
-    // Collision de l'item jaune
-    if(dx+15 + frameWidth-30 > itemFoundX && dx+15 < itemFoundX + itemFoundWidth && dy+5 + frameHeight-10 > itemFoundY && dy+5 < itemFoundY + itemFoundHeight && !itemPicked)
-    {
-        player.newItem("carré")
-        console.log("Objet trouvé");
-        console.log(player.inventory);
-        itemPicked = true
-    
-    } else {
-        colorRect = "rgba(0, 0, 250, 0.3)"
-    }
+        switch (moveCharacter) {
 
-    // Collision du pnj
-    if(dx+15 + frameWidth-30 > pnjDialogueBoxX && dx+15 < pnjDialogueBoxX + pnjDialogueBoxWidth && dy+5 + frameHeight-10 > pnjDialogueBoxY && dy+5 < pnjDialogueBoxY + pnjDialogueBoxHeight) {
-         // Afficher le dialogue du pnj à la collision
-         pnjTalk = "Voulez-vous discuter avec " + maleCitizen.name + " ? (enter)"
-         maleCitizen.textZone(pnjTalk)
-
-         // Quand on clique sur entrée, le dialogue se créé
-         window.onkeydown = event => {
-             switch(event.key) {
-                 case "Enter":
-                     whichText = true
-                     console.log("ok");
-                     return
-                 default:
-                     console.log("Non");
-             }
-         }
-        
-         // Affiche le dialogue
-         if (whichText == true) {
-            ctx.clearRect(0, 0, canvas.width, canvas.height)
-            console.log("oui");
-            pnjTalk = "Holaaaaaa"
-            maleCitizen.textZone(pnjTalk)
-         }
-
-         // Pour effacer le texte 
-         whichText = false
-
-
-        if(dx+15 + frameWidth-30 > pnjX && dx+15 < pnjX + pnjWidth && dy+5 + frameHeight-10 > pnjY && dy+5 < pnjY + pnjHeight) {
-
-            console.log("Collision pnj");
-
-            // en cas de collision on inverse la vitesse pour qu'il puisse est bloqué sur place
-            if (moveCharacter === "up") {
+            case "up":
+            
                 dy += speed
-        
+    
                 // Va permettre de définir la direction du mouvement
-                sy = directionUp * frameHeight;
+                sy = directionUp * frameHeight ;
                 body.onkeyup = event => {
                     stopMovingCharacter(directionUp);
                 }
-            } 
-            else if (moveCharacter === "down") {
+                break;
+
+            case "down":
+
                 dy -= speed
+
                 sy = directionDown * frameHeight;
                 body.onkeyup = event => {
                     stopMovingCharacter(directionDown);
                 } 
-            }
-        
-            else if (moveCharacter === "left") {
+                break;
+
+            case "left":
+
                 dx += speed
+
                 sy = directionLeft * frameHeight;
                 body.onkeyup = event => {
                     stopMovingCharacter(directionLeft);
                 }
-            }
-            else if (moveCharacter === "right") {
+                break;
+
+            case "right":
+
                 dx -=speed
+
                 sy = directionRight * frameHeight;
                 body.onkeyup = event => {
                     stopMovingCharacter(directionRight);
                 }
-            }
+                break;
+        
+            default:
+                break;
         }
-    }
+
+}
+
+// Fonction de collision
+// function collision(){
+    // // Collision changement de zone
+    // if(playerPositionX + playerFrameWidth > squareColliderX && playerPositionX < squareColliderX + squareColliderWidth && playerPositionY + playerFrameHeight > squareColliderY && playerPositionY < squareColliderY + squareColliderHeight)
+    // {
+
+    //     // Affichage de l'img du background selon le background actuel
+    //     if(currentMap == 1) {
+
+    //         ctxBackground.clearRect(0,0,1040,640)
+    //         ctxBackground.drawImage(img2, 0, 0,1040,640);
+
+    //         // On replace le personnage et le carré bleu sur la route de la deuxieme image
+    //         dx = 280
+    //         dy = 560
+
+    //         squareColliderX  = 250
+    //         squareColliderY  = 630
+
+    //         currentMap = 2
+
+    //     } else if(currentMap == 2) {
+
+    //         ctxBackground.clearRect(0,0,1040,640)
+            
+    //         ctxBackground.drawImage(img, 0, 0,1440,1440);
+
+    //         // On replace le personnage et le carré bleu sur la route de la deuxieme image
+    //         dx = 630
+    //         dy = 15
+
+    //         squareColliderX  = 630
+    //         squareColliderY  = 0
+    //         currentMap = 1
+    //     }
+        
+
+
+    // }
+
+    // // Collision de la porte du café
+    // if(dx+15 + playerFrameWidth > doorCafeColliderX && dx+15 < doorCafeColliderX +doorCafeColliderWidth && playerPositionY + playerFrameHeight > doorCafeColliderY && playerPositionY < doorCafeColliderY + doorCafeColliderHeight)
+    // {
+    //     console.log("cafe");
+
+    //     // Affichage de l'img du background selon le background actuel
+    //     if(currentMap == 1) {
+
+    //         ctxBackground.clearRect(0,0,1040,640)
+    //         ctxBackground.drawImage(img3, 0, 0,1040,640);
+
+    //         // On replace le personnage et le carré bleu sur la route de la deuxieme image
+    //         dx = 480
+    //         dy = 500
+
+    //         doorCafeColliderX  = 480
+    //         doorCafeColliderY  = 600
+
+    //         currentMap = 3
+
+    //     } else if(currentMap == 3) {
+
+    //         ctxBackground.clearRect(0,0,1040,640)
+    //         ctxBackground.drawImage(img, 0, 0,1440,1440);
+
+    //         // On replace le personnage et le carré bleu sur la route de la deuxieme image
+    //         dx = 339
+    //         dy = 450
+
+    //         doorCafeColliderX  = 339
+    //         doorCafeColliderY  = 420
+    //         currentMap = 1
+    //     }
+        
+
+
+    // }
+
+
+    // Calcul de la collision avec la maison
+    // if(dx+15 + frameWidth-30 > houseHitboxX && dx+15 < houseHitboxX + houseHitboxWidth && playerPositionY + playerFrameHeight > houseHitboxY && playerPositionY < houseHitboxY + houseHitboxHeight){
+    //     console.log("Collision maison");
+
+    //     // en cas de collision on inverse la vitesse pour qu'il puisse est bloqué sur place
+    //     if (moveCharacter === "up") {
+    //         dy += speed
+    
+    //         // Va permettre de définir la direction du mouvement
+    //         sy = directionUp * frameHeight;
+    //         body.onkeyup = event => {
+    //             stopMovingCharacter(directionUp);
+    //         }
+    //     } 
+    //     else if (moveCharacter === "down") {
+    //         dy -= speed
+    //         sy = directionDown * frameHeight;
+    //         body.onkeyup = event => {
+    //             stopMovingCharacter(directionDown);
+    //         } 
+    //     }
+    
+    //     else if (moveCharacter === "left") {
+    //         dx += speed
+    //         sy = directionLeft * frameHeight;
+    //         body.onkeyup = event => {
+    //             stopMovingCharacter(directionLeft);
+    //         }
+    //     }
+    //     else if (moveCharacter === "right") {
+    //         dx -=speed
+    //         sy = directionRight * frameHeight;
+    //         body.onkeyup = event => {
+    //             stopMovingCharacter(directionRight);
+    //         }
+    //     }
+    // }
+
+    // // Collision de l'item jaune
+    // if(dx+15 + frameWidth-30 > itemFoundX && dx+15 < itemFoundX + itemFoundWidth && dy+5 + playerFrameHeight > itemFoundY && dy+5 < itemFoundY + itemFoundHeight && !itemPicked)
+    // {
+    //     player.newItem("carré")
+    //     console.log("Objet trouvé");
+    //     console.log(player.inventory);
+    //     itemPicked = true
+    
+    // }
+
+    // Collision du pnj
+    // if(dx+15 + frameWidth-30 > pnjDialogueBoxX && dx+15 < pnjDialogueBoxX + pnjDialogueBoxWidth && dy+5 + playerFrameHeight > pnjDialogueBoxY && dy+5 < pnjDialogueBoxY + pnjDialogueBoxHeight) {
+    //      // Afficher le dialogue du pnj à la collision
+    //      pnjTalk = "Voulez-vous discuter avec " + maleCitizen.name + " ? (enter)"
+    //      maleCitizen.textZone(pnjTalk)
+
+    //      // Quand on clique sur entrée, le dialogue se créé
+    //      window.onkeydown = event => {
+    //          switch(event.key) {
+    //              case "Enter":
+    //                  whichText = true
+    //                  console.log("ok");
+    //                  return
+    //              default:
+    //                  console.log("Non");
+    //          }
+    //      }
+        
+    //      // Affiche le dialogue
+    //      if (whichText == true) {
+    //         ctx.clearRect(0, 0, canvas.width, canvas.height)
+    //         console.log("oui");
+    //         pnjTalk = "Holaaaaaa"
+    //         maleCitizen.textZone(pnjTalk)
+    //      }
+
+    //      // Pour effacer le texte 
+    //      whichText = false
+
+
+    //     if(dx+15 + frameWidth-30 > pnjX && dx+15 < pnjX + pnjWidth && dy+5 + playerFrameHeight > pnjY && dy+5 < pnjY + pnjHeight) {
+
+    //         console.log("Collision pnj");
+
+    //         // en cas de collision on inverse la vitesse pour qu'il puisse est bloqué sur place
+    //         if (moveCharacter === "up") {
+    //             dy += speed
+        
+    //             // Va permettre de définir la direction du mouvement
+    //             sy = directionUp * frameHeight;
+    //             body.onkeyup = event => {
+    //                 stopMovingCharacter(directionUp);
+    //             }
+    //         } 
+    //         else if (moveCharacter === "down") {
+    //             dy -= speed
+    //             sy = directionDown * frameHeight;
+    //             body.onkeyup = event => {
+    //                 stopMovingCharacter(directionDown);
+    //             } 
+    //         }
+        
+    //         else if (moveCharacter === "left") {
+    //             dx += speed
+    //             sy = directionLeft * frameHeight;
+    //             body.onkeyup = event => {
+    //                 stopMovingCharacter(directionLeft);
+    //             }
+    //         }
+    //         else if (moveCharacter === "right") {
+    //             dx -=speed
+    //             sy = directionRight * frameHeight;
+    //             body.onkeyup = event => {
+    //                 stopMovingCharacter(directionRight);
+    //             }
+    //         }
+    //     }
+    // }
 }
 
 
@@ -440,7 +500,7 @@ function drawCharacter() {
         
     // On dessine la hitbox du perso
     ctx.fillStyle = "rgba(250, 0, 0, 0.3)";
-    ctx.fillRect(dx+15, dy+5, frameWidth-30, frameHeight-10)
+    ctx.fillRect(playerPositionX, playerPositionY, playerFrameWidth, playerFrameHeight);
 
     // On dessine le caractère
     ctx.drawImage(player.character, sx, sy, frameWidth, frameHeight, dx, dy, frameWidth, frameHeight)
@@ -450,7 +510,7 @@ function drawCharacter() {
 function stopMovingCharacter(whichDirection) {
     ctx.clearRect(0, 0, canvas.width, canvas.height)
 
-    collision();
+    solidCollision();
 
     // Dessin d'une forme pour test la hitbox
     ctx.fillStyle = colorRect
@@ -468,7 +528,7 @@ function stopMovingCharacter(whichDirection) {
 
     // Redessine la hitbox du pnj
     ctx.fillStyle = "rgba(250, 0, 0, 0.3)";
-    ctx.fillRect(660, 132, frameWidth-20, frameHeight-10)
+    ctx.fillRect(660, 132, playerFrameWidth, playerFrameHeight)
 
     // Redessine le pnj
     ctx.drawImage(maleCitizen.character, 0, 128,frameWidth, frameHeight, maleCitizen.position[0], maleCitizen.position[1], frameWidth, frameHeight)
@@ -483,7 +543,7 @@ function stopMovingCharacter(whichDirection) {
     // On dessine la hitbox du perso
 
     ctx.fillStyle = "rgba(250, 0, 0, 0.3)";
-    ctx.fillRect(dx+15, dy+5, frameWidth-30, frameHeight-10)
+    ctx.fillRect(playerPositionX, playerPositionY, playerFrameWidth, playerFrameHeight);
 
     // On dessine le caractère
     ctx.drawImage(player.character, sx, sy, frameWidth, frameHeight, dx, dy, frameWidth, frameHeight)
@@ -498,42 +558,36 @@ body.onkeydown = event => {
     switch(event.key) {
         case "ArrowUp":
             moveCharacter = "up";
-            collision();
+            solidCollision();
             drawCharacter();
             break;
             
         case "ArrowDown":
             moveCharacter = "down";
-            collision();
+            solidCollision();
             drawCharacter();
             break;
 
         case "ArrowLeft":
             moveCharacter = "left";
-            collision();
+            solidCollision();
             drawCharacter();
             break;
 
         case "ArrowRight":
             moveCharacter = "right";
-            collision();
+            solidCollision();
             drawCharacter();
             break;
         case "m":
             moveCharacter = "moonWalk";
-            collision();
+            solidCollision();
             drawCharacter();
             break;
     }
 }
 
 
-
-// Dessin du background 
-ctxBackground.fillStyle = "orange"
-ctxBackground.fillRect(10,30,50,50)
-ctxBackground.fillStyle = "orange"
-ctxBackground.fillRect(500,100,100,100)
 
 // Dessin de l'image de background
 ctxBackground.drawImage(img, 0, 0,1440,1440);
