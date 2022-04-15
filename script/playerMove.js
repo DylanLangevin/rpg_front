@@ -9,7 +9,7 @@ const ctx = canvas.getContext('2d');
 let img = document.getElementById('img');
 
 // Dessin de l'image de background
-ctxBackground.drawImage(img, 0, 0,1440,1440);
+ctxBackground.drawImage(img, 0, 0,1024,640);
 
 // Orientation du personnage, la ligne qui correspond à l'image de base
 let directionUp = 0;
@@ -41,14 +41,16 @@ let frameHeight = spriteHeight/frameRows;
 // Index de la frame
 let currentFrame = 0;
 
-let offsetX = 18;
-let offsetY = 10;
+let scaleDivider = 1.5;
 
-let hitboxWidth = 30;
-let hitboxHeight = 50;
+let offsetX = 10;
+let offsetY = 6;
+
+let hitboxWidth = 30 / scaleDivider;
+let hitboxHeight = 50 / scaleDivider;
 
 // Initialisation de l'ojet player
-let player = new Player("Player", 'character_profile/male_player.png', {x:600, y:400}, 15, []);//position et inventaire à définir, ajouter des fonctions ect
+let player = new Player("Player", 'character_profile/male_player.png', {x:600, y:400}, 5, []);//position et inventaire à définir, ajouter des fonctions ect
 
 console.log(player.position);
 
@@ -56,10 +58,10 @@ console.log(player.position);
 body.onload = function() {
 
     // On dessine le caractère
-    ctx.drawImage(player.character, spriteSheetPosX, spriteSheetPosY,frameWidth, frameHeight, player.position.x, player.position.y, frameWidth, frameHeight);
+    ctx.drawImage(player.character, spriteSheetPosX, spriteSheetPosY,frameWidth, frameHeight, player.position.x, player.position.y, frameWidth / scaleDivider, frameHeight / scaleDivider);
 
-    drawPlayerHitbox();
-    drawAllSolidCollisionsBox();
+    // drawPlayerHitbox();
+    // drawAllSolidCollisionsBox();
 
 }
 
@@ -77,9 +79,9 @@ function stopMovingCharacter(whichDirection) {
     spriteSheetPosY = whichDirection * frameHeight;
 
     // On dessine le caractère
-    ctx.drawImage(player.character, spriteSheetPosX, spriteSheetPosY,frameWidth, frameHeight, player.position.x, player.position.y, frameWidth, frameHeight);
-    drawPlayerHitbox();
-    drawAllSolidCollisionsBox();
+    ctx.drawImage(player.character, spriteSheetPosX, spriteSheetPosY,frameWidth, frameHeight, player.position.x, player.position.y, frameWidth / scaleDivider, frameHeight / scaleDivider);
+    // drawPlayerHitbox();
+    // drawAllSolidCollisionsBox();
 
 }
 
@@ -162,10 +164,10 @@ function updateFrame() {
     // Effacer le canvas avant de mettre la nouvelle frame, évite un biug d'affichage
     ctx.clearRect(0, 0, canvas.width, canvas.height)
 
-    ctx.drawImage(player.character, spriteSheetPosX, spriteSheetPosY,frameWidth, frameHeight, player.position.x, player.position.y, frameWidth, frameHeight);
+    ctx.drawImage(player.character, spriteSheetPosX, spriteSheetPosY,frameWidth, frameHeight, player.position.x, player.position.y, frameWidth / scaleDivider, frameHeight / scaleDivider);
 
-    drawPlayerHitbox();
-    drawAllSolidCollisionsBox();
+    // drawPlayerHitbox();
+    // drawAllSolidCollisionsBox();
 
     console.log(moveCharacter);
     console.log(previousMoveOrientation);

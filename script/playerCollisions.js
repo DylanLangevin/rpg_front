@@ -1,6 +1,13 @@
 let allSolidObjectsCollisions = [
-    {x:431, y:50, width: 148, height: 190},
-    {x:100, y:100, width: 148, height: 190}
+    // Mairie
+    {x:64, y:0, width: 368, height: 216},
+
+    //Cafée
+    {x:88, y:384, width: 152, height: 174},
+    {x:240, y:400, width: 100, height: 114},
+    {x:280, y:400, width: 64, height: 158},
+
+    // Prochain bidule
 ];
 
 function drawAllSolidCollisionsBox(){
