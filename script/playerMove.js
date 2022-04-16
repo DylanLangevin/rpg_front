@@ -1,15 +1,7 @@
 let body = document.querySelector('body');
-let canvasBackground = document.getElementById('canvas-background');
-const ctxBackground = canvasBackground.getContext('2d');
 
 let canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
-
-// Récupération des images en background (test)
-let img = document.getElementById('img');
-
-// Dessin de l'image de background
-ctxBackground.drawImage(img, 0, 0,1024,640);
 
 // Orientation du personnage, la ligne qui correspond à l'image de base
 let directionUp = 0;
@@ -62,6 +54,8 @@ body.onload = function() {
 
     drawPlayerHitbox();
     drawAllSolidCollisionsBox();
+    drawAllZoneCollisionsBox();
+
 
 }
 
@@ -82,6 +76,8 @@ function stopMovingCharacter(whichDirection) {
     ctx.drawImage(player.character, spriteSheetPosX, spriteSheetPosY,frameWidth, frameHeight, player.position.x, player.position.y, frameWidth / scaleDivider, frameHeight / scaleDivider);
     drawPlayerHitbox();
     drawAllSolidCollisionsBox();
+    drawAllZoneCollisionsBox();
+
 
 }
 
@@ -168,6 +164,8 @@ function updateFrame() {
 
     drawPlayerHitbox();
     drawAllSolidCollisionsBox();
+    drawAllZoneCollisionsBox();
+
 
     console.log(moveCharacter);
     console.log(previousMoveOrientation);
@@ -184,6 +182,7 @@ body.onkeydown = event => {
             updateFrame();
             checkAllSolidCollisions();
             checkCanvasEdgesCollisions();
+            checkAllZoneCollisions();
             break;
             
         case "ArrowDown":
@@ -191,6 +190,7 @@ body.onkeydown = event => {
             updateFrame();
             checkAllSolidCollisions();
             checkCanvasEdgesCollisions();
+            checkAllZoneCollisions();
             break;
 
         case "ArrowLeft":
@@ -198,6 +198,7 @@ body.onkeydown = event => {
             updateFrame();
             checkAllSolidCollisions();
             checkCanvasEdgesCollisions();
+            checkAllZoneCollisions();
             break;
 
         case "ArrowRight":
@@ -205,12 +206,14 @@ body.onkeydown = event => {
             updateFrame();
             checkAllSolidCollisions();
             checkCanvasEdgesCollisions();
+            checkAllZoneCollisions();
             break;
         case "m":
             moveCharacter = "moonWalk";
             updateFrame();
             checkAllSolidCollisions();
             checkCanvasEdgesCollisions();
+            checkAllZoneCollisions();
             break;
     }
 }

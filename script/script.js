@@ -4,10 +4,7 @@ const ctxBackground = canvasBackground.getContext('2d');
 let canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
 
-// Récupération des images en background (test)
-let img = document.getElementById('img')
-let img2 = document.getElementById('img2')
-let img3 = document.getElementById('img3')
+
 
 // Test déplacement (les fonctions)
 
@@ -27,11 +24,11 @@ function updateFrame() {
 
 let iTalk;
 
-// Coordonnées du carré bleu porte entre deux zones
-let squareColliderX  = 630
-let squareColliderY  = 0
-let squareColliderWidth  = 100
-let squareColliderHeight  = 15
+// // Coordonnées du carré bleu porte entre deux zones
+// let squareColliderX  = 630
+// let squareColliderY  = 0
+// let squareColliderWidth  = 100
+// let squareColliderHeight  = 15
 
 // Coordonnées du carré bleu entrée du café
 let doorCafeColliderX  = 339
@@ -49,7 +46,7 @@ let itemFoundHeight = 32
 let itemPicked = false
 
 
-let currentMap = 1
+// let currentMap = 1
 
 
 // Coordonnées de la hitbox du pnj
