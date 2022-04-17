@@ -181,39 +181,39 @@ body.onkeydown = event => {
             moveCharacter = "up";
             updateFrame();
             checkAllSolidCollisions();
-            checkCanvasEdgesCollisions();
             checkAllZoneCollisions();
+            checkCanvasEdgesCollisions();
             break;
             
         case "ArrowDown":
             moveCharacter = "down";
             updateFrame();
             checkAllSolidCollisions();
-            checkCanvasEdgesCollisions();
             checkAllZoneCollisions();
+            checkCanvasEdgesCollisions();
             break;
 
         case "ArrowLeft":
             moveCharacter = "left";
             updateFrame();
             checkAllSolidCollisions();
-            checkCanvasEdgesCollisions();
             checkAllZoneCollisions();
+            checkCanvasEdgesCollisions();
             break;
 
         case "ArrowRight":
             moveCharacter = "right";
             updateFrame();
             checkAllSolidCollisions();
-            checkCanvasEdgesCollisions();
             checkAllZoneCollisions();
+            checkCanvasEdgesCollisions();
             break;
         case "m":
             moveCharacter = "moonWalk";
             updateFrame();
             checkAllSolidCollisions();
-            checkCanvasEdgesCollisions();
             checkAllZoneCollisions();
+            checkCanvasEdgesCollisions();
             break;
     }
 }
