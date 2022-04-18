@@ -9,7 +9,7 @@ let coffeeShop = document.querySelector('#coffee-shop-img')
 // Dessin de l'image de background
 ctxBackground.drawImage(cityMapImg, 0, 0,1024,640);
 
-let currentMap = 1
+let currentMap = 0;
 
 
 
