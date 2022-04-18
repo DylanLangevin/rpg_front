@@ -10,7 +10,7 @@ let foreigner = new Pnj("L'étrangère", 'character_profile/foreigner.png', [12,
 let reader = new Pnj("Lectrice de polar", 'character_profile/reader.png', [12, 126]);//position a définir
 let librarian = new Pnj("Bibliothécaire", 'character_profile/librarian.png', [12, 126]);//position a définir
 let policeFriend = new Pnj("Policier ami", 'character_profile/police_friend.png', [12, 126]);//position a définir
-let maleCitizen = new Pnj("Villageois", 'character_profile/male_citizen.png', [500,126]);//position a définir
+let maleCitizen = new Pnj("Villageois", 'character_profile/male_citizen.png', [650,126]);//position a définir
 let femaleCitizen = new Pnj("Villageoise", 'character_profile/female_citizen.png', [12, 126]);//position a définir
 
 // Initialisation de l'ojet cops

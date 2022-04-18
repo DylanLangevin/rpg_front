@@ -5,34 +5,37 @@
 }
 
 body {
-    height: 100vh;
+     height: 100vh;
     background: #1f1f1f;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    overflow: hidden;
 }
 
-
-/* Game */
 #canva-div {
-    display: flex;
-    gap: 10px;
+    /* display: flex;
+    gap: 5px; */
+    position: relative;
+    /* top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); */
 }
 
 #img {
     visibility: hidden;
     position: absolute;
+    background: red;
 }
 
-#img2{
+/* #img2{
     visibility: hidden;
     position: absolute;
+    background: green;
 }
 
 #img3 {
     visibility: hidden;
     position: absolute;
-}
+    background: violet;
+} */
 
 #canvas-background {
     position: absolute;
@@ -40,7 +43,7 @@ body {
 }
 
 #canvas {
-    position: sticky;
+    position: absolute;
 }
 
 #inventory {
@@ -57,5 +60,5 @@ body {
     border: none;
     height: 28px;
     width: 30px;
-    background: url('../images/sound-off.svg') no-repeat;
+    background: url('../images/sounds-icon/sound-off.svg') no-repeat;
 }
