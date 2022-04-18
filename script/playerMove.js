@@ -1,3 +1,6 @@
+playerName = localStorage.getItem("name");
+genderChoice = localStorage.getItem("gender")
+
 let body = document.querySelector('body');
 
 let canvas = document.getElementById('canvas');
@@ -42,7 +45,7 @@ let hitboxWidth = 30 / scaleDivider;
 let hitboxHeight = 50 / scaleDivider;
 
 // Initialisation de l'ojet player
-let player = new Player("Player", 'character_profile/male_player.png', {x:600, y:400}, 5, []);//position et inventaire à définir, ajouter des fonctions ect
+let player = new Player(playerName, genderChoice, {x:600, y:400}, 5, []);//position et inventaire à définir, ajouter des fonctions ect
 
 console.log(player.position);
 

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RPG</title>
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            position: fixed;
+            background-color: #1f1f1f;
+            overflow: hidden;
+            
+        }
+
+        
+            
+        
+    </style>
+</head>
+<body>
+    <!-- test -->
+    <section id="dialogue"></section>
+    <!-- fin du test -->
+    <div id="canva-div">
+        <img id="city-map-img" src="/maps/map_principale.png" alt="" style="visibility:hidden; position:absolute;">
+        <img id="city-map-right-img" src="/maps/city-parc-right.png" alt="" style="visibility:hidden; position:absolute;">
+        <img id="coffee-shop-img" src="/maps/cafe_interieur.png" alt="" style="visibility:hidden; position:absolute;">
+        <canvas id="canvas-background" width="1024" height="640" style="position:absolute; background-color: aliceblue;"></canvas>
+
+        <canvas id="canvas" width="1024" height="640" style="position:absolute;"></canvas>
+     
+    </div>
+
+
+</body>
+<script src="class/player_class.js"></script>
+<script src="class/pnj_class.js"></script>
+<script src="class/police_class.js"></script>
+<script src="script/initialize_class.js"></script>
+<!-- <script src="script/script.js"></script> -->
+<script src="script/playerMove.js"></script>
+<script src="script/playerCollisions.js"></script>
+<script src="script/maps.js"></script>
+</html>
