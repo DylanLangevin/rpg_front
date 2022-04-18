@@ -83,5 +83,3 @@ cancel.onclick = () => {
     genderChoice = "none";
     playerName = "";
 }
-
-
