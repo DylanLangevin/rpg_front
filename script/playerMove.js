@@ -15,6 +15,8 @@ let directionRight = 3;
 // Mouvement du personnage
 let moveCharacter;
 
+let playerSpeed = 5;
+
 let previousMoveOrientation;
 
 // Position de la zone de l'image source (le coin supérieur gauche de la frame)
@@ -50,7 +52,7 @@ function rescalePlayer(){
 }
 
 // Initialisation de l'ojet player
-let player = new Player(playerName, genderChoice, {x:600, y:400}, 10, []);//position et inventaire à définir, ajouter des fonctions ect
+let player = new Player(playerName, genderChoice, {x:600, y:400}, playerSpeed, []);//position et inventaire à définir, ajouter des fonctions ect
 
 console.log(player.position);
 
