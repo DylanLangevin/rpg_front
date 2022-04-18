@@ -1,7 +1,8 @@
 class Player {
-    constructor(name, image, position, inventory) {
+    constructor(name, image, position, speed, inventory) {
         this.name = name;
         this.position = position;
+        this.speed = speed;
         this.inventory = inventory;
         this.image = image;
         let character = new Image();
