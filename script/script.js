@@ -132,94 +132,23 @@ let pnjHeight = frameHeight - 10
 
 
 // Coordonnées de la hitbox pnj dialogue
-let pnjDialogueBoxX = 640
-let pnjDialogueBoxY = 126
-let pnjDialogueBoxWidth = frameWidth + 20
-let pnjDialogueBoxHeight = frameHeight + 10
+// let pnjDialogueBoxX = 640
+// let pnjDialogueBoxY = 126
+// let pnjDialogueBoxWidth = frameWidth + 20
+// let pnjDialogueBoxHeight = frameHeight + 10
 
-// Hitbox du pnj pour le dialogue
-ctx.fillStyle = "rgba(250, 0, 250, 0.3)";
-ctx.fillRect(pnjDialogueBoxX, pnjDialogueBoxY, pnjDialogueBoxWidth, pnjDialogueBoxHeight)
+// // Hitbox du pnj pour le dialogue
+// ctx.fillStyle = "rgba(250, 0, 250, 0.3)";
+// ctx.fillRect(pnjDialogueBoxX, pnjDialogueBoxY, pnjDialogueBoxWidth, pnjDialogueBoxHeight)
 
 
 // Quelle touche au dialogue
-let whichText;
-let pnjTalk;
+// let whichText;
+// let pnjTalk;
 
 // Fonction de collision
 // function collision(){
-    // // Collision changement de zone
-    // if(playerPositionX + playerFrameWidth > squareColliderX && playerPositionX < squareColliderX + squareColliderWidth && playerPositionY + playerFrameHeight > squareColliderY && playerPositionY < squareColliderY + squareColliderHeight)
-    // {
 
-    //     // Affichage de l'img du background selon le background actuel
-    //     if(currentMap == 1) {
-
-    //         ctxBackground.clearRect(0,0,1040,640)
-    //         ctxBackground.drawImage(img2, 0, 0,1040,640);
-
-    //         // On replace le personnage et le carré bleu sur la route de la deuxieme image
-    //         dx = 280
-    //         dy = 560
-
-    //         squareColliderX  = 250
-    //         squareColliderY  = 630
-
-    //         currentMap = 2
-
-    //     } else if(currentMap == 2) {
-
-    //         ctxBackground.clearRect(0,0,1040,640)
-            
-    //         ctxBackground.drawImage(img, 0, 0,1440,1440);
-
-    //         // On replace le personnage et le carré bleu sur la route de la deuxieme image
-    //         dx = 630
-    //         dy = 15
-
-    //         squareColliderX  = 630
-    //         squareColliderY  = 0
-    //         currentMap = 1
-    //     }
-        
-
-
-    // }
-
-    // // Collision de la porte du café
-    // if(dx+15 + playerFrameWidth > doorCafeColliderX && dx+15 < doorCafeColliderX +doorCafeColliderWidth && playerPositionY + playerFrameHeight > doorCafeColliderY && playerPositionY < doorCafeColliderY + doorCafeColliderHeight)
-    // {
-    //     console.log("cafe");
-
-    //     // Affichage de l'img du background selon le background actuel
-    //     if(currentMap == 1) {
-
-    //         ctxBackground.clearRect(0,0,1040,640)
-    //         ctxBackground.drawImage(img3, 0, 0,1040,640);
-
-    //         // On replace le personnage et le carré bleu sur la route de la deuxieme image
-    //         dx = 480
-    //         dy = 500
-
-    //         doorCafeColliderX  = 480
-    //         doorCafeColliderY  = 600
-
-    //         currentMap = 3
-
-    //     } else if(currentMap == 3) {
-
-    //         ctxBackground.clearRect(0,0,1040,640)
-    //         ctxBackground.drawImage(img, 0, 0,1440,1440);
-
-    //         // On replace le personnage et le carré bleu sur la route de la deuxieme image
-    //         dx = 339
-    //         dy = 450
-
-    //         doorCafeColliderX  = 339
-    //         doorCafeColliderY  = 420
-    //         currentMap = 1
-    //     }
-    
 
     // // Collision de l'item jaune
     // if(dx+15 + frameWidth-30 > itemFoundX && dx+15 < itemFoundX + itemFoundWidth && dy+5 + playerFrameHeight > itemFoundY && dy+5 < itemFoundY + itemFoundHeight && !itemPicked)

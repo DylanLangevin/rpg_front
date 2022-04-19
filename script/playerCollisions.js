@@ -1,115 +1,5 @@
 let hitboxToggle = true;
 
-let cityMapSolidObjectsCollisions = [
-    // Mairie
-    {x:64, y:0, width: 368, height: 216},
-
-    //Café
-    {x:88, y:384, width: 152, height: 174},
-    {x:240, y:400, width: 100, height: 114},
-    {x:280, y:400, width: 64, height: 158},
-
-];
-
-let coffeeMapSolidObjectsCollisions = [
-    // Bar
-    {x:48, y:48, width: 240, height: 180},
-
-    // Tabourets bar
-    {x:100, y:256, width: 24, height: 18},
-    {x:164, y:256, width: 24, height: 18},
-    {x:228, y:256, width: 24, height: 18},
-    {x:292, y:224, width: 24, height: 18},
-    {x:292, y:160, width: 24, height: 18},
-
-    // Murs
-    {x:48, y:48, width: 1000, height: 90},
-    {x:48, y:48, width: 25, height: 540},
-    {x:48, y:570, width: 815, height: 20},
-    {x:950, y:48, width: 20, height: 540},
-    // Tables mur
-    {x:420, y:160, width: 288, height: 35},
-    // Piano
-    {x:868, y:160, width: 64, height: 35},
-
-];
-
-let parcRightMapSolidObjectsCollisions = [
-
-];
-let parcLeftMapSolidObjectsCollisions = [
-
-];
-let parcMapSolidObjectsCollisions = [
-
-];
-
-let mapsSolidObjectsCollisions = [cityMapSolidObjectsCollisions, coffeeMapSolidObjectsCollisions, parcRightMapSolidObjectsCollisions, parcLeftMapSolidObjectsCollisions, parcMapSolidObjectsCollisions];
-
-function drawAllSolidCollisionsBox(){
-    ctx.fillStyle = "rgba(255,0,0,0.3)";
-
-    mapsSolidObjectsCollisions[currentMap].forEach(element => {
-        ctx.fillRect(element.x, element.y, element.width, element.height);
-    });
-
-}
-
-let cityMapZoneObjectsCollisions = [
-    // porte entrée café
-    {x:250, y:510, width: 20, height: 30, direction:"coffee"},
-
-    // zone vers parc-right
-    {x:1022, y:142, width: 10, height: 50, direction:"parc-right"},
-
-    // zone vers parc left
-    {x:-8, y:303, width: 10, height: 50, direction:"parc-left"},
-];
-
-let coffeeMapZoneObjectsCollisions = [
-    // porte entrée café
-    {x:865, y:568, width: 60, height: 10},
-];
-
-let parcRightMapZoneObjectsCollisions = [
-    // zone vers city
-    {x:-16, y:373, width: 16, height: 55, direction:"city"},
-
-    // zone vers parc
-    {x:758, y:-7, width: 55, height:16, direction:"parc"},
-];
-
-let parcLeftMapZoneObjectsCollisions = [
-    // zone vers city
-    {x:1022, y:370, width: 16, height: 55, direction:"city"},
-
-    // zone vers parc
-    {x:212, y:-7, width: 55, height:16, direction:"parc"},
-];
-
-let parcMapZoneObjectsCollisions = [
-    // zone vers parc right
-    {x:1022, y:290, width: 16, height: 55, direction:"parc-right"},
-
-    // zone vers parc left
-    {x:85, y:637, width: 55, height:16, direction:"parc-left"},
-];
-
-
-
-let mapsZoneObjectsCollisions = [cityMapZoneObjectsCollisions, coffeeMapZoneObjectsCollisions, parcRightMapZoneObjectsCollisions, parcLeftMapZoneObjectsCollisions, parcMapZoneObjectsCollisions];
-
-function drawAllZoneCollisionsBox(){
-    ctx.fillStyle = "rgba(0,0,255,0.8)";
-
-    mapsZoneObjectsCollisions[currentMap].forEach(element => {
-        ctx.fillRect(element.x, element.y, element.width, element.height);
-        // A supprimer ?
-        ctx.fillRect(element.coffeeX, element.coffeeY, element.coffeeWidth, element.coffeeHeight);
-    });
-}
-
-
 function checkAllSolidCollisions(){
     mapsSolidObjectsCollisions[currentMap].forEach(element => {
         if(player.position.x + offsetX + hitboxWidth > element.x && player.position.x + offsetX < element.x + element.width && player.position.y + offsetY + hitboxHeight >  element.y && player.position.y + offsetY < element.y + element.height)
@@ -172,9 +62,9 @@ function checkAllZoneCollisions(){
                 case 0:
                     switch (element.direction) {
                         case "coffee":
-                            console.log("coffee");
                             ctxBackground.clearRect(0,0,1024,640);
                             ctxBackground.drawImage(coffeeShop, 0, 0,1024,640);
+
                             // On replace le personnage
                             player.position.x = 875;
                             player.position.y = 510;
@@ -184,10 +74,10 @@ function checkAllZoneCollisions(){
                             offsetX = 14;
                             offsetY = 9;
                             rescalePlayer();
+                            pnjCoffeePosition()
                             break;
 
                         case "parc-right":
-                            console.log("parc-right");
                             ctxBackground.clearRect(0,0,1024,640);
                             ctxBackground.drawImage(cityMapRight, 0, 0,1024,640);
                             // On replace le personnage
@@ -344,4 +234,34 @@ function checkCanvasEdgesCollisions(){
                 break;
         }
     }
+}
+
+function checkAllDialogueCollisions() {
+    mapsDialogueCollisions[currentMap].forEach(element => {
+        if((player.position.x + offsetX + hitboxWidth > element.x && player.position.x + offsetX < element.x + element.width && player.position.y + offsetY + hitboxHeight >  element.y && player.position.y + offsetY < element.y + element.height)) {
+
+            pnjTalk = "Voulez-vous discuter avec " + maleCitizen.name + " ? (enter)"
+            maleCitizen.textZone(pnjTalk)
+        
+            // Quand on clique sur entrée, le dialogue se créé
+            window.onkeydown = event => {
+                switch(event.key) {
+                    case "Enter":
+                        whichText = true
+                        console.log("ok");
+                        return
+                    default:
+                        console.log("Non");
+                }
+            }
+            // Affiche le dialogue
+            if (whichText == true) {
+                ctx.clearRect(0, 0, canvas.width, canvas.height)
+                drawPlayerHitboxCollisions()
+                console.log("oui");
+                pnjTalk = "Holaaaaaa"
+                maleCitizen.textZone(pnjTalk)
+            }
+        }
+    });
 }
