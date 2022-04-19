@@ -1,4 +1,6 @@
-let allSolidObjectsCollisions = [
+let hitboxToggle = true;
+
+let cityMapSolidObjectsCollisions = [
     // Mairie
     {x:64, y:0, width: 368, height: 216},
 
@@ -7,36 +9,79 @@ let allSolidObjectsCollisions = [
     {x:240, y:400, width: 100, height: 114},
     {x:280, y:400, width: 64, height: 158},
 
-    // Prochain bidule
 ];
+
+let coffeeMapSolidObjectsCollisions = [
+    // Bar
+    {x:48, y:48, width: 240, height: 180},
+
+    // Tabourets bar
+    {x:100, y:256, width: 24, height: 18},
+    {x:164, y:256, width: 24, height: 18},
+    {x:228, y:256, width: 24, height: 18},
+    {x:292, y:224, width: 24, height: 18},
+    {x:292, y:160, width: 24, height: 18},
+
+    // Murs
+    {x:48, y:48, width: 1000, height: 90},
+    {x:48, y:48, width: 25, height: 540},
+    {x:48, y:570, width: 815, height: 20},
+    {x:950, y:48, width: 20, height: 540},
+    // Tables mur
+    {x:420, y:160, width: 288, height: 35},
+    // Piano
+    {x:868, y:160, width: 64, height: 35},
+
+];
+
+let parcRightMapSolidObjectsCollisions = [
+
+];
+
+let mapsSolidObjectsCollisions = [cityMapSolidObjectsCollisions, coffeeMapSolidObjectsCollisions, parcRightMapSolidObjectsCollisions];
 
 function drawAllSolidCollisionsBox(){
     ctx.fillStyle = "rgba(255,0,0,0.3)";
 
-    allSolidObjectsCollisions.forEach(element => {
+    mapsSolidObjectsCollisions[currentMap].forEach(element => {
         ctx.fillRect(element.x, element.y, element.width, element.height);
     });
 
 }
 
-let allZoneObjectsCollisions = [
-    // map carte ville, hitbox chemin droite
-    {x: 1008, y: 142, width: 16, height: 50},
-
-    // map carte droite, hitbox chemin gauche
-    {x: 0, y: 373, width: 16, height: 55},
-    // map carte droite, hitbox chemin haut
-    {x: 768, y: 0, width: 55, height: 16},
+let cityMapZoneObjectsCollisions = [
 
     // porte entrée café
-    {coffeeX:250, coffeeY:510, coffeeWidth: 20, coffeeHeight: 30},
+    {x:250, y:510, width: 20, height: 30, direction:"coffee"},
+
+    // zone vers parc-right
+    {x:1022, y:142, width: 10, height: 50, direction:"parc-right"},
 
 ];
+
+let coffeeMapZoneObjectsCollisions = [
+
+    // porte entrée café
+    {x:865, y:568, width: 60, height: 10},
+
+];
+
+let parcRightMapZoneObjectsCollisions = [
+
+    // zone vers city
+    {x:0, y:373, width: 16, height: 55, direction:"city"},
+
+    // zone vers parc
+    {x:758, y:0, width: 55, height:16, direction:"parc"},
+
+];
+
+let mapsZoneObjectsCollisions = [cityMapZoneObjectsCollisions, coffeeMapZoneObjectsCollisions, parcRightMapZoneObjectsCollisions];
 
 function drawAllZoneCollisionsBox(){
     ctx.fillStyle = "rgba(0,0,255,0.8)";
 
-    allZoneObjectsCollisions.forEach(element => {
+    mapsZoneObjectsCollisions[currentMap].forEach(element => {
         ctx.fillRect(element.x, element.y, element.width, element.height);
         ctx.fillRect(element.coffeeX, element.coffeeY, element.coffeeWidth, element.coffeeHeight);
     });
@@ -44,7 +89,7 @@ function drawAllZoneCollisionsBox(){
 
 
 function checkAllSolidCollisions(){
-    allSolidObjectsCollisions.forEach(element => {
+    mapsSolidObjectsCollisions[currentMap].forEach(element => {
         if(player.position.x + offsetX + hitboxWidth > element.x && player.position.x + offsetX < element.x + element.width && player.position.y + offsetY + hitboxHeight >  element.y && player.position.y + offsetY < element.y + element.height)
         {
             switch (moveCharacter) {
@@ -98,57 +143,68 @@ function checkAllSolidCollisions(){
 }
 
 function checkAllZoneCollisions(){
-    allZoneObjectsCollisions.forEach(element => {
+    mapsZoneObjectsCollisions[currentMap].forEach(element => {
         if(player.position.x + offsetX + hitboxWidth > element.x && player.position.x + offsetX < element.x + element.width && player.position.y + offsetY + hitboxHeight >  element.y && player.position.y + offsetY < element.y + element.height)
         {
             switch (currentMap) {
-                case 1:
-                    ctxBackground.clearRect(0,0,1040,640);
-                    ctxBackground.drawImage(cityMapRight, 0, 0,1040,640);
-                    // On replace le personnage et le carré bleu sur la route de la deuxieme image
-                    player.position.x = 20
-                    player.position.y = 373
-                    element.x  = 10
-                    element.y  = 142
-                    currentMap = 2
+                case 0:
+                    switch (element.direction) {
+                        case "coffee":
+                            console.log("coffee");
+                            ctxBackground.clearRect(0,0,1024,640);
+                            ctxBackground.drawImage(coffeeShop, 0, 0,1024,640);
+                            // On replace le personnage
+                            player.position.x = 875;
+                            player.position.y = 510;
+                            currentMap = 1;
+
+                            scaleDivider = 1.2;
+                            offsetX = 14;
+                            offsetY = 9;
+                            rescalePlayer();
+                            break;
+
+                        case "parc-right":
+                            console.log("parc-right");
+                            ctxBackground.clearRect(0,0,1024,640);
+                            ctxBackground.drawImage(cityMapRight, 0, 0,1024,640);
+                            // On replace le personnage
+                            player.position.x = 20;
+                            player.position.y = 373;
+                            currentMap = 2;
+                            break;
+                    }
                     break;
                     
-                case 2:
-                    ctxBackground.clearRect(0,0,1040,640)
-                    ctxBackground.drawImage(cityMapImg, 0, 0,1040,640);
-                    // On replace le personnage et le carré bleu sur la route de la deuxieme image
-                    player.position.x = 988
-                    player.position.y = 142
-                    element.x  = 10
-                    element.y  = 142
-                    currentMap = 1
-                    break;
-                default:
-                    break;
-            }
-        } else if (player.position.x + offsetX + hitboxWidth > element.coffeeX && player.position.x + offsetX < element.coffeeX + element.coffeeWidth && player.position.y + offsetY + hitboxHeight >  element.coffeeY && player.position.y + offsetY < element.coffeeY + element.coffeeHeight) {
-            switch (currentMap) {
                 case 1:
-                    ctxBackground.clearRect(0,0,1040,640);
-                    ctxBackground.drawImage(coffeeShop, 0, 0,1040,640);
-                    player.position.x = 920
-                    player.position.y = 510
-                    element.coffeeX  = 880;
-                    element.coffeeY  = 565;
-                    element.coffeeWidth  = 55;
-                    currentMap = 3;
-                    break;
-                case 3:
-                    ctxBackground.clearRect(0,0,1040,640)
-                    ctxBackground.drawImage(cityMapImg, 0, 0,1040,640);
+                    ctxBackground.clearRect(0,0,1024,640);
+                    ctxBackground.drawImage(cityMapImg, 0, 0,1024,640);
                     // On replace le personnage et le carré bleu sur la route de la deuxieme image
-                    player.position.x = 250
-                    player.position.y = 520
-                    element.x  = 10
-                    element.y  = 142
-                    currentMap = 1
+                    player.position.x = 240
+                    player.position.y = 538
+                    currentMap = 0;
+
+                    scaleDivider = 1.5;
+                    offsetX = 10;
+                    offsetY = 6;
+                    rescalePlayer();
                     break;
-                default:
+
+                case 2:
+                    switch (element.direction) {
+                        case "city":
+                            ctxBackground.clearRect(0,0,1024,640);
+                            ctxBackground.drawImage(cityMapImg, 0, 0,1024,640);
+                            // On replace le personnage et le carré bleu sur la route de la deuxieme image
+                            player.position.x = 978;
+                            player.position.y = 142;
+                            currentMap = 0;
+                            break;
+
+                        case "parc":
+                            console.log("parc");
+                            break;
+                    }
                     break;
             }
         }

@@ -15,6 +15,8 @@ let directionRight = 3;
 // Mouvement du personnage
 let moveCharacter;
 
+let playerSpeed = 5;
+
 let previousMoveOrientation;
 
 // Position de la zone de l'image source (le coin supérieur gauche de la frame)
@@ -44,8 +46,13 @@ let offsetY = 6;
 let hitboxWidth = 30 / scaleDivider;
 let hitboxHeight = 50 / scaleDivider;
 
+function rescalePlayer(){
+    hitboxWidth = 30 / scaleDivider;
+    hitboxHeight = 50 / scaleDivider;
+}
+
 // Initialisation de l'ojet player
-let player = new Player(playerName, genderChoice, {x:600, y:400}, 5, []);//position et inventaire à définir, ajouter des fonctions ect
+let player = new Player(playerName, genderChoice, {x:600, y:400}, playerSpeed, []);//position et inventaire à définir, ajouter des fonctions ect
 
 console.log(player.position);
 
@@ -77,9 +84,13 @@ function stopMovingCharacter(whichDirection) {
 
     // On dessine le caractère
     ctx.drawImage(player.character, spriteSheetPosX, spriteSheetPosY,frameWidth, frameHeight, player.position.x, player.position.y, frameWidth / scaleDivider, frameHeight / scaleDivider);
-    drawPlayerHitbox();
-    drawAllSolidCollisionsBox();
-    drawAllZoneCollisionsBox();
+    
+    if(hitboxToggle)
+    {
+        drawPlayerHitbox();
+        drawAllSolidCollisionsBox();
+        drawAllZoneCollisionsBox();
+    }
 
 
 }
@@ -165,10 +176,12 @@ function updateFrame() {
 
     ctx.drawImage(player.character, spriteSheetPosX, spriteSheetPosY,frameWidth, frameHeight, player.position.x, player.position.y, frameWidth / scaleDivider, frameHeight / scaleDivider);
 
-    drawPlayerHitbox();
-    drawAllSolidCollisionsBox();
-    drawAllZoneCollisionsBox();
-
+    if(hitboxToggle)
+    {
+        drawPlayerHitbox();
+        drawAllSolidCollisionsBox();
+        drawAllZoneCollisionsBox();
+    }
 
     console.log(moveCharacter);
     console.log(previousMoveOrientation);
@@ -218,5 +231,15 @@ body.onkeydown = event => {
             checkAllZoneCollisions();
             checkCanvasEdgesCollisions();
             break;
+
+        case "h":
+            if(hitboxToggle)
+            {
+                hitboxToggle = false
+            }
+            else
+            {
+                hitboxToggle = true;
+            }
     }
 }
