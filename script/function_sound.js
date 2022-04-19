@@ -5,10 +5,13 @@ letsPlayMain.volume = 0.05;
 
 let letsPlayTakeObj = new Audio("sound/iTellMessage.mp3");
 
-let playWalkSound = false
-let letsPlayWalk = new Audio("sound/Footsteps.mp3")
+let playWalkSound = false;
+let letsPlayWalk = new Audio("sound/Footsteps.mp3");
 
-let letsPlayDoor = new Audio("sound/openDoor.mp3")
+let letsPlayDoor = new Audio("sound/openDoor.mp3");
+
+let letsPlayTree = new Audio("sound/tree.mp3");
+
 
 
 function music() {
@@ -27,6 +30,10 @@ function takeObj() {
 
 function OpenDoor() {
     letsPlayDoor.play();
+}
+
+function treeContact() {
+    letsPlayTree.play();
 }
 
 function walkSound(playWalk) {
