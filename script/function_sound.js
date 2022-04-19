@@ -1,6 +1,7 @@
 let btnPlay = document.querySelector("#letsPlay");
 let playMainSound = false;
 let letsPlayMain = new Audio("sound/Ambiance.mp3");
+letsPlayMain.volume = 0.05;
 
 let btnTakeObj = document.querySelector("#takeObj")
 let playTakeObj = false
@@ -8,6 +9,7 @@ let letsPlayTakeObj = new Audio("sound/iTellMessage.mp3");
 
 let playWalkSound = false
 let letsPlayWalk = new Audio("sound/Footsteps.mp3")
+
 
 
 function music() {
@@ -21,15 +23,7 @@ function music() {
 }
 
 function takeObj() {
-    playTakeObj = !playTakeObj;
-    if (playTakeObj === true) {
         letsPlayTakeObj.play();
-        // letsPlayTakeObj.loop = true;
-    } else if(playTakeObj === false) {
-        letsPlayTakeObj.pause();
-        letsPlayTakeObj.currentTime = 0;
-        // letsPlayTakeObj.loop = false;
-    }
 }
 
 function walkSound(playWalk) {
@@ -59,6 +53,3 @@ musicButton.onclick = () => {
         music();
     }
 }
-
-btnTakeObj.addEventListener("click", takeObj);
-btnPlay.addEventListener("click", music);

@@ -16,6 +16,7 @@ class Player {
 
     newItem(item) {
         this.inventory.push(item);
+        takeobj();
     }
 
     textZone(iTalk, dx, dy) {
