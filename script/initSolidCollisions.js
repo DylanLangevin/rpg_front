@@ -36,7 +36,7 @@ let parcRightMapSolidObjectsCollisions = [
 
 ];
 let parcLeftMapSolidObjectsCollisions = [
-
+    
 ];
 let parcMapSolidObjectsCollisions = [
 
