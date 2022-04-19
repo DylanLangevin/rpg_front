@@ -1,4 +1,5 @@
 let musicButton = document.querySelector("#music-btn");
+let soundStatus = false;
 let playMainSound = false;
 let letsPlayMain = new Audio("sound/Ambiance.mp3");
 letsPlayMain.volume = 0.05;
@@ -11,6 +12,9 @@ let letsPlayWalk = new Audio("sound/Footsteps.mp3");
 let letsPlayDoor = new Audio("sound/openDoor.mp3");
 
 let letsPlayTree = new Audio("sound/tree.mp3");
+
+let playStillDre = false;
+let letsPlayDre = new Audio("sound/stillDre.mp3");
 
 
 
@@ -49,8 +53,18 @@ function walkSound(playWalk) {
     }
 }
 
+function stillDre() {
+    if (playMainSound === true) {
+        letsPlayMain.pause();
+        letsPlayMain.currentTime = 0;
+        playMainSound = false;
+        soundStatus = false;
+        musicButton.style.background = "url('../images/sounds-icon/sound-off.svg')"
+    }
+    letsPlayDre.play();
+}
 
-let soundStatus = false;
+
 musicButton.onclick = () => {
     if (soundStatus == false) {
         soundStatus = true;
