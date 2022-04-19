@@ -269,3 +269,25 @@ body {
 #key-Right {
     background: url("../images/key-arrow/key_right.svg") no-repeat;
 }
+
+.loading-contain {
+    position: absolute;
+    width: 1024px;
+    height: 640px;
+    background: #495057;
+
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+.loading-box {
+    width: 200px;
+    height: 10px;
+}
+.loading-bar {
+    width: 0;
+    height: 10px;
+    background: #e9ecef;
+    transition: 0.9s;
+}
