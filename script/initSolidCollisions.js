@@ -39,7 +39,17 @@ let parcLeftMapSolidObjectsCollisions = [
     
 ];
 let parcMapSolidObjectsCollisions = [
-
+    // Parc
+    {x:193, y:236, width: 145, height: -135},
+    // Piscine
+    {x:493, y:216, width: 110, height: -50},
+    {x:493, y:166, width: 130, height: -52},
+    {x:678, y:216, width: 130, height: -50},
+    {x:658, y:166, width: 150, height: -52},
+    // Arbre
+    {x:0, y:0, width: 40, height: 640},
+    {x:1024, y:0, width: -50, height: 245},
+    {x:250, y:640, width: 774, height: -70},
 ];
 
 let mapsSolidObjectsCollisions = [cityMapSolidObjectsCollisions, coffeeMapSolidObjectsCollisions, parcRightMapSolidObjectsCollisions, parcLeftMapSolidObjectsCollisions, parcMapSolidObjectsCollisions];
