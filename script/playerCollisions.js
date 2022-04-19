@@ -37,8 +37,14 @@ let coffeeMapSolidObjectsCollisions = [
 let parcRightMapSolidObjectsCollisions = [
 
 ];
+let parcLeftMapSolidObjectsCollisions = [
 
-let mapsSolidObjectsCollisions = [cityMapSolidObjectsCollisions, coffeeMapSolidObjectsCollisions, parcRightMapSolidObjectsCollisions];
+];
+let parcMapSolidObjectsCollisions = [
+
+];
+
+let mapsSolidObjectsCollisions = [cityMapSolidObjectsCollisions, coffeeMapSolidObjectsCollisions, parcRightMapSolidObjectsCollisions, parcLeftMapSolidObjectsCollisions, parcMapSolidObjectsCollisions];
 
 function drawAllSolidCollisionsBox(){
     ctx.fillStyle = "rgba(255,0,0,0.3)";
@@ -50,39 +56,55 @@ function drawAllSolidCollisionsBox(){
 }
 
 let cityMapZoneObjectsCollisions = [
-
     // porte entrée café
     {x:250, y:510, width: 20, height: 30, direction:"coffee"},
 
     // zone vers parc-right
     {x:1022, y:142, width: 10, height: 50, direction:"parc-right"},
 
+    // zone vers parc left
+    {x:-8, y:303, width: 10, height: 50, direction:"parc-left"},
 ];
 
 let coffeeMapZoneObjectsCollisions = [
-
     // porte entrée café
     {x:865, y:568, width: 60, height: 10},
-
 ];
 
 let parcRightMapZoneObjectsCollisions = [
-
     // zone vers city
-    {x:0, y:373, width: 16, height: 55, direction:"city"},
+    {x:-16, y:373, width: 16, height: 55, direction:"city"},
 
     // zone vers parc
-    {x:758, y:0, width: 55, height:16, direction:"parc"},
-
+    {x:758, y:-7, width: 55, height:16, direction:"parc"},
 ];
 
-let mapsZoneObjectsCollisions = [cityMapZoneObjectsCollisions, coffeeMapZoneObjectsCollisions, parcRightMapZoneObjectsCollisions];
+let parcLeftMapZoneObjectsCollisions = [
+    // zone vers city
+    {x:1022, y:370, width: 16, height: 55, direction:"city"},
+
+    // zone vers parc
+    {x:212, y:-7, width: 55, height:16, direction:"parc"},
+];
+
+let parcMapZoneObjectsCollisions = [
+    // zone vers parc right
+    {x:1022, y:290, width: 16, height: 55, direction:"parc-right"},
+
+    // zone vers parc left
+    {x:85, y:637, width: 55, height:16, direction:"parc-left"},
+];
+
+
+
+let mapsZoneObjectsCollisions = [cityMapZoneObjectsCollisions, coffeeMapZoneObjectsCollisions, parcRightMapZoneObjectsCollisions, parcLeftMapZoneObjectsCollisions, parcMapZoneObjectsCollisions];
 
 function drawAllZoneCollisionsBox(){
     ctx.fillStyle = "rgba(0,0,255,0.8)";
 
     mapsZoneObjectsCollisions[currentMap].forEach(element => {
         ctx.fillRect(element.x, element.y, element.width, element.height);
+        // A supprimer ?
         ctx.fillRect(element.coffeeX, element.coffeeY, element.coffeeWidth, element.coffeeHeight);
     });
 }
@@ -174,6 +196,16 @@ function checkAllZoneCollisions(){
                             player.position.y = 373;
                             currentMap = 2;
                             break;
+
+                        case "parc-left":
+                            console.log("parc-left");
+                            ctxBackground.clearRect(0,0,1024,640);
+                            ctxBackground.drawImage(cityMapLeft, 0, 0,1024,640);
+                            // On replace le personnage
+                            player.position.x = 990;
+                            player.position.y = 373;
+                            currentMap = 3;
+                            break;
                     }
                     break;
                     
@@ -205,6 +237,57 @@ function checkAllZoneCollisions(){
 
                         case "parc":
                             console.log("parc");
+                            ctxBackground.clearRect(0,0,1024,640);
+                            ctxBackground.drawImage(parc, 0, 0,1024,640);
+                            // On replace le personnage et le carré bleu sur la route de la deuxieme image
+                            player.position.x = 978;
+                            player.position.y = 292;
+                            currentMap = 4;
+                            break;
+                    }
+                    break;
+
+                case 3:
+                    switch (element.direction) {
+                        case "city":
+                            ctxBackground.clearRect(0,0,1024,640);
+                            ctxBackground.drawImage(cityMapImg, 0, 0,1024,640);
+                            // On replace le personnage et le carré bleu sur la route de la deuxieme image
+                            player.position.x = 10;
+                            player.position.y = 303;
+                            currentMap = 0;
+                            break;
+
+                        case "parc":
+                            console.log("parc");
+                            ctxBackground.clearRect(0,0,1024,640);
+                            ctxBackground.drawImage(parc, 0, 0,1024,640);
+                            // On replace le personnage et le carré bleu sur la route de la deuxieme image
+                            player.position.x = 90;
+                            player.position.y = 575;
+                            currentMap = 4;
+                            break;
+                    }
+                    break;
+
+                case 4:
+                    switch (element.direction) {
+                        case "parc-right":
+                            ctxBackground.clearRect(0,0,1024,640);
+                            ctxBackground.drawImage(cityMapRight, 0, 0,1024,640);
+                            // On replace le personnage et le carré bleu sur la route de la deuxieme image
+                            player.position.x = 758;
+                            player.position.y = 20;
+                            currentMap = 2;
+                            break;
+
+                        case "parc-left":
+                            ctxBackground.clearRect(0,0,1024,640);
+                            ctxBackground.drawImage(cityMapLeft, 0, 0,1024,640);
+                            // On replace le personnage et le carré bleu sur la route de la deuxieme image
+                            player.position.x = 212;
+                            player.position.y = 15;
+                            currentMap = 3;
                             break;
                     }
                     break;
@@ -215,7 +298,6 @@ function checkAllZoneCollisions(){
 
 
 function checkCanvasEdgesCollisions(){
-
     if(player.position.x + offsetX < 0 || player.position.x + offsetX + hitboxWidth  > canvas.width || player.position.y <  0 || player.position.y + offsetY + hitboxHeight > canvas.height)
     {
         switch (moveCharacter) {
