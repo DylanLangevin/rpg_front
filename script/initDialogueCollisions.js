@@ -4,7 +4,7 @@ let cityDialogueCollisions = [
 
 let coffeeDialogueCollisions = [
     // Pnj Bar
-    {x:180, y:160, width: 50, height: 120}
+    {x:180, y:160, width: 50, height: 120, pnj: maleCitizen.name}
 ]
 
 let mapsDialogueCollisions = [cityDialogueCollisions, coffeeDialogueCollisions]

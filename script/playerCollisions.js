@@ -240,7 +240,7 @@ function checkAllDialogueCollisions() {
     mapsDialogueCollisions[currentMap].forEach(element => {
         if((player.position.x + offsetX + hitboxWidth > element.x && player.position.x + offsetX < element.x + element.width && player.position.y + offsetY + hitboxHeight >  element.y && player.position.y + offsetY < element.y + element.height)) {
 
-            pnjTalk = "Voulez-vous discuter avec " + maleCitizen.name + " ? (enter)"
+            pnjTalk = "Voulez-vous discuter avec " + element.pnj + " ? (enter)"
             maleCitizen.textZone(pnjTalk)
         
             // Quand on clique sur entrée, le dialogue se créé
