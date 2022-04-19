@@ -198,6 +198,8 @@ body {
     height: 70px;
     border-radius: 18px;
     background: #495057;
+
+    box-shadow: 1px 2px 4px rgba(255, 255, 255, 0.25);
 }
 
 .hitbox {
@@ -212,6 +214,8 @@ body {
     height: 70px;
     border-radius: 18px;
     background: #495057;
+
+    box-shadow: 1px 2px 4px rgba(255, 255, 255, 0.25);
 }
 
 .shifting {
@@ -226,6 +230,8 @@ body {
     height: 70px;
     border-radius: 18px;
     background: #495057;
+
+    box-shadow: 1px 2px 4px rgba(255, 255, 255, 0.25);
 
     display: flex;
     justify-content: center;
