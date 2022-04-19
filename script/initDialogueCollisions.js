@@ -7,7 +7,17 @@ let coffeeDialogueCollisions = [
     {x:180, y:160, width: 50, height: 120, pnj: maleCitizen.name}
 ]
 
-let mapsDialogueCollisions = [cityDialogueCollisions, coffeeDialogueCollisions]
+let parcRightMapDialogueCollisions = [
+
+];
+let parcLeftMapDialogueCollisions = [
+
+];
+let parcMapDialogueCollisions = [
+
+];
+
+let mapsDialogueCollisions = [cityDialogueCollisions, coffeeDialogueCollisions, parcRightMapDialogueCollisions, parcLeftMapDialogueCollisions, parcMapDialogueCollisions]
 
 let pnjTalk;
 let whichText;
