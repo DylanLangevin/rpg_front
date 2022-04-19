@@ -77,6 +77,10 @@ function drawPlayerHitbox(){
 
 // Dessiner le caractère à l'arrêt lorsqu'on arrête d'avancer
 function stopMovingCharacter(whichDirection) {
+<<<<<<< HEAD
+=======
+    walkSound(false);
+>>>>>>> main
     ctx.clearRect(0, 0, canvas.width, canvas.height)
 
     spriteSheetPosX = 0;
@@ -91,12 +95,22 @@ function stopMovingCharacter(whichDirection) {
         drawAllSolidCollisionsBox();
         drawAllZoneCollisionsBox();
     }
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> main
 }
 
 
 // Choisir la bonne frame
 function updateFrame() {
 
+<<<<<<< HEAD
+=======
+    walkSound(true);
+
+>>>>>>> main
     console.log("pos X" + player.position.x);
     console.log("pos Y" + player.position.y);
 
@@ -240,4 +254,32 @@ body.onkeydown = event => {
                 hitboxToggle = true;
             }
     }
+<<<<<<< HEAD
 }
+=======
+}
+
+// window.onkeypress = event => {
+//     switch(event.key) {
+//         case "ArrowUp":
+//             walkSound()
+//             KeyboardEvent.repeat = false;
+//             break;
+            
+//         case "ArrowDown":
+//             walkSound()
+//             break;
+
+//         case "ArrowLeft":
+//             walkSound()
+//             break;
+
+//         case "ArrowRight":
+//             walkSound()
+//             break;
+//         case "m":
+            
+//             break;
+//     }
+// }
+>>>>>>> main

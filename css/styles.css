@@ -18,7 +18,11 @@ body {
     /* display: none; */
     /* visibility: hidden;  */
     height: 640px;
+<<<<<<< HEAD
     width: 1040px;
+=======
+    width: 1024px;
+>>>>>>> main
     background: url("../images/menu-background.jpg");
     background-size: cover;
     background-repeat: no-repeat;
