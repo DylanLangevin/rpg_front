@@ -4,6 +4,81 @@ const ctxBackground = canvasBackground.getContext('2d');
 let canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
 
+// Récupération des images en background (test)
+let img = document.getElementById('img')
+let img2 = document.getElementById('img2')
+let img3 = document.getElementById('img3')
+
+
+let body = document.querySelector('body');
+
+// Orientation du personnage, la ligne qui correspond à l'image de base
+let directionUp = 0;
+let directionLeft = 1;
+let directionDown = 2;
+let directionRight = 3;
+
+// Mouvement du personnage
+let moveCharacter;
+
+// Position où le dessin sera dessiné sur le canvas
+let dx = 500;
+let dy = 300;
+
+// Vitesse
+let speed = 5
+
+// Position de la zone de l'image source (le coin supérieur gauche de la frame)
+let sx;
+let sy;
+
+// Taille de l'image qui comporte les sprite, width 576/9 = 64 et height 268/4  = 67
+let spriteWidth = 576;
+let spriteHeight = 268;
+
+// Nombre de frame
+let frameCols = 9;
+let frameRows = 4;
+
+// Width de chaque frame 
+let frameWidth = spriteWidth/frameCols;
+let frameHeight = spriteHeight/frameRows;
+
+// Index de la frame
+let currentFrame = 0
+
+// fonction choix des personnages
+function witchCharacter(genderChoice) {
+    if(genderChoice === "male") {
+        characterProfile = 'character_profile/male_player.png';
+    }
+    else {
+        characterProfile = 'character_profile/female_player.png';
+    }
+    return characterProfile;
+}
+
+characterProfile = witchCharacter("");
+
+// Initialisation de l'ojet player
+let player = new Player("Adrien",characterProfile, [dx, dy], ["carte des suspects", "bout de papier"]);//position et inventaire à définir, ajouter des fonctions ect
+
+
+// Test initialisation d'un PNJ
+body.onload = function() {
+    // On dessine la hitbox du pnj
+    ctx.fillStyle = "rgba(250, 0, 0, 0.3)";
+    ctx.fillRect(660, 132, frameWidth-20, frameHeight-10)
+
+    // Dessin du pnj
+    ctx.drawImage(maleCitizen.character, 0, 128,frameWidth, frameHeight, 650, 126, frameWidth, frameHeight)
+
+    // Dessin d'une forme pour test la hitbox de l'item
+    ctx.fillStyle = "rgba(250, 250, 0, 0.6)";
+    ctx.fillRect(itemFoundX,itemFoundY,itemFoundWidth,itemFoundHeight)
+   
+}
+// Fin du test initialisation d'un PNJ
 
 
 // Test déplacement (les fonctions)
