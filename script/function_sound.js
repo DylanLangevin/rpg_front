@@ -45,5 +45,20 @@ function walkSound(playWalk) {
     }
 }
 
+const musicButton = document.querySelector("#music-btn");
+
+let soundStatus = false;
+musicButton.onclick = () => {
+    if (soundStatus == false) {
+        soundStatus = true;
+        musicButton.style.background = "url('../images/sounds-icon/sound-on.svg')"
+        music();
+    } else {
+        soundStatus = false;
+        musicButton.style.background = "url('../images/sounds-icon/sound-off.svg')"
+        music();
+    }
+}
+
 btnTakeObj.addEventListener("click", takeObj);
 btnPlay.addEventListener("click", music);
