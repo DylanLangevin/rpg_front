@@ -7,7 +7,7 @@ let playTakeObj = false
 let letsPlayTakeObj = new Audio("sound/iTellMessage.mp3");
 
 let playWalkSound = false
-let letsPlayWalk = new Audio("sound/walk.mp3")
+let letsPlayWalk = new Audio("sound/Footsteps.mp3")
 
 
 function music() {
@@ -32,15 +32,16 @@ function takeObj() {
     }
 }
 
-function walkSound() {
-    playWalkSound = !playWalkSound;
-    if (playWalkSound === true) {
+function walkSound(playWalk) {
+    if (playWalk && !playWalkSound) {
         letsPlayWalk.play();
-        // letsPlayWalk.loop = true;
-    } else if(playWalkSound === false) {
+        playWalkSound = true;
+        letsPlayWalk.loop = true;
+    } else if(!playWalk) {
         letsPlayWalk.pause();
         letsPlayWalk.currentTime = 0;
-        // letsPlayWalkSound.loop = false;
+        letsPlayWalk.loop = false;
+        playWalkSound = false;
     }
 }
 

@@ -77,7 +77,7 @@ function drawPlayerHitbox(){
 
 // Dessiner le caractère à l'arrêt lorsqu'on arrête d'avancer
 function stopMovingCharacter(whichDirection) {
-    walkSound()
+    walkSound(false);
     ctx.clearRect(0, 0, canvas.width, canvas.height)
 
     spriteSheetPosX = 0;
@@ -100,7 +100,7 @@ function stopMovingCharacter(whichDirection) {
 // Choisir la bonne frame
 function updateFrame() {
 
-    walkSound()
+    walkSound(true);
 
     console.log("pos X" + player.position.x);
     console.log("pos Y" + player.position.y);
