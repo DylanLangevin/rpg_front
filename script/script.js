@@ -4,8 +4,6 @@ const ctxBackground = canvasBackground.getContext('2d');
 let canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
 
-<<<<<<< HEAD
-=======
 // Récupération des images en background (test)
 let img = document.getElementById('img')
 let img2 = document.getElementById('img2')
@@ -81,7 +79,6 @@ body.onload = function() {
    
 }
 // Fin du test initialisation d'un PNJ
->>>>>>> main
 
 
 // Test déplacement (les fonctions)

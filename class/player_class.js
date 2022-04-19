@@ -16,10 +16,7 @@ class Player {
 
     newItem(item) {
         this.inventory.push(item);
-<<<<<<< HEAD
-=======
         takeobj();
->>>>>>> main
     }
 
     textZone(iTalk, dx, dy) {

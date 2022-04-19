@@ -37,15 +37,6 @@ let coffeeMapSolidObjectsCollisions = [
 let parcRightMapSolidObjectsCollisions = [
 
 ];
-<<<<<<< HEAD
-
-
-
-    
-
-
-let mapsSolidObjectsCollisions = [cityMapSolidObjectsCollisions, coffeeMapSolidObjectsCollisions, parcRightMapSolidObjectsCollisions];
-=======
 let parcLeftMapSolidObjectsCollisions = [
 
 ];
@@ -54,7 +45,6 @@ let parcMapSolidObjectsCollisions = [
 ];
 
 let mapsSolidObjectsCollisions = [cityMapSolidObjectsCollisions, coffeeMapSolidObjectsCollisions, parcRightMapSolidObjectsCollisions, parcLeftMapSolidObjectsCollisions, parcMapSolidObjectsCollisions];
->>>>>>> main
 
 function drawAllSolidCollisionsBox(){
     ctx.fillStyle = "rgba(255,0,0,0.3)";
@@ -62,46 +52,16 @@ function drawAllSolidCollisionsBox(){
     mapsSolidObjectsCollisions[currentMap].forEach(element => {
         ctx.fillRect(element.x, element.y, element.width, element.height);
     });
-<<<<<<< HEAD
-}
-
-
-let cityMapZoneObjectsCollisions = [
-
-=======
 
 }
 
 let cityMapZoneObjectsCollisions = [
->>>>>>> main
     // porte entrée café
     {x:250, y:510, width: 20, height: 30, direction:"coffee"},
 
     // zone vers parc-right
     {x:1022, y:142, width: 10, height: 50, direction:"parc-right"},
 
-<<<<<<< HEAD
-];
-
-let coffeeMapZoneObjectsCollisions = [
-
-    // porte entrée café
-    {x:865, y:568, width: 60, height: 10},
-
-];
-
-let parcRightMapZoneObjectsCollisions = [
-
-    // zone vers city
-    {x:0, y:373, width: 16, height: 55, direction:"city"},
-
-    // zone vers parc
-    {x:758, y:0, width: 55, height:16, direction:"parc"},
-
-];
-
-let mapsZoneObjectsCollisions = [cityMapZoneObjectsCollisions, coffeeMapZoneObjectsCollisions, parcRightMapZoneObjectsCollisions];
-=======
     // zone vers parc left
     {x:-8, y:303, width: 10, height: 50, direction:"parc-left"},
 ];
@@ -138,17 +98,13 @@ let parcMapZoneObjectsCollisions = [
 
 
 let mapsZoneObjectsCollisions = [cityMapZoneObjectsCollisions, coffeeMapZoneObjectsCollisions, parcRightMapZoneObjectsCollisions, parcLeftMapZoneObjectsCollisions, parcMapZoneObjectsCollisions];
->>>>>>> main
 
 function drawAllZoneCollisionsBox(){
     ctx.fillStyle = "rgba(0,0,255,0.8)";
 
     mapsZoneObjectsCollisions[currentMap].forEach(element => {
         ctx.fillRect(element.x, element.y, element.width, element.height);
-<<<<<<< HEAD
-=======
         // A supprimer ?
->>>>>>> main
         ctx.fillRect(element.coffeeX, element.coffeeY, element.coffeeWidth, element.coffeeHeight);
     });
 }
@@ -239,8 +195,6 @@ function checkAllZoneCollisions(){
                             player.position.y = 373;
                             currentMap = 2;
                             break;
-<<<<<<< HEAD
-=======
 
                         case "parc-left":
                             console.log("parc-left");
@@ -251,7 +205,6 @@ function checkAllZoneCollisions(){
                             player.position.y = 373;
                             currentMap = 3;
                             break;
->>>>>>> main
                     }
                     break;
                     
@@ -282,8 +235,6 @@ function checkAllZoneCollisions(){
 
                         case "parc":
                             console.log("parc");
-<<<<<<< HEAD
-=======
                             ctxBackground.clearRect(0,0,1024,640);
                             ctxBackground.drawImage(parc, 0, 0,1024,640);
                             // On replace le personnage et le carré bleu sur la route de la deuxieme image
@@ -335,7 +286,6 @@ function checkAllZoneCollisions(){
                             player.position.x = 212;
                             player.position.y = 15;
                             currentMap = 3;
->>>>>>> main
                             break;
                     }
                     break;
@@ -346,10 +296,6 @@ function checkAllZoneCollisions(){
 
 
 function checkCanvasEdgesCollisions(){
-<<<<<<< HEAD
-
-=======
->>>>>>> main
     if(player.position.x + offsetX < 0 || player.position.x + offsetX + hitboxWidth  > canvas.width || player.position.y <  0 || player.position.y + offsetY + hitboxHeight > canvas.height)
     {
         switch (moveCharacter) {
