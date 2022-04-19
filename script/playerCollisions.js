@@ -150,6 +150,7 @@ function checkAllZoneCollisions(){
                 case 0:
                     switch (element.direction) {
                         case "coffee":
+                            OpenDoor()
                             console.log("coffee");
                             ctxBackground.clearRect(0,0,1024,640);
                             ctxBackground.drawImage(coffeeShop, 0, 0,1024,640);
@@ -177,6 +178,7 @@ function checkAllZoneCollisions(){
                     break;
                     
                 case 1:
+                    OpenDoor()
                     ctxBackground.clearRect(0,0,1024,640);
                     ctxBackground.drawImage(cityMapImg, 0, 0,1024,640);
                     // On replace le personnage et le carré bleu sur la route de la deuxieme image
