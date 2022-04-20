@@ -1,15 +1,17 @@
 let cityMapSolidObjectsCollisions = [
     // Mairie
-    {x:64, y:0, width: 368, height: 216},
+    {x:0, y:0, width: 432, height: 216},
 
     // Café
-    {x:88, y:384, width: 152, height: 174},
+    {x:0, y:384, width: 240, height: 256},
     {x:240, y:400, width: 100, height: 114},
     {x:280, y:400, width: 64, height: 158},
     // Maison player
     {x:815, y:414, width: 195, height: 144},
-    {x:815, y:414, width: 195, height: 144},
-
+    {x:875, y:394, width: 122, height: 20},
+    {x:895, y:374, width: 82, height: 20},
+    {x:915, y:354, width: 42, height: 20},
+    {x:931, y:344, width: 10, height: 10},
 
 ];
 
