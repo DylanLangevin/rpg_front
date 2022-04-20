@@ -11,16 +11,12 @@ let HeightHitBoxOfficer
 
 let SpriteX 
 let SpriteY 
-function OfficerSprite(OfficerXInitial,OfficerYInitial, OfficerXToRight,OfficerXToLeft,OfficerSpeed){
+function OfficerSprite(OfficerXInitial,OfficerYInitial, OfficerXToRight,OfficerXToLeft){
     let speed = 5 
     function movingOfficer(){
 
         
-
-            
-    
-    
-    
+        
         if(OfficerXInitial<= OfficerXToRight){
            speed = 5
            spriteSheetPosX = 0;
@@ -35,7 +31,7 @@ function OfficerSprite(OfficerXInitial,OfficerYInitial, OfficerXToRight,OfficerX
             
             spriteSheetPosX = 0;
            spriteSheetPosY =directionLeft * frameHeight;
-           SpriteX = spriteSheetPosX +19
+           SpriteX = spriteSheetPosX +10
            SpriteY = spriteSheetPosY 
            WidthHitBoxOfficer = -290
            HeightHitBoxOfficer = 40
@@ -70,7 +66,7 @@ function OfficerSprite(OfficerXInitial,OfficerYInitial, OfficerXToRight,OfficerX
 // OfficerXToLeft doit être supérieur de 200px par rapport à OfficerXInitial et determine la limite jusqu'à ce que le policier change de position pour aller à droite
 
 
-OfficerSprite(400,505,300,500)
+OfficerSprite(450,490,350,550)
 OfficerSprite(600,105,500,700)
 OfficerSprite(800,205,700,900)
 
