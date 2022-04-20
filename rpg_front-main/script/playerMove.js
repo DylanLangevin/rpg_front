@@ -56,26 +56,18 @@ let player = new Player(playerName, genderChoice, {x:600, y:400}, playerSpeed, [
 
 console.log(player.position);
 
-function drawPlayerHitboxCollisions() {
-     // On dessine le caractère
-     ctx.drawImage(player.character, spriteSheetPosX, spriteSheetPosY,frameWidth, frameHeight, player.position.x, player.position.y, frameWidth / scaleDivider, frameHeight / scaleDivider);
-    
-     if(hitboxToggle)
-     {
-         drawPlayerHitbox();
-         drawAllSolidCollisionsBox();
-         drawAllZoneCollisionsBox();
-         drawAllDialogueCollisionsBox()
-     }
-}
-
 // Test initialisation d'un PNJ
 body.onload = function() {
 
-    drawPlayerHitboxCollisions()
+    // On dessine le caractère
+    ctx.drawImage(player.character, spriteSheetPosX, spriteSheetPosY,frameWidth, frameHeight, player.position.x, player.position.y, frameWidth / scaleDivider, frameHeight / scaleDivider);
+
+    drawPlayerHitbox();
+    drawAllSolidCollisionsBox();
+    drawAllZoneCollisionsBox();
+
 
 }
-
 
 function drawPlayerHitbox(){
 
@@ -85,24 +77,25 @@ function drawPlayerHitbox(){
 
 // Dessiner le caractère à l'arrêt lorsqu'on arrête d'avancer
 function stopMovingCharacter(whichDirection) {
-    walkSound(false);
     ctx.clearRect(0, 0, canvas.width, canvas.height)
 
     spriteSheetPosX = 0;
     spriteSheetPosY = whichDirection * frameHeight;
 
-    drawPlayerHitboxCollisions();
-
-    checkAllDialogueCollisions();
+    // On dessine le caractère
+    ctx.drawImage(player.character, spriteSheetPosX, spriteSheetPosY,frameWidth, frameHeight, player.position.x, player.position.y, frameWidth / scaleDivider, frameHeight / scaleDivider);
+    
+    if(hitboxToggle)
+    {
+        drawPlayerHitbox();
+        drawAllSolidCollisionsBox();
+        drawAllZoneCollisionsBox();
+    }
 }
-
-
 
 
 // Choisir la bonne frame
 function updateFrame() {
-
-    walkSound(true);
 
     console.log("pos X" + player.position.x);
     console.log("pos Y" + player.position.y);
@@ -179,7 +172,17 @@ function updateFrame() {
     // Effacer le canvas avant de mettre la nouvelle frame, évite un biug d'affichage
     ctx.clearRect(0, 0, canvas.width, canvas.height)
 
-    drawPlayerHitboxCollisions()
+    ctx.drawImage(player.character, spriteSheetPosX, spriteSheetPosY,frameWidth, frameHeight, player.position.x, player.position.y, frameWidth / scaleDivider, frameHeight / scaleDivider);
+
+    if(hitboxToggle)
+    {
+        drawPlayerHitbox();
+        drawAllSolidCollisionsBox();
+        drawAllZoneCollisionsBox();
+    }
+
+    console.log(moveCharacter);
+    console.log(previousMoveOrientation);
 
 }
 
@@ -194,7 +197,6 @@ body.onkeydown = event => {
             checkAllSolidCollisions();
             checkAllZoneCollisions();
             checkCanvasEdgesCollisions();
-            checkAllDialogueCollisions();
             break;
             
         case "ArrowDown":
@@ -203,7 +205,6 @@ body.onkeydown = event => {
             checkAllSolidCollisions();
             checkAllZoneCollisions();
             checkCanvasEdgesCollisions();
-            checkAllDialogueCollisions()
             break;
 
         case "ArrowLeft":
@@ -212,7 +213,6 @@ body.onkeydown = event => {
             checkAllSolidCollisions();
             checkAllZoneCollisions();
             checkCanvasEdgesCollisions();
-            checkAllDialogueCollisions()
             break;
 
         case "ArrowRight":
@@ -221,7 +221,6 @@ body.onkeydown = event => {
             checkAllSolidCollisions();
             checkAllZoneCollisions();
             checkCanvasEdgesCollisions();
-            checkAllDialogueCollisions()
             break;
         case "m":
             moveCharacter = "moonWalk";
@@ -229,7 +228,6 @@ body.onkeydown = event => {
             checkAllSolidCollisions();
             checkAllZoneCollisions();
             checkCanvasEdgesCollisions();
-            checkAllDialogueCollisions()
             break;
 
         case "h":
