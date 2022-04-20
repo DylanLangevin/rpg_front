@@ -96,25 +96,7 @@ function stopMovingCharacter(whichDirection) {
 
 }
 
-function stopMovingOfficer(whichDirection) {
-    walkSound(false);
-    OfficerCtx.clearRect(0, 0, OfficerCanvas.width, OfficerCanvas.height)
 
-    spriteSheetPosX = 0;
-    spriteSheetPosY = whichDirection * frameHeight;
-
-    // On dessine le caractère
-    OfficerCtx.drawImage(police.character,0,128,frameWidth,frameHeight,policerX,200,40,40)
-    
-    // if(hitboxToggle)
-    // {
-    //     drawPlayerHitbox();
-    //     drawAllSolidCollisionsBox();
-    //     drawAllZoneCollisionsBox();
-    // }
-
-
-}
 
 
 // Choisir la bonne frame
