@@ -65,10 +65,13 @@ let parcMapSolidObjectsCollisions = [
 ];
 
 let libraryMapSolideObjectsCollisions = [
-    // {x:200, y:510, width: 55, height: 16}
 ];
 
-let mapsSolidObjectsCollisions = [cityMapSolidObjectsCollisions, coffeeMapSolidObjectsCollisions, parcRightMapSolidObjectsCollisions, parcLeftMapSolidObjectsCollisions, parcMapSolidObjectsCollisions, libraryMapSolideObjectsCollisions];
+let librarySecondMapSolideObjectsCollisions = [
+];
+
+
+let mapsSolidObjectsCollisions = [cityMapSolidObjectsCollisions, coffeeMapSolidObjectsCollisions, parcRightMapSolidObjectsCollisions, parcLeftMapSolidObjectsCollisions, parcMapSolidObjectsCollisions, libraryMapSolideObjectsCollisions, librarySecondMapSolideObjectsCollisions];
 
 function drawAllSolidCollisionsBox(){
     ctx.fillStyle = "rgba(255,0,0,0.3)";

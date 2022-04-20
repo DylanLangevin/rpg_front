@@ -125,7 +125,7 @@ function checkAllZoneCollisions(){
                             ctxBackground.drawImage(cityMapImg, 0, 0,1024,640);
                             // On replace le personnage et le carré bleu sur la route de la deuxieme image
                             player.position.x = 978;
-                            player.position.y = 142;
+                            player.position.y = 202;
                             currentMap = 0;
                             break;
 
@@ -207,6 +207,29 @@ function checkAllZoneCollisions(){
                             player.position.x = 204;
                             player.position.y = 500;
                             currentMap = 4;
+                            break;
+
+                        case "library-second-map":
+                            ctxBackground.clearRect(0,0,1024,640);
+                            ctxBackground.drawImage(indoorLibrarySecondMap, 0, 0,1024,640);
+                            // On replace le personnage et le carré bleu sur la route de la deuxieme image
+                            player.position.x = 140;
+                            player.position.y = 450;
+                            currentMap = 6;
+                            break;
+                    }
+                    break;
+
+                // Deuxième map intérieur library
+                case 6:
+                    switch (element.direction) {
+                        case "library":
+                            ctxBackground.clearRect(0,0,1024,640);
+                            ctxBackground.drawImage(indoorLibraryFirstMap, 0, 0,1024,640);
+                            // On replace le personnage et le carré bleu sur la route de la deuxieme image
+                            player.position.x = 920;
+                            player.position.y = 470;
+                            currentMap = 5;
                             break;
                     }
                     break;

@@ -22,7 +22,10 @@ let libraryMapItemCollisions = [
 
 ];
 
-let mapsItemCollisions = [cityItemCollisions, coffeeItemCollisions,parcRightMapItemCollisions, parcLeftMapItemCollisions, parcMapItemCollisions, libraryMapItemCollisions]
+let librarySecondMapItemCollisions = [
+];
+
+let mapsItemCollisions = [cityItemCollisions, coffeeItemCollisions,parcRightMapItemCollisions, parcLeftMapItemCollisions, parcMapItemCollisions, libraryMapItemCollisions, librarySecondMapItemCollisions]
 
 function itemPositions() {
     // Mettre l'image de l'objet dans le draw ci-dessous
