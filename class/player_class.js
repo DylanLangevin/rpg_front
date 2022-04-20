@@ -1,9 +1,13 @@
 class Player {
-    constructor(name, image, position, inventory) {
+    constructor(name, image, position, speed, inventory) {
         this.name = name;
         this.position = position;
+        this.speed = speed;
         this.inventory = inventory;
         this.image = image;
+        let character = new Image();
+        character.src = this.image;
+        this.character = character;
     }
 
     letsTalk(text) {
@@ -12,12 +16,7 @@ class Player {
 
     newItem(item) {
         this.inventory.push(item);
-    }
-
-    characterProfil() {
-        let character = new Image();
-        character.src = this.image;
-        return character;
+        takeobj();
     }
 
     textZone(iTalk, dx, dy) {
@@ -26,7 +25,7 @@ class Player {
         ctx.fillRect(dx +59, dy +1, widthTextZone, 20)
         ctx.strokeRect(dx +59, dy +1, widthTextZone, 20)
         ctx.fillStyle = "#000";
-        ctx.fillText(player.letsTalk(iTalk), dx +64, dy +15);
+        ctx.fillText(this.letsTalk(iTalk), dx +64, dy +15);
         return
     }
 
