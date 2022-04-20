@@ -6,9 +6,9 @@ let cityMapSolidObjectsCollisions = [
     {x:88, y:384, width: 152, height: 174},
     {x:240, y:400, width: 100, height: 114},
     {x:280, y:400, width: 64, height: 158},
-    {x:815, y:414, width: 195, height: 144},
-    {x:815, y:414, width: 195, height: 144},
     // Maison player
+    {x:815, y:414, width: 195, height: 144},
+    {x:815, y:414, width: 195, height: 144},
 
 
 ];
