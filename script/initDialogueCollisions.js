@@ -29,3 +29,4 @@ function drawAllDialogueCollisionsBox() {
         ctx.fillRect(element.x, element.y, element.width, element.height);
     });
 }
+
