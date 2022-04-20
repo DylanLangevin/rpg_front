@@ -31,6 +31,7 @@ let coffeeMapSolidObjectsCollisions = [
     {x:420, y:160, width: 288, height: 35},
     // Piano
     {x:868, y:160, width: 64, height: 35},
+    
 
 ];
 
@@ -44,6 +45,12 @@ let parcMapSolidObjectsCollisions = [
 
 ];
 
+// window.location = "index.html";
+// console.log('je tai touche')
+
+
+
+
 let mapsSolidObjectsCollisions = [cityMapSolidObjectsCollisions, coffeeMapSolidObjectsCollisions, parcRightMapSolidObjectsCollisions, parcLeftMapSolidObjectsCollisions, parcMapSolidObjectsCollisions];
 
 function drawAllSolidCollisionsBox(){
@@ -51,6 +58,7 @@ function drawAllSolidCollisionsBox(){
 
     mapsSolidObjectsCollisions[currentMap].forEach(element => {
         ctx.fillRect(element.x, element.y, element.width, element.height);
+        
     });
 
 }
@@ -58,6 +66,7 @@ function drawAllSolidCollisionsBox(){
 let cityMapZoneObjectsCollisions = [
     // porte entrée café
     {x:250, y:510, width: 20, height: 30, direction:"coffee"},
+
 
     // zone vers parc-right
     {x:1022, y:142, width: 10, height: 50, direction:"parc-right"},
@@ -69,6 +78,7 @@ let cityMapZoneObjectsCollisions = [
 let coffeeMapZoneObjectsCollisions = [
     // porte entrée café
     {x:865, y:568, width: 60, height: 10},
+    
 ];
 
 let parcRightMapZoneObjectsCollisions = [
@@ -111,7 +121,7 @@ function drawAllZoneCollisionsBox(){
         ctx.fillRect(element.coffeeX, element.coffeeY, element.coffeeWidth, element.coffeeHeight);
     });
 
-    // OfficerSprite(400,305,300,500)
+    
 }
 
 

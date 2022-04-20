@@ -1,7 +1,7 @@
 const OfficerCanvas = document.querySelector('#OfficerCanvas')
 
 const OfficerCtx = OfficerCanvas.getContext('2d');
-let speed = 5
+
 // let policerX = 600
 
 
@@ -11,15 +11,14 @@ let HeightHitBoxOfficer
 
 let SpriteX 
 let SpriteY 
-function OfficerSprite(OfficerXInitial,OfficerYInitial, OfficerXToRight,OfficerXToLeft){
+function OfficerSprite(OfficerXInitial,OfficerYInitial, OfficerXToRight,OfficerXToLeft,OfficerSpeed){
+    let speed = 5 
     function movingOfficer(){
 
-        if(player.position.x + offsetX + hitboxWidth > OfficerXInitial && player.position.x + offsetX < OfficerXInitial + WidthHitBoxOfficer && player.position.y + offsetY + hitboxHeight >  OfficerYInitial && player.position.y + offsetY < OfficerXInitial + HeightHitBoxOfficer)
-        {
+        
 
-            window.location = "index.html";
-            console.log('je tai touche')
-        }
+            
+    
     
     
         if(OfficerXInitial<= OfficerXToRight){
@@ -28,23 +27,23 @@ function OfficerSprite(OfficerXInitial,OfficerYInitial, OfficerXToRight,OfficerX
            spriteSheetPosY =directionRight * frameHeight;
            SpriteX = spriteSheetPosX -10
            SpriteY = spriteSheetPosY - 5
-           WidthHitBoxOfficer = 100
-        HeightHitBoxOfficer = 40
+           WidthHitBoxOfficer = 300
+         HeightHitBoxOfficer = 40
         }
         else if(OfficerXInitial>=OfficerXToLeft){
-            speed = -speed
+            speed = -5
             
             spriteSheetPosX = 0;
            spriteSheetPosY =directionLeft * frameHeight;
            SpriteX = spriteSheetPosX +19
            SpriteY = spriteSheetPosY 
-           WidthHitBoxOfficer = -90
+           WidthHitBoxOfficer = -290
            HeightHitBoxOfficer = 40
         }
     
         OfficerXInitial += speed
         
-        OfficerCtx.clearRect(OfficerXToRight-90, OfficerYInitial, 1000, HeightHitBoxOfficer)
+        OfficerCtx.clearRect(OfficerXToRight-290, OfficerYInitial, 1000, HeightHitBoxOfficer)
     
         // On dessine le caractère
         OfficerCtx.fillStyle ="rgb(250,150,0,0.3"
@@ -70,7 +69,11 @@ function OfficerSprite(OfficerXInitial,OfficerYInitial, OfficerXToRight,OfficerX
 
 // OfficerXToLeft doit être supérieur de 200px par rapport à OfficerXInitial et determine la limite jusqu'à ce que le policier change de position pour aller à droite
 
-OfficerSprite(400,305,300,500)
+
+OfficerSprite(400,505,300,500)
+OfficerSprite(600,105,500,700)
+OfficerSprite(800,205,700,900)
+
 
 
 
