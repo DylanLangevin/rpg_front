@@ -297,8 +297,8 @@ function checkAllDialogueCollisions() {
     mapsDialogueCollisions[currentMap].forEach(element => {
         if((player.position.x + offsetX + hitboxWidth > element.x && player.position.x + offsetX < element.x + element.width && player.position.y + offsetY + hitboxHeight >  element.y && player.position.y + offsetY < element.y + element.height)) {
 
-            pnjTalk = "Voulez-vous discuter avec " + element.pnj + " ? (enter)"
-            maleCitizen.textZone(pnjTalk)
+            pnjTalk = "Voulez-vous discuter avec " + element.pnj.name + " ? (enter)"
+            element.pnj.textZone(pnjTalk)
         
             // Quand on clique sur entrée, le dialogue se créé
             window.onkeydown = event => {
@@ -316,7 +316,7 @@ function checkAllDialogueCollisions() {
                 ctx.clearRect(0, 0, canvas.width, canvas.height)
                 drawPlayerHitboxCollisions()
                 console.log("oui");
-                maleCitizen.textZone(maleCitizen.iTalk)
+                element.pnj.textZone(element.dialogue)
             }
         }
     });
