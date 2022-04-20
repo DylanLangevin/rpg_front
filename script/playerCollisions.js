@@ -309,6 +309,8 @@ function checkAllItemCollisions() {
             // Change la valeur de picked pour ne plus pouvoir le recupérer
             element.picked = true
 
+            
+
         }
     });
 }
