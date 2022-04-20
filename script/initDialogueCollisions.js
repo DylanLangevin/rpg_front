@@ -21,7 +21,10 @@ let libraryMapDialogueCollisions = [
 
 ];
 
-let mapsDialogueCollisions = [cityDialogueCollisions, coffeeDialogueCollisions, parcRightMapDialogueCollisions, parcLeftMapDialogueCollisions, parcMapDialogueCollisions, libraryMapDialogueCollisions]
+let librarySecondMapDialogueCollisions = [
+];
+
+let mapsDialogueCollisions = [cityDialogueCollisions, coffeeDialogueCollisions, parcRightMapDialogueCollisions, parcLeftMapDialogueCollisions, parcMapDialogueCollisions, libraryMapDialogueCollisions, librarySecondMapDialogueCollisions]
 
 let pnjTalk;
 let whichText;
