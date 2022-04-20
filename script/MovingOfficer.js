@@ -26,6 +26,7 @@ function OfficerSprite(OfficerXInitial,OfficerYInitial, OfficerXToRight,OfficerX
         }
         else if(OfficerXInitial>=OfficerXToLeft){
             speed = -speed
+            
             spriteSheetPosX = 0;
            spriteSheetPosY =directionLeft * frameHeight;
            SpriteX = spriteSheetPosX +19
@@ -35,12 +36,12 @@ function OfficerSprite(OfficerXInitial,OfficerYInitial, OfficerXToRight,OfficerX
         }
     
         OfficerXInitial += speed
-        walkSound(false);
-        OfficerCtx.clearRect(0, 0, OfficerCanvas.width, OfficerCanvas.height)
+        
+        OfficerCtx.clearRect(OfficerXToRight-90, OfficerYInitial, 1000, HeightHitBoxOfficer)
     
         // On dessine le caractère
         OfficerCtx.fillStyle ="rgb(250,150,0,0.3"
-        OfficerCtx.clearRect(0,0,1000,1000)
+        // OfficerCtx.clearRect(OfficerXInitial,OfficerYInitial,40,40)
     
         OfficerCtx.fillRect(OfficerXInitial+20,OfficerYInitial,WidthHitBoxOfficer,HeightHitBoxOfficer)
         OfficerCtx.drawImage(police.character, SpriteX, SpriteY,frameWidth, frameHeight, OfficerXInitial, OfficerYInitial, 40 , 40);
@@ -53,7 +54,15 @@ function OfficerSprite(OfficerXInitial,OfficerYInitial, OfficerXToRight,OfficerX
 }
 
 
-OfficerSprite(600,305,400,600)
+OfficerSprite(400,305,300,500)
+// OfficerXInitial doit être supérier à OfficerXToRight
+
+// OfficerYInitial est égal à la position du en Y du personnage
+
+// OfficerXToRight doit être inférieur à OfficerXInitial et permets d'aller à gauche
+
+// OfficerXToLeft doit être supérieur de 200px par rapport à OfficerXInitial et determine la limite jusqu'à ce que le policier change de position pour aller à droite
+OfficerSprite(600,205,500,800)
 
 
 
