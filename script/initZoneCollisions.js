@@ -36,6 +36,10 @@ let parcMapZoneObjectsCollisions = [
 
     // zone vers parc left
     {x:85, y:637, width: 55, height:16, direction:"parc-left"},
+
+    // Porte entrée bibliothèque
+    {x:85, y:637, width: 55, height:16, direction:"parc-left"},
+    // 
 ];
 
 let mapsZoneObjectsCollisions = [cityMapZoneObjectsCollisions, coffeeMapZoneObjectsCollisions, parcRightMapZoneObjectsCollisions, parcLeftMapZoneObjectsCollisions, parcMapZoneObjectsCollisions];

@@ -1,6 +1,6 @@
 let cityItemCollisions = [
     // mettre les coordonées de l'objet
-    // {x:180, y:160, width: 50, height: 120}  
+    {x:180, y:160, width: 20, height: 20} 
 ];
 
 let coffeeItemCollisions = [

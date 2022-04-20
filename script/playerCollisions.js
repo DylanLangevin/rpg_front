@@ -59,6 +59,7 @@ function checkAllZoneCollisions(){
         if(player.position.x + offsetX + hitboxWidth > element.x && player.position.x + offsetX < element.x + element.width && player.position.y + offsetY + hitboxHeight >  element.y && player.position.y + offsetY < element.y + element.height)
         {
             switch (currentMap) {
+                // Map de la ville --> Case 0
                 case 0:
                     switch (element.direction) {
                         case "coffee":
@@ -99,7 +100,8 @@ function checkAllZoneCollisions(){
                             break;
                     }
                     break;
-                    
+                
+                // Map de l'intérieur du café --> Case 1
                 case 1:
                     OpenDoor()
                     ctxBackground.clearRect(0,0,1024,640);
@@ -114,7 +116,8 @@ function checkAllZoneCollisions(){
                     offsetY = 6;
                     rescalePlayer();
                     break;
-
+                
+                //  Map du parc-right --> Case 2
                 case 2:
                     switch (element.direction) {
                         case "city":
@@ -137,7 +140,8 @@ function checkAllZoneCollisions(){
                             break;
                     }
                     break;
-
+                
+                //  Map du parc-left --> Case 3
                 case 3:
                     switch (element.direction) {
                         case "city":
@@ -160,7 +164,8 @@ function checkAllZoneCollisions(){
                             break;
                     }
                     break;
-
+                
+                //  Map du parc  --> Case 4
                 case 4:
                     switch (element.direction) {
                         case "parc-right":

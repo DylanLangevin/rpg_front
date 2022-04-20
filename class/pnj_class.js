@@ -1,4 +1,4 @@
-class Pnj {
+ class Pnj {
     constructor(name, image, position) {
         this.name = name;
         this.position = position;
