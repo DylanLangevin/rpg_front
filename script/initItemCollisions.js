@@ -1,6 +1,6 @@
 let cityItemCollisions = [
     // mettre les coordonées de l'objet
-    // {x:180, y:160, width: 50, height: 120}  
+    {x:180, y:160, width: 20, height: 20} 
 ];
 
 let coffeeItemCollisions = [
@@ -18,7 +18,11 @@ let parcMapItemCollisions = [
 
 ];
 
-let mapsItemCollisions = [cityItemCollisions, coffeeItemCollisions,parcRightMapItemCollisions, parcLeftMapItemCollisions, parcMapItemCollisions]
+let libraryMapItemCollisions = [
+
+];
+
+let mapsItemCollisions = [cityItemCollisions, coffeeItemCollisions,parcRightMapItemCollisions, parcLeftMapItemCollisions, parcMapItemCollisions, libraryMapItemCollisions]
 
 function itemPositions() {
     // Mettre l'image de l'objet dans le draw ci-dessous

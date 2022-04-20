@@ -36,9 +36,17 @@ let parcMapZoneObjectsCollisions = [
 
     // zone vers parc left
     {x:85, y:637, width: 55, height:16, direction:"parc-left"},
+
+    // Porte entrée bibliothèque
+    {x:215, y:435, width: 15, height:30, direction:"library"},
+    // 
 ];
 
-let mapsZoneObjectsCollisions = [cityMapZoneObjectsCollisions, coffeeMapZoneObjectsCollisions, parcRightMapZoneObjectsCollisions, parcLeftMapZoneObjectsCollisions, parcMapZoneObjectsCollisions];
+let libraryMapZoneObjectsCollisions = [
+    {x:130, y:540, width: 125, height: 16, direction:"parc"},
+];
+
+let mapsZoneObjectsCollisions = [cityMapZoneObjectsCollisions, coffeeMapZoneObjectsCollisions, parcRightMapZoneObjectsCollisions, parcLeftMapZoneObjectsCollisions, parcMapZoneObjectsCollisions, libraryMapZoneObjectsCollisions];
 
 function drawAllZoneCollisionsBox(){
     ctx.fillStyle = "rgba(0,0,255,0.8)";

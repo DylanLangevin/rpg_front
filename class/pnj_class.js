@@ -1,11 +1,12 @@
 class Pnj {
-    constructor(name, image, position) {
+    constructor(name, image, position, iTalk) {
         this.name = name;
         this.position = position;
         this.image = image;
         let character = new Image();
         character.src = this.image;
         this.character = character;
+        this.iTalk = iTalk;
     }
 
     letsTalk(text) {

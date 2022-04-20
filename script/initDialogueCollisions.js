@@ -17,7 +17,11 @@ let parcMapDialogueCollisions = [
 
 ];
 
-let mapsDialogueCollisions = [cityDialogueCollisions, coffeeDialogueCollisions, parcRightMapDialogueCollisions, parcLeftMapDialogueCollisions, parcMapDialogueCollisions]
+let libraryMapDialogueCollisions = [
+
+];
+
+let mapsDialogueCollisions = [cityDialogueCollisions, coffeeDialogueCollisions, parcRightMapDialogueCollisions, parcLeftMapDialogueCollisions, parcMapDialogueCollisions, libraryMapDialogueCollisions]
 
 let pnjTalk;
 let whichText;
@@ -29,3 +33,4 @@ function drawAllDialogueCollisionsBox() {
         ctx.fillRect(element.x, element.y, element.width, element.height);
     });
 }
+

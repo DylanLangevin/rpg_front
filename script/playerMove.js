@@ -97,6 +97,8 @@ function stopMovingCharacter(whichDirection) {
 }
 
 
+
+
 // Choisir la bonne frame
 function updateFrame() {
 
@@ -241,27 +243,3 @@ body.onkeydown = event => {
             }
     }
 }
-
-// window.onkeypress = event => {
-//     switch(event.key) {
-//         case "ArrowUp":
-//             walkSound()
-//             KeyboardEvent.repeat = false;
-//             break;
-            
-//         case "ArrowDown":
-//             walkSound()
-//             break;
-
-//         case "ArrowLeft":
-//             walkSound()
-//             break;
-
-//         case "ArrowRight":
-//             walkSound()
-//             break;
-//         case "m":
-            
-//             break;
-//     }
-// }
