@@ -65,7 +65,8 @@ function drawPlayerHitboxCollisions() {
          drawPlayerHitbox();
          drawAllSolidCollisionsBox();
          drawAllZoneCollisionsBox();
-         drawAllDialogueCollisionsBox()
+         drawAllDialogueCollisionsBox();
+         drawAllItemCollisionsBox();
      }
 }
 
@@ -195,6 +196,7 @@ body.onkeydown = event => {
             checkAllZoneCollisions();
             checkCanvasEdgesCollisions();
             checkAllDialogueCollisions();
+            checkAllItemCollisions();
             break;
             
         case "ArrowDown":
@@ -204,6 +206,7 @@ body.onkeydown = event => {
             checkAllZoneCollisions();
             checkCanvasEdgesCollisions();
             checkAllDialogueCollisions()
+            checkAllItemCollisions();
             break;
 
         case "ArrowLeft":
@@ -212,7 +215,8 @@ body.onkeydown = event => {
             checkAllSolidCollisions();
             checkAllZoneCollisions();
             checkCanvasEdgesCollisions();
-            checkAllDialogueCollisions()
+            checkAllDialogueCollisions();
+            checkAllItemCollisions()
             break;
 
         case "ArrowRight":
@@ -221,7 +225,8 @@ body.onkeydown = event => {
             checkAllSolidCollisions();
             checkAllZoneCollisions();
             checkCanvasEdgesCollisions();
-            checkAllDialogueCollisions()
+            checkAllDialogueCollisions();
+            checkAllItemCollisions()
             break;
         case "m":
             moveCharacter = "moonWalk";
@@ -229,7 +234,8 @@ body.onkeydown = event => {
             checkAllSolidCollisions();
             checkAllZoneCollisions();
             checkCanvasEdgesCollisions();
-            checkAllDialogueCollisions()
+            checkAllDialogueCollisions();
+            checkAllItemCollisions()
             break;
 
         case "h":

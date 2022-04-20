@@ -14,14 +14,13 @@
         }
 
         body {
+
             position: fixed;
             background-color: #1f1f1f;
             overflow: hidden;
-
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-
         }
 
         #game-container {
@@ -51,6 +50,9 @@
             width: 50px;
             border-radius: 50%;
             background: #6c757d;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
         #music-btn {
@@ -58,6 +60,17 @@
             height: 28px;
             background: url("images/sounds-icon/sound-off.svg");
         }
+
+        #object1, #object2, #object3, #object4, #object5{
+            visibility: hidden;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background-color: aqua;
+        }
+        
+            
+        
     </style>
 </head>
 <body>
@@ -82,20 +95,32 @@
         </div>
     
         <div id="inventory">
-            <div class="object" id="object1"></div>
-            <div class="object" id="object2"></div>
-            <div class="object" id="object3"></div>
-            <div class="object" id="object4"></div>
-            <div class="object" id="object5"></div>
+            <div class="object" >
+                <div id="object1"></div>
+            </div>
+
+            <div class="object">
+                <div id="object2"></div>
+            </div>
+
+            <div class="object">
+                <div id="object3"></div>
+            </div>
+
+            <div class="object">
+                <div id="object4"></div>
+            </div>
+
+            <div class="object">
+                <div id="object5"></div>
+            </div>
+
+
             
             <div id="music-btn"></div>
         </div>
     </div>
     
-
-    
-
-
 </body>
 <script src="/script/function_sound.js"></script>
 <script src="class/player_class.js"></script>
