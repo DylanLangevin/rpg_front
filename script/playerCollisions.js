@@ -189,6 +189,7 @@ function checkAllZoneCollisions(){
                             break;
 
                         case "library":
+                            OpenDoor()
                             ctxBackground.clearRect(0,0,1024,640);
                             ctxBackground.drawImage(indoorLibraryFirstMap, 0, 0,1024,640);
                             // On replace le personnage et le carré bleu sur la route de la deuxieme image
@@ -304,6 +305,11 @@ function checkAllItemCollisions() {
             
             // Met le nom de l'objet dans l'inventaire du joueur
             player.inventory.push(element.name)
+            if(element.name != "key") {
+                takeObj()
+            } else if(element.name === "key") {
+                stillDre(true)
+            }
 
             // Rend visible l'image de l'item récupéré dans l'inventaire
             document.querySelector(`#object${(player.inventory.length)}`).style.visibility = "visible"

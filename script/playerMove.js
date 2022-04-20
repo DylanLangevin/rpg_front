@@ -15,7 +15,7 @@ let directionRight = 3;
 // Mouvement du personnage
 let moveCharacter;
 
-let playerSpeed = 30;
+let playerSpeed = 5;
 
 let previousMoveOrientation;
 
@@ -87,6 +87,9 @@ function drawPlayerHitbox(){
 // Dessiner le caractère à l'arrêt lorsqu'on arrête d'avancer
 function stopMovingCharacter(whichDirection) {
     walkSound(false);
+    if (moveCharacter === "moonWalk") {
+        stillDre(false);
+    }
     ctx.clearRect(0, 0, canvas.width, canvas.height)
 
     spriteSheetPosX = 0;
@@ -102,8 +105,11 @@ function stopMovingCharacter(whichDirection) {
 
 // Choisir la bonne frame
 function updateFrame() {
-
-    walkSound(true);
+    if(moveCharacter != "moonWalk") {
+        walkSound(true);
+    } else if (moveCharacter === "moonWalk") {
+        stillDre(true);
+    }
 
     console.log("pos X" + player.position.x);
     console.log("pos Y" + player.position.y);
