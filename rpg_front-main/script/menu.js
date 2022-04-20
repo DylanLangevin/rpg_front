@@ -16,9 +16,6 @@ const male = document.querySelector("#male");
 const confirm = document.querySelector("#confirm");
 const cancel = document.querySelector("#cancel");
 
-const startMenu = document.querySelector(".start-menu");
-const loadingContain = document.querySelector(".loading-contain");
-const loadingBar = document.querySelector(".loading-bar");
 
 function displayBlock(BlockTarget) {
     BlockTarget.style.display = 'block';
@@ -65,7 +62,7 @@ male.onclick = () => {
     console.log(genderChoice)
 }
 
-let loadingStatus = false;
+let currentMap;
 
 confirm.onclick = () => {
     playerName = document.getElementById("player-name").value;
@@ -74,10 +71,8 @@ confirm.onclick = () => {
     if (genderChoice != "none" && playerName != "") {
         localStorage.setItem("name", playerName);
         localStorage.setItem("gender", genderChoice);
-        startMenu.style.display = "none"
-        loadingContain.style.display = "flex";
-        startLoading();
-        // window.location = "game.html";
+
+        window.location = "game.html";
     }
     
 }
@@ -87,33 +82,4 @@ cancel.onclick = () => {
     female.style.display = "block"
     genderChoice = "none";
     playerName = "";
-}
-
-let x = 0;
-let j = 0;
-
-function startLoading() {
-    let loading = setInterval(loadingAnimation, 45);
-    let changePage = setInterval(counter, 45);
-
-    function loadingAnimation() {
-        x += 5;
-        if (x == 200) {
-            clearTimeout(loading); 
-        } 
-        
-        loadingBar.style.width = x + "px";
-
-        console.log(x)
-        console.log(j)
-    }
-
-    function counter() {
-        j += 5;
-        if (j == 250) {
-            clearTimeout(changePage);
-            window.location = "game.html";
-        }
-    }
-
 }

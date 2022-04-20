@@ -170,6 +170,7 @@ function checkAllZoneCollisions(){
                     switch (element.direction) {
                         case "parc-right":
                             ctxBackground.clearRect(0,0,1024,640);
+                            OfficerCtx.clearRect(0,0,1024,640);
                             ctxBackground.drawImage(cityMapRight, 0, 0,1024,640);
                             // On replace le personnage et le carré bleu sur la route de la deuxieme image
                             player.position.x = 758;
@@ -179,6 +180,7 @@ function checkAllZoneCollisions(){
 
                         case "parc-left":
                             ctxBackground.clearRect(0,0,1024,640);
+                            OfficerCtx.clearRect(0,0,1024,640);
                             ctxBackground.drawImage(cityMapLeft, 0, 0,1024,640);
                             // On replace le personnage et le carré bleu sur la route de la deuxieme image
                             player.position.x = 212;
@@ -314,3 +316,10 @@ function checkAllItemCollisions() {
         }
     });
 }
+
+
+
+function checkOfficerSolidCollisions(){
+    if(player.position.x + offsetX < 0 || player.position.x + offsetX + hitboxWidth  > canvas.width || player.position.y <  0 || player.position.y + offsetY + hitboxHeight > canvas.height){
+
+    }}

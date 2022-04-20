@@ -1,0 +1,11 @@
+{
+	"folders": [
+		{
+			"name": "rpg_front",
+			"path": ".."
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "rpg_front"
+	}
+}
