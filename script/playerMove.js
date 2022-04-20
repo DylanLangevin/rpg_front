@@ -65,7 +65,8 @@ function drawPlayerHitboxCollisions() {
          drawPlayerHitbox();
          drawAllSolidCollisionsBox();
          drawAllZoneCollisionsBox();
-         drawAllDialogueCollisionsBox()
+         drawAllDialogueCollisionsBox();
+         drawAllItemCollisionsBox();
      }
 }
 
