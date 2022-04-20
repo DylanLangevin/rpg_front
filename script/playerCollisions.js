@@ -185,13 +185,36 @@ function checkAllZoneCollisions(){
                             player.position.y = 15;
                             currentMap = 3;
                             break;
+
+                        case "library":
+                            ctxBackground.clearRect(0,0,1024,640);
+                            ctxBackground.drawImage(indoorLibraryFirstMap, 0, 0,1024,640);
+                            // On replace le personnage et le carré bleu sur la route de la deuxieme image
+                            player.position.x = 180;
+                            player.position.y = 490;
+                            currentMap = 5;
+                            break;
                     }
                     break;
+                
+                // Première map intérieur library
+                case 5:
+                    switch (element.direction) {
+                        case "parc":
+                            ctxBackground.clearRect(0,0,1024,640);
+                            ctxBackground.drawImage(parc, 0, 0,1024,640);
+                            // On replace le personnage et le carré bleu sur la route de la deuxieme image
+                            player.position.x = 204;
+                            player.position.y = 500;
+                            currentMap = 4;
+                            break;
+                    }
+                    break;
+
             }
         }
     })
 }
-
 
 function checkCanvasEdgesCollisions(){
     if(player.position.x + offsetX < 0 || player.position.x + offsetX + hitboxWidth  > canvas.width || player.position.y <  0 || player.position.y + offsetY + hitboxHeight > canvas.height)
@@ -267,8 +290,7 @@ function checkAllDialogueCollisions() {
                 ctx.clearRect(0, 0, canvas.width, canvas.height)
                 drawPlayerHitboxCollisions()
                 console.log("oui");
-                pnjTalk = "Holaaaaaa"
-                maleCitizen.textZone(pnjTalk)
+                maleCitizen.textZone(maleCitizen.iTalk)
             }
         }
     });
