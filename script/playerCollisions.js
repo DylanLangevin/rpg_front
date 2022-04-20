@@ -97,6 +97,9 @@ let parcMapZoneObjectsCollisions = [
 
 
 
+
+
+
 let mapsZoneObjectsCollisions = [cityMapZoneObjectsCollisions, coffeeMapZoneObjectsCollisions, parcRightMapZoneObjectsCollisions, parcLeftMapZoneObjectsCollisions, parcMapZoneObjectsCollisions];
 
 function drawAllZoneCollisionsBox(){
@@ -107,6 +110,8 @@ function drawAllZoneCollisionsBox(){
         // A supprimer ?
         ctx.fillRect(element.coffeeX, element.coffeeY, element.coffeeWidth, element.coffeeHeight);
     });
+
+    // OfficerSprite(400,305,300,500)
 }
 
 

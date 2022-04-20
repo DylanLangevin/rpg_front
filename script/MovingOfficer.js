@@ -13,6 +13,13 @@ let SpriteX
 let SpriteY 
 function OfficerSprite(OfficerXInitial,OfficerYInitial, OfficerXToRight,OfficerXToLeft){
     function movingOfficer(){
+
+        if(player.position.x + offsetX + hitboxWidth > OfficerXInitial && player.position.x + offsetX < OfficerXInitial + WidthHitBoxOfficer && player.position.y + offsetY + hitboxHeight >  OfficerYInitial && player.position.y + offsetY < OfficerXInitial + HeightHitBoxOfficer)
+        {
+
+            window.location = "index.html";
+            console.log('je tai touche')
+        }
     
     
         if(OfficerXInitial<= OfficerXToRight){
@@ -46,7 +53,7 @@ function OfficerSprite(OfficerXInitial,OfficerYInitial, OfficerXToRight,OfficerX
         OfficerCtx.fillRect(OfficerXInitial+20,OfficerYInitial,WidthHitBoxOfficer,HeightHitBoxOfficer)
         OfficerCtx.drawImage(police.character, SpriteX, SpriteY,frameWidth, frameHeight, OfficerXInitial, OfficerYInitial, 40 , 40);
         
-        console.log(OfficerXInitial)
+        // console.log(OfficerXInitial)
         
     }
     
@@ -54,7 +61,7 @@ function OfficerSprite(OfficerXInitial,OfficerYInitial, OfficerXToRight,OfficerX
 }
 
 
-OfficerSprite(400,305,300,500)
+
 // OfficerXInitial doit être supérier à OfficerXToRight
 
 // OfficerYInitial est égal à la position du en Y du personnage
@@ -62,7 +69,9 @@ OfficerSprite(400,305,300,500)
 // OfficerXToRight doit être inférieur à OfficerXInitial et permets d'aller à gauche
 
 // OfficerXToLeft doit être supérieur de 200px par rapport à OfficerXInitial et determine la limite jusqu'à ce que le policier change de position pour aller à droite
-OfficerSprite(600,205,500,800)
+
+OfficerSprite(400,305,300,500)
+
 
 
 
