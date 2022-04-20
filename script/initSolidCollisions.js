@@ -2,10 +2,14 @@ let cityMapSolidObjectsCollisions = [
     // Mairie
     {x:64, y:0, width: 368, height: 216},
 
-    //Café
+    // Café
     {x:88, y:384, width: 152, height: 174},
     {x:240, y:400, width: 100, height: 114},
     {x:280, y:400, width: 64, height: 158},
+    // Maison player
+    {x:815, y:414, width: 195, height: 144},
+    {x:815, y:414, width: 195, height: 144},
+
 
 ];
 
@@ -40,9 +44,24 @@ let coffeeMapSolidObjectsCollisions = [
 ];
 
 let parcRightMapSolidObjectsCollisions = [
+    // foret
+    {x:0, y:0, width:650, height:250},
+    {x:0, y:520, width:1024, height:150},
+    {x:900, y:0, width:50, height:640},
+    {x:850, y:475, width:50, height:50}, 
+    
 
 ];
 let parcLeftMapSolidObjectsCollisions = [
+    // foret
+    {x:375, y:0, width:650, height:250},
+    {x:0, y:520, width:1024, height:150},
+    {x:60, y:0, width:50, height:640},
+    {x:115, y:475, width:50, height:50},
+    //lampadaire 
+    // {x:, y:, width:, height:},
+    // {x:, y:, width:, height:},
+    // {x:, y:, width:, height:},
     
 ];
 let parcMapSolidObjectsCollisions = [

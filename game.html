@@ -14,14 +14,13 @@
         }
 
         body {
+
             position: fixed;
             background-color: #1f1f1f;
             overflow: hidden;
-
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-
         }
 
         #game-container {
@@ -51,6 +50,9 @@
             width: 50px;
             border-radius: 50%;
             background: #6c757d;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
         #music-btn {
@@ -59,6 +61,13 @@
             background: url("images/sounds-icon/sound-off.svg");
         }
 
+        #object1, #object2, #object3, #object4, #object5{
+            visibility: hidden;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background-color: aqua;
+        }
         
             
         
@@ -81,23 +90,37 @@
             <canvas id="canvas-background" width="1024" height="640" style="position:absolute; background-color: aliceblue;"></canvas>
     
             <canvas id="canvas" width="1024" height="640" style="position:absolute;"></canvas>
+            <canvas id="OfficerCanvas" width="1024" height="640" style="position:absolute;"></canvas>
+
         </div>
     
         <div id="inventory">
-            <div class="object" id="object1"></div>
-            <div class="object" id="object2"></div>
-            <div class="object" id="object3"></div>
-            <div class="object" id="object4"></div>
-            <div class="object" id="object5"></div>
+            <div class="object" >
+                <div id="object1"></div>
+            </div>
+
+            <div class="object">
+                <div id="object2"></div>
+            </div>
+
+            <div class="object">
+                <div id="object3"></div>
+            </div>
+
+            <div class="object">
+                <div id="object4"></div>
+            </div>
+
+            <div class="object">
+                <div id="object5"></div>
+            </div>
+
+
             
             <div id="music-btn"></div>
         </div>
     </div>
     
-
-    
-
-
 </body>
 <script src="/script/function_sound.js"></script>
 <script src="class/player_class.js"></script>
@@ -105,11 +128,13 @@
 <script src="class/police_class.js"></script>
 <script src="script/initialize_class.js"></script>
 <!-- <script src="script/script.js"></script> -->
+<script src="script/MovingOfficer.js"></script>
 <script src="script/initZoneCollisions.js"></script>
 <script src="script/initSolidCollisions.js"></script>
 <script src="script/initDialogueCollisions.js"></script>
 <script src="script/initItemCollisions.js"></script>
 <script src="script/playerMove.js"></script>
 <script src="script/playerCollisions.js"></script>
+
 <script src="script/maps.js"></script>
 </html>

@@ -1,6 +1,8 @@
 let cityItemCollisions = [
     // mettre les coordonées de l'objet
-    {x:180, y:160, width: 20, height: 20} 
+    {name:"key",x:600, y:160, width: 20, height: 20, picked:false}, 
+    {name:"gun",x:600, y:300, width: 20, height: 20, picked:false}
+ 
 ];
 
 let coffeeItemCollisions = [
@@ -36,6 +38,11 @@ function drawAllItemCollisionsBox() {
     ctx.fillStyle = "rgba(0,255,0,0.8)";
 
     mapsItemCollisions[currentMap].forEach(element => {
-        ctx.fillRect(element.x, element.y, element.width, element.height);
+        // Redessine sauf si l'item a déjà été récupéré
+        if (!element.picked) {
+
+            ctx.fillRect(element.x, element.y, element.width, element.height);
+        }
+
     });
 }

@@ -170,6 +170,7 @@ function checkAllZoneCollisions(){
                     switch (element.direction) {
                         case "parc-right":
                             ctxBackground.clearRect(0,0,1024,640);
+                            OfficerCtx.clearRect(0,0,1024,640);
                             ctxBackground.drawImage(cityMapRight, 0, 0,1024,640);
                             // On replace le personnage et le carré bleu sur la route de la deuxieme image
                             player.position.x = 758;
@@ -179,6 +180,7 @@ function checkAllZoneCollisions(){
 
                         case "parc-left":
                             ctxBackground.clearRect(0,0,1024,640);
+                            OfficerCtx.clearRect(0,0,1024,640);
                             ctxBackground.drawImage(cityMapLeft, 0, 0,1024,640);
                             // On replace le personnage et le carré bleu sur la route de la deuxieme image
                             player.position.x = 212;
@@ -321,8 +323,26 @@ function checkAllDialogueCollisions() {
 
 function checkAllItemCollisions() {
     mapsItemCollisions[currentMap].forEach(element => {
-        if((player.position.x + offsetX + hitboxWidth > element.x && player.position.x + offsetX < element.x + element.width && player.position.y + offsetY + hitboxHeight >  element.y && player.position.y + offsetY < element.y + element.height)) {
+        if((player.position.x + offsetX + hitboxWidth > element.x && player.position.x + offsetX < element.x + element.width && player.position.y + offsetY + hitboxHeight >  element.y && player.position.y + offsetY < element.y + element.height && !element.picked )) {
+            
+            // Met le nom de l'objet dans l'inventaire du joueur
+            player.inventory.push(element.name)
+
+            // Rend visible l'image de l'item récupéré dans l'inventaire
+            document.querySelector(`#object${(player.inventory.length)}`).style.visibility = "visible"
+
+            // Change la valeur de picked pour ne plus pouvoir le recupérer
+            element.picked = true
+
+            
 
         }
     });
 }
+
+
+
+function checkOfficerSolidCollisions(){
+    if(player.position.x + offsetX < 0 || player.position.x + offsetX + hitboxWidth  > canvas.width || player.position.y <  0 || player.position.y + offsetY + hitboxHeight > canvas.height){
+
+    }}

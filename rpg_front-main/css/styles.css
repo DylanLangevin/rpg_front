@@ -15,8 +15,10 @@ body {
 
 /* Start Menu */
 .start-menu {
+    /* display: none; */
+    /* visibility: hidden;  */
     height: 640px;
-    width: 1024px;
+    width: 1040px;
     background: url("../images/menu-background.jpg");
     background-size: cover;
     background-repeat: no-repeat;
@@ -71,7 +73,7 @@ body {
     height: 540px;
     width: 924px;
     background: black;
-    /* opacity: 0.96; */
+    opacity: 0.96;
     border-radius: 18px;
     position: absolute;
     
@@ -178,116 +180,4 @@ body {
 }
 #cancel:hover {
     background: #d90429;
-}
-
-.keycode {
-    display: flex;
-    justify-content: center;
-    gap: 50px;
-}
-
-.interaction {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-}
-
-#key-Enter {
-    width: 150px;
-    height: 70px;
-    border-radius: 18px;
-    background: #495057;
-
-    box-shadow: 1px 2px 4px rgba(255, 255, 255, 0.25);
-}
-
-.hitbox {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-}
-
-#key-H {
-    width: 70px;
-    height: 70px;
-    border-radius: 18px;
-    background: #495057;
-
-    box-shadow: 1px 2px 4px rgba(255, 255, 255, 0.25);
-}
-
-.shifting {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 40px;
-}
-
-.key-arrow {
-    width: 70px;
-    height: 70px;
-    border-radius: 18px;
-    background: #495057;
-
-    box-shadow: 1px 2px 4px rgba(255, 255, 255, 0.25);
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.key-arrow-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 15px;
-}
-.key-arrow-bottom {
-    display: flex;
-    gap: 15px;
-}
-
-.arrow-icon{
-    width: 20.42px;
-    height: 20.42px;
-}
-
-#key-Up {
-    background: url("../images/key-arrow/key_up.svg") no-repeat;
-}
-
-#key-Left {
-    background: url("../images/key-arrow/key_left.svg") no-repeat;
-}
-
-#key-Down {
-    background: url("../images/key-arrow/key_down.svg") no-repeat;
-}
-
-#key-Right {
-    background: url("../images/key-arrow/key_right.svg") no-repeat;
-}
-
-.loading-contain {
-    position: absolute;
-    width: 1024px;
-    height: 640px;
-    background: #495057;
-
-    display: none;
-    justify-content: center;
-    align-items: center;
-}
-
-.loading-box {
-    width: 200px;
-    height: 10px;
-}
-.loading-bar {
-    width: 0;
-    height: 10px;
-    background: #e9ecef;
-    transition: 0.9s;
 }
