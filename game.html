@@ -61,12 +61,12 @@
             background: url("images/sounds-icon/sound-off.svg");
         }
 
-        #object1, #object2, #object3, #object4, #object5{
+        #map, #key, #list, #pass, #bag{
             visibility: hidden;
             width: 30px;
             height: 30px;
             border-radius: 50%;
-            background-color: aqua;
+   
         }
         
             
@@ -87,6 +87,8 @@
             <img id="parc-img" src="/maps/parc.png" alt="" style="visibility:hidden; position:absolute;">
             <img id="indoor-library-first-map" src="/maps/indoorlibrary-first-map.png" alt="" style="visibility:hidden; position:absolute;">
             <img id="indoor-library-second-map" src="/maps/indoorlibrary-second-map.png" alt="" style="visibility:hidden; position:absolute;">
+
+
             <canvas id="canvas-background" width="1024" height="640" style="position:absolute; background-color: aliceblue;"></canvas>
     
             <canvas id="canvas" width="1024" height="640" style="position:absolute;"></canvas>
@@ -96,23 +98,28 @@
     
         <div id="inventory">
             <div class="object" >
-                <div id="object1"></div>
+
+                <img src="/images/items/map.svg" id="map"></img>
             </div>
 
             <div class="object">
-                <div id="object2"></div>
+
+                <img src="/images/items/list.svg" id="list"></img>
             </div>
 
             <div class="object">
-                <div id="object3"></div>
+
+                <img src="/images/items/key.svg" id="key"></img>
             </div>
 
             <div class="object">
-                <div id="object4"></div>
+
+                <img src="/images/items/pass.svg" id="pass"></img>
             </div>
 
             <div class="object">
-                <div id="object5"></div>
+
+                <img src="/images/items/bag.svg" id="bag"></img>
             </div>
 
 

@@ -306,10 +306,14 @@ function checkAllItemCollisions() {
             player.inventory.push(element.name)
 
             // Rend visible l'image de l'item récupéré dans l'inventaire
-            document.querySelector(`#object${(player.inventory.length)}`).style.visibility = "visible"
+            document.querySelector(`#${element.name}`).style.visibility = "visible"
+
+            console.log(player.inventory);
 
             // Change la valeur de picked pour ne plus pouvoir le recupérer
             element.picked = true
+
+
 
             
 

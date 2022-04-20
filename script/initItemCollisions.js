@@ -1,7 +1,10 @@
 let cityItemCollisions = [
     // mettre les coordonées de l'objet
     {name:"key",x:600, y:160, width: 20, height: 20, picked:false}, 
-    {name:"gun",x:600, y:300, width: 20, height: 20, picked:false}
+    {name:"map",x:500, y:300, width: 20, height: 20, picked:false},
+    {name:"pass",x:400, y:300, width: 20, height: 20, picked:false},
+    {name:"list",x:800, y:300, width: 20, height: 20, picked:false},
+    {name:"bag",x:900, y:300, width: 20, height: 20, picked:false}
  
 ];
 
@@ -14,7 +17,7 @@ let parcRightMapItemCollisions = [
 
 ];
 let parcLeftMapItemCollisions = [
-
+    
 ];
 let parcMapItemCollisions = [
 
