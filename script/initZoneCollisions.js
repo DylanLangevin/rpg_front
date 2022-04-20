@@ -19,7 +19,7 @@ let parcRightMapZoneObjectsCollisions = [
     {x:-16, y:373, width: 16, height: 55, direction:"city"},
 
     // zone vers parc
-    {x:758, y:-7, width: 55, height:8, direction:"parc"},
+    {x:758, y:-7, width: 55, height:14, direction:"parc"},
 ];
 
 let parcLeftMapZoneObjectsCollisions = [
@@ -27,7 +27,7 @@ let parcLeftMapZoneObjectsCollisions = [
     {x:1022, y:370, width: 16, height: 55, direction:"city"},
 
     // zone vers parc
-    {x:212, y:-7, width: 55, height:8, direction:"parc"},
+    {x:212, y:-7, width: 55, height:14, direction:"parc"},
 ];
 
 let parcMapZoneObjectsCollisions = [
