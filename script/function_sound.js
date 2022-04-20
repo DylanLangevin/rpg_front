@@ -1,14 +1,20 @@
-let btnPlay = document.querySelector("#letsPlay");
+let musicButton = document.querySelector("#music-btn");
+let soundStatus = false;
 let playMainSound = false;
 let letsPlayMain = new Audio("sound/Ambiance.mp3");
 letsPlayMain.volume = 0.05;
 
-let btnTakeObj = document.querySelector("#takeObj")
-let playTakeObj = false
 let letsPlayTakeObj = new Audio("sound/iTellMessage.mp3");
 
-let playWalkSound = false
-let letsPlayWalk = new Audio("sound/Footsteps.mp3")
+let playWalkSound = false;
+let letsPlayWalk = new Audio("sound/Footsteps.mp3");
+
+let letsPlayDoor = new Audio("sound/openDoor.mp3");
+
+let letsPlayTree = new Audio("sound/tree.mp3");
+
+let playStillDre = false;
+let letsPlayDre = new Audio("sound/stillDre.mp3");
 
 
 
@@ -26,6 +32,14 @@ function takeObj() {
         letsPlayTakeObj.play();
 }
 
+function OpenDoor() {
+    letsPlayDoor.play();
+}
+
+function treeContact() {
+    letsPlayTree.play();
+}
+
 function walkSound(playWalk) {
     if (playWalk && !playWalkSound) {
         letsPlayWalk.play();
@@ -39,9 +53,18 @@ function walkSound(playWalk) {
     }
 }
 
-const musicButton = document.querySelector("#music-btn");
+function stillDre() {
+    if (playMainSound === true) {
+        letsPlayMain.pause();
+        letsPlayMain.currentTime = 0;
+        playMainSound = false;
+        soundStatus = false;
+        musicButton.style.background = "url('../images/sounds-icon/sound-off.svg')"
+    }
+    letsPlayDre.play();
+}
 
-let soundStatus = false;
+
 musicButton.onclick = () => {
     if (soundStatus == false) {
         soundStatus = true;

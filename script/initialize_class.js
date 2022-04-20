@@ -10,8 +10,12 @@ let foreigner = new Pnj("L'étrangère", 'character_profile/foreigner.png', [12,
 let reader = new Pnj("Lectrice de polar", 'character_profile/reader.png', [12, 126]);//position a définir
 let librarian = new Pnj("Bibliothécaire", 'character_profile/librarian.png', [12, 126]);//position a définir
 let policeFriend = new Pnj("Policier ami", 'character_profile/police_friend.png', [12, 126]);//position a définir
-let maleCitizen = new Pnj("Villageois", 'character_profile/male_citizen.png', [650,126]);//position a définir
+let maleCitizen = new Pnj("Villageois", 'character_profile/male_citizen.png', [180, 156], "je parle dans ma class");//position a définir
 let femaleCitizen = new Pnj("Villageoise", 'character_profile/female_citizen.png', [12, 126]);//position a définir
 
 // Initialisation de l'ojet cops
 let police = new Police("Policier", 'character_profile/police.png', [12, 126]);//position a définir
+
+function pnjCoffeePosition() {
+    ctxBackground.drawImage(maleCitizen.character, 0, 122,frameWidth*scaleDivider, frameHeight*scaleDivider, maleCitizen.position[0], maleCitizen.position[1], frameWidth, frameHeight)
+}

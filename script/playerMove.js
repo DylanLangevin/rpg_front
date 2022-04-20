@@ -56,18 +56,26 @@ let player = new Player(playerName, genderChoice, {x:600, y:400}, playerSpeed, [
 
 console.log(player.position);
 
+function drawPlayerHitboxCollisions() {
+     // On dessine le caractère
+     ctx.drawImage(player.character, spriteSheetPosX, spriteSheetPosY,frameWidth, frameHeight, player.position.x, player.position.y, frameWidth / scaleDivider, frameHeight / scaleDivider);
+    
+     if(hitboxToggle)
+     {
+         drawPlayerHitbox();
+         drawAllSolidCollisionsBox();
+         drawAllZoneCollisionsBox();
+         drawAllDialogueCollisionsBox()
+     }
+}
+
 // Test initialisation d'un PNJ
 body.onload = function() {
 
-    // On dessine le caractère
-    ctx.drawImage(player.character, spriteSheetPosX, spriteSheetPosY,frameWidth, frameHeight, player.position.x, player.position.y, frameWidth / scaleDivider, frameHeight / scaleDivider);
-
-    drawPlayerHitbox();
-    drawAllSolidCollisionsBox();
-    drawAllZoneCollisionsBox();
-
+    drawPlayerHitboxCollisions()
 
 }
+
 
 function drawPlayerHitbox(){
 
@@ -83,17 +91,9 @@ function stopMovingCharacter(whichDirection) {
     spriteSheetPosX = 0;
     spriteSheetPosY = whichDirection * frameHeight;
 
-    // On dessine le caractère
-    ctx.drawImage(player.character, spriteSheetPosX, spriteSheetPosY,frameWidth, frameHeight, player.position.x, player.position.y, frameWidth / scaleDivider, frameHeight / scaleDivider);
-    
-    if(hitboxToggle)
-    {
-        drawPlayerHitbox();
-        drawAllSolidCollisionsBox();
-        drawAllZoneCollisionsBox();
-    }
+    drawPlayerHitboxCollisions();
 
-
+    checkAllDialogueCollisions();
 }
 
 
@@ -179,17 +179,7 @@ function updateFrame() {
     // Effacer le canvas avant de mettre la nouvelle frame, évite un biug d'affichage
     ctx.clearRect(0, 0, canvas.width, canvas.height)
 
-    ctx.drawImage(player.character, spriteSheetPosX, spriteSheetPosY,frameWidth, frameHeight, player.position.x, player.position.y, frameWidth / scaleDivider, frameHeight / scaleDivider);
-
-    if(hitboxToggle)
-    {
-        drawPlayerHitbox();
-        drawAllSolidCollisionsBox();
-        drawAllZoneCollisionsBox();
-    }
-
-    console.log(moveCharacter);
-    console.log(previousMoveOrientation);
+    drawPlayerHitboxCollisions()
 
 }
 
@@ -204,6 +194,7 @@ body.onkeydown = event => {
             checkAllSolidCollisions();
             checkAllZoneCollisions();
             checkCanvasEdgesCollisions();
+            checkAllDialogueCollisions();
             break;
             
         case "ArrowDown":
@@ -212,6 +203,7 @@ body.onkeydown = event => {
             checkAllSolidCollisions();
             checkAllZoneCollisions();
             checkCanvasEdgesCollisions();
+            checkAllDialogueCollisions()
             break;
 
         case "ArrowLeft":
@@ -220,6 +212,7 @@ body.onkeydown = event => {
             checkAllSolidCollisions();
             checkAllZoneCollisions();
             checkCanvasEdgesCollisions();
+            checkAllDialogueCollisions()
             break;
 
         case "ArrowRight":
@@ -228,6 +221,7 @@ body.onkeydown = event => {
             checkAllSolidCollisions();
             checkAllZoneCollisions();
             checkCanvasEdgesCollisions();
+            checkAllDialogueCollisions()
             break;
         case "m":
             moveCharacter = "moonWalk";
@@ -235,6 +229,7 @@ body.onkeydown = event => {
             checkAllSolidCollisions();
             checkAllZoneCollisions();
             checkCanvasEdgesCollisions();
+            checkAllDialogueCollisions()
             break;
 
         case "h":
