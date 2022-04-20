@@ -8,6 +8,7 @@ const ctx = canvas.getContext('2d');
 let img = document.getElementById('img')
 let img2 = document.getElementById('img2')
 let img3 = document.getElementById('img3')
+let imgZoning = document.getElementById('img4')
 
 
 let body = document.querySelector('body');
@@ -74,7 +75,7 @@ let character = player.characterProfil();
 // Test initialisation d'un PNJ
 pnj = maleCitizen.characterProfil();
 body.onload = function() {
-    ctx.drawImage(pnj, 0, 128,frameWidth, frameHeight, 500, 126, frameWidth, frameHeight)
+    ctx.drawImage(pnj, 0, 128,frameWidth, frameHeight, 500, 126, frameWidth/1.5, frameHeight/1.5)
     // Dessin d'une forme pour test la hitbox de l'item
     ctx.fillStyle = "rgba(250, 250, 0, 0.6)";
     ctx.fillRect(itemFoundX,itemFoundY,itemFoundWidth,itemFoundHeight)
@@ -92,7 +93,7 @@ function updateFrame() {
 
 
     // Redessine le pnj
-    ctx.drawImage(pnj, 0, 128,frameWidth, frameHeight, 650, 126, frameWidth, frameHeight)
+    ctx.drawImage(pnj, 0, 128,frameWidth, frameHeight, 650, 126, frameWidth/1.5, frameHeight/1.5)
 
     // modulo permet d'obtenir la bonne frame (1, 2, 3, 4...), ça permet d'update l'index de la frame
     currentFrame = ++currentFrame % frameCols;
@@ -169,13 +170,13 @@ let itemPicked = false
 let currentMap = 1
 
 // Coordonnées de la hitbox maison 
-let houseHitboxX = 431
-let houseHitboxY = 50
-let houseHitboxWidth = 148
-let houseHitboxHeight = 190
+let houseHitboxX = 64
+let houseHitboxY = 0
+let houseHitboxWidth = 368
+let houseHitboxHeight = 198
 
 // dessin de la hitbox de la maison
-ctx.fillStyle = "rgba(250, 0, 0, 0.3)";
+ctx.fillStyle = "rgba(250, 0, 0, 0.1)";
 ctx.fillRect(houseHitboxX,houseHitboxY,houseHitboxWidth,houseHitboxHeight)
 
 
@@ -270,7 +271,7 @@ function collision(){
 
         // en cas de collision on inverse la vitesse pour qu'il puisse est bloqué sur place
         if (moveCharacter === "up") {
-            dy += speed
+            dy += speed 
     
             // Va permettre de définir la direction du mouvement
             sy = directionUp * frameHeight;
@@ -279,7 +280,7 @@ function collision(){
             }
         } 
         else if (moveCharacter === "down") {
-            dy -= speed
+            dy -= speed 
             sy = directionDown * frameHeight;
             body.onkeyup = event => {
                 stopMovingCharacter(directionDown);
@@ -287,14 +288,14 @@ function collision(){
         }
     
         else if (moveCharacter === "left") {
-            dx += speed
+            dx += speed 
             sy = directionLeft * frameHeight;
             body.onkeyup = event => {
                 stopMovingCharacter(directionLeft);
             }
         }
         else if (moveCharacter === "right") {
-            dx -=speed
+            dx -=speed 
             sy = directionRight * frameHeight;
             body.onkeyup = event => {
                 stopMovingCharacter(directionRight);
@@ -333,6 +334,11 @@ function drawCharacter() {
     ctx.fillStyle = "rgba(0, 0, 250, 0.3)";
     ctx.fillRect(doorCafeColliderX,doorCafeColliderY,doorCafeColliderWidth,doorCafeColliderHeight)
 
+    // Dessin de la hitbox de la maison
+    ctx.fillStyle = "rgba(250, 0, 0, 0.1)";
+
+    ctx.fillRect(houseHitboxX,houseHitboxY,houseHitboxWidth,houseHitboxHeight)
+
     if(!itemPicked){
         // Dessin d'une forme pour test la hitbox de l'item
         ctx.fillStyle = "rgba(250, 250, 0, 0.6)";
@@ -361,7 +367,7 @@ function drawCharacter() {
     ctx.fillRect(dx+15, dy+5, frameWidth-30, frameHeight-10)
 
     // On dessine le caractère
-    ctx.drawImage(character, sx, sy, frameWidth, frameHeight, dx, dy, frameWidth, frameHeight)
+    ctx.drawImage(character, sx, sy, frameWidth, frameHeight, dx, dy, frameWidth/1.5, frameHeight/1.5)
 }
 
 // Dessiner le caractère à l'arrêt lorsqu'on arrête d'avancer
@@ -378,6 +384,11 @@ function stopMovingCharacter(whichDirection) {
     ctx.fillStyle = "rgba(0, 0, 250, 0.3)";
     ctx.fillRect(doorCafeColliderX,doorCafeColliderY,doorCafeColliderWidth,doorCafeColliderHeight)
 
+
+    // Dessin de la hitbox de la maison
+    ctx.fillStyle = "rgba(250, 0, 0, 0.1)";
+    ctx.fillRect(houseHitboxX,houseHitboxY,houseHitboxWidth,houseHitboxHeight)
+
     if(!itemPicked){
         // Dessin d'une forme pour test la hitbox de l'item
         ctx.fillStyle = "rgba(250, 250, 0, 0.6)";
@@ -385,17 +396,17 @@ function stopMovingCharacter(whichDirection) {
     }
 
     // Redessine le pnj
-    ctx.drawImage(pnj, 0, 128,frameWidth, frameHeight, 650, 126, frameWidth, frameHeight)
+    ctx.drawImage(pnj, 0, 128,frameWidth, frameHeight, 650, 126, frameWidth/1.5, frameHeight/1.5)
 
     sx = 0;
     sy = whichDirection * frameHeight;
-    // On dessine la hitbox du perso
 
+    // On dessine la hitbox du perso
     ctx.fillStyle = "rgba(250, 0, 0, 0.3)";
     ctx.fillRect(dx+15, dy+5, frameWidth-30, frameHeight-10)
 
     // On dessine le caractère
-    ctx.drawImage(character, sx, sy, frameWidth, frameHeight, dx, dy, frameWidth, frameHeight)
+    ctx.drawImage(character, sx, sy, frameWidth, frameHeight, dx, dy, frameWidth/1.5, frameHeight/1.5)
     player.textZone(iTalk, dx, dy);
 
     
@@ -440,13 +451,13 @@ body.onkeydown = event => {
 
 
 // Dessin du background 
-ctxBackground.fillStyle = "orange"
-ctxBackground.fillRect(10,30,50,50)
-ctxBackground.fillStyle = "orange"
-ctxBackground.fillRect(500,100,100,100)
+// ctxBackground.fillStyle = "orange"
+// ctxBackground.fillRect(10,30,50,50)
+// ctxBackground.fillStyle = "orange"
+// ctxBackground.fillRect(500,100,100,100)
 
 // Dessin de l'image de background
-ctxBackground.drawImage(img, 0, 0,1440,1440);
+ctxBackground.drawImage(imgZoning, 0, 0,1024,640);
 
 // ctxBackground.drawImage(img3, 0, 0,1440,1440);
 
