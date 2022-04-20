@@ -45,10 +45,7 @@ let parcMapZoneObjectsCollisions = [
 let libraryMapZoneObjectsCollisions = [
     {x:130, y:540, width: 125, height: 16, direction:"parc"},
 ];
-
-let PolicierMapZonePositionCollisions =[{x : OfficerSprite(450,490,350,550), direction:"city"},]
     
-
 
 let mapsZoneObjectsCollisions = [cityMapZoneObjectsCollisions, coffeeMapZoneObjectsCollisions, parcRightMapZoneObjectsCollisions, parcLeftMapZoneObjectsCollisions, parcMapZoneObjectsCollisions, libraryMapZoneObjectsCollisions];
 
