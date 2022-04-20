@@ -60,7 +60,11 @@ let parcMapSolidObjectsCollisions = [
     {x:724, y:370, width: 300, height: 270}
 ];
 
-let mapsSolidObjectsCollisions = [cityMapSolidObjectsCollisions, coffeeMapSolidObjectsCollisions, parcRightMapSolidObjectsCollisions, parcLeftMapSolidObjectsCollisions, parcMapSolidObjectsCollisions];
+let libraryMapSolideObjectsCollisions = [
+    // {x:200, y:510, width: 55, height: 16}
+];
+
+let mapsSolidObjectsCollisions = [cityMapSolidObjectsCollisions, coffeeMapSolidObjectsCollisions, parcRightMapSolidObjectsCollisions, parcLeftMapSolidObjectsCollisions, parcMapSolidObjectsCollisions, libraryMapSolideObjectsCollisions];
 
 function drawAllSolidCollisionsBox(){
     ctx.fillStyle = "rgba(255,0,0,0.3)";
