@@ -300,7 +300,18 @@ function checkAllDialogueCollisions() {
 
 function checkAllItemCollisions() {
     mapsItemCollisions[currentMap].forEach(element => {
-        if((player.position.x + offsetX + hitboxWidth > element.x && player.position.x + offsetX < element.x + element.width && player.position.y + offsetY + hitboxHeight >  element.y && player.position.y + offsetY < element.y + element.height)) {
+        if((player.position.x + offsetX + hitboxWidth > element.x && player.position.x + offsetX < element.x + element.width && player.position.y + offsetY + hitboxHeight >  element.y && player.position.y + offsetY < element.y + element.height && !element.picked )) {
+            
+            // Met le nom de l'objet dans l'inventaire du joueur
+            player.inventory.push(element.name)
+
+            // Rend visible l'image de l'item récupéré dans l'inventaire
+            document.querySelector(`#object${(player.inventory.length)}`).style.visibility = "visible"
+
+            // Change la valeur de picked pour ne plus pouvoir le recupérer
+            element.picked = true
+
+            
 
         }
     });

@@ -46,9 +46,24 @@ let coffeeMapSolidObjectsCollisions = [
 ];
 
 let parcRightMapSolidObjectsCollisions = [
+    // foret
+    {x:0, y:0, width:650, height:250},
+    {x:0, y:520, width:1024, height:150},
+    {x:900, y:0, width:50, height:640},
+    {x:850, y:475, width:50, height:50}, 
+    
 
 ];
 let parcLeftMapSolidObjectsCollisions = [
+    // foret
+    {x:375, y:0, width:650, height:250},
+    {x:0, y:520, width:1024, height:150},
+    {x:60, y:0, width:50, height:640},
+    {x:115, y:475, width:50, height:50},
+    //lampadaire 
+    // {x:, y:, width:, height:},
+    // {x:, y:, width:, height:},
+    // {x:, y:, width:, height:},
     
 ];
 let parcMapSolidObjectsCollisions = [
