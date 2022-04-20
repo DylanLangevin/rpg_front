@@ -57,7 +57,11 @@ let parcMapSolidObjectsCollisions = [
     {x:0, y:0, width: 40, height: 640},
     {x:974, y:0, width: 50, height: 245},
     {x:250, y:570, width: 774, height: 70},
-    {x:724, y:370, width: 300, height: 270}
+    {x:724, y:370, width: 300, height: 270},
+    // Bibliothèque
+    {x:240, y:350, width: 350, height: 105},
+    {x:160, y:350, width: 50, height: 105},
+    {x:210, y:350, width: 30, height: 85},
 ];
 
 let libraryMapSolideObjectsCollisions = [

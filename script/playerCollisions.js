@@ -290,8 +290,7 @@ function checkAllDialogueCollisions() {
                 ctx.clearRect(0, 0, canvas.width, canvas.height)
                 drawPlayerHitboxCollisions()
                 console.log("oui");
-                pnjTalk = "Holaaaaaa"
-                maleCitizen.textZone(pnjTalk)
+                maleCitizen.textZone(maleCitizen.iTalk)
             }
         }
     });
