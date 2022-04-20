@@ -8,6 +8,8 @@ const OfficerCtx = OfficerCanvas.getContext('2d');
 let WidthHitBoxOfficer
 let HeightHitBoxOfficer 
 
+let officierDisplay = true;
+
 
 let SpriteX 
 let SpriteY 
@@ -15,40 +17,45 @@ function OfficerSprite(OfficerXInitial,OfficerYInitial, OfficerXToRight,OfficerX
     let speed = 5 
     function movingOfficer(){
 
-        
-        
-        if(OfficerXInitial<= OfficerXToRight){
-           speed = 5
-           spriteSheetPosX = 0;
-           spriteSheetPosY =directionRight * frameHeight;
-           SpriteX = spriteSheetPosX -10
-           SpriteY = spriteSheetPosY - 5
-           WidthHitBoxOfficer = 300
-         HeightHitBoxOfficer = 40
-        }
-        else if(OfficerXInitial>=OfficerXToLeft){
-            speed = -5
-            
-            spriteSheetPosX = 0;
-           spriteSheetPosY =directionLeft * frameHeight;
-           SpriteX = spriteSheetPosX +10
-           SpriteY = spriteSheetPosY 
-           WidthHitBoxOfficer = -290
-           HeightHitBoxOfficer = 40
-        }
-    
-        OfficerXInitial += speed
-        
         OfficerCtx.clearRect(OfficerXToRight-290, OfficerYInitial, 1000, HeightHitBoxOfficer)
     
-        // On dessine le caractère
-        OfficerCtx.fillStyle ="rgb(250,150,0,0.3"
-        // OfficerCtx.clearRect(OfficerXInitial,OfficerYInitial,40,40)
-    
-        OfficerCtx.fillRect(OfficerXInitial+20,OfficerYInitial,WidthHitBoxOfficer,HeightHitBoxOfficer)
-        OfficerCtx.drawImage(police.character, SpriteX, SpriteY,frameWidth, frameHeight, OfficerXInitial, OfficerYInitial, 40 , 40);
+        if(officierDisplay){
+            if(OfficerXInitial<= OfficerXToRight){
+                speed = 5
+                spriteSheetPosX = 0;
+                spriteSheetPosY =directionRight * frameHeight;
+                SpriteX = spriteSheetPosX -10
+                SpriteY = spriteSheetPosY - 5
+                WidthHitBoxOfficer = 300
+              HeightHitBoxOfficer = 40
+             }
+             else if(OfficerXInitial>=OfficerXToLeft){
+                 speed = -5
+                 
+                 spriteSheetPosX = 0;
+                spriteSheetPosY =directionLeft * frameHeight;
+                SpriteX = spriteSheetPosX +10
+                SpriteY = spriteSheetPosY 
+                WidthHitBoxOfficer = -290
+                HeightHitBoxOfficer = 40
+             }
+         
+             OfficerXInitial += speed
+             
+             OfficerCtx.clearRect(OfficerXToRight-290, OfficerYInitial, 1000, HeightHitBoxOfficer)
+         
+             // On dessine le caractère
+             OfficerCtx.fillStyle ="rgb(250,150,0,0.3"
+             // OfficerCtx.clearRect(OfficerXInitial,OfficerYInitial,40,40)
+         
+             OfficerCtx.fillRect(OfficerXInitial+20,OfficerYInitial,WidthHitBoxOfficer,HeightHitBoxOfficer)
+             OfficerCtx.drawImage(police.character, SpriteX, SpriteY,frameWidth, frameHeight, OfficerXInitial, OfficerYInitial, 40 , 40);
+             
+             // console.log(OfficerXInitial)
+        }
         
-        // console.log(OfficerXInitial)
+        
+     
         
     }
     
@@ -66,9 +73,9 @@ function OfficerSprite(OfficerXInitial,OfficerYInitial, OfficerXToRight,OfficerX
 // OfficerXToLeft doit être supérieur de 200px par rapport à OfficerXInitial et determine la limite jusqu'à ce que le policier change de position pour aller à droite
 
 
-OfficerSprite(450,490,350,550)
-OfficerSprite(600,105,500,700)
-OfficerSprite(800,205,700,900)
+
+// OfficerSprite(600,105,500,700)
+// OfficerSprite(800,205,700,900)
 
 
 
