@@ -61,12 +61,18 @@ function checkAllZoneCollisions(){
             switch (currentMap) {
                 // Map de la ville --> Case 0
                 case 0:
+                    
                     switch (element.direction) {
+                        
                         case "coffee":
                             OpenDoor()
                             console.log("coffee");
                             ctxBackground.clearRect(0,0,1024,640);
+                            
+                            
                             ctxBackground.drawImage(coffeeShop, 0, 0,1024,640);
+
+                            
 
                             // On replace le personnage
                             player.position.x = 875;
@@ -78,6 +84,7 @@ function checkAllZoneCollisions(){
                             offsetY = 9;
                             rescalePlayer();
                             pnjCoffeePosition()
+                            officierDisplay = false;
                             break;
 
                         case "parc-right":
@@ -110,11 +117,13 @@ function checkAllZoneCollisions(){
                     player.position.x = 240
                     player.position.y = 538
                     currentMap = 0;
+                    OfficerCtx.clearRect(0,0,1024,640)
 
                     scaleDivider = 1.5;
                     offsetX = 10;
                     offsetY = 6;
                     rescalePlayer();
+                    officierDisplay = true;
                     break;
                 
                 //  Map du parc-right --> Case 2
@@ -123,6 +132,7 @@ function checkAllZoneCollisions(){
                         case "city":
                             ctxBackground.clearRect(0,0,1024,640);
                             ctxBackground.drawImage(cityMapImg, 0, 0,1024,640);
+                            OfficerCtx.clearRect(0,0,1024,640)
                             // On replace le personnage et le carré bleu sur la route de la deuxieme image
                             player.position.x = 978;
                             player.position.y = 202;
