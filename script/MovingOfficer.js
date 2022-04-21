@@ -4,7 +4,7 @@ const OfficerCtx = OfficerCanvas.getContext('2d');
 
 let officierDisplay = true;
 
-let speed = 5;
+let speed = 4;
 
 let hitboxOfficierVisionWidth = 200;
 let hitboxOfficierVisionheight = 40;
@@ -16,63 +16,85 @@ let offsetHitboxX = (frameWidth / scaleDivider) / 2;
 
 let officierCurrentAnimeFrame = 0;
 
-let drawAllOfficier = [
-    {posX:700, posY:200, stopLeft:800, stopRight:600, officierDirection: 3},
-    {posX:600, posY:300, stopLeft:700, stopRight:500, officierDirection: 3}
+let offsetRecthitBoxX = 15
+
+let officierMovingSolidObjectCollision = [
+    { posX: 700, posY: 200, stopLeft: 800, stopRight: 600, officierDirection: 3 },
+    { posX: 500, posY: 300, stopLeft: 600, stopRight: 400, officierDirection: 3 }
 ];
 
-let gradient = OfficerCtx.createLinearGradient(0, 0, hitboxOfficierVisionWidth, hitboxOfficierVisionheight);
-
-function movingOfficer(){
 
 
-    OfficerCtx.clearRect(0,0,1024, 640);
+function movingOfficer() {
 
-    if(officierDisplay)
-    {
-        drawAllOfficier.forEach(element => {
 
-            if(element.posX <= element.stopRight){
-                speed = 5;
+    OfficerCtx.clearRect(0, 0, 1024, 640);
+    drawHitBoxOfficer()
+    checkOfficerMovingSolidCollisions()
+
+    if (officierDisplay) {
+        officierMovingSolidObjectCollision.forEach(element => {
+
+            if (element.posX <= element.stopRight) {
+                speed = 4;
                 officerCurrentPos = officierFramePosLeft - 5;
                 hitboxOfficierVisionWidth = 200;
                 element.officierDirection = 3;
+                offsetRecthitBoxX = 15
             }
-            else if(element.posX >= element.stopLeft){
-                speed = -5;
+            else if (element.posX >= element.stopLeft) {
+                speed = -4;
                 officerCurrentPos = officierFramePosRight - 5;
                 hitboxOfficierVisionWidth = -200;
                 element.officierDirection = 1;
+                offsetRecthitBoxX = 8
             }
-            
+
             // On incrémente la vitesse
             element.posX += speed;
-    
-    
+
+
             // Animation du policier
-            if(officierCurrentAnimeFrame < 512)
-            {
+            if (officierCurrentAnimeFrame < 512) {
                 officierCurrentAnimeFrame += frameWidth;
             }
-            else
-            {
+            else {
                 officierCurrentAnimeFrame = 0;
             }
-            
-        
-            // On dessine la hitbox
-            gradient = OfficerCtx.createLinearGradient(element.posX, element.posY, hitboxOfficierVisionWidth, hitboxOfficierVisionheight);
-            gradient.addColorStop(0, 'red');
-            gradient.addColorStop(1, 'blue');
 
-            OfficerCtx.fillStyle = gradient;
+
+            // On dessine la hitbox
+            OfficerCtx.fillStyle = 'rgba(150,150,0,0.2';
             OfficerCtx.fillRect(element.posX + offsetHitboxX, element.posY, hitboxOfficierVisionWidth, hitboxOfficierVisionheight);
-    
+
             // On dessine le caractère
             OfficerCtx.drawImage(police.character, officierCurrentAnimeFrame, element.officierDirection * frameHeight, frameWidth, frameHeight, element.posX, element.posY, frameWidth / scaleDivider, frameHeight / scaleDivider);
-        }); 
+        });
     }
+
 
 };
 
-setInterval(() => {movingOfficer()}, 100);
+setInterval(() => { movingOfficer() }, 100);
+
+
+function drawHitBoxOfficer() {
+
+
+    OfficerCtx.fillStyle = "rgba(200,0,0,0.2)"
+    officierMovingSolidObjectCollision.forEach(element => {
+
+        OfficerCtx.fillRect(element.posX + offsetRecthitBoxX, element.posY, 20, 40)
+
+    });
+
+}
+
+
+function checkOfficerMovingSolidCollisions() {
+    officierMovingSolidObjectCollision.forEach(element => {
+        if (player.position.x + offsetX + hitboxWidth > element.posX + offsetRecthitBoxX && player.position.x + offsetX < element.posX + offsetRecthitBoxX + 20 && player.position.y + offsetY + hitboxHeight > element.posY && player.position.y + offsetY < element.posY + 40) {
+            if (player.position.x + offsetX + hitboxWidth > element.posX + offsetRecthitBoxX) { }
+        }
+    });
+}
