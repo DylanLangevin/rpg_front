@@ -119,7 +119,19 @@ function checkOfficerMovingSolidCollisions() {
 
 function checkOfficerVisionCollisions() {
     officierMovingSolidObjectCollision.forEach(element => {
-        if (player.position.x + offsetX + hitboxWidth > element.posX + offsetHitboxX && player.position.x + offsetX < element.posX + offsetHitboxX + hitboxOfficierVisionWidth && player.position.y + offsetY + hitboxHeight > element.posY && player.position.y + offsetY < element.posY + 40) {
+        let reverseHitbox;
+
+        if(hitboxOfficierVisionWidth < 0)
+        {
+            reverseHitbox = hitboxOfficierVisionWidth
+        }
+        else
+        {
+            reverseHitbox = 0
+        }
+
+        if (player.position.x + offsetX + hitboxWidth > element.posX + offsetHitboxX + reverseHitbox && player.position.x + offsetX < element.posX + offsetHitboxX + 100 && player.position.y + offsetY + hitboxHeight > element.posY && player.position.y + offsetY < element.posY + 40) 
+        {
             
             console.log('Collision lampe');
         }
