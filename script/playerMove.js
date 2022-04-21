@@ -6,6 +6,8 @@ let body = document.querySelector('body');
 let canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
 
+
+
 // Orientation du personnage, la ligne qui correspond à l'image de base
 let directionUp = 0;
 let directionLeft = 1;
@@ -15,7 +17,7 @@ let directionRight = 3;
 // Mouvement du personnage
 let moveCharacter;
 
-let playerSpeed = 20;
+let playerSpeed = 10;
 
 let previousMoveOrientation;
 
@@ -67,6 +69,8 @@ function drawPlayerHitboxCollisions() {
          drawAllZoneCollisionsBox();
          drawAllDialogueCollisionsBox();
          drawAllItemCollisionsBox();
+            
+         
      }
 }
 
@@ -74,6 +78,7 @@ function drawPlayerHitboxCollisions() {
 body.onload = function() {
 
     drawPlayerHitboxCollisions()
+    
 
 }
 

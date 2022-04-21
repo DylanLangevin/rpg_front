@@ -109,24 +109,7 @@ function checkAllZoneCollisions(){
                             currentMap = 3;
                             break;
 
-                        case "town-hall":
-                            // keyStatus = true => porte ouverte
-                            if (keyStatus) {
-                                console.log("town-hall");
-                                ctxBackground.fillStyle = "#fff";
-                                ctxBackground.clearRect(0,0,1024,640);
-                                // mettre carte mairie
-                                ctxBackground.fillRect(0,0,1024,640)
-                                // ctxBackground.drawImage(cityMapLeft, 0, 0,1024,640);
-                                // On replace le personnage
-                                player.position.x = 990;
-                                player.position.y = 373;
-                                currentMap = 7;
-                                break;
-                            } else {
-                                console.log("NON")
-                            }
-                            
+                        
                     }
                     break;
                 
@@ -245,13 +228,20 @@ function checkAllZoneCollisions(){
                             break;
 
                         case "library-second-map":
-                            ctxBackground.clearRect(0,0,1024,640);
-                            ctxBackground.drawImage(indoorLibrarySecondMap, 0, 0,1024,640);
-                            // On replace le personnage et le carré bleu sur la route de la deuxieme image
-                            player.position.x = 140;
-                            player.position.y = 450;
-                            currentMap = 6;
-                            break;
+
+                            if (keyStatus) {
+                                ctxBackground.clearRect(0,0,1024,640);
+                                ctxBackground.drawImage(indoorLibrarySecondMap, 0, 0,1024,640);
+                                // On replace le personnage et le carré bleu sur la route de la deuxieme image
+                                player.position.x = 140;
+                                player.position.y = 450;
+                                currentMap = 6;
+                                break;
+                            } else {
+
+                                console.log("NON")
+                            }
+                
                     }
                     break;
 
@@ -343,7 +333,8 @@ function checkAllDialogueCollisions() {
     mapsDialogueCollisions[currentMap].forEach(element => {
         if((player.position.x + offsetX + hitboxWidth > element.x && player.position.x + offsetX < element.x + element.width && player.position.y + offsetY + hitboxHeight >  element.y && player.position.y + offsetY < element.y + element.height)) {
 
-            if (element.pnj.name == "porte de la mairie") {
+            // Si on est sur la porte de la mairie, le dialogue change
+            if (element.pnj.name == "Arrière bibliothèque") {
                 pnjTalk = "ouvrir la porte (enter)"
             } else {
                 pnjTalk = "Voulez-vous discuter avec " + element.pnj.name + " ? (enter)"
@@ -358,7 +349,7 @@ function checkAllDialogueCollisions() {
                         whichText = true
 
                         // Si on a la clé et que player dans collision, keyStatus = true
-                        if (document.querySelector("#key").style.visibility == "visible" && element.pnj.name == "porte de la mairie")  {
+                        if (document.querySelector("#key").style.visibility == "visible" && element.pnj.name == "Arrière bibliothèque")  {
                             keyStatus = true;
                         } 
                             
@@ -367,11 +358,20 @@ function checkAllDialogueCollisions() {
                         console.log("Non");
                 }
             }
+
             // Affiche le dialogue
             if (whichText == true) {
                 ctx.clearRect(0, 0, canvas.width, canvas.height)
                 drawPlayerHitboxCollisions()
-                element.pnj.textZone(element.dialogue)
+
+                // Si on est sur la porte de la mairie en possession de la clé
+                if (element.pnj.name == "Arrière bibliothèque" && keyStatus) {
+                    element.pnj.textZone("Porte ouverte")
+                
+                } else {
+                    element.pnj.textZone(element.dialogue)
+                }   
+
                 whichText = false;
             }
         }

@@ -1,6 +1,7 @@
+
 let cityDialogueCollisions = [
-    // Message porte fermé
-    {x:238, y:200, width: 20, height: 30, pnj: townHallDoor, dialogue: "porte verrouillée, nécessite une clé"},
+
+
 ];
 
 let coffeeDialogueCollisions = [
@@ -20,6 +21,8 @@ let parcMapDialogueCollisions = [
 ];
 
 let libraryMapDialogueCollisions = [
+    // Message porte fermé
+    {x:945, y:440, width: 16, height: 70, pnj: townHallDoor, dialogue:"Nécessite une clé pour ouvrir"},
 
 ];
 

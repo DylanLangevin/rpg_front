@@ -14,7 +14,7 @@ let maleCitizen = new Pnj("Villageois", 'character_profile/male_citizen.png', [1
 let femaleCitizen = new Pnj("Villageoise", 'character_profile/female_citizen.png', [12, 126]);//position a définir
 
 // (pnj porte pour dialogue)
-let townHallDoor = new Pnj("porte de la mairie", '', [238, 200])
+let townHallDoor = new Pnj("Arrière bibliothèque", '', [750, 430])
 
 // Initialisation de l'ojet cops
 let police = new Police("Policier", 'character_profile/police.png', [12, 126]);//position a définir

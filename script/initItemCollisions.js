@@ -1,11 +1,6 @@
 let cityItemCollisions = [
     // mettre les coordonées de l'objet
     
-    {name:"map",x:500, y:300, width: 20, height: 20, picked:false},
-    {name:"pass",x:400, y:300, width: 20, height: 20, picked:false},
-    {name:"list",x:800, y:300, width: 20, height: 20, picked:false},
-    {name:"bag",x:900, y:300, width: 20, height: 20, picked:false}
- 
 ];
 
 let coffeeItemCollisions = [
@@ -15,20 +10,22 @@ let coffeeItemCollisions = [
 ]
 
 let parcRightMapItemCollisions = [
-
+    {name:"knife",x:790, y:490, width: 20, height: 20, picked:false},
 ];
 let parcLeftMapItemCollisions = [
     
 ];
 let parcMapItemCollisions = [
-
+    {name:"bottle",x:810, y:150, width: 20, height: 20, picked:false},
 ];
 
 let libraryMapItemCollisions = [
-
+    {name:"pass",x:255, y:225, width: 20, height: 20, picked:false},
 ];
 
 let librarySecondMapItemCollisions = [
+
+    {name:"ring",x:850, y:230, width: 20, height: 20, picked:false}
 ];
 
 let mapsItemCollisions = [cityItemCollisions, coffeeItemCollisions, parcRightMapItemCollisions, parcLeftMapItemCollisions, parcMapItemCollisions, libraryMapItemCollisions, librarySecondMapItemCollisions]
@@ -50,3 +47,6 @@ function drawAllItemCollisionsBox() {
 
     });
 }
+
+
+
