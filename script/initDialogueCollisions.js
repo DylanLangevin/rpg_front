@@ -1,5 +1,6 @@
 let cityDialogueCollisions = [
-
+    // Message porte fermé
+    {x:238, y:200, width: 20, height: 30, pnj: townHallDoor, dialogue: "porte verrouillée, nécessite une clé"},
 ];
 
 let coffeeDialogueCollisions = [

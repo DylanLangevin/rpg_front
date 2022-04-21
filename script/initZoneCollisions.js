@@ -7,6 +7,9 @@ let cityMapZoneObjectsCollisions = [
 
     // zone vers parc left
     {x:-8, y:303, width: 10, height: 50, direction:"parc-left"},
+
+    // zone entrée mairie
+    {x:238, y:200, width: 20, height: 30, direction:"town-hall"},
 ];
 
 let coffeeMapZoneObjectsCollisions = [

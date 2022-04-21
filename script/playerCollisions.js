@@ -54,6 +54,8 @@ function checkAllSolidCollisions(){
     });
 }
 
+let keyStatus = false;
+
 function checkAllZoneCollisions(){
     mapsZoneObjectsCollisions[currentMap].forEach(element => {
         if(player.position.x + offsetX + hitboxWidth > element.x && player.position.x + offsetX < element.x + element.width && player.position.y + offsetY + hitboxHeight >  element.y && player.position.y + offsetY < element.y + element.height)
@@ -105,6 +107,25 @@ function checkAllZoneCollisions(){
                             player.position.y = 373;
                             currentMap = 3;
                             break;
+
+                        case "town-hall":
+                            // keyStatus = true => porte ouverte
+                            if (keyStatus) {
+                                console.log("town-hall");
+                                ctxBackground.fillStyle = "#fff";
+                                ctxBackground.clearRect(0,0,1024,640);
+                                // mettre carte mairie
+                                ctxBackground.fillRect(0,0,1024,640)
+                                // ctxBackground.drawImage(cityMapLeft, 0, 0,1024,640);
+                                // On replace le personnage
+                                player.position.x = 990;
+                                player.position.y = 373;
+                                currentMap = 7;
+                                break;
+                            } else {
+                                console.log("NON")
+                            }
+                            
                     }
                     break;
                 
@@ -247,6 +268,20 @@ function checkAllZoneCollisions(){
                     }
                     break;
 
+                // map intérieur mairie
+                case 7:
+                    switch (element.direction) {
+                        case "city":
+                            ctxBackground.clearRect(0,0,1024,640);
+                            ctxBackground.drawImage(cityMapImg, 0, 0,1024,640);
+                            // On replace le personnage et le carré bleu sur la route de la deuxieme image
+                            player.position.x = 920;
+                            player.position.y = 470;
+                            currentMap = 0;
+                            break;
+                    }
+                    break;
+
             }
         }
     })
@@ -307,7 +342,12 @@ function checkAllDialogueCollisions() {
     mapsDialogueCollisions[currentMap].forEach(element => {
         if((player.position.x + offsetX + hitboxWidth > element.x && player.position.x + offsetX < element.x + element.width && player.position.y + offsetY + hitboxHeight >  element.y && player.position.y + offsetY < element.y + element.height)) {
 
-            pnjTalk = "Voulez-vous discuter avec " + element.pnj.name + " ? (enter)"
+            if (element.pnj.name == "porte de la mairie") {
+                pnjTalk = "ouvrir la porte (enter)"
+            } else {
+                pnjTalk = "Voulez-vous discuter avec " + element.pnj.name + " ? (enter)"
+            }
+
             element.pnj.textZone(pnjTalk)
         
             // Quand on clique sur entrée, le dialogue se créé
@@ -315,6 +355,12 @@ function checkAllDialogueCollisions() {
                 switch(event.key) {
                     case "Enter":
                         whichText = true
+
+                        // Si on a la clé et que player dans collision, keyStatus = true
+                        if (document.querySelector("#key").style.visibility == "visible" && element.pnj.name == "porte de la mairie")  {
+                            keyStatus = true;
+                        } 
+                            
                         return
                     default:
                         console.log("Non");
