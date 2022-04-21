@@ -46,6 +46,7 @@ let libraryMapZoneObjectsCollisions = [
     {x:130, y:540, width: 125, height: 16, direction:"parc"},
     {x:960, y:440, width: 16, height: 70, direction:"library-second-map"},
 ];
+    
 
 let librarySecondMapZoneObjectsCollisions = [
     {x:95, y:450, width: 8, height: 55, direction:"library"},
