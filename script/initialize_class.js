@@ -18,6 +18,13 @@ let police = new Police("Policier", 'character_profile/police.png', [12, 126]);/
 
 function pnjCoffeePosition() {
     ctxBackground.drawImage(maleCitizen.character, 0, 122,frameWidth*scaleDivider, frameHeight*scaleDivider, maleCitizen.position[0], maleCitizen.position[1], frameWidth, frameHeight)
-    ctxBackground.drawImage(librarian.character, 0, 122,frameWidth*scaleDivider, frameHeight*scaleDivider, librarian.position[0], librarian.position[1], frameWidth, frameHeight)
+}
+
+function pnjParcPosition() {
+
+}
+
+function pnjCityPosition() {
+    
 }
 

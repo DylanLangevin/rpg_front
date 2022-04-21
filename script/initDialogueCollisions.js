@@ -5,9 +5,6 @@ let cityDialogueCollisions = [
 let coffeeDialogueCollisions = [
     // Pnj Bar
     {x:180, y:160, width: 50, height: 120, pnj: maleCitizen, dialogue: "yo broooo"},
-    {x:300, y:160, width: 50, height: 120, pnj: librarian, dialogue: "Pourquoi tu me parles"}
-
-
 ]
 
 let parcRightMapDialogueCollisions = [
