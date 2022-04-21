@@ -1,4 +1,5 @@
 let hitboxToggle = true;
+let itemFound = 0;
 
 function checkAllSolidCollisions(){
     mapsSolidObjectsCollisions[currentMap].forEach(element => {
@@ -409,10 +410,10 @@ function checkAllItemCollisions() {
 
             // Change la valeur de picked pour ne plus pouvoir le recupérer
             element.picked = true
+            itemFound ++;
 
 
-
-            
+            win();
 
         }
     });
@@ -424,3 +425,52 @@ function checkOfficerSolidCollisions(){
     if(player.position.x + offsetX < 0 || player.position.x + offsetX + hitboxWidth  > canvas.width || player.position.y <  0 || player.position.y + offsetY + hitboxHeight > canvas.height){
 
     }}
+
+
+
+function win(){
+    if(itemFound == 5) {
+        document.querySelector("#canva-div").style.display = "none";
+        document.querySelector("#inventory").style.display = "none";
+        document.querySelector(".loading-contain").style.display = "flex";
+        startLoading();
+        
+    }
+}
+
+let x = 0;
+let j = 0;
+
+function startLoading() {
+    let loading = setInterval(loadingAnimation, 45);
+    let changePage = setInterval(counter, 45);
+
+    
+
+    function loadingAnimation() {
+        x += 5;
+        if (x == 200) {
+            clearTimeout(loading); 
+        } 
+        
+        document.querySelector(".loading-bar").style.width = x + "px";
+    
+        console.log(x)
+        console.log(j)
+    }
+    
+    function counter() {
+        j += 5;
+        if (j == 250) {
+            clearTimeout(changePage);
+            document.querySelector(".loading-contain").style.display = "none"
+            document.querySelector(".loading-bar").style.display = "none"
+            document.querySelector(".win").style.display = "flex";  
+        }
+    }
+
+    document.querySelector("#restart").addEventListener("click", () => {
+        window.location = "index.html"
+    })
+}
+
