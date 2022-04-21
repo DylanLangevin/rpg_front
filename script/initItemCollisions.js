@@ -16,7 +16,7 @@ let parcLeftMapItemCollisions = [
     
 ];
 let parcMapItemCollisions = [
-    {name:"bottle",x:810, y:150, width: 20, height: 20, picked:false},
+    {name:"bottle",x:624, y:200, width: 20, height: 20, picked:false},
 ];
 
 let libraryMapItemCollisions = [

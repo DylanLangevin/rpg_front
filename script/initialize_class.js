@@ -11,10 +11,10 @@ let reader = new Pnj("Lectrice de polar", 'character_profile/reader.png', [800, 
 let librarian = new Pnj("Bibliothécaire", 'character_profile/librarian.png', [800, 126]);//position a définir
 let policeFriend = new Pnj("Policier ami", 'character_profile/police_friend.png', [12, 126]);//position a définir
 let maleCitizen = new Pnj("Villageois", 'character_profile/male_citizen.png', [180, 156]);//position a définir
-let femaleCitizen = new Pnj("Villageoise", 'character_profile/female_citizen.png', [620, 100]);//position a définir
+let femaleCitizen = new Pnj("Villageoise", 'character_profile/female_citizen.png', [350, 150]);//position a définir
 
 // (pnj porte pour dialogue)
-let townHallDoor = new Pnj("Arrière bibliothèque", '', [750, 430])
+let libraryBackDoor = new Pnj("Arrière bibliothèque", '', [750, 430])
 
 // Initialisation de l'ojet cops
 let police = new Police("Policier", 'character_profile/police.png', [12, 126]);//position a définir

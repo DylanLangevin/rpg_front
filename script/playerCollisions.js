@@ -55,7 +55,7 @@ function checkAllSolidCollisions(){
     });
 }
 
-let keyStatus = false;
+let doorOpened = false;
 
 function checkAllZoneCollisions(){
     mapsZoneObjectsCollisions[currentMap].forEach(element => {
@@ -241,13 +241,16 @@ function checkAllZoneCollisions(){
 
                         case "library-second-map":
 
-                            if (keyStatus) {
+                            if (doorOpened) {
                                 ctxBackground.clearRect(0,0,1024,640);
                                 ctxBackground.drawImage(indoorLibrarySecondMap, 0, 0,1024,640);
                                 // On replace le personnage et le carré bleu sur la route de la deuxieme image
                                 player.position.x = 140;
                                 player.position.y = 450;
                                 currentMap = 6;
+                                if (libraryMapDialogueCollisions.length > 1) {
+                                    libraryMapDialogueCollisions.shift();
+                                }
                                 break;
                             } else {
 
@@ -361,9 +364,9 @@ function checkAllDialogueCollisions() {
                     case "Enter":
                         whichText = true
 
-                        // Si on a la clé et que player dans collision, keyStatus = true
+                        // Si on a la clé et que player dans collision, doorOpened = true
                         if (document.querySelector("#key").style.visibility == "visible" && element.pnj.name == "Arrière bibliothèque")  {
-                            keyStatus = true;
+                            doorOpened = true;
                         } 
                             
                         return
@@ -378,7 +381,7 @@ function checkAllDialogueCollisions() {
                 drawPlayerHitboxCollisions()
 
                 // Si on est sur la porte de la mairie en possession de la clé
-                if (element.pnj.name == "Arrière bibliothèque" && keyStatus) {
+                if (element.pnj.name == "Arrière bibliothèque" && doorOpened) {
                     element.pnj.textZone("Porte ouverte")
                 
                 } else {
