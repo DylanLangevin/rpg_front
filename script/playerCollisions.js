@@ -101,6 +101,7 @@ function checkAllZoneCollisions(){
                             console.log("parc-left");
                             ctxBackground.clearRect(0,0,1024,640);
                             ctxBackground.drawImage(cityMapLeft, 0, 0,1024,640);
+                            pnjParcLeftPosition()
                             // On replace le personnage
                             player.position.x = 990;
                             player.position.y = 373;
@@ -114,6 +115,7 @@ function checkAllZoneCollisions(){
                     OpenDoor()
                     ctxBackground.clearRect(0,0,1024,640);
                     ctxBackground.drawImage(cityMapImg, 0, 0,1024,640);
+                    pnjCityPosition()
                     // On replace le personnage et le carré bleu sur la route de la deuxieme image
                     player.position.x = 240
                     player.position.y = 538
@@ -133,6 +135,7 @@ function checkAllZoneCollisions(){
                         case "city":
                             ctxBackground.clearRect(0,0,1024,640);
                             ctxBackground.drawImage(cityMapImg, 0, 0,1024,640);
+                            pnjCityPosition()
                             OfficerCtx.clearRect(0,0,1024,640)
                             // On replace le personnage et le carré bleu sur la route de la deuxieme image
                             player.position.x = 978;
@@ -159,6 +162,7 @@ function checkAllZoneCollisions(){
                         case "city":
                             ctxBackground.clearRect(0,0,1024,640);
                             ctxBackground.drawImage(cityMapImg, 0, 0,1024,640);
+                            pnjCityPosition()
                             // On replace le personnage et le carré bleu sur la route de la deuxieme image
                             player.position.x = 10;
                             player.position.y = 303;
@@ -169,6 +173,7 @@ function checkAllZoneCollisions(){
                             console.log("parc");
                             ctxBackground.clearRect(0,0,1024,640);
                             ctxBackground.drawImage(parc, 0, 0,1024,640);
+                            pnjParcPosition()
                             // On replace le personnage et le carré bleu sur la route de la deuxieme image
                             player.position.x = 90;
                             player.position.y = 575;
@@ -184,6 +189,7 @@ function checkAllZoneCollisions(){
                             ctxBackground.clearRect(0,0,1024,640);
                             OfficerCtx.clearRect(0,0,1024,640);
                             ctxBackground.drawImage(cityMapRight, 0, 0,1024,640);
+                            pnjParcRightPosition()
                             // On replace le personnage et le carré bleu sur la route de la deuxieme image
                             player.position.x = 758;
                             player.position.y = 20;
@@ -194,6 +200,7 @@ function checkAllZoneCollisions(){
                             ctxBackground.clearRect(0,0,1024,640);
                             OfficerCtx.clearRect(0,0,1024,640);
                             ctxBackground.drawImage(cityMapLeft, 0, 0,1024,640);
+                            pnjParcLeftPosition()
                             // On replace le personnage et le carré bleu sur la route de la deuxieme image
                             player.position.x = 212;
                             player.position.y = 15;
@@ -204,6 +211,7 @@ function checkAllZoneCollisions(){
                             OpenDoor()
                             ctxBackground.clearRect(0,0,1024,640);
                             ctxBackground.drawImage(indoorLibraryFirstMap, 0, 0,1024,640);
+                            pnjLibraryFirstMapPosition()
                             // On replace le personnage et le carré bleu sur la route de la deuxieme image
                             player.position.x = 180;
                             player.position.y = 490;
@@ -216,8 +224,10 @@ function checkAllZoneCollisions(){
                 case 5:
                     switch (element.direction) {
                         case "parc":
+                            OpenDoor()
                             ctxBackground.clearRect(0,0,1024,640);
                             ctxBackground.drawImage(parc, 0, 0,1024,640);
+                            pnjParcPosition()
                             // On replace le personnage et le carré bleu sur la route de la deuxieme image
                             player.position.x = 204;
                             player.position.y = 500;
@@ -227,6 +237,7 @@ function checkAllZoneCollisions(){
                         case "library-second-map":
                             ctxBackground.clearRect(0,0,1024,640);
                             ctxBackground.drawImage(indoorLibrarySecondMap, 0, 0,1024,640);
+                            pnjLibrarySecondMapPosition()
                             // On replace le personnage et le carré bleu sur la route de la deuxieme image
                             player.position.x = 140;
                             player.position.y = 450;
@@ -241,6 +252,7 @@ function checkAllZoneCollisions(){
                         case "library":
                             ctxBackground.clearRect(0,0,1024,640);
                             ctxBackground.drawImage(indoorLibraryFirstMap, 0, 0,1024,640);
+                            pnjLibraryFirstMapPosition()
                             // On replace le personnage et le carré bleu sur la route de la deuxieme image
                             player.position.x = 920;
                             player.position.y = 470;
