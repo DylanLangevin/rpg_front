@@ -6,7 +6,7 @@ let officierDisplay = true;
 
 let speed = 4;
 
-let hitboxOfficierVisionWidth = 200;
+let hitboxOfficierVisionWidth = 100;
 let hitboxOfficierVisionheight = 40;
 
 let officierFramePosLeft = directionRight * frameHeight;
@@ -27,25 +27,32 @@ let officierMovingSolidObjectCollision = [
 
 function movingOfficer() {
 
-
     OfficerCtx.clearRect(0, 0, 1024, 640);
-    drawHitBoxOfficer()
-    checkOfficerMovingSolidCollisions()
+
+    
 
     if (officierDisplay) {
+        if(hitboxToggle)
+        {
+            drawHitBoxOfficer();
+        }
+    
+        checkOfficerMovingSolidCollisions();
+        checkOfficerVisionCollisions();
+
         officierMovingSolidObjectCollision.forEach(element => {
 
             if (element.posX <= element.stopRight) {
                 speed = 4;
                 officerCurrentPos = officierFramePosLeft - 5;
-                hitboxOfficierVisionWidth = 200;
+                hitboxOfficierVisionWidth = 100;
                 element.officierDirection = 3;
                 offsetRecthitBoxX = 15
             }
             else if (element.posX >= element.stopLeft) {
                 speed = -4;
                 officerCurrentPos = officierFramePosRight - 5;
-                hitboxOfficierVisionWidth = -200;
+                hitboxOfficierVisionWidth = -100;
                 element.officierDirection = 1;
                 offsetRecthitBoxX = 8
             }
@@ -77,7 +84,6 @@ function movingOfficer() {
 
 setInterval(() => { movingOfficer() }, 100);
 
-
 function drawHitBoxOfficer() {
 
 
@@ -94,7 +100,28 @@ function drawHitBoxOfficer() {
 function checkOfficerMovingSolidCollisions() {
     officierMovingSolidObjectCollision.forEach(element => {
         if (player.position.x + offsetX + hitboxWidth > element.posX + offsetRecthitBoxX && player.position.x + offsetX < element.posX + offsetRecthitBoxX + 20 && player.position.y + offsetY + hitboxHeight > element.posY && player.position.y + offsetY < element.posY + 40) {
-            if (player.position.x + offsetX + hitboxWidth > element.posX + offsetRecthitBoxX) { }
+            
+            if (player.position.x + offsetX + hitboxWidth > element.posX + offsetRecthitBoxX + 20) 
+            { 
+                player.position.x += 10;
+                player.position.y += 5;
+                updateFrame();
+            }
+            else if(player.position.x + offsetX < element.posX + offsetRecthitBoxX)
+            {
+                player.position.x -= 10;
+                player.position.y += 5;
+                updateFrame();  
+            }
+        }
+    });
+}
+
+function checkOfficerVisionCollisions() {
+    officierMovingSolidObjectCollision.forEach(element => {
+        if (player.position.x + offsetX + hitboxWidth > element.posX + offsetHitboxX && player.position.x + offsetX < element.posX + offsetHitboxX + hitboxOfficierVisionWidth && player.position.y + offsetY + hitboxHeight > element.posY && player.position.y + offsetY < element.posY + 40) {
+            
+            console.log('Collision lampe');
         }
     });
 }
