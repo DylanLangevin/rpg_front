@@ -65,7 +65,8 @@ function drawPlayerHitboxCollisions() {
          drawPlayerHitbox();
          drawAllSolidCollisionsBox();
          drawAllZoneCollisionsBox();
-         drawAllDialogueCollisionsBox()
+         drawAllDialogueCollisionsBox();
+         drawAllItemCollisionsBox();
      }
 }
 
@@ -86,6 +87,9 @@ function drawPlayerHitbox(){
 // Dessiner le caractère à l'arrêt lorsqu'on arrête d'avancer
 function stopMovingCharacter(whichDirection) {
     walkSound(false);
+    if (moveCharacter === "moonWalk") {
+        stillDre(false);
+    }
     ctx.clearRect(0, 0, canvas.width, canvas.height)
 
     spriteSheetPosX = 0;
@@ -101,8 +105,11 @@ function stopMovingCharacter(whichDirection) {
 
 // Choisir la bonne frame
 function updateFrame() {
-
-    walkSound(true);
+    if(moveCharacter != "moonWalk") {
+        walkSound(true);
+    } else if (moveCharacter === "moonWalk") {
+        stillDre(true);
+    }
 
     console.log("pos X" + player.position.x);
     console.log("pos Y" + player.position.y);
@@ -195,6 +202,7 @@ body.onkeydown = event => {
             checkAllZoneCollisions();
             checkCanvasEdgesCollisions();
             checkAllDialogueCollisions();
+            checkAllItemCollisions();
             break;
             
         case "ArrowDown":
@@ -204,6 +212,7 @@ body.onkeydown = event => {
             checkAllZoneCollisions();
             checkCanvasEdgesCollisions();
             checkAllDialogueCollisions()
+            checkAllItemCollisions();
             break;
 
         case "ArrowLeft":
@@ -212,7 +221,8 @@ body.onkeydown = event => {
             checkAllSolidCollisions();
             checkAllZoneCollisions();
             checkCanvasEdgesCollisions();
-            checkAllDialogueCollisions()
+            checkAllDialogueCollisions();
+            checkAllItemCollisions()
             break;
 
         case "ArrowRight":
@@ -221,7 +231,8 @@ body.onkeydown = event => {
             checkAllSolidCollisions();
             checkAllZoneCollisions();
             checkCanvasEdgesCollisions();
-            checkAllDialogueCollisions()
+            checkAllDialogueCollisions();
+            checkAllItemCollisions()
             break;
         case "m":
             moveCharacter = "moonWalk";
@@ -229,7 +240,8 @@ body.onkeydown = event => {
             checkAllSolidCollisions();
             checkAllZoneCollisions();
             checkCanvasEdgesCollisions();
-            checkAllDialogueCollisions()
+            checkAllDialogueCollisions();
+            checkAllItemCollisions()
             break;
 
         case "h":

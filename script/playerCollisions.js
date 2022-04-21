@@ -135,7 +135,7 @@ function checkAllZoneCollisions(){
                             OfficerCtx.clearRect(0,0,1024,640)
                             // On replace le personnage et le carré bleu sur la route de la deuxieme image
                             player.position.x = 978;
-                            player.position.y = 142;
+                            player.position.y = 202;
                             currentMap = 0;
                             break;
 
@@ -180,6 +180,7 @@ function checkAllZoneCollisions(){
                     switch (element.direction) {
                         case "parc-right":
                             ctxBackground.clearRect(0,0,1024,640);
+                            OfficerCtx.clearRect(0,0,1024,640);
                             ctxBackground.drawImage(cityMapRight, 0, 0,1024,640);
                             // On replace le personnage et le carré bleu sur la route de la deuxieme image
                             player.position.x = 758;
@@ -189,6 +190,7 @@ function checkAllZoneCollisions(){
 
                         case "parc-left":
                             ctxBackground.clearRect(0,0,1024,640);
+                            OfficerCtx.clearRect(0,0,1024,640);
                             ctxBackground.drawImage(cityMapLeft, 0, 0,1024,640);
                             // On replace le personnage et le carré bleu sur la route de la deuxieme image
                             player.position.x = 212;
@@ -197,6 +199,7 @@ function checkAllZoneCollisions(){
                             break;
 
                         case "library":
+                            OpenDoor()
                             ctxBackground.clearRect(0,0,1024,640);
                             ctxBackground.drawImage(indoorLibraryFirstMap, 0, 0,1024,640);
                             // On replace le personnage et le carré bleu sur la route de la deuxieme image
@@ -217,6 +220,29 @@ function checkAllZoneCollisions(){
                             player.position.x = 204;
                             player.position.y = 500;
                             currentMap = 4;
+                            break;
+
+                        case "library-second-map":
+                            ctxBackground.clearRect(0,0,1024,640);
+                            ctxBackground.drawImage(indoorLibrarySecondMap, 0, 0,1024,640);
+                            // On replace le personnage et le carré bleu sur la route de la deuxieme image
+                            player.position.x = 140;
+                            player.position.y = 450;
+                            currentMap = 6;
+                            break;
+                    }
+                    break;
+
+                // Deuxième map intérieur library
+                case 6:
+                    switch (element.direction) {
+                        case "library":
+                            ctxBackground.clearRect(0,0,1024,640);
+                            ctxBackground.drawImage(indoorLibraryFirstMap, 0, 0,1024,640);
+                            // On replace le personnage et le carré bleu sur la route de la deuxieme image
+                            player.position.x = 920;
+                            player.position.y = 470;
+                            currentMap = 5;
                             break;
                     }
                     break;
@@ -281,8 +307,8 @@ function checkAllDialogueCollisions() {
     mapsDialogueCollisions[currentMap].forEach(element => {
         if((player.position.x + offsetX + hitboxWidth > element.x && player.position.x + offsetX < element.x + element.width && player.position.y + offsetY + hitboxHeight >  element.y && player.position.y + offsetY < element.y + element.height)) {
 
-            pnjTalk = "Voulez-vous discuter avec " + element.pnj + " ? (enter)"
-            maleCitizen.textZone(pnjTalk)
+            pnjTalk = "Voulez-vous discuter avec " + element.pnj.name + " ? (enter)"
+            element.pnj.textZone(pnjTalk)
         
             // Quand on clique sur entrée, le dialogue se créé
             window.onkeydown = event => {
@@ -300,7 +326,7 @@ function checkAllDialogueCollisions() {
                 ctx.clearRect(0, 0, canvas.width, canvas.height)
                 drawPlayerHitboxCollisions()
                 console.log("oui");
-                maleCitizen.textZone(maleCitizen.iTalk)
+                element.pnj.textZone(element.dialogue)
             }
         }
     });
@@ -308,8 +334,35 @@ function checkAllDialogueCollisions() {
 
 function checkAllItemCollisions() {
     mapsItemCollisions[currentMap].forEach(element => {
-        if((player.position.x + offsetX + hitboxWidth > element.x && player.position.x + offsetX < element.x + element.width && player.position.y + offsetY + hitboxHeight >  element.y && player.position.y + offsetY < element.y + element.height)) {
+        if((player.position.x + offsetX + hitboxWidth > element.x && player.position.x + offsetX < element.x + element.width && player.position.y + offsetY + hitboxHeight >  element.y && player.position.y + offsetY < element.y + element.height && !element.picked )) {
+            
+            // Met le nom de l'objet dans l'inventaire du joueur
+            player.inventory.push(element.name)
+            if(element.name != "key") {
+                takeObj()
+            } else if(element.name === "key") {
+                stillDre(true)
+            }
+
+            // Rend visible l'image de l'item récupéré dans l'inventaire
+            document.querySelector(`#${element.name}`).style.visibility = "visible"
+
+            console.log(player.inventory);
+
+            // Change la valeur de picked pour ne plus pouvoir le recupérer
+            element.picked = true
+
+
+
+            
 
         }
     });
 }
+
+
+
+function checkOfficerSolidCollisions(){
+    if(player.position.x + offsetX < 0 || player.position.x + offsetX + hitboxWidth  > canvas.width || player.position.y <  0 || player.position.y + offsetY + hitboxHeight > canvas.height){
+
+    }}

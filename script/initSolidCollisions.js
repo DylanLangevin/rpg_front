@@ -1,16 +1,23 @@
 let cityMapSolidObjectsCollisions = [
     // Mairie
-    {x:64, y:0, width: 368, height: 216},
+    {x:0, y:0, width: 482, height: 216},
+
+    // Arbre
+    {x:482, y:0, width: 92, height: 200},
+    {x:574, y:0, width: 130, height: 184},
+
+    // Maison du maired
+    {x:704, y:0, width: 80, height: 155},
+    {x:784, y:0, width: 80, height: 140},
+    {x:864, y:0, width: 160, height: 155},
 
     // Café
-    {x:88, y:384, width: 152, height: 174},
+    {x:0, y:384, width: 240, height: 256},
     {x:240, y:400, width: 100, height: 114},
     {x:280, y:400, width: 64, height: 158},
     // Maison player
-    {x:815, y:414, width: 195, height: 144},
-    {x:815, y:414, width: 195, height: 144},
-
-
+    {x:815, y:274, width: 210, height: 284},
+    
 ];
 
 let coffeeMapSolidObjectsCollisions = [
@@ -44,9 +51,24 @@ let coffeeMapSolidObjectsCollisions = [
 ];
 
 let parcRightMapSolidObjectsCollisions = [
+    // foret
+    {x:0, y:0, width:650, height:250},
+    {x:0, y:520, width:1024, height:150},
+    {x:900, y:0, width:50, height:640},
+    {x:850, y:475, width:50, height:50}, 
+    
 
 ];
 let parcLeftMapSolidObjectsCollisions = [
+    // foret
+    {x:375, y:0, width:650, height:250},
+    {x:0, y:520, width:1024, height:150},
+    {x:60, y:0, width:50, height:640},
+    {x:115, y:475, width:50, height:50},
+    //lampadaire 
+    // {x:, y:, width:, height:},
+    // {x:, y:, width:, height:},
+    // {x:, y:, width:, height:},
     
 ];
 let parcMapSolidObjectsCollisions = [
@@ -69,10 +91,13 @@ let parcMapSolidObjectsCollisions = [
 ];
 
 let libraryMapSolideObjectsCollisions = [
-    // {x:200, y:510, width: 55, height: 16}
 ];
 
-let mapsSolidObjectsCollisions = [cityMapSolidObjectsCollisions, coffeeMapSolidObjectsCollisions, parcRightMapSolidObjectsCollisions, parcLeftMapSolidObjectsCollisions, parcMapSolidObjectsCollisions, libraryMapSolideObjectsCollisions];
+let librarySecondMapSolideObjectsCollisions = [
+];
+
+
+let mapsSolidObjectsCollisions = [cityMapSolidObjectsCollisions, coffeeMapSolidObjectsCollisions, parcRightMapSolidObjectsCollisions, parcLeftMapSolidObjectsCollisions, parcMapSolidObjectsCollisions, libraryMapSolideObjectsCollisions, librarySecondMapSolideObjectsCollisions];
 
 function drawAllSolidCollisionsBox(){
     ctx.fillStyle = "rgba(255,0,0,0.3)";
