@@ -1,18 +1,23 @@
 let cityMapSolidObjectsCollisions = [
     // Mairie
-    {x:0, y:0, width: 432, height: 216},
+    {x:0, y:0, width: 482, height: 216},
+
+    // Arbre
+    {x:482, y:0, width: 92, height: 200},
+    {x:574, y:0, width: 130, height: 184},
+
+    // Maison du maired
+    {x:704, y:0, width: 80, height: 155},
+    {x:784, y:0, width: 80, height: 140},
+    {x:864, y:0, width: 160, height: 155},
 
     // Café
     {x:0, y:384, width: 240, height: 256},
     {x:240, y:400, width: 100, height: 114},
     {x:280, y:400, width: 64, height: 158},
     // Maison player
-    {x:815, y:414, width: 195, height: 144},
-    {x:875, y:394, width: 122, height: 20},
-    {x:895, y:374, width: 82, height: 20},
-    {x:915, y:354, width: 42, height: 20},
-    {x:931, y:344, width: 10, height: 10},
-
+    {x:815, y:274, width: 210, height: 284},
+    
 ];
 
 let coffeeMapSolidObjectsCollisions = [
