@@ -9,13 +9,13 @@ let coffeeDialogueCollisions = [
 
 let parcRightMapDialogueCollisions = [
     {x:engineer.position[0], y:engineer.position[1], width: 50, height: 120, pnj: engineer, dialogue: "yo broooo"},
-    // {x:180, y:160, width: 50, height: 120, pnj: maleCitizen, dialogue: "yo broooo"},
 ];
 let parcLeftMapDialogueCollisions = [
 
 ];
 let parcMapDialogueCollisions = [
-    // {x:femaleCitizen.position[0], y:femaleCitizen.position[1], width: 50, height: 120, pnj: femaleCitizen, dialogue: "yo broooo"},
+    // pnj piscine parc
+    {x:femaleCitizen.position[0], y:femaleCitizen.position[1], width: 50, height: 120, pnj: femaleCitizen, dialogue: "yo broooo"},
 ];
 
 let libraryMapDialogueCollisions = [

@@ -144,6 +144,7 @@ function checkAllZoneCollisions(){
                             console.log("parc");
                             ctxBackground.clearRect(0,0,1024,640);
                             ctxBackground.drawImage(parc, 0, 0,1024,640);
+                            pnjParcPosition();
                             // On replace le personnage et le carré bleu sur la route de la deuxieme image
                             player.position.x = 978;
                             player.position.y = 292;
