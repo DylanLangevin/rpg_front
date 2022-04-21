@@ -315,7 +315,6 @@ function checkAllDialogueCollisions() {
                 switch(event.key) {
                     case "Enter":
                         whichText = true
-                        console.log("ok");
                         return
                     default:
                         console.log("Non");
@@ -325,8 +324,8 @@ function checkAllDialogueCollisions() {
             if (whichText == true) {
                 ctx.clearRect(0, 0, canvas.width, canvas.height)
                 drawPlayerHitboxCollisions()
-                console.log("oui");
                 element.pnj.textZone(element.dialogue)
+                whichText = false;
             }
         }
     });
