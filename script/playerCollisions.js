@@ -90,6 +90,7 @@ function checkAllZoneCollisions(){
                         case "parc-right":
                             ctxBackground.clearRect(0,0,1024,640);
                             ctxBackground.drawImage(cityMapRight, 0, 0,1024,640);
+                            pnjParcRightPosition()
                             // On replace le personnage
                             player.position.x = 20;
                             player.position.y = 373;

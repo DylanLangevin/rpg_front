@@ -8,7 +8,7 @@ let coffeeDialogueCollisions = [
 ]
 
 let parcRightMapDialogueCollisions = [
-
+    // {x:180, y:160, width: 50, height: 120, pnj: maleCitizen, dialogue: "yo broooo"},
 ];
 let parcLeftMapDialogueCollisions = [
 
