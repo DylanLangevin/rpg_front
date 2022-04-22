@@ -1,6 +1,15 @@
 let hitboxToggle = true;
 let itemFound = 0;
 
+let loading;
+let timeLoading;
+
+let barSize = 0;
+let timeCounter = 0;
+
+const loadingContain = document.querySelector(".loading-contain");
+const loadingBar = document.querySelector(".loading-bar");
+
 function checkAllSolidCollisions(){
     mapsSolidObjectsCollisions[currentMap].forEach(element => {
         if(player.position.x + offsetX + hitboxWidth > element.x && player.position.x + offsetX < element.x + element.width && player.position.y + offsetY + hitboxHeight >  element.y && player.position.y + offsetY < element.y + element.height)
@@ -110,6 +119,8 @@ function checkAllZoneCollisions(){
                             player.position.y = 373;
                             currentMap = 3;
                             break;
+
+                        
                     }
                     break;
                 
@@ -238,11 +249,10 @@ function checkAllZoneCollisions(){
                             break;
 
                         case "library-second-map":
+
                             if (doorOpened) {
-                                OpenDoor()
                                 ctxBackground.clearRect(0,0,1024,640);
                                 ctxBackground.drawImage(indoorLibrarySecondMap, 0, 0,1024,640);
-                                pnjLibrarySecondMapPosition()
                                 // On replace le personnage et le carré bleu sur la route de la deuxieme image
                                 player.position.x = 140;
                                 player.position.y = 450;
@@ -263,7 +273,6 @@ function checkAllZoneCollisions(){
                 case 6:
                     switch (element.direction) {
                         case "library":
-                            OpenDoor()
                             ctxBackground.clearRect(0,0,1024,640);
                             ctxBackground.drawImage(indoorLibraryFirstMap, 0, 0,1024,640);
                             pnjLibraryFirstMapPosition()
@@ -429,7 +438,7 @@ function checkOfficerSolidCollisions(){
     }}
 
 function win(){
-    if(itemFound == 5) {
+    if(itemFound == 1) {
         document.querySelector("#canva-div").style.display = "none";
         document.querySelector("#inventory").style.display = "none";
         loadingContain.style.display = "flex";
