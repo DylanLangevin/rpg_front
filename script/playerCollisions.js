@@ -239,7 +239,7 @@ function checkAllZoneCollisions(){
                             pnjParcPosition()
                             // On replace le personnage et le carré bleu sur la route de la deuxieme image
                             player.position.x = 204;
-                            player.position.y = 500;
+                            player.position.y = 465;
                             currentMap = 4;
                             break;
 
