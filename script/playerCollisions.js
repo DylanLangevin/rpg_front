@@ -355,7 +355,7 @@ function checkAllDialogueCollisions() {
             if (element.pnj.name == "Arrière bibliothèque") {
                 pnjTalk = "ouvrir la porte (enter)"
             } else {
-                pnjTalk = "Voulez-vous discuter avec " + element.pnj.name + " ? (enter)"
+                pnjTalk = "Voulez-vous discuter ? (enter)"
             }
 
             element.pnj.textZone(pnjTalk)
@@ -370,6 +370,10 @@ function checkAllDialogueCollisions() {
                         if (document.querySelector("#key").style.visibility == "visible" && element.pnj.name == "Arrière bibliothèque")  {
                             doorOpened = true;
                         } 
+                        
+                        if (element.pnj.name == "Policier ami") {
+                            win()
+                        }
                             
                         return
                     default:
@@ -417,7 +421,7 @@ function checkAllItemCollisions() {
             element.picked = true
             itemFound ++;
 
-            win();
+//             win();
 
         }
     });
