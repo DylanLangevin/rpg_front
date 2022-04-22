@@ -6,8 +6,6 @@ let body = document.querySelector('body');
 let canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
 
-
-
 // Orientation du personnage, la ligne qui correspond à l'image de base
 let directionUp = 0;
 let directionLeft = 1;

@@ -121,8 +121,24 @@
             gap: 50px;
         }
 
-        .win h3 {
+        .win a {
             text-align: left;
+        }
+
+        .name-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .developer-name {
+            color: white;
+            text-decoration: none;
+        }
+
+        .developer-name:hover {
+            color: yellow;
+            
         }
 
         #restart {
@@ -137,6 +153,8 @@
         #restart:hover {
             background: #adb5bd;
         }
+
+        
 
         
             
@@ -203,17 +221,17 @@
     </div>
 
     <div class="win" >
-        <h1>GG bien ouej !</h1>
+        <h1>Bien joué !</h1>
         <h2>Crédits :</h2>
-        <h3>
-            - Adrien Quimbre<br>
-                - Billy Iea<br>
-                - Dylan Langevin<br>
-                - Lancelot Boyer<br>
-                - Léa Mhoumadi<br>
-                - Louis Rocca<br>
-                - Théo Duval 
-        </h3>
+        <div class="name-container">
+            <a class="developer-name" href="https://github.com/Lance1ot0" target="_blank">- Lancelot Boyer</a>
+            <a class="developer-name" href="https://github.com/The0Duval" target="_blank">- Théo Duval</a>
+            <a class="developer-name" href="https://github.com/Numyu" target="_blank">- Billy Iea</a>
+            <a class="developer-name" href="https://github.com/DylanLangevin" target="_blank">- Dylan Langevin</a>
+            <a class="developer-name" href="https://github.com/Leambr" target="_blank">- Léa Mhoumadi</a>
+            <a class="developer-name" href="https://github.com/Doud75" target="_blank">- Adrien Quimbre</a>
+            <a class="developer-name" href="https://github.com/LouisSleep" target="_blank">- Louis Rocca</a>
+        </div>
 
         <button id="restart">rejouer</button>
     </div>

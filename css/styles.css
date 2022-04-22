@@ -24,7 +24,7 @@ body {
 
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: center;    
     gap: 40px;
 
     padding-top: 70px;
@@ -74,6 +74,7 @@ body {
     /* opacity: 0.96; */
     border-radius: 18px;
     position: absolute;
+    transform: translate(0, -3.5%);
     
     display: none; 
     flex-direction: column;
@@ -90,7 +91,6 @@ body {
     font-style: normal;
     font-weight: 400;
     font-size: 34px;
-    /* text-align: center; */
 
     padding-top: 40px;
 }
@@ -98,18 +98,16 @@ body {
     font-style: normal;
     font-weight: 400;
     font-size: 24px;
-    /* text-align: center; */
 
-    padding-top: 40px;
+    /* padding-top: 40px; */
 }
 .menu-block p {
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
-    line-height: 31px;
     text-align: left;
 
-    padding-top: 20px;
+    /* padding-top: 20px; */
 }
 
 
@@ -183,16 +181,23 @@ body {
 }
 
 .keycode {
+    margin-top: 50px;
     display: flex;
     justify-content: center;
     gap: 50px;
+}
+
+.keycode-left {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
 }
 
 .interaction {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 20px;
+    gap: 30px;
 }
 
 #key-Enter {
@@ -202,7 +207,8 @@ body {
     background: #495057;
 
     display: flex;
-    justify-content: center;
+    justify-content: center; 
+    align-items: center;
 
     box-shadow: 1px 2px 4px rgba(255, 255, 255, 0.25);
 }
@@ -211,7 +217,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 20px;
+    gap: 30px;
 }
 
 #key-H {
@@ -222,6 +228,7 @@ body {
 
     display: flex;
     justify-content: center;
+    align-items: center;
 
     box-shadow: 1px 2px 4px rgba(255, 255, 255, 0.25);
 }
@@ -276,6 +283,16 @@ body {
 
 #key-Right {
     background: url("../images/key-arrow/key_right.svg") no-repeat;
+}
+
+#credits-block {
+    gap: 40px;
+}
+
+.name-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
 }
 
 .loading-contain {
