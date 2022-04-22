@@ -54,7 +54,7 @@ function rescalePlayer() {
 }
 
 // Initialisation de l'ojet player
-let player = new Player(playerName, genderChoice, { x: 600, y: 400 }, playerSpeed, []);//position et inventaire à définir, ajouter des fonctions ect
+let player = new Player(playerName, genderChoice, { x: 920, y: 570 }, playerSpeed, []);//position et inventaire à définir, ajouter des fonctions ect
 
 console.log(player.position);
 
