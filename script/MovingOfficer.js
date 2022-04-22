@@ -60,7 +60,6 @@ function movingOfficer() {
 
     OfficerCtx.clearRect(0, 0, 1024, 640);
 
-    console.log(mapsOfficierObjectsCollisions[currentMap]);
 
     if (hitboxToggle) {
         drawHitBoxOfficer();
