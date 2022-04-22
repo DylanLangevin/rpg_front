@@ -81,7 +81,6 @@ function checkAllZoneCollisions() {
                             offsetY = 9;
                             rescalePlayer();
                             pnjCoffeePosition()
-                            officierDisplay = false;
                             break;
 
                         case "parc-right":
@@ -120,7 +119,6 @@ function checkAllZoneCollisions() {
                     offsetX = 10;
                     offsetY = 6;
                     rescalePlayer();
-                    officierDisplay = true;
                     break;
 
                 //  Map du parc-right --> Case 2
