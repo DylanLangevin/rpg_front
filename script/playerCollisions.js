@@ -119,8 +119,6 @@ function checkAllZoneCollisions(){
                             player.position.y = 373;
                             currentMap = 3;
                             break;
-
-                        
                     }
                     break;
                 
@@ -249,10 +247,11 @@ function checkAllZoneCollisions(){
                             break;
 
                         case "library-second-map":
-
                             if (doorOpened) {
+                                OpenDoor()
                                 ctxBackground.clearRect(0,0,1024,640);
                                 ctxBackground.drawImage(indoorLibrarySecondMap, 0, 0,1024,640);
+                                pnjLibrarySecondMapPosition()
                                 // On replace le personnage et le carré bleu sur la route de la deuxieme image
                                 player.position.x = 140;
                                 player.position.y = 450;
@@ -273,6 +272,7 @@ function checkAllZoneCollisions(){
                 case 6:
                     switch (element.direction) {
                         case "library":
+                            OpenDoor()
                             ctxBackground.clearRect(0,0,1024,640);
                             ctxBackground.drawImage(indoorLibraryFirstMap, 0, 0,1024,640);
                             pnjLibraryFirstMapPosition()
