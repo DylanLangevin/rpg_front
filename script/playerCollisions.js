@@ -55,7 +55,7 @@ function checkAllSolidCollisions(){
     });
 }
 
-let keyStatus = false;
+let doorOpened = false;
 
 function checkAllZoneCollisions(){
     mapsZoneObjectsCollisions[currentMap].forEach(element => {
@@ -110,8 +110,6 @@ function checkAllZoneCollisions(){
                             player.position.y = 373;
                             currentMap = 3;
                             break;
-
-                        
                     }
                     break;
                 
@@ -240,14 +238,18 @@ function checkAllZoneCollisions(){
                             break;
 
                         case "library-second-map":
-
-                            if (keyStatus) {
+                            if (doorOpened) {
+                                OpenDoor()
                                 ctxBackground.clearRect(0,0,1024,640);
                                 ctxBackground.drawImage(indoorLibrarySecondMap, 0, 0,1024,640);
+                                pnjLibrarySecondMapPosition()
                                 // On replace le personnage et le carré bleu sur la route de la deuxieme image
                                 player.position.x = 140;
                                 player.position.y = 450;
                                 currentMap = 6;
+                                if (libraryMapDialogueCollisions.length > 1) {
+                                    libraryMapDialogueCollisions.shift();
+                                }
                                 break;
                             } else {
 
@@ -261,6 +263,7 @@ function checkAllZoneCollisions(){
                 case 6:
                     switch (element.direction) {
                         case "library":
+                            OpenDoor()
                             ctxBackground.clearRect(0,0,1024,640);
                             ctxBackground.drawImage(indoorLibraryFirstMap, 0, 0,1024,640);
                             pnjLibraryFirstMapPosition()
@@ -361,9 +364,9 @@ function checkAllDialogueCollisions() {
                     case "Enter":
                         whichText = true
 
-                        // Si on a la clé et que player dans collision, keyStatus = true
+                        // Si on a la clé et que player dans collision, doorOpened = true
                         if (document.querySelector("#key").style.visibility == "visible" && element.pnj.name == "Arrière bibliothèque")  {
-                            keyStatus = true;
+                            doorOpened = true;
                         } 
                             
                         return
@@ -378,7 +381,7 @@ function checkAllDialogueCollisions() {
                 drawPlayerHitboxCollisions()
 
                 // Si on est sur la porte de la mairie en possession de la clé
-                if (element.pnj.name == "Arrière bibliothèque" && keyStatus) {
+                if (element.pnj.name == "Arrière bibliothèque" && doorOpened) {
                     element.pnj.textZone("Porte ouverte")
                 
                 } else {
@@ -410,20 +413,9 @@ function checkAllItemCollisions() {
 
             // Change la valeur de picked pour ne plus pouvoir le recupérer
             element.picked = true
+            itemFound ++;
 
-            itemFound++;
-
-            console.log(itemFound);
-
-            if(itemFound ==5) {
-                console.log("WIN");
-            }
-
-            
-
-
-
-            
+            win();
 
         }
     });
@@ -435,3 +427,36 @@ function checkOfficerSolidCollisions(){
     if(player.position.x + offsetX < 0 || player.position.x + offsetX + hitboxWidth  > canvas.width || player.position.y <  0 || player.position.y + offsetY + hitboxHeight > canvas.height){
 
     }}
+
+function win(){
+    if(itemFound == 5) {
+        document.querySelector("#canva-div").style.display = "none";
+        document.querySelector("#inventory").style.display = "none";
+        loadingContain.style.display = "flex";
+        loading = setInterval(loadingAnimation, 45);
+        timeLoading = setInterval(counter, 45);  
+    }
+}
+
+function loadingAnimation() {
+    barSize += 5;
+    if (barSize == 200) {
+        clearTimeout(loading); 
+    } 
+
+    loadingBar.style.width = barSize + "px";
+}
+    
+function counter() {
+    timeCounter += 5;
+    if (timeCounter == 250) {
+        clearTimeout(timeLoading); 
+        loadingContain.style.display = "none";
+        loadingBar.style.display = "none";
+        document.querySelector(".win").style.display = "flex";
+        document.querySelector("#restart").addEventListener("click", () => {
+            window.location = "index.html";
+        })
+    }
+}
+
