@@ -20,8 +20,18 @@ const startMenu = document.querySelector(".start-menu");
 const loadingContain = document.querySelector(".loading-contain");
 const loadingBar = document.querySelector(".loading-bar");
 
+
+let genderChoice = "none";
+let playerName = "";
+
+let loading;
+let timeLoading;
+
+let barSize = 0;
+let timeCounter = 0;
+
 function displayBlock(BlockTarget) {
-    BlockTarget.style.display = 'block';
+    BlockTarget.style.display = 'flex';
 }
 
 function displayNone(BlockTarget) {
@@ -49,10 +59,6 @@ returnCredits.onclick = () => {
     displayNone(creditsBlock);
 }
 
-
-let genderChoice = "none";
-let playerName = "";
-
 female.onclick = () => {
     male.style.display = "none";
     genderChoice = "character_profile/female_player.png"
@@ -62,24 +68,19 @@ female.onclick = () => {
 male.onclick = () => {
     female.style.display = "none"
     genderChoice = "character_profile/male_player.png"
-    console.log(genderChoice)
 }
-
-let loadingStatus = false;
 
 confirm.onclick = () => {
     playerName = document.getElementById("player-name").value;
-    console.log(playerName)
-    console.log(genderChoice)
     if (genderChoice != "none" && playerName != "") {
         localStorage.setItem("name", playerName);
         localStorage.setItem("gender", genderChoice);
         startMenu.style.display = "none"
         loadingContain.style.display = "flex";
-        startLoading();
+        loading = setInterval(loadingAnimation, 45);
+        timeLoading = setInterval(counter, 45);  
         // window.location = "game.html";
     }
-    
 }
 
 cancel.onclick = () => {
@@ -89,31 +90,19 @@ cancel.onclick = () => {
     playerName = "";
 }
 
-let x = 0;
-let j = 0;
+function loadingAnimation() {
+    barSize += 5;
+    if (barSize == 200) {
+        clearTimeout(loading); 
+    } 
 
-function startLoading() {
-    let loading = setInterval(loadingAnimation, 45);
-    let changePage = setInterval(counter, 45);
-
-    function loadingAnimation() {
-        x += 5;
-        if (x == 200) {
-            clearTimeout(loading); 
-        } 
-        
-        loadingBar.style.width = x + "px";
-
-        console.log(x)
-        console.log(j)
+    loadingBar.style.width = barSize + "px";
+}
+    
+function counter() {
+    timeCounter += 5;
+    if (timeCounter == 250) {
+        clearTimeout(timeLoading); 
+        window.location = "game.html";
     }
-
-    function counter() {
-        j += 5;
-        if (j == 250) {
-            clearTimeout(changePage);
-            window.location = "game.html";
-        }
-    }
-
 }

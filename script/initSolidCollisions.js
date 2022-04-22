@@ -1,16 +1,23 @@
 let cityMapSolidObjectsCollisions = [
     // Mairie
-    {x:64, y:0, width: 368, height: 216},
+    {x:0, y:0, width: 482, height: 216},
+
+    // Arbre
+    {x:482, y:0, width: 92, height: 200},
+    {x:574, y:0, width: 130, height: 184},
+
+    // Maison du maired
+    {x:704, y:0, width: 80, height: 155},
+    {x:784, y:0, width: 80, height: 140},
+    {x:864, y:0, width: 160, height: 155},
 
     // Café
-    {x:88, y:384, width: 152, height: 174},
+    {x:0, y:384, width: 240, height: 256},
     {x:240, y:400, width: 100, height: 114},
     {x:280, y:400, width: 64, height: 158},
     // Maison player
-    {x:815, y:414, width: 195, height: 144},
-    {x:815, y:414, width: 195, height: 144},
-
-
+    {x:815, y:274, width: 210, height: 284},
+    
 ];
 
 let coffeeMapSolidObjectsCollisions = [
@@ -84,9 +91,42 @@ let parcMapSolidObjectsCollisions = [
 ];
 
 let libraryMapSolideObjectsCollisions = [
+    // mur
+    {x:48, y:48, width: 920, height: 60},
+    {x:48, y:48, width: 25, height: 540},
+    {x:48, y:570, width: 920, height: 20},
+    {x:950, y:48, width: 20, height: 470},
+    {x:950, y:510, width: 20, height: 60},
+
+    // Bibliotheque
+    {x:450, y:192, width:500, height: 50},
+    {x:450, y:320, width:500, height: 50},
+
+    // Tables
+    {x:228, y:192, width:87, height: 40},
+    {x:228, y:320, width:87, height: 40},
+    {x:73, y:267, width:50, height: 54},
+    {x:73, y:395, width:50, height: 54},
+
 ];
 
 let librarySecondMapSolideObjectsCollisions = [
+    // mur
+    {x:48, y:48, width: 920, height: 60},
+    {x:48, y:48, width: 25, height: 540},
+    {x:48, y:570, width: 920, height: 20},
+    {x:950, y:48, width: 20, height: 540},
+    {x:48, y:448, width: 50, height: 64},
+
+    // Bibliotheque
+    {x:450, y:192, width:500, height: 50},
+    {x:450, y:320, width:500, height: 50},
+    {x:450, y:448, width:500, height: 50},
+
+    // Tables
+    {x:260, y:192, width:87, height: 40},
+    {x:132, y:320, width:87, height: 40},
+    {x:293, y:448, width:87, height: 40},
 ];
 
 

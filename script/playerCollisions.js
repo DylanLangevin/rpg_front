@@ -1,4 +1,14 @@
 let hitboxToggle = true;
+let itemFound = 0;
+
+let loading;
+let timeLoading;
+
+let barSize = 0;
+let timeCounter = 0;
+
+const loadingContain = document.querySelector(".loading-contain");
+const loadingBar = document.querySelector(".loading-bar");
 
 function checkAllSolidCollisions(){
     mapsSolidObjectsCollisions[currentMap].forEach(element => {
@@ -54,6 +64,8 @@ function checkAllSolidCollisions(){
     });
 }
 
+let doorOpened = false;
+
 function checkAllZoneCollisions(){
     mapsZoneObjectsCollisions[currentMap].forEach(element => {
         if(player.position.x + offsetX + hitboxWidth > element.x && player.position.x + offsetX < element.x + element.width && player.position.y + offsetY + hitboxHeight >  element.y && player.position.y + offsetY < element.y + element.height)
@@ -61,12 +73,18 @@ function checkAllZoneCollisions(){
             switch (currentMap) {
                 // Map de la ville --> Case 0
                 case 0:
+                    
                     switch (element.direction) {
+                        
                         case "coffee":
                             OpenDoor()
                             console.log("coffee");
                             ctxBackground.clearRect(0,0,1024,640);
+                            
+                            
                             ctxBackground.drawImage(coffeeShop, 0, 0,1024,640);
+
+                            
 
                             // On replace le personnage
                             player.position.x = 875;
@@ -78,11 +96,13 @@ function checkAllZoneCollisions(){
                             offsetY = 9;
                             rescalePlayer();
                             pnjCoffeePosition()
+                            officierDisplay = false;
                             break;
 
                         case "parc-right":
                             ctxBackground.clearRect(0,0,1024,640);
                             ctxBackground.drawImage(cityMapRight, 0, 0,1024,640);
+                            pnjParcRightPosition()
                             // On replace le personnage
                             player.position.x = 20;
                             player.position.y = 373;
@@ -93,11 +113,14 @@ function checkAllZoneCollisions(){
                             console.log("parc-left");
                             ctxBackground.clearRect(0,0,1024,640);
                             ctxBackground.drawImage(cityMapLeft, 0, 0,1024,640);
+                            pnjParcLeftPosition()
                             // On replace le personnage
                             player.position.x = 990;
                             player.position.y = 373;
                             currentMap = 3;
                             break;
+
+                        
                     }
                     break;
                 
@@ -106,15 +129,18 @@ function checkAllZoneCollisions(){
                     OpenDoor()
                     ctxBackground.clearRect(0,0,1024,640);
                     ctxBackground.drawImage(cityMapImg, 0, 0,1024,640);
+                    pnjCityPosition()
                     // On replace le personnage et le carré bleu sur la route de la deuxieme image
                     player.position.x = 240
                     player.position.y = 538
                     currentMap = 0;
+                    OfficerCtx.clearRect(0,0,1024,640)
 
                     scaleDivider = 1.5;
                     offsetX = 10;
                     offsetY = 6;
                     rescalePlayer();
+                    officierDisplay = true;
                     break;
                 
                 //  Map du parc-right --> Case 2
@@ -123,6 +149,8 @@ function checkAllZoneCollisions(){
                         case "city":
                             ctxBackground.clearRect(0,0,1024,640);
                             ctxBackground.drawImage(cityMapImg, 0, 0,1024,640);
+                            pnjCityPosition()
+                            OfficerCtx.clearRect(0,0,1024,640)
                             // On replace le personnage et le carré bleu sur la route de la deuxieme image
                             player.position.x = 978;
                             player.position.y = 202;
@@ -133,6 +161,7 @@ function checkAllZoneCollisions(){
                             console.log("parc");
                             ctxBackground.clearRect(0,0,1024,640);
                             ctxBackground.drawImage(parc, 0, 0,1024,640);
+                            pnjParcPosition();
                             // On replace le personnage et le carré bleu sur la route de la deuxieme image
                             player.position.x = 978;
                             player.position.y = 292;
@@ -147,6 +176,7 @@ function checkAllZoneCollisions(){
                         case "city":
                             ctxBackground.clearRect(0,0,1024,640);
                             ctxBackground.drawImage(cityMapImg, 0, 0,1024,640);
+                            pnjCityPosition()
                             // On replace le personnage et le carré bleu sur la route de la deuxieme image
                             player.position.x = 10;
                             player.position.y = 303;
@@ -157,6 +187,7 @@ function checkAllZoneCollisions(){
                             console.log("parc");
                             ctxBackground.clearRect(0,0,1024,640);
                             ctxBackground.drawImage(parc, 0, 0,1024,640);
+                            pnjParcPosition()
                             // On replace le personnage et le carré bleu sur la route de la deuxieme image
                             player.position.x = 90;
                             player.position.y = 575;
@@ -172,6 +203,7 @@ function checkAllZoneCollisions(){
                             ctxBackground.clearRect(0,0,1024,640);
                             OfficerCtx.clearRect(0,0,1024,640);
                             ctxBackground.drawImage(cityMapRight, 0, 0,1024,640);
+                            pnjParcRightPosition()
                             // On replace le personnage et le carré bleu sur la route de la deuxieme image
                             player.position.x = 758;
                             player.position.y = 20;
@@ -182,6 +214,7 @@ function checkAllZoneCollisions(){
                             ctxBackground.clearRect(0,0,1024,640);
                             OfficerCtx.clearRect(0,0,1024,640);
                             ctxBackground.drawImage(cityMapLeft, 0, 0,1024,640);
+                            pnjParcLeftPosition()
                             // On replace le personnage et le carré bleu sur la route de la deuxieme image
                             player.position.x = 212;
                             player.position.y = 15;
@@ -189,8 +222,10 @@ function checkAllZoneCollisions(){
                             break;
 
                         case "library":
+                            OpenDoor()
                             ctxBackground.clearRect(0,0,1024,640);
                             ctxBackground.drawImage(indoorLibraryFirstMap, 0, 0,1024,640);
+                            pnjLibraryFirstMapPosition()
                             // On replace le personnage et le carré bleu sur la route de la deuxieme image
                             player.position.x = 180;
                             player.position.y = 490;
@@ -203,8 +238,10 @@ function checkAllZoneCollisions(){
                 case 5:
                     switch (element.direction) {
                         case "parc":
+                            OpenDoor()
                             ctxBackground.clearRect(0,0,1024,640);
                             ctxBackground.drawImage(parc, 0, 0,1024,640);
+                            pnjParcPosition()
                             // On replace le personnage et le carré bleu sur la route de la deuxieme image
                             player.position.x = 204;
                             player.position.y = 500;
@@ -212,13 +249,23 @@ function checkAllZoneCollisions(){
                             break;
 
                         case "library-second-map":
-                            ctxBackground.clearRect(0,0,1024,640);
-                            ctxBackground.drawImage(indoorLibrarySecondMap, 0, 0,1024,640);
-                            // On replace le personnage et le carré bleu sur la route de la deuxieme image
-                            player.position.x = 140;
-                            player.position.y = 450;
-                            currentMap = 6;
-                            break;
+
+                            if (doorOpened) {
+                                ctxBackground.clearRect(0,0,1024,640);
+                                ctxBackground.drawImage(indoorLibrarySecondMap, 0, 0,1024,640);
+                                // On replace le personnage et le carré bleu sur la route de la deuxieme image
+                                player.position.x = 140;
+                                player.position.y = 450;
+                                currentMap = 6;
+                                if (libraryMapDialogueCollisions.length > 1) {
+                                    libraryMapDialogueCollisions.shift();
+                                }
+                                break;
+                            } else {
+
+                                console.log("NON")
+                            }
+                
                     }
                     break;
 
@@ -228,10 +275,25 @@ function checkAllZoneCollisions(){
                         case "library":
                             ctxBackground.clearRect(0,0,1024,640);
                             ctxBackground.drawImage(indoorLibraryFirstMap, 0, 0,1024,640);
+                            pnjLibraryFirstMapPosition()
                             // On replace le personnage et le carré bleu sur la route de la deuxieme image
                             player.position.x = 920;
                             player.position.y = 470;
                             currentMap = 5;
+                            break;
+                    }
+                    break;
+
+                // map intérieur mairie
+                case 7:
+                    switch (element.direction) {
+                        case "city":
+                            ctxBackground.clearRect(0,0,1024,640);
+                            ctxBackground.drawImage(cityMapImg, 0, 0,1024,640);
+                            // On replace le personnage et le carré bleu sur la route de la deuxieme image
+                            player.position.x = 920;
+                            player.position.y = 470;
+                            currentMap = 0;
                             break;
                     }
                     break;
@@ -296,26 +358,46 @@ function checkAllDialogueCollisions() {
     mapsDialogueCollisions[currentMap].forEach(element => {
         if((player.position.x + offsetX + hitboxWidth > element.x && player.position.x + offsetX < element.x + element.width && player.position.y + offsetY + hitboxHeight >  element.y && player.position.y + offsetY < element.y + element.height)) {
 
-            pnjTalk = "Voulez-vous discuter avec " + element.pnj + " ? (enter)"
-            maleCitizen.textZone(pnjTalk)
+            // Si on est sur la porte de la mairie, le dialogue change
+            if (element.pnj.name == "Arrière bibliothèque") {
+                pnjTalk = "ouvrir la porte (enter)"
+            } else {
+                pnjTalk = "Voulez-vous discuter avec " + element.pnj.name + " ? (enter)"
+            }
+
+            element.pnj.textZone(pnjTalk)
         
             // Quand on clique sur entrée, le dialogue se créé
             window.onkeydown = event => {
                 switch(event.key) {
                     case "Enter":
                         whichText = true
-                        console.log("ok");
+
+                        // Si on a la clé et que player dans collision, doorOpened = true
+                        if (document.querySelector("#key").style.visibility == "visible" && element.pnj.name == "Arrière bibliothèque")  {
+                            doorOpened = true;
+                        } 
+                            
                         return
                     default:
                         console.log("Non");
                 }
             }
+
             // Affiche le dialogue
             if (whichText == true) {
                 ctx.clearRect(0, 0, canvas.width, canvas.height)
                 drawPlayerHitboxCollisions()
-                console.log("oui");
-                maleCitizen.textZone(maleCitizen.iTalk)
+
+                // Si on est sur la porte de la mairie en possession de la clé
+                if (element.pnj.name == "Arrière bibliothèque" && doorOpened) {
+                    element.pnj.textZone("Porte ouverte")
+                
+                } else {
+                    element.pnj.textZone(element.dialogue)
+                }   
+
+                whichText = false;
             }
         }
     });
@@ -327,14 +409,22 @@ function checkAllItemCollisions() {
             
             // Met le nom de l'objet dans l'inventaire du joueur
             player.inventory.push(element.name)
+            if(element.name != "key") {
+                takeObj()
+            } else if(element.name === "key") {
+                stillDre(true)
+            }
 
             // Rend visible l'image de l'item récupéré dans l'inventaire
-            document.querySelector(`#object${(player.inventory.length)}`).style.visibility = "visible"
+            document.querySelector(`#${element.name}`).style.visibility = "visible"
+
+            console.log(player.inventory);
 
             // Change la valeur de picked pour ne plus pouvoir le recupérer
             element.picked = true
+            itemFound ++;
 
-            
+            win();
 
         }
     });
@@ -346,3 +436,36 @@ function checkOfficerSolidCollisions(){
     if(player.position.x + offsetX < 0 || player.position.x + offsetX + hitboxWidth  > canvas.width || player.position.y <  0 || player.position.y + offsetY + hitboxHeight > canvas.height){
 
     }}
+
+function win(){
+    if(itemFound == 5) {
+        document.querySelector("#canva-div").style.display = "none";
+        document.querySelector("#inventory").style.display = "none";
+        loadingContain.style.display = "flex";
+        loading = setInterval(loadingAnimation, 45);
+        timeLoading = setInterval(counter, 45);  
+    }
+}
+
+function loadingAnimation() {
+    barSize += 5;
+    if (barSize == 200) {
+        clearTimeout(loading); 
+    } 
+
+    loadingBar.style.width = barSize + "px";
+}
+    
+function counter() {
+    timeCounter += 5;
+    if (timeCounter == 250) {
+        clearTimeout(timeLoading); 
+        loadingContain.style.display = "none";
+        loadingBar.style.display = "none";
+        document.querySelector(".win").style.display = "flex";
+        document.querySelector("#restart").addEventListener("click", () => {
+            window.location = "index.html";
+        })
+    }
+}
+

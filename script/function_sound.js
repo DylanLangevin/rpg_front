@@ -15,6 +15,7 @@ let letsPlayTree = new Audio("sound/tree.mp3");
 
 let playStillDre = false;
 let letsPlayDre = new Audio("sound/stillDre.mp3");
+letsPlayDre.volume = 0.1;
 
 
 
@@ -53,15 +54,20 @@ function walkSound(playWalk) {
     }
 }
 
-function stillDre() {
-    if (playMainSound === true) {
-        letsPlayMain.pause();
-        letsPlayMain.currentTime = 0;
-        playMainSound = false;
-        soundStatus = false;
-        musicButton.style.background = "url('../images/sounds-icon/sound-off.svg')"
+function stillDre(playIt) {
+    if (playIt) {
+        if (playMainSound === true) {
+            letsPlayMain.pause();
+            letsPlayMain.currentTime = 0;
+            playMainSound = false;
+            soundStatus = false;
+            musicButton.style.background = "url('../images/sounds-icon/sound-off.svg')"
+        }
+        letsPlayDre.play();
+    } else if (!playIt) {
+        letsPlayDre.pause();
+        letsPlayDre.currentTime = 0;
     }
-    letsPlayDre.play();
 }
 
 

@@ -7,6 +7,9 @@ let cityMapZoneObjectsCollisions = [
 
     // zone vers parc left
     {x:-8, y:303, width: 10, height: 50, direction:"parc-left"},
+
+    // zone entrée mairie
+
 ];
 
 let coffeeMapZoneObjectsCollisions = [
@@ -19,7 +22,7 @@ let parcRightMapZoneObjectsCollisions = [
     {x:-16, y:373, width: 16, height: 55, direction:"city"},
 
     // zone vers parc
-    {x:758, y:-7, width: 55, height:8, direction:"parc"},
+    {x:758, y:-7, width: 55, height:14, direction:"parc"},
 ];
 
 let parcLeftMapZoneObjectsCollisions = [
@@ -27,7 +30,7 @@ let parcLeftMapZoneObjectsCollisions = [
     {x:1022, y:370, width: 16, height: 55, direction:"city"},
 
     // zone vers parc
-    {x:212, y:-7, width: 55, height:8, direction:"parc"},
+    {x:212, y:-7, width: 55, height:14, direction:"parc"},
 ];
 
 let parcMapZoneObjectsCollisions = [
@@ -44,8 +47,9 @@ let parcMapZoneObjectsCollisions = [
 
 let libraryMapZoneObjectsCollisions = [
     {x:130, y:540, width: 125, height: 16, direction:"parc"},
-    {x:960, y:440, width: 16, height: 70, direction:"library-second-map"},
+    {x:945, y:440, width: 16, height: 70, direction:"library-second-map"},
 ];
+    
 
 let librarySecondMapZoneObjectsCollisions = [
     {x:95, y:450, width: 8, height: 55, direction:"library"},
