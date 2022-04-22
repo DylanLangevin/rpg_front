@@ -95,7 +95,7 @@ let libraryMapSolideObjectsCollisions = [
     {x:48, y:48, width: 920, height: 60},
     {x:48, y:48, width: 25, height: 540},
     {x:48, y:570, width: 920, height: 20},
-    {x:950, y:48, width: 20, height: 392},
+    {x:950, y:48, width: 20, height: 470},
     {x:950, y:510, width: 20, height: 60},
 
     // Bibliotheque

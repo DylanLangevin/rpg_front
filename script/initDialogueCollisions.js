@@ -1,9 +1,14 @@
+
 let cityDialogueCollisions = [
+
+
 ];
 
 let coffeeDialogueCollisions = [
     // Pnj Bar
+
     { x: maleCitizen.position[0], y: maleCitizen.position[1], width: 50, height: 120, pnj: maleCitizen, dialogue: "Devine la réponse pour cacher la vérieté. Je suis grand, j’ai des dents noires et blanches… Touche-les et fait raisonner les clefs" },
+    { x: elder.position[0], y: elder.position[1], width: 50, height: 120, pnj: elder, dialogue: "yo broooo" },
 ]
 
 let parcRightMapDialogueCollisions = [
@@ -17,7 +22,11 @@ let parcMapDialogueCollisions = [
     { x: femaleCitizen.position[0], y: femaleCitizen.position[1], width: 50, height: 120, pnj: femaleCitizen, dialogue: "Il semblerait qu'il y ait quelque chose près du pont ! " },
 ];
 let libraryMapDialogueCollisions = [
+
+    // Message porte fermé
+    { x: 945, y: 440, width: 16, height: 70, pnj: libraryBackDoor, dialogue: "Nécessite une clé pour ouvrir" },
     { x: librarian.position[0], y: librarian.position[1], width: 50, height: 120, pnj: librarian, dialogue: "Je suis tête en l'air aujourd'hui. J'ai egaré mes affaires ! J'ai perdu ma bague est mon pass..." },
+
 ];
 
 let librarySecondMapDialogueCollisions = [
