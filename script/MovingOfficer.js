@@ -153,7 +153,7 @@ function checkOfficerVisionCollisions() {
                 player.position.x = 920;
                 player.position.y = 570;
                 updateFrame();
-                console.log("col");
+                OfficerCatchPlayerLoadingScreen();
             }
         }
         else {
@@ -164,9 +164,23 @@ function checkOfficerVisionCollisions() {
                 player.position.x = 920;
                 player.position.y = 570;
                 updateFrame();
-                console.log("col");
+                OfficerCatchPlayerLoadingScreen();
 
             }
         }
     });
+}
+
+
+function OfficerCatchPlayerLoadingScreen(){
+    // Animations Loading screen catch policier
+    barSize = 0;
+    loadingContain.style.display = "flex";
+    document.querySelector("#canva-div").style.display = "none";
+    document.querySelector("#inventory").style.display = "none";
+    loading = setInterval(loadingAnimation, 45);
+    setTimeout( () => {loadingContain.style.display = "none";
+                        document.querySelector("#canva-div").style.display = "block";
+                        document.querySelector("#inventory").style.display = "flex";
+                    },3000);
 }
