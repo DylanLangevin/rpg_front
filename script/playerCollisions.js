@@ -64,7 +64,7 @@ function checkAllSolidCollisions() {
 
 let doorOpened = false;
 
-function checkAllZoneCollisions(){
+function checkAllZoneCollisions() {
     mapsZoneObjectsCollisions[currentMap].forEach(element => {
         if (player.position.x + offsetX + hitboxWidth > element.x && player.position.x + offsetX < element.x + element.width && player.position.y + offsetY + hitboxHeight > element.y && player.position.y + offsetY < element.y + element.height) {
             switch (currentMap) {
@@ -246,8 +246,8 @@ function checkAllZoneCollisions(){
                         case "library-second-map":
                             if (doorOpened) {
                                 OpenDoor()
-                                ctxBackground.clearRect(0,0,1024,640);
-                                ctxBackground.drawImage(indoorLibrarySecondMap, 0, 0,1024,640);
+                                ctxBackground.clearRect(0, 0, 1024, 640);
+                                ctxBackground.drawImage(indoorLibrarySecondMap, 0, 0, 1024, 640);
                                 pnjLibrarySecondMapPosition()
                                 // On replace le personnage et le carré bleu sur la route de la deuxieme image
                                 player.position.x = 140;
@@ -270,8 +270,8 @@ function checkAllZoneCollisions(){
                     switch (element.direction) {
                         case "library":
                             OpenDoor()
-                            ctxBackground.clearRect(0,0,1024,640);
-                            ctxBackground.drawImage(indoorLibraryFirstMap, 0, 0,1024,640);
+                            ctxBackground.clearRect(0, 0, 1024, 640);
+                            ctxBackground.drawImage(indoorLibraryFirstMap, 0, 0, 1024, 640);
                             pnjLibraryFirstMapPosition()
                             // On replace le personnage et le carré bleu sur la route de la deuxieme image
                             player.position.x = 920;
@@ -353,13 +353,14 @@ function checkAllDialogueCollisions() {
     mapsDialogueCollisions[currentMap].forEach(element => {
         if ((player.position.x + offsetX + hitboxWidth > element.x && player.position.x + offsetX < element.x + element.width && player.position.y + offsetY + hitboxHeight > element.y && player.position.y + offsetY < element.y + element.height)) {
 
-            
+
             // Si on est sur la porte de la mairie, le dialogue change
             if (element.pnj.name == "Arrière bibliothèque") {
                 pnjTalk = "ouvrir la porte (enter)"
             } else {
                 pnjTalk = "Eh ! Ecoute ce que j'ai à te dire ? (enter)"
             }
+
 
             element.pnj.textZone(pnjTalk)
 
@@ -372,6 +373,11 @@ function checkAllDialogueCollisions() {
                         // Si on a la clé et que player dans collision, doorOpened = true
                         if (document.querySelector("#key").style.visibility == "visible" && element.pnj.name == "Arrière bibliothèque") {
                             doorOpened = true;
+                        }
+
+
+                        if (element.pnj.name == "Policier ami") {
+                            win()
                         }
 
                         return
@@ -420,7 +426,7 @@ function checkAllItemCollisions() {
             element.picked = true
             itemFound++;
 
-            win();
+            // win();
 
         }
     });
@@ -431,10 +437,12 @@ function checkAllItemCollisions() {
 function checkOfficerSolidCollisions() {
     if (player.position.x + offsetX < 0 || player.position.x + offsetX + hitboxWidth > canvas.width || player.position.y < 0 || player.position.y + offsetY + hitboxHeight > canvas.height) {
 
-    }}
+    }
+}
 
-function win(){
-    if(itemFound == 5) {
+function win() {
+
+    if (itemFound == 2) {
         document.querySelector("#canva-div").style.display = "none";
         document.querySelector("#inventory").style.display = "none";
         loadingContain.style.display = "flex";

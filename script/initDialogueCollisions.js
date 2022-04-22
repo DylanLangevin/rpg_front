@@ -25,12 +25,12 @@ let libraryMapDialogueCollisions = [
 
     // Message porte fermé
     { x: 945, y: 440, width: 16, height: 70, pnj: libraryBackDoor, dialogue: "Nécessite une clé pour ouvrir" },
-    { x: librarian.position[0], y: librarian.position[1], width: 50, height: 120, pnj: librarian, dialogue: "Je suis tête en l'air aujourd'hui. J'ai egaré mes affaires ! J'ai perdu ma bague est mon pass..." },
+    { x: librarian.position[0], y: librarian.position[1], width: 50, height: 120, pnj: librarian, dialogue: "Trop bizarre ! J'ai cru voir une bague et un pass ensanglanté..." },
 
 ];
 
 let librarySecondMapDialogueCollisions = [
-    { x: reader.position[0], y: reader.position[1], width: 50, height: 120, pnj: reader, dialogue: "J'ai trouvé une bague dans les étagères !" },
+    { x: reader.position[0], y: reader.position[1], width: 50, height: 120, pnj: reader, dialogue: "J'ai trouvé une bague dans les étagères ! Elle est à toi ?" },
 ];
 
 let mapsDialogueCollisions = [cityDialogueCollisions, coffeeDialogueCollisions, parcRightMapDialogueCollisions, parcLeftMapDialogueCollisions, parcMapDialogueCollisions, libraryMapDialogueCollisions, librarySecondMapDialogueCollisions]
