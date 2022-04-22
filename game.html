@@ -14,13 +14,12 @@
         }
 
         body {
-
-            position: fixed;
+            height: 100vh;
             background-color: #1f1f1f;
             overflow: hidden;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         #game-container {
@@ -28,13 +27,10 @@
             width: 1139px;
         }
 
-        
-
         #inventory {
-            position: absolute;
-            left: 100%;
+            margin-left: 1039px;
             height: 640px;
-            transform: translate(-100px);
+            /* transform: translate(-5%); */
             width: 100px;
             background-color: #495057;
             border-radius: 12px;
@@ -42,32 +38,106 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: space-around;
+            justify-content: center;
+        }
+
+        #inventory p {
+            margin-bottom: 30px;
+            color: white;
+            font-family: "Public Pixel";
+            font-size: 0.6em;
         }
 
         .object {
+            margin-bottom: 10px;
             height: 50px;
             width: 50px;
             border-radius: 50%;
             background: #6c757d;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
         }
 
         #music-btn {
+            margin-top: 30px;
             width: 30px;
             height: 28px;
             background: url("images/sounds-icon/sound-off.svg");
         }
 
-        #map, #key, #list, #pass, #bag{
+        #bottle, #key, #knife, #pass, #ring{
             visibility: hidden;
             width: 30px;
             height: 30px;
-            border-radius: 50%;
    
         }
+
+        .loading-contain {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 1024px;
+            height: 640px;
+            background: #495057;
+
+            display: none;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .loading-box {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 200px;
+            height: 10px;
+        }
+        .loading-bar {
+            width: 0;
+            height: 10px;
+            background: #e9ecef;
+            transition: 0.9s;
+        }
+
+        .win {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 1024px;
+            height: 640px;
+            background: black;
+            color: white;
+            font-family: "Public Pixel";
+            text-align: center;
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .win h3 {
+            text-align: left;
+        }
+
+        #restart {
+            width: 200px;
+            height: 50px;
+            border: none;
+            border-radius: 50px;
+
+            font-family: "Public Pixel";
+        }
+
+        #restart:hover {
+            background: #adb5bd;
+        }
+
         
             
         
@@ -98,35 +168,57 @@
     
         <div id="inventory">
             <div class="object" >
-
-                <img src="/images/items/map.svg" id="map"></img>
+                <img src="/images/items/knife.svg" id="knife"></img>
             </div>
+            <p>Couteau</p>
+            
+            <div class="object">
+                <img src="/images/items/bottle.svg" id="bottle"></img>              
+            </div>
+            <p>Bouteille</p>
 
             <div class="object">
-
-                <img src="/images/items/list.svg" id="list"></img>
+                <img src="/images/items/key.svg" id="key"></img>       
             </div>
+            <p>Clef</p>
 
             <div class="object">
-
-                <img src="/images/items/key.svg" id="key"></img>
-            </div>
-
-            <div class="object">
-
                 <img src="/images/items/pass.svg" id="pass"></img>
             </div>
+            <p>Pass</p>
 
             <div class="object">
-
-                <img src="/images/items/bag.svg" id="bag"></img>
+                <img src="/images/items/ring.svg" id="ring"></img>
             </div>
+            <p>Bague</p>
 
-
-            
             <div id="music-btn"></div>
         </div>
     </div>
+
+    <div class="loading-contain" >
+        <div class="loading-box">
+            <div class="loading-bar"></div>
+        </div>
+    </div>
+
+    <div class="win" >
+        <h1>GG bien ouej !</h1>
+        <h2>Crédits :</h2>
+        <h3>
+            - Adrien Quimbre<br>
+                - Billy Iea<br>
+                - Dylan Langevin<br>
+                - Lancelot Boyer<br>
+                - Léa Mhoumadi<br>
+                - Louis Rocca<br>
+                - Théo Duval 
+        </h3>
+
+        <button id="restart">rejouer</button>
+    </div>
+
+    
     
 </body>
 <script src="/script/function_sound.js"></script>
@@ -150,4 +242,5 @@
 
 
 <script src="script/maps.js"></script>
+
 </html>

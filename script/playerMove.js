@@ -6,6 +6,8 @@ let body = document.querySelector('body');
 let canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
 
+
+
 // Orientation du personnage, la ligne qui correspond à l'image de base
 let directionUp = 0;
 let directionLeft = 1;
@@ -15,7 +17,7 @@ let directionRight = 3;
 // Mouvement du personnage
 let moveCharacter;
 
-let playerSpeed = 5;
+let playerSpeed = 15;
 
 let previousMoveOrientation;
 
@@ -57,22 +59,26 @@ let player = new Player(playerName, genderChoice, { x: 600, y: 400 }, playerSpee
 console.log(player.position);
 
 function drawPlayerHitboxCollisions() {
-    // On dessine le caractère
-    ctx.drawImage(player.character, spriteSheetPosX, spriteSheetPosY, frameWidth, frameHeight, player.position.x, player.position.y, frameWidth / scaleDivider, frameHeight / scaleDivider);
-
-    if (hitboxToggle) {
-        drawPlayerHitbox();
-        drawAllSolidCollisionsBox();
-        drawAllZoneCollisionsBox();
-        drawAllDialogueCollisionsBox();
-        drawAllItemCollisionsBox();
-    }
+     // On dessine le caractère
+     ctx.drawImage(player.character, spriteSheetPosX, spriteSheetPosY,frameWidth, frameHeight, player.position.x, player.position.y, frameWidth / scaleDivider, frameHeight / scaleDivider);
+    
+     if(hitboxToggle)
+     {
+         drawPlayerHitbox();
+         drawAllSolidCollisionsBox();
+         drawAllZoneCollisionsBox();
+         drawAllDialogueCollisionsBox();
+         drawAllItemCollisionsBox();
+            
+         
+     }
 }
 
 // Test initialisation d'un PNJ
 body.onload = function () {
 
     drawPlayerHitboxCollisions()
+    
 
 }
 

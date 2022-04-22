@@ -96,9 +96,42 @@ let parcMapSolidObjectsCollisions = [
 ];
 
 let libraryMapSolideObjectsCollisions = [
+    // mur
+    {x:48, y:48, width: 920, height: 60},
+    {x:48, y:48, width: 25, height: 540},
+    {x:48, y:570, width: 920, height: 20},
+    {x:950, y:48, width: 20, height: 470},
+    {x:950, y:510, width: 20, height: 60},
+
+    // Bibliotheque
+    {x:450, y:192, width:500, height: 50},
+    {x:450, y:320, width:500, height: 50},
+
+    // Tables
+    {x:228, y:192, width:87, height: 40},
+    {x:228, y:320, width:87, height: 40},
+    {x:73, y:267, width:50, height: 54},
+    {x:73, y:395, width:50, height: 54},
+
 ];
 
 let librarySecondMapSolideObjectsCollisions = [
+    // mur
+    {x:48, y:48, width: 920, height: 60},
+    {x:48, y:48, width: 25, height: 540},
+    {x:48, y:570, width: 920, height: 20},
+    {x:950, y:48, width: 20, height: 540},
+    {x:48, y:448, width: 50, height: 64},
+
+    // Bibliotheque
+    {x:450, y:192, width:500, height: 50},
+    {x:450, y:320, width:500, height: 50},
+    {x:450, y:448, width:500, height: 50},
+
+    // Tables
+    {x:260, y:192, width:87, height: 40},
+    {x:132, y:320, width:87, height: 40},
+    {x:293, y:448, width:87, height: 40},
 ];
 
 
