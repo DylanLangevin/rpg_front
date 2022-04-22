@@ -1,4 +1,5 @@
 let hitboxToggle = true;
+let itemFound = 0;
 
 function checkAllSolidCollisions(){
     mapsSolidObjectsCollisions[currentMap].forEach(element => {
@@ -409,6 +410,16 @@ function checkAllItemCollisions() {
 
             // Change la valeur de picked pour ne plus pouvoir le recupérer
             element.picked = true
+
+            itemFound++;
+
+            console.log(itemFound);
+
+            if(itemFound ==5) {
+                console.log("WIN");
+            }
+
+            
 
 
 
