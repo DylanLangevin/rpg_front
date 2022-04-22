@@ -13,7 +13,7 @@ let coffeeDialogueCollisions = [
 ]
 
 let parcRightMapDialogueCollisions = [
-    {x:engineer.position[0], y:engineer.position[1], width: 50, height: 80, pnj: engineer, dialogue: "En cuillant ces belles marguerites d'automne, voilà-t-il pas que je trouve une object un plein de sang..."},
+    {x:engineer.position[0], y:engineer.position[1], width: 50, height: 80, pnj: engineer, dialogue: "AHAHAH ! En cuillant ces belles marguerites d'automne, j'ai cru rêver AHAHAH mais il y avait un couteau plein de sang au sol... AHA!"},
     {x:plantJanitor.position[0] -30, y:plantJanitor.position[1], width: 80, height: 50, pnj: plantJanitor, dialogue: "J'ai cru comprendre que les officiers de police avaient trouvé des pistes dans la bibliothèque."},
 ];
 let parcLeftMapDialogueCollisions = [
