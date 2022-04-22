@@ -6,18 +6,18 @@ let cityDialogueCollisions = [
 
 let coffeeDialogueCollisions = [
     // Pnj Bar
-    {x:maleCitizen.position[0], y:maleCitizen.position[1], width: 50, height: 120, pnj: maleCitizen, dialogue: "Devine la réponse pour cacher la vérité. Je suis grand, j’ai des dents noires et blanches… Touche-les et fait raisonner les clefs"},
+    {x:maleCitizen.position[0], y:maleCitizen.position[1], width: 50, height: 120, pnj: maleCitizen, dialogue: "Devine la réponse. Je suis grand, j’ai des dents noires et blanches… Touche-les et fait raisonner les clefs"},
     {x:elder.position[0], y:elder.position[1], width: 50, height: 80, pnj: elder, dialogue: "Peronne ne veut sortir de chez soi aujourd'hui ! Le centre-ville est vide."},
     {x:policeFriend.position[0], y:policeFriend.position[1], width: 80, height: 50, pnj: policeFriend, dialogue: "Trouve les 5 indices que t'as laissé ! Je t'aiderai à fuir."},
-    {x:foreigner.position[0], y:foreigner.position[1] -30, width: 50, height: 80, pnj: foreigner, dialogue: "Les habitants semble suspécieux à mon égard depuis le meurtre du Maire ! Seulement parce que je viens pas d'ici..."},
+    {x:foreigner.position[0], y:foreigner.position[1] -30, width: 50, height: 80, pnj: foreigner, dialogue: "Les habitants semble suspécieux à mon égard! Seulement parce que je viens pas d'ici..."},
 ]
 
 let parcRightMapDialogueCollisions = [
-    {x:engineer.position[0], y:engineer.position[1], width: 50, height: 80, pnj: engineer, dialogue: "AHAHAH ! En cuillant ces belles marguerites d'automne, j'ai cru rêver AHAHAH mais il y avait un couteau plein de sang au sol... AHA!"},
-    {x:plantJanitor.position[0] -30, y:plantJanitor.position[1], width: 80, height: 50, pnj: plantJanitor, dialogue: "J'ai cru comprendre que les officiers de police avaient trouvé des pistes dans la bibliothèque."},
+    {x:engineer.position[0], y:engineer.position[1], width: 50, height: 80, pnj: engineer, dialogue: "AHAHAH ! En cueillant ces belles marguerites d'automne, il y avait un couteau plein de sang au sol!"},
+    {x:plantJanitor.position[0] -30, y:plantJanitor.position[1], width: 80, height: 50, pnj: plantJanitor, dialogue: "J'ai cru comprendre que les officiers avaient des pistes dans la bibliothèque."},
 ];
 let parcLeftMapDialogueCollisions = [
-    {x:mayorWife.position[0], y:mayorWife.position[1] -30, width: 50, height: 80, pnj: mayorWife, dialogue: "Merci d'avoir tué mon mari ! Il n'a rien vue de mon plan, trop occupé à s'ammuser avec la secretaire !"},
+    {x:mayorWife.position[0], y:mayorWife.position[1] -30, width: 50, height: 80, pnj: mayorWife, dialogue: "Merci d'avoir tué mon mari !"},
     {x:secretary.position[0], y:secretary.position[1], width: 80, height: 50, pnj: secretary, dialogue: "Le Maire est mort... Mon enfant grandira sans père !"},
 ];
 let parcMapDialogueCollisions = [

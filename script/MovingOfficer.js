@@ -174,6 +174,7 @@ function checkOfficerVisionCollisions() {
 
 function OfficerCatchPlayerLoadingScreen(){
     // Animations Loading screen catch policier
+    walkSound(false);
     barSize = 0;
     loadingContain.style.display = "flex";
     document.querySelector("#canva-div").style.display = "none";
