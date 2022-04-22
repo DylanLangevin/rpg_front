@@ -17,7 +17,7 @@ let directionRight = 3;
 // Mouvement du personnage
 let moveCharacter;
 
-let playerSpeed = 20;
+let playerSpeed = 5;
 
 let previousMoveOrientation;
 
@@ -34,8 +34,8 @@ let frameCols = 9;
 let frameRows = 4;
 
 // Width de chaque frame 
-let frameWidth = spriteWidth/frameCols;
-let frameHeight = spriteHeight/frameRows;
+let frameWidth = spriteWidth / frameCols;
+let frameHeight = spriteHeight / frameRows;
 
 // Index de la frame
 let currentFrame = 0;
@@ -48,13 +48,13 @@ let offsetY = 6;
 let hitboxWidth = 30 / scaleDivider;
 let hitboxHeight = 50 / scaleDivider;
 
-function rescalePlayer(){
+function rescalePlayer() {
     hitboxWidth = 30 / scaleDivider;
     hitboxHeight = 50 / scaleDivider;
 }
 
 // Initialisation de l'ojet player
-let player = new Player(playerName, genderChoice, {x:600, y:400}, playerSpeed, []);//position et inventaire à définir, ajouter des fonctions ect
+let player = new Player(playerName, genderChoice, { x: 920, y: 570 }, playerSpeed, []);//position et inventaire à définir, ajouter des fonctions ect
 
 console.log(player.position);
 
@@ -75,7 +75,7 @@ function drawPlayerHitboxCollisions() {
 }
 
 // Test initialisation d'un PNJ
-body.onload = function() {
+body.onload = function () {
 
     drawPlayerHitboxCollisions()
     
@@ -83,10 +83,10 @@ body.onload = function() {
 }
 
 
-function drawPlayerHitbox(){
+function drawPlayerHitbox() {
 
     ctx.fillStyle = "rgba(255,0,0,0.3)";
-    ctx.fillRect(player.position.x + offsetX, player.position.y + offsetY, hitboxWidth,hitboxHeight);
+    ctx.fillRect(player.position.x + offsetX, player.position.y + offsetY, hitboxWidth, hitboxHeight);
 }
 
 // Dessiner le caractère à l'arrêt lorsqu'on arrête d'avancer
@@ -110,7 +110,7 @@ function stopMovingCharacter(whichDirection) {
 
 // Choisir la bonne frame
 function updateFrame() {
-    if(moveCharacter != "moonWalk") {
+    if (moveCharacter != "moonWalk") {
         walkSound(true);
     } else if (moveCharacter === "moonWalk") {
         stillDre(true);
@@ -133,8 +133,7 @@ function updateFrame() {
 
             // Va permettre de définir la direction du mouvement
 
-            if(previousMoveOrientation == "down" || previousMoveOrientation == "left" || previousMoveOrientation == "right")
-            {
+            if (previousMoveOrientation == "down" || previousMoveOrientation == "left" || previousMoveOrientation == "right") {
                 player.position.y += player.speed;
             }
 
@@ -147,15 +146,14 @@ function updateFrame() {
         case "down":
             player.position.y += player.speed;
 
-            if(previousMoveOrientation == "up" || previousMoveOrientation == "left" || previousMoveOrientation == "right")
-            {
+            if (previousMoveOrientation == "up" || previousMoveOrientation == "left" || previousMoveOrientation == "right") {
                 player.position.y -= player.speed;
             }
 
             spriteSheetPosY = directionDown * frameHeight;
             body.onkeyup = event => {
                 stopMovingCharacter(directionDown);
-            } 
+            }
             break;
 
         case "left":
@@ -183,7 +181,7 @@ function updateFrame() {
                 stopMovingCharacter(directionLeft);
             }
             break;
-      
+
         default:
             break;
     }
@@ -199,7 +197,7 @@ function updateFrame() {
 body.onkeydown = event => {
     previousMoveOrientation = moveCharacter;
 
-    switch(event.key) {
+    switch (event.key) {
         case "ArrowUp":
             moveCharacter = "up";
             updateFrame();
@@ -208,8 +206,9 @@ body.onkeydown = event => {
             checkCanvasEdgesCollisions();
             checkAllDialogueCollisions();
             checkAllItemCollisions();
+
             break;
-            
+
         case "ArrowDown":
             moveCharacter = "down";
             updateFrame();
@@ -250,12 +249,10 @@ body.onkeydown = event => {
             break;
 
         case "h":
-            if(hitboxToggle)
-            {
+            if (hitboxToggle) {
                 hitboxToggle = false
             }
-            else
-            {
+            else {
                 hitboxToggle = true;
             }
     }
