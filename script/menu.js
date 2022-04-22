@@ -31,7 +31,7 @@ let barSize = 0;
 let timeCounter = 0;
 
 function displayBlock(BlockTarget) {
-    BlockTarget.style.display = 'block';
+    BlockTarget.style.display = 'flex';
 }
 
 function displayNone(BlockTarget) {
