@@ -377,6 +377,10 @@ function checkAllDialogueCollisions() {
                         if (document.querySelector("#key").style.visibility == "visible" && element.pnj.name == "Arrière bibliothèque")  {
                             doorOpened = true;
                         } 
+                        
+                        if (element.pnj.name == "Policier ami") {
+                            win()
+                        }
                             
                         return
                     default:
@@ -424,7 +428,7 @@ function checkAllItemCollisions() {
             element.picked = true
             itemFound ++;
 
-            win();
+//             win();
 
         }
     });
