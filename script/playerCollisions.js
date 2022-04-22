@@ -1,6 +1,15 @@
 let hitboxToggle = true;
 let itemFound = 0;
 
+let loading;
+let timeLoading;
+
+let barSize = 0;
+let timeCounter = 0;
+
+const loadingContain = document.querySelector(".loading-contain");
+const loadingBar = document.querySelector(".loading-bar");
+
 function checkAllSolidCollisions(){
     mapsSolidObjectsCollisions[currentMap].forEach(element => {
         if(player.position.x + offsetX + hitboxWidth > element.x && player.position.x + offsetX < element.x + element.width && player.position.y + offsetY + hitboxHeight >  element.y && player.position.y + offsetY < element.y + element.height)
@@ -415,7 +424,6 @@ function checkAllItemCollisions() {
             element.picked = true
             itemFound ++;
 
-
             win();
 
         }
@@ -429,51 +437,35 @@ function checkOfficerSolidCollisions(){
 
     }}
 
-
-
 function win(){
     if(itemFound == 5) {
         document.querySelector("#canva-div").style.display = "none";
         document.querySelector("#inventory").style.display = "none";
-        document.querySelector(".loading-contain").style.display = "flex";
-        startLoading();
-        
+        loadingContain.style.display = "flex";
+        loading = setInterval(loadingAnimation, 45);
+        timeLoading = setInterval(counter, 45);  
     }
 }
 
-let x = 0;
-let j = 0;
+function loadingAnimation() {
+    barSize += 5;
+    if (barSize == 200) {
+        clearTimeout(loading); 
+    } 
 
-function startLoading() {
-    let loading = setInterval(loadingAnimation, 45);
-    let changePage = setInterval(counter, 45);
-
+    loadingBar.style.width = barSize + "px";
+}
     
-
-    function loadingAnimation() {
-        x += 5;
-        if (x == 200) {
-            clearTimeout(loading); 
-        } 
-        
-        document.querySelector(".loading-bar").style.width = x + "px";
-    
-        console.log(x)
-        console.log(j)
+function counter() {
+    timeCounter += 5;
+    if (timeCounter == 250) {
+        clearTimeout(timeLoading); 
+        loadingContain.style.display = "none";
+        loadingBar.style.display = "none";
+        document.querySelector(".win").style.display = "flex";
+        document.querySelector("#restart").addEventListener("click", () => {
+            window.location = "index.html";
+        })
     }
-    
-    function counter() {
-        j += 5;
-        if (j == 250) {
-            clearTimeout(changePage);
-            document.querySelector(".loading-contain").style.display = "none"
-            document.querySelector(".loading-bar").style.display = "none"
-            document.querySelector(".win").style.display = "flex";  
-        }
-    }
-
-    document.querySelector("#restart").addEventListener("click", () => {
-        window.location = "index.html"
-    })
 }
 
