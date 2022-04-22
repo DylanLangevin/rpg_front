@@ -1,4 +1,4 @@
-let hitboxToggle = true;
+let hitboxToggle = false;
 let itemFound = 0;
 
 let loading;
