@@ -362,7 +362,7 @@ function checkAllDialogueCollisions() {
             if (element.pnj.name == "Arrière bibliothèque") {
                 pnjTalk = "ouvrir la porte (enter)"
             } else {
-                pnjTalk = "Voulez-vous discuter avec " + element.pnj.name + " ? (enter)"
+                pnjTalk = "Voulez-vous discuter ? (enter)"
             }
 
             element.pnj.textZone(pnjTalk)

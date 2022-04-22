@@ -45,9 +45,9 @@ let coffeeMapSolidObjectsCollisions = [
     {x:100, y:416, width: 88, height: 18},
     {x:325, y:416, width: 88, height: 18},
     {x:580, y:416, width: 88, height: 18},
-    {x:100, y:500, width: 88, height: 18},
-    {x:325, y:500, width: 88, height: 18},
-    {x:580, y:500, width: 88, height: 18},
+    {x:100, y:510, width: 88, height: 18},
+    {x:325, y:510, width: 88, height: 18},
+    {x:580, y:510, width: 88, height: 18},
 ];
 
 let parcRightMapSolidObjectsCollisions = [

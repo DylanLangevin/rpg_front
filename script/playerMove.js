@@ -17,7 +17,7 @@ let directionRight = 3;
 // Mouvement du personnage
 let moveCharacter;
 
-let playerSpeed = 15;
+let playerSpeed = 20;
 
 let previousMoveOrientation;
 

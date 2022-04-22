@@ -3,13 +3,13 @@ let secretary = new Pnj("Secrétaire", 'character_profile/secretary.png', [130, 
 let barRegular = new Pnj("Habitué du bar", 'character_profile/bar_regular.png', [300, 300]);
 let engineer = new Pnj("Ingénieur fou", 'character_profile/engineer.png', [400, 250]);
 let childhoodFriend = new Pnj("Ami d'enfance", 'character_profile/childhood_friend.png', [675, 475]);
-let plantJanitor = new Pnj("Gardien d'usine", 'character_profile/plant_janitor.png', [850, 375]);
+let plantJanitor = new Pnj("Gardien d'usine", 'character_profile/plant_janitor.png', [800, 375]);
 let elder = new Pnj("Ancien du village", 'character_profile/elder.png', [600, 226]);
 let mayorWife = new Pnj("Femme du maire", 'character_profile/mayor_wife.png', [675, 450]);
-let foreigner = new Pnj("L'étrangère", 'character_profile/foreigner.png', [12, 126]);
-let reader = new Pnj("Lectrice de polar", 'character_profile/reader.png', [800, 376]);
+let foreigner = new Pnj("L'étrangère", 'character_profile/foreigner.png', [500, 506]);
+let reader = new Pnj("Lectrice de polar", 'character_profile/reader.png', [700, 376]);
 let librarian = new Pnj("Bibliothécaire", 'character_profile/librarian.png', [300, 456]);
-let policeFriend = new Pnj("Policier ami", 'character_profile/police_friend.png', [12, 126]);
+let policeFriend = new Pnj("Policier ami", 'character_profile/police_friend.png', [90, 326]);
 let maleCitizen = new Pnj("Villageois", 'character_profile/male_citizen.png', [180, 156]);
 let femaleCitizen = new Pnj("Villageoise", 'character_profile/female_citizen.png', [350, 150]);
 
@@ -17,7 +17,7 @@ let femaleCitizen = new Pnj("Villageoise", 'character_profile/female_citizen.png
 let libraryBackDoor = new Pnj("Arrière bibliothèque", '', [750, 430])
 
 // Initialisation de l'ojet cops
-let police = new Police("Policier", 'character_profile/police.png', [12, 126]);//position a définir
+let police = new Police("Policier", 'character_profile/police.png', [12, 126]);
 
 function pnjCityPosition() {
 }
@@ -26,6 +26,11 @@ function pnjCoffeePosition() {
     ctxBackground.drawImage(maleCitizen.character, 0, 122,frameWidth*scaleDivider, frameHeight*scaleDivider, maleCitizen.position[0], maleCitizen.position[1], frameWidth, frameHeight)
 
     ctxBackground.drawImage(elder.character, 0, 130,frameWidth, frameHeight, elder.position[0], elder.position[1], frameWidth/scaleDivider, frameHeight/scaleDivider)
+
+    ctxBackground.drawImage(policeFriend.character, 0, 192,frameWidth, frameHeight, policeFriend.position[0], policeFriend.position[1], frameWidth/scaleDivider, frameHeight/scaleDivider)
+
+    ctxBackground.drawImage(foreigner.character, 0, 0,frameWidth, frameHeight, foreigner.position[0], foreigner.position[1], frameWidth/scaleDivider, frameHeight/scaleDivider)
+
 }
 
 function pnjParcPosition() {
