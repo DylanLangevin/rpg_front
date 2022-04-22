@@ -93,7 +93,6 @@ function checkAllZoneCollisions() {
                             offsetY = 9;
                             rescalePlayer();
                             pnjCoffeePosition()
-                            officierDisplay = false;
                             break;
 
                         case "parc-right":
@@ -135,7 +134,6 @@ function checkAllZoneCollisions() {
                     offsetX = 10;
                     offsetY = 6;
                     rescalePlayer();
-                    officierDisplay = true;
                     break;
 
                 //  Map du parc-right --> Case 2
@@ -353,7 +351,6 @@ function checkAllDialogueCollisions() {
     mapsDialogueCollisions[currentMap].forEach(element => {
         if ((player.position.x + offsetX + hitboxWidth > element.x && player.position.x + offsetX < element.x + element.width && player.position.y + offsetY + hitboxHeight > element.y && player.position.y + offsetY < element.y + element.height)) {
 
-
             // Si on est sur la porte de la mairie, le dialogue change
             if (element.pnj.name == "Arrière bibliothèque") {
                 pnjTalk = "ouvrir la porte (enter)"
@@ -374,7 +371,6 @@ function checkAllDialogueCollisions() {
                         if (document.querySelector("#key").style.visibility == "visible" && element.pnj.name == "Arrière bibliothèque") {
                             doorOpened = true;
                         }
-
 
                         if (element.pnj.name == "Policier ami") {
                             win()
@@ -426,7 +422,7 @@ function checkAllItemCollisions() {
             element.picked = true
             itemFound++;
 
-            // win();
+            //             win();
 
         }
     });
@@ -442,7 +438,7 @@ function checkOfficerSolidCollisions() {
 
 function win() {
 
-    if (itemFound == 2) {
+    if (itemFound == 5) {
         document.querySelector("#canva-div").style.display = "none";
         document.querySelector("#inventory").style.display = "none";
         loadingContain.style.display = "flex";
