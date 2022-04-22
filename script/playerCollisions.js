@@ -215,6 +215,7 @@ function checkAllZoneCollisions(){
                             break;
 
                         case "library":
+                            scaleDivider = 1.2;
                             OpenDoor()
                             ctxBackground.clearRect(0,0,1024,640);
                             ctxBackground.drawImage(indoorLibraryFirstMap, 0, 0,1024,640);
@@ -231,6 +232,7 @@ function checkAllZoneCollisions(){
                 case 5:
                     switch (element.direction) {
                         case "parc":
+                            scaleDivider = 1.5;
                             OpenDoor()
                             ctxBackground.clearRect(0,0,1024,640);
                             ctxBackground.drawImage(parc, 0, 0,1024,640);
@@ -243,6 +245,7 @@ function checkAllZoneCollisions(){
 
                         case "library-second-map":
                             if (doorOpened) {
+                                scaleDivider = 1.2;
                                 OpenDoor()
                                 ctxBackground.clearRect(0,0,1024,640);
                                 ctxBackground.drawImage(indoorLibrarySecondMap, 0, 0,1024,640);
