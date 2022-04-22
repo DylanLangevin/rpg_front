@@ -18,6 +18,8 @@ let cityMapSolidObjectsCollisions = [
     // Maison player
     { x: 815, y: 274, width: 210, height: 284 },
 
+    // Fontaine
+    { x: 580, y: 385, width: 72, height: 65 },
 
 
 
