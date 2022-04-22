@@ -1,3 +1,8 @@
+@font-face {
+    font-family: "Public Pixel";
+    src: url("../font/PublicPixel.ttf");
+}
+
 * {
     margin: 0;
     padding: 0;

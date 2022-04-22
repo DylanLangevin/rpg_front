@@ -438,7 +438,7 @@ function checkOfficerSolidCollisions(){
     }}
 
 function win(){
-    if(itemFound == 1) {
+    if(itemFound == 5) {
         document.querySelector("#canva-div").style.display = "none";
         document.querySelector("#inventory").style.display = "none";
         loadingContain.style.display = "flex";
