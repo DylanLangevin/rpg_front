@@ -15,9 +15,23 @@ let cityMapSolidObjectsCollisions = [
     {x:0, y:384, width: 240, height: 256},
     {x:240, y:400, width: 100, height: 114},
     {x:280, y:400, width: 64, height: 158},
+   
     // Maison player
     {x:815, y:274, width: 210, height: 284},
     
+    //bancs
+    {x:388, y:260, width:43, height: 15},
+    {x:68, y:260, width:43, height: 15},
+    {x:610, y:260, width:43, height: 15},
+
+    // //lampadaire
+    // {x:672, y:290, width:15, height: 15},
+    // {x:322, y:290, width:15, height: 15},
+    // {x:162, y:290, width:15, height: 15},
+    // {x:978, y:195, width:15, height: 15},
+    // {x:770, y:353, width:15, height: 15},
+    // {x:770, y:480, width:15, height: 15},
+
 ];
 
 let coffeeMapSolidObjectsCollisions = [
@@ -55,7 +69,17 @@ let parcRightMapSolidObjectsCollisions = [
     {x:0, y:0, width:650, height:250},
     {x:0, y:520, width:1024, height:150},
     {x:900, y:0, width:50, height:640},
-    {x:850, y:475, width:50, height:50}, 
+    {x:850, y:475, width:50, height:50},
+    //bancs  
+    {x:355, y:340, width:33, height: 15},
+    {x:649, y:340, width:33, height: 15},
+    {x:59, y:340, width:33, height: 15},
+    //
+    {x:490, y:470, width:33, height: 15},
+    {x:161, y:470, width:33, height: 15},
+    //
+    {x:722, y:210, width:15, height: 23},
+    {x:722, y:42, width:15, height: 23}, 
     
 
 ];
@@ -65,6 +89,18 @@ let parcLeftMapSolidObjectsCollisions = [
     {x:0, y:520, width:1024, height:150},
     {x:60, y:0, width:50, height:640},
     {x:115, y:475, width:50, height:50},
+    //bancs
+    {x:343, y:340, width:43, height: 15},
+    {x:630, y:340, width:43, height: 15},
+    {x:930, y:340, width:43, height: 15},
+    //
+    {x:495, y:470, width:43, height: 15},
+    {x:820, y:470, width:43, height: 15},
+    //
+    {x:290, y:210, width:15, height: 23},
+    {x:290, y:42, width:15, height: 23},
+
+
     //lampadaire 
     // {x:, y:, width:, height:},
     // {x:, y:, width:, height:},
