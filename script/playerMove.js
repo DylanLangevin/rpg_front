@@ -54,7 +54,6 @@ function rescalePlayer() {
 // Initialisation de l'ojet player
 let player = new Player(playerName, genderChoice, { x: 920, y: 570 }, playerSpeed, []);//position et inventaire à définir, ajouter des fonctions ect
 
-console.log(player.position);
 
 function drawPlayerHitboxCollisions() {
      // On dessine le caractère
@@ -114,12 +113,9 @@ function updateFrame() {
         stillDre(true);
     }
 
-    console.log("pos X" + player.position.x);
-    console.log("pos Y" + player.position.y);
 
     // modulo permet d'obtenir la bonne frame (1, 2, 3, 4...), ça permet d'update l'index de la frame
     currentFrame = ++currentFrame % frameCols;
-    console.log("frame", currentFrame);
 
     // Choisir le point de départ de la frame
     spriteSheetPosX = currentFrame * frameWidth;
