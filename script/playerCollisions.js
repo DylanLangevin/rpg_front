@@ -10,52 +10,50 @@ let timeCounter = 0;
 const loadingContain = document.querySelector(".loading-contain");
 const loadingBar = document.querySelector(".loading-bar");
 
-function checkAllSolidCollisions(){
+function checkAllSolidCollisions() {
     mapsSolidObjectsCollisions[currentMap].forEach(element => {
-        if(player.position.x + offsetX + hitboxWidth > element.x && player.position.x + offsetX < element.x + element.width && player.position.y + offsetY + hitboxHeight >  element.y && player.position.y + offsetY < element.y + element.height)
-        {
+        if (player.position.x + offsetX + hitboxWidth > element.x && player.position.x + offsetX < element.x + element.width && player.position.y + offsetY + hitboxHeight > element.y && player.position.y + offsetY < element.y + element.height) {
             switch (moveCharacter) {
                 case "up":
                     player.position.y += player.speed;
-        
+
                     spriteSheetPosY = directionUp * frameHeight;
                     body.onkeyup = event => {
                         stopMovingCharacter(directionUp);
                     }
                     break;
-        
+
                 case "down":
                     player.position.y -= player.speed;
-        
-                    if(previousMoveOrientation == "up" || previousMoveOrientation == "left" || previousMoveOrientation == "right")
-                    {
+
+                    if (previousMoveOrientation == "up" || previousMoveOrientation == "left" || previousMoveOrientation == "right") {
                         player.position.y -= player.speed;
                     }
-        
+
                     spriteSheetPosY = directionDown * frameHeight;
                     body.onkeyup = event => {
                         stopMovingCharacter(directionDown);
-                    } 
+                    }
                     break;
-        
+
                 case "left":
                     player.position.x += player.speed;
-        
+
                     spriteSheetPosY = directionLeft * frameHeight;
                     body.onkeyup = event => {
                         stopMovingCharacter(directionLeft);
                     }
                     break;
-        
+
                 case "right":
                     player.position.x -= player.speed;
-        
+
                     spriteSheetPosY = directionRight * frameHeight;
                     body.onkeyup = event => {
                         stopMovingCharacter(directionRight);
                     }
                     break;
-              
+
                 default:
                     break;
             }
@@ -68,23 +66,22 @@ let doorOpened = false;
 
 function checkAllZoneCollisions(){
     mapsZoneObjectsCollisions[currentMap].forEach(element => {
-        if(player.position.x + offsetX + hitboxWidth > element.x && player.position.x + offsetX < element.x + element.width && player.position.y + offsetY + hitboxHeight >  element.y && player.position.y + offsetY < element.y + element.height)
-        {
+        if (player.position.x + offsetX + hitboxWidth > element.x && player.position.x + offsetX < element.x + element.width && player.position.y + offsetY + hitboxHeight > element.y && player.position.y + offsetY < element.y + element.height) {
             switch (currentMap) {
                 // Map de la ville --> Case 0
                 case 0:
-                    
+
                     switch (element.direction) {
-                        
+
                         case "coffee":
                             OpenDoor()
                             console.log("coffee");
-                            ctxBackground.clearRect(0,0,1024,640);
-                            
-                            
-                            ctxBackground.drawImage(coffeeShop, 0, 0,1024,640);
+                            ctxBackground.clearRect(0, 0, 1024, 640);
 
-                            
+
+                            ctxBackground.drawImage(coffeeShop, 0, 0, 1024, 640);
+
+
 
                             // On replace le personnage
                             player.position.x = 875;
@@ -96,7 +93,6 @@ function checkAllZoneCollisions(){
                             offsetY = 9;
                             rescalePlayer();
                             pnjCoffeePosition()
-                            officierDisplay = false;
                             break;
 
                         case "parc-right":
@@ -123,7 +119,7 @@ function checkAllZoneCollisions(){
                         
                     }
                     break;
-                
+
                 // Map de l'intérieur du café --> Case 1
                 case 1:
                     OpenDoor()
@@ -134,15 +130,14 @@ function checkAllZoneCollisions(){
                     player.position.x = 240
                     player.position.y = 538
                     currentMap = 0;
-                    OfficerCtx.clearRect(0,0,1024,640)
+                    OfficerCtx.clearRect(0, 0, 1024, 640)
 
                     scaleDivider = 1.5;
                     offsetX = 10;
                     offsetY = 6;
                     rescalePlayer();
-                    officierDisplay = true;
                     break;
-                
+
                 //  Map du parc-right --> Case 2
                 case 2:
                     switch (element.direction) {
@@ -169,7 +164,7 @@ function checkAllZoneCollisions(){
                             break;
                     }
                     break;
-                
+
                 //  Map du parc-left --> Case 3
                 case 3:
                     switch (element.direction) {
@@ -195,7 +190,7 @@ function checkAllZoneCollisions(){
                             break;
                     }
                     break;
-                
+
                 //  Map du parc  --> Case 4
                 case 4:
                     switch (element.direction) {
@@ -233,7 +228,7 @@ function checkAllZoneCollisions(){
                             break;
                     }
                     break;
-                
+
                 // Première map intérieur library
                 case 5:
                     switch (element.direction) {
@@ -303,51 +298,49 @@ function checkAllZoneCollisions(){
     })
 }
 
-function checkCanvasEdgesCollisions(){
-    if(player.position.x + offsetX < 0 || player.position.x + offsetX + hitboxWidth  > canvas.width || player.position.y <  0 || player.position.y + offsetY + hitboxHeight > canvas.height)
-    {
+function checkCanvasEdgesCollisions() {
+    if (player.position.x + offsetX < 0 || player.position.x + offsetX + hitboxWidth > canvas.width || player.position.y < 0 || player.position.y + offsetY + hitboxHeight > canvas.height) {
         switch (moveCharacter) {
             case "up":
                 player.position.y += player.speed;
-    
+
                 spriteSheetPosY = directionUp * frameHeight;
                 body.onkeyup = event => {
                     stopMovingCharacter(directionUp);
                 }
                 break;
-    
+
             case "down":
                 player.position.y -= player.speed;
-    
-                if(previousMoveOrientation == "up" || previousMoveOrientation == "left" || previousMoveOrientation == "right")
-                {
+
+                if (previousMoveOrientation == "up" || previousMoveOrientation == "left" || previousMoveOrientation == "right") {
                     player.position.y -= player.speed;
                 }
-    
+
                 spriteSheetPosY = directionDown * frameHeight;
                 body.onkeyup = event => {
                     stopMovingCharacter(directionDown);
-                } 
+                }
                 break;
-    
+
             case "left":
                 player.position.x += player.speed;
-    
+
                 spriteSheetPosY = directionLeft * frameHeight;
                 body.onkeyup = event => {
                     stopMovingCharacter(directionLeft);
                 }
                 break;
-    
+
             case "right":
                 player.position.x -= player.speed;
-    
+
                 spriteSheetPosY = directionRight * frameHeight;
                 body.onkeyup = event => {
                     stopMovingCharacter(directionRight);
                 }
                 break;
-          
+
             default:
                 break;
         }
@@ -356,7 +349,7 @@ function checkCanvasEdgesCollisions(){
 
 function checkAllDialogueCollisions() {
     mapsDialogueCollisions[currentMap].forEach(element => {
-        if((player.position.x + offsetX + hitboxWidth > element.x && player.position.x + offsetX < element.x + element.width && player.position.y + offsetY + hitboxHeight >  element.y && player.position.y + offsetY < element.y + element.height)) {
+        if ((player.position.x + offsetX + hitboxWidth > element.x && player.position.x + offsetX < element.x + element.width && player.position.y + offsetY + hitboxHeight > element.y && player.position.y + offsetY < element.y + element.height)) {
 
             // Si on est sur la porte de la mairie, le dialogue change
             if (element.pnj.name == "Arrière bibliothèque") {
@@ -366,10 +359,10 @@ function checkAllDialogueCollisions() {
             }
 
             element.pnj.textZone(pnjTalk)
-        
+
             // Quand on clique sur entrée, le dialogue se créé
             window.onkeydown = event => {
-                switch(event.key) {
+                switch (event.key) {
                     case "Enter":
                         whichText = true
 
@@ -405,13 +398,13 @@ function checkAllDialogueCollisions() {
 
 function checkAllItemCollisions() {
     mapsItemCollisions[currentMap].forEach(element => {
-        if((player.position.x + offsetX + hitboxWidth > element.x && player.position.x + offsetX < element.x + element.width && player.position.y + offsetY + hitboxHeight >  element.y && player.position.y + offsetY < element.y + element.height && !element.picked )) {
-            
+        if ((player.position.x + offsetX + hitboxWidth > element.x && player.position.x + offsetX < element.x + element.width && player.position.y + offsetY + hitboxHeight > element.y && player.position.y + offsetY < element.y + element.height && !element.picked)) {
+
             // Met le nom de l'objet dans l'inventaire du joueur
             player.inventory.push(element.name)
-            if(element.name != "key") {
+            if (element.name != "key") {
                 takeObj()
-            } else if(element.name === "key") {
+            } else if (element.name === "key") {
                 stillDre(true)
             }
 
