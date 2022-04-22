@@ -7,7 +7,7 @@ let cityDialogueCollisions = [
 let coffeeDialogueCollisions = [
     // Pnj Bar
     {x:maleCitizen.position[0], y:maleCitizen.position[1], width: 50, height: 120, pnj: maleCitizen, dialogue: "Devine la réponse pour cacher la vérité. Je suis grand, j’ai des dents noires et blanches… Touche-les et fait raisonner les clefs"},
-    {x:elder.position[0], y:elder.position[1], width: 50, height: 80, pnj: elder, dialogue: "Peronne ne veut sortir de chez soi aujourd'hui ! Le centre-ville est vide.},
+    {x:elder.position[0], y:elder.position[1], width: 50, height: 80, pnj: elder, dialogue: "Peronne ne veut sortir de chez soi aujourd'hui ! Le centre-ville est vide."},
     {x:policeFriend.position[0], y:policeFriend.position[1], width: 80, height: 50, pnj: policeFriend, dialogue: "Trouve les 5 indices que t'as laissé ! Je t'aiderai à fuir."},
     {x:foreigner.position[0], y:foreigner.position[1] -30, width: 50, height: 80, pnj: foreigner, dialogue: "Les habitants semble suspécieux à mon égard depuis le meurtre du Maire ! Seulement parce que je viens pas d'ici..."},
 ]
