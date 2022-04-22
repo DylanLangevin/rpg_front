@@ -6,7 +6,7 @@ let cityItemCollisions = [
 let coffeeItemCollisions = [
     // mettre les coordonées de l'objet
     // {x:180, y:160, width: 50, height: 120}  
-    {name:"key",x:880, y:196, width: 20, height: 20, picked:false}, 
+    {name:"key",x:880, y:180, width: 20, height: 20, picked:false}, 
 ]
 
 let parcRightMapItemCollisions = [

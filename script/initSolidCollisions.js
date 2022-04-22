@@ -12,6 +12,25 @@ let cityMapSolidObjectsCollisions = [
     { x: 864, y: 0, width: 160, height: 155 },
 
     // Café
+    {x:0, y:384, width: 240, height: 256},
+    {x:240, y:400, width: 100, height: 114},
+    {x:280, y:400, width: 64, height: 158},
+   
+    // Maison player
+    {x:815, y:274, width: 210, height: 284},
+    
+    //bancs
+    {x:388, y:260, width:43, height: 15},
+    {x:68, y:260, width:43, height: 15},
+    {x:610, y:260, width:43, height: 15},
+
+    // //lampadaire
+    // {x:672, y:290, width:15, height: 15},
+    // {x:322, y:290, width:15, height: 15},
+    // {x:162, y:290, width:15, height: 15},
+    // {x:978, y:195, width:15, height: 15},
+    // {x:770, y:353, width:15, height: 15},
+    // {x:770, y:480, width:15, height: 15},
     { x: 0, y: 384, width: 240, height: 256 },
     { x: 240, y: 400, width: 100, height: 114 },
     { x: 280, y: 400, width: 64, height: 158 },
@@ -55,23 +74,67 @@ let coffeeMapSolidObjectsCollisions = [
     {x:100, y:510, width: 88, height: 18},
     {x:325, y:510, width: 88, height: 18},
     {x:580, y:510, width: 88, height: 18},
+
+    // Pnj
+    {x:elder.position[0] +15, y:elder.position[1] +10, width: 20, height: 25},
+    {x:policeFriend.position[0] +15, y:policeFriend.position[1] +10, width: 20, height: 25},
+    {x:foreigner.position[0] +15, y:foreigner.position[1] +10, width: 20, height: 25},
 ];
 
 let parcRightMapSolidObjectsCollisions = [
     // foret
+    {x:0, y:0, width:650, height:250},
+    {x:0, y:520, width:1024, height:150},
+    {x:900, y:0, width:50, height:640},
+    {x:850, y:475, width:50, height:50},
+    //bancs  
+    {x:355, y:340, width:33, height: 15},
+    {x:649, y:340, width:33, height: 15},
+    {x:59, y:340, width:33, height: 15},
+    //
+    {x:490, y:470, width:33, height: 15},
+    {x:161, y:470, width:33, height: 15},
+    //
+    {x:722, y:210, width:15, height: 23},
+    {x:722, y:42, width:15, height: 23}, 
+    
     { x: 0, y: 0, width: 650, height: 250 },
     { x: 0, y: 520, width: 1024, height: 150 },
     { x: 900, y: 0, width: 50, height: 640 },
     { x: 850, y: 475, width: 50, height: 50 },
 
+    // Pnj
+    {x:engineer.position[0] +15, y:engineer.position[1] +10, width: 20, height: 25},
+    {x:plantJanitor.position[0] +15, y:plantJanitor.position[1] +10, width: 20, height: 25},
+
 
 ];
 let parcLeftMapSolidObjectsCollisions = [
     // foret
+    {x:375, y:0, width:650, height:250},
+    {x:0, y:520, width:1024, height:150},
+    {x:60, y:0, width:50, height:640},
+    {x:115, y:475, width:50, height:50},
+    //bancs
+    {x:343, y:340, width:43, height: 15},
+    {x:630, y:340, width:43, height: 15},
+    {x:930, y:340, width:43, height: 15},
+    //
+    {x:495, y:470, width:43, height: 15},
+    {x:820, y:470, width:43, height: 15},
+    //
+    {x:290, y:210, width:15, height: 23},
+    {x:290, y:42, width:15, height: 23},
+
+
     { x: 375, y: 0, width: 650, height: 250 },
     { x: 0, y: 520, width: 1024, height: 150 },
     { x: 60, y: 0, width: 50, height: 640 },
     { x: 115, y: 475, width: 50, height: 50 },
+
+    // Pnj
+    {x:mayorWife.position[0] +15, y:mayorWife.position[1] +10, width: 20, height: 25},
+    {x:secretary.position[0] +15, y:secretary.position[1] +10, width: 20, height: 25},
     //lampadaire 
     // {x:, y:, width:, height:},
     // {x:, y:, width:, height:},
@@ -95,6 +158,10 @@ let parcMapSolidObjectsCollisions = [
     { x: 240, y: 350, width: 350, height: 105 },
     { x: 160, y: 350, width: 50, height: 105 },
     { x: 210, y: 350, width: 30, height: 85 },
+
+    // Pnj
+    {x:femaleCitizen.position[0] +15, y:femaleCitizen.position[1] +10, width: 20, height: 25},
+    {x:childhoodFriend.position[0] +15, y:childhoodFriend.position[1] +10, width: 20, height: 25},
 ];
 
 let libraryMapSolideObjectsCollisions = [
@@ -115,6 +182,9 @@ let libraryMapSolideObjectsCollisions = [
     {x:73, y:267, width:50, height: 54},
     {x:73, y:395, width:50, height: 54},
 
+    // Pnj
+    {x:librarian.position[0] +15, y:librarian.position[1] +10, width: 20, height: 25},
+
 ];
 
 let librarySecondMapSolideObjectsCollisions = [
@@ -134,6 +204,9 @@ let librarySecondMapSolideObjectsCollisions = [
     {x:260, y:192, width:87, height: 40},
     {x:132, y:320, width:87, height: 40},
     {x:293, y:448, width:87, height: 40},
+
+    // Pnj
+    {x:reader.position[0] +15, y:reader.position[1] +10, width: 20, height: 25},
 ];
 
 
