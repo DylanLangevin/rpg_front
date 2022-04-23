@@ -153,6 +153,7 @@ function checkOfficerVisionCollisions() {
                 player.position.y = 570;
                 updateFrame();
                 OfficerCatchPlayerLoadingScreen();
+                loadingBar.style.width = 0;
             }
         }
         else {
@@ -164,6 +165,7 @@ function checkOfficerVisionCollisions() {
                 player.position.y = 570;
                 updateFrame();
                 OfficerCatchPlayerLoadingScreen();
+                loadingBar.style.width = 0;
 
             }
         }

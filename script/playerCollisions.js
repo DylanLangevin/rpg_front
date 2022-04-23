@@ -375,6 +375,10 @@ function checkAllDialogueCollisions() {
                         if (document.querySelector("#key").style.visibility == "visible" && element.pnj.name == "Arrière bibliothèque")  {
                             doorOpened = true;
                         } 
+
+                        if (itemFound == 5) {
+                            loadingBar.style.width = 0;
+                        }
                         
                         if (element.pnj.name == "Policier ami") {
                             win()
@@ -426,8 +430,6 @@ function checkAllItemCollisions() {
             element.picked = true
             itemFound ++;
 
-//             win();
-
         }
     });
 }
@@ -441,6 +443,7 @@ function checkOfficerSolidCollisions(){
 
 function win(){
     if(itemFound == 5) {
+        barSize = 0;
         document.querySelector("#canva-div").style.display = "none";
         document.querySelector("#inventory").style.display = "none";
         loadingContain.style.display = "flex";
