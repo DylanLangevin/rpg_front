@@ -1,7 +1,5 @@
 
 let cityDialogueCollisions = [
-
-
 ];
 
 let coffeeDialogueCollisions = [

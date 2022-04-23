@@ -57,9 +57,7 @@ let mapsOfficierObjectsCollisions = [cityOfficierMovingSolidObjectCollision, cof
 
 
 function movingOfficer() {
-
     OfficerCtx.clearRect(0, 0, 1024, 640);
-
 
     if (hitboxToggle) {
         drawHitBoxOfficer();
@@ -88,7 +86,6 @@ function movingOfficer() {
         // On incrémente la vitesse
         element.posX += speed;
 
-
         // Animation du policier
         if (officierCurrentAnimeFrame < 512) {
             officierCurrentAnimeFrame += frameWidth;
@@ -97,7 +94,6 @@ function movingOfficer() {
             officierCurrentAnimeFrame = 0;
         }
 
-
         // On dessine la hitbox
         OfficerCtx.fillStyle = 'rgba(150,150,0,0.2';
         OfficerCtx.fillRect(element.posX + offsetHitboxX, element.posY, hitboxOfficierVisionWidth, hitboxOfficierVisionheight);
@@ -105,21 +101,17 @@ function movingOfficer() {
         // On dessine le caractère
         OfficerCtx.drawImage(police.character, officierCurrentAnimeFrame, element.officierDirection * frameHeight, frameWidth, frameHeight, element.posX, element.posY, frameWidth / scaleDivider, frameHeight / scaleDivider);
     });
-
 };
 
 setInterval(() => { movingOfficer() }, 100);
 
 function drawHitBoxOfficer() {
-
-
     OfficerCtx.fillStyle = "rgba(200,0,0,0.2)"
     mapsOfficierObjectsCollisions[currentMap].forEach(element => {
 
         OfficerCtx.fillRect(element.posX + offsetRecthitBoxX, element.posY, 20, 40)
 
     });
-
 };
 
 

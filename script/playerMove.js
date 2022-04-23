@@ -1,4 +1,3 @@
-playerName = localStorage.getItem("name");
 genderChoice = localStorage.getItem("gender")
 
 let body = document.querySelector('body');
@@ -52,36 +51,27 @@ function rescalePlayer() {
 }
 
 // Initialisation de l'ojet player
-let player = new Player(playerName, genderChoice, { x: 920, y: 570 }, playerSpeed, []);//position et inventaire à définir, ajouter des fonctions ect
-
+let player = new Player(genderChoice, { x: 920, y: 570 }, playerSpeed, []);//position et inventaire à définir, ajouter des fonctions ect
 
 function drawPlayerHitboxCollisions() {
      // On dessine le caractère
      ctx.drawImage(player.character, spriteSheetPosX, spriteSheetPosY,frameWidth, frameHeight, player.position.x, player.position.y, frameWidth / scaleDivider, frameHeight / scaleDivider);
-    
-     if(hitboxToggle)
-     {
+
+     if (hitboxToggle) {
          drawPlayerHitbox();
          drawAllSolidCollisionsBox();
          drawAllZoneCollisionsBox();
          drawAllDialogueCollisionsBox();
          drawAllItemCollisionsBox();
-            
-         
      }
 }
 
 // Test initialisation d'un PNJ
 body.onload = function () {
-
     drawPlayerHitboxCollisions()
-    
-
 }
 
-
 function drawPlayerHitbox() {
-
     ctx.fillStyle = "rgba(255,0,0,0.3)";
     ctx.fillRect(player.position.x + offsetX, player.position.y + offsetY, hitboxWidth, hitboxHeight);
 }
@@ -89,21 +79,19 @@ function drawPlayerHitbox() {
 // Dessiner le caractère à l'arrêt lorsqu'on arrête d'avancer
 function stopMovingCharacter(whichDirection) {
     walkSound(false);
+
     if (moveCharacter === "moonWalk") {
         stillDre(false);
     }
+
     ctx.clearRect(0, 0, canvas.width, canvas.height)
 
     spriteSheetPosX = 0;
     spriteSheetPosY = whichDirection * frameHeight;
 
     drawPlayerHitboxCollisions();
-
     checkAllDialogueCollisions();
 }
-
-
-
 
 // Choisir la bonne frame
 function updateFrame() {
@@ -112,7 +100,6 @@ function updateFrame() {
     } else if (moveCharacter === "moonWalk") {
         stillDre(true);
     }
-
 
     // modulo permet d'obtenir la bonne frame (1, 2, 3, 4...), ça permet d'update l'index de la frame
     currentFrame = ++currentFrame % frameCols;
@@ -126,7 +113,6 @@ function updateFrame() {
             player.position.y -= player.speed;
 
             // Va permettre de définir la direction du mouvement
-
             if (previousMoveOrientation == "down" || previousMoveOrientation == "left" || previousMoveOrientation == "right") {
                 player.position.y += player.speed;
             }

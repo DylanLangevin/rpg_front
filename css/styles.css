@@ -18,7 +18,7 @@ body {
 }
 
 
-/* Start Menu */
+/* Menu du jeu */
 .start-menu {
     height: 640px;
     width: 1024px;
@@ -63,20 +63,19 @@ body {
     background: none;
 }
 .menu-button button:hover {
-    color: #ffc300;
+    color: #277ed9;
     background: black;
     opacity: 0.8;
     border-radius: 18px;
 }
 
-/* Block Menu */
+/* Section dans le menu */
 .menu-block {
     color: white;
     font-family: "Public Pixel";
     height: 540px;
     width: 924px;
     background: black;
-    /* opacity: 0.96; */
     border-radius: 18px;
     position: absolute;
     transform: translate(0, -3.5%);
@@ -103,20 +102,16 @@ body {
     font-style: normal;
     font-weight: 400;
     font-size: 24px;
-
-    /* padding-top: 40px; */
 }
 .menu-block p {
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
     text-align: left;
-
-    /* padding-top: 20px; */
 }
 
 
-/* Player Selection */
+/* Sélection du personnage */
 .selection-container{
     display: flex;
     flex-direction: column;
@@ -153,19 +148,6 @@ body {
     border-radius: 18px;
     background-color: rgba(69, 69, 69, 0.6);
 }
-#player-name {
-    color: white;
-    width: 330px;
-    height: 35px;
-    background: #495057;
-    border: none;
-    border-radius: 18px;
-    outline: none;
-    padding-left: 20px; 
-}
-#player-name::placeholder {
-    color: white;
-}
 .final-choice {
     display: flex;
     gap: 20px;
@@ -185,26 +167,24 @@ body {
     background: #d90429;
 }
 
+/* Section options */
 .keycode {
     margin-top: 50px;
     display: flex;
     justify-content: center;
     gap: 50px;
 }
-
 .keycode-left {
     display: flex;
     flex-direction: column;
     gap: 30px;
 }
-
 .interaction {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 30px;
 }
-
 #key-Enter {
     width: 150px;
     height: 70px;
@@ -217,14 +197,12 @@ body {
 
     box-shadow: 1px 2px 4px rgba(255, 255, 255, 0.25);
 }
-
 .hitbox {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 30px;
 }
-
 #key-H {
     width: 70px;
     height: 70px;
@@ -237,14 +215,12 @@ body {
 
     box-shadow: 1px 2px 4px rgba(255, 255, 255, 0.25);
 }
-
 .shifting {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 40px;
 }
-
 .key-arrow {
     width: 70px;
     height: 70px;
@@ -257,7 +233,6 @@ body {
     justify-content: center;
     align-items: center;
 }
-
 .key-arrow-container {
     display: flex;
     flex-direction: column;
@@ -268,38 +243,41 @@ body {
     display: flex;
     gap: 15px;
 }
-
 .arrow-icon{
     width: 20.42px;
     height: 20.42px;
 }
-
 #key-Up {
     background: url("../images/key-arrow/key_up.svg") no-repeat;
 }
-
 #key-Left {
     background: url("../images/key-arrow/key_left.svg") no-repeat;
 }
-
 #key-Down {
     background: url("../images/key-arrow/key_down.svg") no-repeat;
 }
-
 #key-Right {
     background: url("../images/key-arrow/key_right.svg") no-repeat;
 }
 
+/* Section crédits */
 #credits-block {
     gap: 40px;
 }
-
 .name-container {
     display: flex;
     flex-direction: column;
     gap: 15px;
 }
+.developer-name {
+    color: white;
+    text-decoration: none;
+}
+.developer-name:hover {
+    color: #277ed9;
+}
 
+/* Page de chargement */
 .loading-contain {
     position: absolute;
     width: 1024px;
@@ -310,7 +288,6 @@ body {
     justify-content: center;
     align-items: center;
 }
-
 .loading-box {
     width: 200px;
     height: 10px;

@@ -22,7 +22,6 @@ const loadingBar = document.querySelector(".loading-bar");
 
 
 let genderChoice = "none";
-let playerName = "";
 
 let loading;
 let timeLoading;
@@ -71,15 +70,12 @@ male.onclick = () => {
 }
 
 confirm.onclick = () => {
-    playerName = document.getElementById("player-name").value;
-    if (genderChoice != "none" && playerName != "") {
-        localStorage.setItem("name", playerName);
+    if (genderChoice != "none") {
         localStorage.setItem("gender", genderChoice);
         startMenu.style.display = "none"
         loadingContain.style.display = "flex";
         loading = setInterval(loadingAnimation, 45);
         timeLoading = setInterval(counter, 45);  
-        // window.location = "game.html";
     }
 }
 
@@ -87,7 +83,6 @@ cancel.onclick = () => {
     male.style.display = "block"
     female.style.display = "block"
     genderChoice = "none";
-    playerName = "";
 }
 
 function loadingAnimation() {
@@ -95,8 +90,8 @@ function loadingAnimation() {
     if (barSize == 200) {
         clearTimeout(loading); 
     } 
-
     loadingBar.style.width = barSize + "px";
+
 }
     
 function counter() {

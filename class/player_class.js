@@ -1,6 +1,5 @@
 class Player {
-    constructor(name, image, position, speed, inventory) {
-        this.name = name;
+    constructor(image, position, speed, inventory) {
         this.position = position;
         this.speed = speed;
         this.inventory = inventory;
@@ -8,10 +7,6 @@ class Player {
         let character = new Image();
         character.src = this.image;
         this.character = character;
-    }
-
-    letsTalk(text) {
-        return this.name + ": " + text;
     }
 
     newItem(item) {
@@ -28,11 +23,4 @@ class Player {
         ctx.fillText(this.letsTalk(iTalk), dx +64, dy +15);
         return
     }
-
-
-    //surement obsolète
-    // move(position) {
-    //     //code déplacement ici
-    //     return
-    // }
 }

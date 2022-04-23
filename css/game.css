@@ -18,11 +18,13 @@ body {
     justify-content: center;
 }
 
+/* Conteneur de jeu */
 #game-container {
     height: 640px;
     width: 1139px;
 }
 
+/* Inventaire */
 #inventory {
     margin-left: 1039px;
     height: 640px;
@@ -35,14 +37,12 @@ body {
     align-items: center;
     justify-content: center;
 }
-
 #inventory p {
     margin-bottom: 30px;
     color: white;
     font-family: "Public Pixel";
     font-size: 0.6em;
 }
-
 .object {
     margin-bottom: 10px;
     height: 50px;
@@ -54,21 +54,20 @@ body {
     justify-content: center;
     align-items: center;
 }
-
 #music-btn {
     margin-top: 30px;
     width: 30px;
     height: 28px;
     background: url("/images/sounds-icon/sound-off.svg");
 }
-
 #bottle, #key, #knife, #pass, #ring{
     visibility: hidden;
     width: 30px;
     height: 30px;
-
 }
 
+
+/* Page de chargement */
 .loading-contain {
     position: absolute;
     top: 50%;
@@ -82,7 +81,6 @@ body {
     justify-content: center;
     align-items: center;
 }
-
 .loading-box {
     position: absolute;
     top: 50%;
@@ -98,6 +96,7 @@ body {
     transition: 0.9s;
 }
 
+/* Page fin du jeu*/
 .win {
     position: absolute;
     top: 50%;
@@ -115,27 +114,22 @@ body {
     align-items: center;
     gap: 50px;
 }
-
 .win a {
     text-align: left;
 }
-
 .name-container {
     display: flex;
     flex-direction: column;
     gap: 15px;
 }
-
 .developer-name {
     color: white;
     text-decoration: none;
 }
-
 .developer-name:hover {
-    color: yellow;
+    color: #277ed9;
     
 }
-
 #restart {
     width: 200px;
     height: 50px;
@@ -144,7 +138,6 @@ body {
 
     font-family: "Public Pixel";
 }
-
 #restart:hover {
     background: #adb5bd;
 }

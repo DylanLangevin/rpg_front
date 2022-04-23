@@ -30,7 +30,7 @@ function music() {
 }
 
 function takeObj() {
-        letsPlayTakeObj.play();
+    letsPlayTakeObj.play();
 }
 
 function OpenDoor() {
