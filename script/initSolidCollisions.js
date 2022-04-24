@@ -39,11 +39,23 @@ let cityMapSolidObjectsCollisions = [
 
     // Fontaine
     { x: 580, y: 385, width: 72, height: 65 },
+
+
+
+
+
 ];
 
 let coffeeMapSolidObjectsCollisions = [
     // Bar
     { x: 48, y: 48, width: 240, height: 180 },
+
+    // Tabourets bar
+    // {x:100, y:256, width: 24, height: 18},
+    // {x:164, y:256, width: 24, height: 18},
+    // {x:228, y:256, width: 24, height: 18},
+    // {x:292, y:224, width: 24, height: 18},
+    // {x:292, y:160, width: 24, height: 18},
 
     // Murs
     { x: 48, y: 48, width: 1000, height: 90 },
@@ -94,8 +106,9 @@ let parcRightMapSolidObjectsCollisions = [
     // Pnj
     {x:engineer.position[0] +15, y:engineer.position[1] +10, width: 20, height: 25},
     {x:plantJanitor.position[0] +15, y:plantJanitor.position[1] +10, width: 20, height: 25},
-];
 
+
+];
 let parcLeftMapSolidObjectsCollisions = [
     // foret
     {x:375, y:0, width:650, height:250},
@@ -122,8 +135,12 @@ let parcLeftMapSolidObjectsCollisions = [
     // Pnj
     {x:mayorWife.position[0] +15, y:mayorWife.position[1] +10, width: 20, height: 25},
     {x:secretary.position[0] +15, y:secretary.position[1] +10, width: 20, height: 25},
-];
+    //lampadaire 
+    // {x:, y:, width:, height:},
+    // {x:, y:, width:, height:},
+    // {x:, y:, width:, height:},
 
+];
 let parcMapSolidObjectsCollisions = [
     // Parc
     { x: 193, y: 101, width: 145, height: 135 },
@@ -167,6 +184,7 @@ let libraryMapSolideObjectsCollisions = [
 
     // Pnj
     {x:librarian.position[0] +15, y:librarian.position[1] +10, width: 20, height: 25},
+
 ];
 
 let librarySecondMapSolideObjectsCollisions = [

@@ -434,8 +434,6 @@ function checkAllItemCollisions() {
     });
 }
 
-
-
 function checkOfficerSolidCollisions(){
     if(player.position.x + offsetX < 0 || player.position.x + offsetX + hitboxWidth  > canvas.width || player.position.y <  0 || player.position.y + offsetY + hitboxHeight > canvas.height){
 

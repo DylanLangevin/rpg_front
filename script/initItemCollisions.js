@@ -1,9 +1,10 @@
 let cityItemCollisions = [
     // mettre les coordonées de l'objet
+    
 ];
 
 let coffeeItemCollisions = [
-    // mettre les coordonées de l'objet 
+    // mettre les coordonées de l'objet
     {name:"key",x:880, y:180, width: 20, height: 20, picked:false}, 
 ]
 
@@ -42,6 +43,7 @@ function drawAllItemCollisionsBox() {
 
             ctx.fillRect(element.x, element.y, element.width, element.height);
         }
+
     });
 }
 

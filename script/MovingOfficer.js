@@ -164,7 +164,6 @@ function checkOfficerVisionCollisions() {
     });
 }
 
-
 function OfficerCatchPlayerLoadingScreen(){
     // Animations Loading screen catch policier
     walkSound(false);
