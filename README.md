@@ -123,7 +123,7 @@ Nous avons développé ce projet à sept, vous pouvez retrouver nos profils ci-d
 ### Louis ROCCA
 - GitHub : [@LouisSleep](https://github.com/LouisSleep)
 - LinkedIn : [Louis Rocca](https://www.linkedin.com/in/louisrocca/)
-- 
+
 ### Adrien QUIMBRE
 - GitHub : [@Doud75](https://github.com/Doud75)
 - LinkedIn : [Adrien Quimbre](https://www.linkedin.com/in/adrien-quimbre-03311b224/)
