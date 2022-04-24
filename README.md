@@ -44,7 +44,10 @@ Nous devions créer en trois semaines un RPG en groupe de sept personnes en util
 - JavaScript
 
 ## "Never Happened" : But du jeu
-"Never Happened" est un jeu dont le but est de ramasser les indices que vous avez égarés suite au meurtre du maire de la ville que vous avez commis. Il faut éviter les policiers qui se baladent dans la vlile et ramasser les cinq objets perdus pour gagner la partie. Les objets sont les suivants : couteau, bouteille, clef, pass, bague.
+"Never Happened" est un jeu dont le but est de ramasser les indices que vous avez égarés suite au meurtre du maire de la ville que vous avez commis. Il faut éviter les policiers qui se baladent dans la vlile et ramasser les cinq objets perdus pour gagner la partie. Les objets sont les suivants : couteau, bouteille, clef, pass, bague. 
+Lorsque vous êtes attrapés par un policier, vous êtes renvoyé.e au début du jeu devant votre maison.
+
+![image](https://user-images.githubusercontent.com/95865130/164970735-1c4c4087-59a6-41bc-9e9e-a3e92ba2622f.png)
 
 ### Comment jouer
 Vous pouvez vous déplacer sur les différentes cartes grâce aux flèches du clavier.
@@ -54,9 +57,15 @@ Vous pouvez dialoguer avec les PNJ en utilisant la touche entrée. La même touc
 ### Menu du jeu
 Le menu vous permet de lancer une partie et choisir votre personnage.
 
+![image](https://user-images.githubusercontent.com/95865130/164970780-726cb7d9-648f-4531-ba27-e3aa0c17feda.png)
+
 <i>Joueurs possibles</i>
 
 Vous pouvez également connaitre les touches du jeu et accéder aux crédits. En cliquant sur nos noms dans les crédits, vous pouvez directement accéder à nos GitHub.
+
+![image](https://user-images.githubusercontent.com/95865130/164970747-4483176e-7bb6-41bb-a37f-01c994b93de2.png)
+<br>
+![image](https://user-images.githubusercontent.com/95865130/164970759-576f6811-4b45-447b-929f-f3142b37f270.png)
 
 <i>Touches du jeu et crédits</i>
 
@@ -65,16 +74,28 @@ Toutes les cartes ont été intégralement créées en utilsant des spritesheets
 
 Vous pouvez retrouver ci-après les différentes cartes du jeu :
 
+![image](https://user-images.githubusercontent.com/95865130/164970824-3094a246-0817-4704-bff1-16629932dba4.png)
 <i>Ville</i>
+
+![image](https://user-images.githubusercontent.com/95865130/164970839-0fe24cab-f92d-411a-ac3e-4844178efdcc.png)
 <i>Accès parc gauche</i>
+
+![image](https://user-images.githubusercontent.com/95865130/164970968-3cb83368-346e-4cf8-828b-ce58ac1938c1.png)
 <i>Accès parc droite</i>
+
+![image](https://user-images.githubusercontent.com/95865130/164970944-aa8a3462-3614-4645-ad9f-b1cb0e5e10e3.png)
 <i>Parc</i>
+
+![image](https://user-images.githubusercontent.com/95865130/164970931-e5819510-48d9-44a9-9b10-b453b966c9c3.png)
 <i>Intérieur bibliothèque</i>
+
+![image](https://user-images.githubusercontent.com/95865130/164970874-a80377a4-044c-4c2f-b4d7-4e1b9d5aae43.png)
 <i>Intérieur café</i>
 
 ### Les objets à trouver
 Lorsque vous avez trouvé un objet, ce dernier est automatiquement ajouté à votre inventaire. Il faut trouver les cinq objets pour gagner.
 
+![image](https://user-images.githubusercontent.com/95865130/164971006-01753e78-13c4-4d75-90c9-3220093980a2.png)
 <i>Inventaire du joueur</i>
 
 ### Musique
