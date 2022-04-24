@@ -119,7 +119,7 @@ Nous avons développé ce projet à sept, vous pouvez retrouver nos profils ci-d
 ### Billy IEA
 - GitHub : [@Numyu](https://github.com/Numyu)
 - LinkedIn : [Billy Iea](https://www.linkedin.com/in/billy-iea)
-- 
+
 ### Louis ROCCA
 - GitHub : [@LouisSleep](https://github.com/LouisSleep)
 - LinkedIn : [Louis Rocca](https://www.linkedin.com/in/louisrocca/)
@@ -127,7 +127,7 @@ Nous avons développé ce projet à sept, vous pouvez retrouver nos profils ci-d
 ### Adrien QUIMBRE
 - GitHub : [@Doud75](https://github.com/Doud75)
 - LinkedIn : [Adrien Quimbre](https://www.linkedin.com/in/adrien-quimbre-03311b224/)
-- 
+
 ### Théo DUVAL
 - GitHub : [@The0Duval](https://github.com/The0Duval)
 - LinkedIn : [Théo Duval](https://www.linkedin.com/in/th%C3%A9o-duval-468b30187/)
